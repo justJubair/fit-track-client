@@ -1,8 +1,9 @@
+import Nav from "@/components/Shared/Nav/Nav";
+
 const page = () => {
     return(
         <div>
-             <p> Hello Web Weavers ...</p>
-             <p>check branch ...Aurnab</p>
+           <Nav/>
         </div>
     )}
 export default page;

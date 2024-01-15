@@ -1,13 +1,10 @@
-
 import Banner from "@/components/Banner/Banner";
-import Nav from "@/components/Shared/Nav/Nav";
-
 
 const page = () => {
-    return(
+    return (
         <div>
-           <Nav/>
-         <Banner></Banner>
+            <Banner></Banner>
         </div>
-    )}
+    )
+}
 export default page;

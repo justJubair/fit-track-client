@@ -13,11 +13,11 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import SearchIcon from '@mui/icons-material/Search';
 import LocalMallTwoToneIcon from '@mui/icons-material/LocalMallTwoTone';
 import './Nav.css';
 import Image from 'next/image';
 import LOGO from '../../../../public/images/logo-transparent-png.png'
+import Link from 'next/link';
 const pages = ['New & Featured', 'Accessories', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -44,7 +44,19 @@ const Nav = () => {
 
     return (
         <div>
-            <AppBar position="static" sx={{ backgroundColor: 'transparent' }}>
+            <div className='bg-[#f5f5f5] hidden lg:block'>
+                <div className='flex justify-between max-w-[80rem] mx-auto px-6'>
+                    <div>
+                        <Image src={LOGO} width={100} height={100} alt='Logo' />
+                    </div>
+                    <div className='flex gap-4'>
+                        <Link href='#' className='text-[#252525]'>Join Us |</Link>
+                        <Link href='#' className='text-[#252525]'>Sign In |</Link>
+                        <Link href='#' className='text-[#252525]'>Help </Link>
+                    </div>
+                </div>
+            </div>
+            <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                         <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -65,7 +77,6 @@ const Nav = () => {
                         >
                             <Image src={LOGO} width={200} height={200} alt='Logo' />
                         </Typography>
-
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                             <IconButton
                                 size="large"
@@ -101,7 +112,6 @@ const Nav = () => {
                                     </MenuItem>
                                 ))}
                                 <Box sx={{ flexGrow: 0 }}>
-                             
                                     <Menu
                                         sx={{ mt: '45px' }}
                                         id="menu-appbar"
@@ -124,9 +134,9 @@ const Nav = () => {
                                             </MenuItem>
                                         ))}
                                     </Menu>
-                                    <span>
+                                    <span className='flex flex-col gap-2'>
                                         <input class="search" type="search" placeholder="Search..." />
-                                        <LocalMallTwoToneIcon className='text-[#252525] text-3xl' />
+                                        <button className='border-[1px] border-[#252525] py-2 rounded-[20px] mx-[10px]'>Sign In</button>
                                     </span>
                                 </Box>
                             </Menu>
@@ -195,7 +205,6 @@ const Nav = () => {
                                 <LocalMallTwoToneIcon className='text-[#252525] text-3xl' />
                             </span>
                         </Box>
-
                     </Toolbar>
                 </Container>
             </AppBar>

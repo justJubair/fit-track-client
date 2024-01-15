@@ -6,3 +6,7 @@ input.search {
     border-radius: 20px;
     margin: 0 10px;
 }
+
+.MuiToolbar-root.MuiToolbar-regular.css-r6ewbb-MuiToolbar-root {
+    justify-content: space-between;
+}

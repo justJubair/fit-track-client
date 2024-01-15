@@ -16,7 +16,8 @@ import AdbIcon from '@mui/icons-material/Adb';
 import SearchIcon from '@mui/icons-material/Search';
 import LocalMallTwoToneIcon from '@mui/icons-material/LocalMallTwoTone';
 import './Nav.css';
-
+import Image from 'next/image';
+import LOGO from '../../../../public/images/logo-transparent-png.png'
 const pages = ['New & Featured', 'Accessories', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -62,7 +63,7 @@ const Nav = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            LOGO
+                            <Image src={LOGO} width={200} height={200} alt='Logo' />
                         </Typography>
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -74,7 +75,7 @@ const Nav = () => {
                                 onClick={handleOpenNavMenu}
                                 color="inherit"
                             >
-                                <MenuIcon />
+                                <MenuIcon className=' text-[#252525] ' />
                             </IconButton>
                             <Menu
                                 id="menu-appbar"
@@ -99,6 +100,35 @@ const Nav = () => {
                                         <Typography textAlign="center">{page}</Typography>
                                     </MenuItem>
                                 ))}
+                                <Box sx={{ flexGrow: 0 }}>
+                             
+                                    <Menu
+                                        sx={{ mt: '45px' }}
+                                        id="menu-appbar"
+                                        anchorEl={anchorElUser}
+                                        anchorOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        keepMounted
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        open={Boolean(anchorElUser)}
+                                        onClose={handleCloseUserMenu}
+                                    >
+                                        {settings.map((setting) => (
+                                            <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                                <Typography textAlign="center">{setting}</Typography>
+                                            </MenuItem>
+                                        ))}
+                                    </Menu>
+                                    <span>
+                                        <input class="search" type="search" placeholder="Search..." />
+                                        <LocalMallTwoToneIcon className='text-[#252525] text-3xl' />
+                                    </span>
+                                </Box>
                             </Menu>
                         </Box>
                         <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -118,7 +148,7 @@ const Nav = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            LOGO
+                            <Image src={LOGO} width={200} height={200} alt='Logo' />
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
                             {pages.map((page) => (
@@ -130,9 +160,9 @@ const Nav = () => {
                                     {page}
                                 </Button>
                             ))}
-                        </Box>
 
-                        <Box sx={{ flexGrow: 0 }}>
+                        </Box>
+                        <Box sx={{ flexGrow: 0, display: 'flex' }}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                     <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -160,11 +190,12 @@ const Nav = () => {
                                     </MenuItem>
                                 ))}
                             </Menu>
-                            <span>
+                            <span className='hidden lg:block' >
                                 <input class="search" type="search" placeholder="Search..." />
-                                <LocalMallTwoToneIcon className='text-[#252525] text-3xl'/>
+                                <LocalMallTwoToneIcon className='text-[#252525] text-3xl' />
                             </span>
                         </Box>
+
                     </Toolbar>
                 </Container>
             </AppBar>

@@ -50,9 +50,9 @@ const Nav = () => {
                         <Image src={LOGO} width={100} height={100} alt='Logo' />
                     </div>
                     <div className='flex gap-4'>
-                        <Link href='#' className='text-[#252525]'>Join Us |</Link>
-                        <Link href='#' className='text-[#252525]'>Sign In |</Link>
-                        <Link href='#' className='text-[#252525]'>Help </Link>
+                        <Link href='#' className='text-[#252525] font-bold'>Join Us |</Link>
+                        <Link href='#' className='text-[#252525] font-bold'>Sign In |</Link>
+                        <Link href='#' className='text-[#252525] font-bold'>Help </Link>
                     </div>
                 </div>
             </div>

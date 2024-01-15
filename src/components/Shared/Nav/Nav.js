@@ -18,14 +18,18 @@ import './Nav.css';
 import Image from 'next/image';
 import LOGO from '../../../assets/images/logo-transparent-png.png';
 import Link from 'next/link';
+
+// Array of pages and settings for navigation
 const pages = ['New & Featured', 'Accessories', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Nav = () => {
 
+    // State variables to manage menu anchor elements
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
+    // Event handlers for opening and closing navigation menu
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };

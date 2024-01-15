@@ -7,10 +7,10 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 const FooterIcons = () => {
     return (
         <div className='space-x-4'>
-            <FacebookRoundedIcon className='text-4xl' />
-            <SubscriptionsRoundedIcon className='text-4xl' />
-            <InstagramIcon className='text-4xl' />
-            <TwitterIcon className='text-4xl' />
+            <FacebookRoundedIcon className='lg:text-4xl' />
+            <SubscriptionsRoundedIcon className='lg:text-4xl' />
+            <InstagramIcon className='lg:text-4xl' />
+            <TwitterIcon className='lg:text-4xl' />
         </div>
     );
 };

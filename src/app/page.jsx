@@ -1,14 +1,13 @@
-import Banner from "@/components/Banner";
+
+import Banner from "@/components/Banner/Banner";
+import Nav from "@/components/Shared/Nav/Nav";
 
 
-
-// changed page to Homepage
-const HomePage = () => {
+const page = () => {
     return(
         <div>
-             <p> Hello Web Weavers ...</p>
-             <p>check branch ...Aurnab</p>
-             <Banner></Banner>
+           <Nav/>
+         <Banner></Banner>
         </div>
     )}
-export default HomePage;
+export default page;

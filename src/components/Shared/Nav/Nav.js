@@ -18,14 +18,18 @@ import './Nav.css';
 import Image from 'next/image';
 import LOGO from '../../../assets/images/logo-transparent-png.png';
 import Link from 'next/link';
+
+// Array of pages and settings for navigation
 const pages = ['New & Featured', 'Accessories', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Nav = () => {
 
+    // State variables to manage menu anchor elements
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
+    // Event handlers for opening and closing navigation menu
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
@@ -41,25 +45,22 @@ const Nav = () => {
         setAnchorElUser(null);
     };
 
-
+    
     return (
-        <div>
-            <div className='bg-[#f5f5f5] hidden lg:block'>
-                <div className='flex justify-between max-w-[80rem] mx-auto px-6'>
+        <div className=' absolute w-[100%] z-50'>
+                <div className='bg-transparent hidden lg:flex justify-between max-w-[1536px] mx-auto px-8'>
                     <div>
                         <Image src={LOGO} width={100} height={100} alt='Logo' />
                     </div>
                     <div className='flex gap-4'>
-                        <Link href='#' className='text-[#252525] font-bold'>Join Us |</Link>
-                        <Link href='#' className='text-[#252525] font-bold'>Sign In |</Link>
-                        <Link href='#' className='text-[#252525] font-bold'>Help </Link>
+                        <Link href='#' className='text-[#fff] font-bold'>Join Us |</Link>
+                        <Link href='#' className='text-[#fff] font-bold'>Sign In |</Link>
+                        <Link href='#' className='text-[#fff] font-bold'>Help </Link>
                     </div>
                 </div>
-            </div>
             <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                         <Typography
                             variant="h6"
                             noWrap
@@ -86,7 +87,7 @@ const Nav = () => {
                                 onClick={handleOpenNavMenu}
                                 color="inherit"
                             >
-                                <MenuIcon className=' text-[#252525] ' />
+                                <MenuIcon className=' text-[#fff] ' />
                             </IconButton>
                             <Menu
                                 id="menu-appbar"
@@ -141,7 +142,6 @@ const Nav = () => {
                                 </Box>
                             </Menu>
                         </Box>
-                        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                         <Typography
                             variant="h5"
                             noWrap
@@ -165,7 +165,7 @@ const Nav = () => {
                                 <Button
                                     key={page}
                                     onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: '#252525', display: 'block', fontWeight: 'bold' }}
+                                    sx={{ my: 2, color: '#fff', display: 'block', fontWeight: 'bold' }}
                                 >
                                     {page}
                                 </Button>
@@ -202,7 +202,7 @@ const Nav = () => {
                             </Menu>
                             <span className='hidden lg:block' >
                                 <input className="search" type="search" placeholder="Search..." />
-                                <LocalMallTwoToneIcon className='text-[#252525] text-3xl' />
+                                <LocalMallTwoToneIcon className='text-[#fff] text-3xl' />
                             </span>
                         </Box>
                     </Toolbar>

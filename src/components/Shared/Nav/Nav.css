@@ -1,0 +1,12 @@
+input.search {
+    width: 200px;
+    border: 1px solid #555;
+    padding: 9px 4px 9px 40px;
+    background: transparent url("../../../../public/icons8-search-50.svg") no-repeat 13px;
+    border-radius: 20px;
+    margin: 0 10px;
+}
+
+.MuiToolbar-root.MuiToolbar-regular.css-r6ewbb-MuiToolbar-root {
+    justify-content: space-between;
+}

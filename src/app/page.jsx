@@ -1,13 +1,9 @@
+import Nav from "@/components/Shared/Nav/Nav";
 
-
-
-// changed page to Homepage
-const HomePage = () => {
+const page = () => {
     return(
         <div>
-             <p> Hello Web Weavers ...</p>
-             <p>check branch ...Aurnab</p>
-       
+           <Nav/>
         </div>
     )}
-export default HomePage;
+export default page;

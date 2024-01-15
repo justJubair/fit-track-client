@@ -135,7 +135,7 @@ const Nav = () => {
                                         ))}
                                     </Menu>
                                     <span className='flex flex-col gap-2'>
-                                        <input class="search" type="search" placeholder="Search..." />
+                                        <input className="search" type="search" placeholder="Search..." />
                                         <button className='border-[1px] border-[#252525] py-2 rounded-[20px] mx-[10px]'>Sign In</button>
                                     </span>
                                 </Box>
@@ -201,7 +201,7 @@ const Nav = () => {
                                 ))}
                             </Menu>
                             <span className='hidden lg:block' >
-                                <input class="search" type="search" placeholder="Search..." />
+                                <input className="search" type="search" placeholder="Search..." />
                                 <LocalMallTwoToneIcon className='text-[#252525] text-3xl' />
                             </span>
                         </Box>

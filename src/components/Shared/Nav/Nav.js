@@ -16,7 +16,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import LocalMallTwoToneIcon from '@mui/icons-material/LocalMallTwoTone';
 import './Nav.css';
 import Image from 'next/image';
-import LOGO from '../../../../public/images/logo-transparent-png.png'
+import LOGO from '../../../assets/images/logo-transparent-png.png';
 import Link from 'next/link';
 const pages = ['New & Featured', 'Accessories', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];

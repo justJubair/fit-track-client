@@ -1,7 +1,9 @@
+import CompetitionSlider from "@/components/CompetitionSlider/CompetitionSlider";
+
 const page = () => {
     return(
         <div>
-             <p> HELLO I Am page </p>
+            <CompetitionSlider/>
         </div>
     )}
 export default page;

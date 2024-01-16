@@ -1,11 +1,19 @@
 'use client';
 import Link from 'next/link';
 import HoverVideoPlayer from 'react-hover-video-player';
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from 'react';
 const Service = ({ serv }) => {
-    // console.log(serv)
+
+    // Initialization of AOS
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+      }, []);
+
     return (
-        <div className='rounded-md mx-4 lg:mx-0'>
+        <div className='rounded-md mx-4 lg:mx-0' data-aos="zoom-in-up">
             <Link href='#' className=' rounded-md'>
             {/* HoverVideoPlayer for video hover on play */}
                 <HoverVideoPlayer

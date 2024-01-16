@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+video {
+    border-radius: 10px;
+}
+.loader{
+    position: absolute;
+    z-index: 50;
+    left: 50%;
+    top: 50%;
+}

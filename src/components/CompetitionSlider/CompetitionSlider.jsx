@@ -65,6 +65,11 @@ const CompetitionSlider = () => {
         {/* slider one */}
         <SwiperSlide>
           <div className="relative min-h-screen">
+             {/* Slider Text */}
+             <div className="text-white z-50 absolute">
+              <h1>Unleash Your Inner Athlete</h1>
+              <p>Transform your workouts into epic adventures with our cutting-edge fitness tracking app.</p>
+            </div>
             <Image
               alt="slider image one"
               src={sliderImg01}
@@ -73,9 +78,10 @@ const CompetitionSlider = () => {
               style={{
                 objectFit: "cover", // cover, contain, none
               }}
-            />
-                {/* overlay */}
-                <div className="h-screen absolute top-0 left-0 w-full bg-black/40"></div>
+            />  
+            {/* overlay */}
+            <div className="h-screen absolute top-0 left-0 w-full bg-black/40"></div>
+           
           </div>
         </SwiperSlide>
 

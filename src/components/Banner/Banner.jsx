@@ -10,7 +10,7 @@ const Banner = () => {
           Button
         </button>
       </div>
-      <video src={require('../../assets/bannerVideo.mp4')} autoPlay muted loop />
+      <video className='h-screen w-full object-cover' src={require('../../assets/bannerVideo.mp4')} autoPlay muted loop />
     </div>
 
   );

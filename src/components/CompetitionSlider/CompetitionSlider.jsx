@@ -16,6 +16,8 @@ import sliderImg01 from "../../assets/images/slider01.jpg";
 import sliderImg02 from "../../assets/images/slider05.jpg";
 import sliderImg03 from "../../assets/images/slider06.jpg";
 import sliderImg04 from "../../assets/images/slider04.jpg";
+import { Box, Typography } from "@mui/material";
+
 
 // Slider data
 const sliderData = [
@@ -50,8 +52,9 @@ const sliderData = [
 ];
 
 const CompetitionSlider = () => {
+
   return (
-    <div className="min-h-screen">
+    <Box>
       <Swiper
         spaceBetween={30}
         effect={"fade"}
@@ -64,79 +67,113 @@ const CompetitionSlider = () => {
       >
         {/* slider one */}
         <SwiperSlide>
-          <div className="relative min-h-screen">
+          <Box position="relative" height="100vh">
              {/* Slider Text */}
-             <div className="text-white z-50 absolute">
-              <h1>Unleash Your Inner Athlete</h1>
-              <p>Transform your workouts into epic adventures with our cutting-edge fitness tracking app.</p>
-            </div>
+             <Box position={"absolute"} zIndex={50} color={"white"} top={"40%"} left={{lg:"5%", sm:"10%", xs: "12%"}}>
+             
+              <Typography 
+              variant="h2"
+              fontSize={{xs: "30px", lg: "50px", sm: "40px"}}
+              width={{lg:"75%", xs: "100%"}} fontWeight="bold">Unleash Your Inner Athlete</Typography>
+              <Typography variant="subtitle1" fontSize={{xs:"14px", sm: "16px"}} width="70%">Transform your workouts into epic adventures with our cutting-edge fitness tracking app.</Typography>
+            </Box>
             <Image
               alt="slider image one"
               src={sliderImg01}
               fill
-        
+              priority
               style={{
                 objectFit: "cover", // cover, contain, none
               }}
             />  
             {/* overlay */}
-            <div className="h-screen absolute top-0 left-0 w-full bg-black/40"></div>
+            <Box className="h-screen absolute top-0 left-0 w-full bg-black/40"></Box>
            
-          </div>
+          </Box>
         </SwiperSlide>
 
         {/* slider two */}
         <SwiperSlide>
-          <div className="relative min-h-screen">
+        <Box position="relative" height="100vh">
+             {/* Slider Text */}
+             <Box position={"absolute"} zIndex={50} color={"white"} top={"40%"} left={{lg:"5%", sm:"10%", xs: "12%"}}>
+             
+              <Typography 
+              variant="h2"
+              fontSize={{xs: "30px", lg: "50px", sm: "40px"}}
+              width={{lg:"75%", xs: "100%"}} fontWeight="bold">Sweat Smart, Live Strong</Typography>
+              <Typography variant="subtitle1" fontSize={{xs:"14px", sm: "16px"}} width="70%">Elevate your fitness game intelligently – because every drop of sweat tells a success story.</Typography>
+            </Box>
             <Image
               alt="slider image one"
               src={sliderImg02}
               fill
-           
+              priority
               style={{
                 objectFit: "cover", // cover, contain, none
               }}
-            />
+            />  
             {/* overlay */}
-            <div className="h-screen absolute top-0 left-0 w-full bg-black/60"></div>
-          </div>
+            <Box className="h-screen absolute top-0 left-0 w-full bg-black/60"></Box>
+           
+          </Box>
         </SwiperSlide>
 
         {/* slidet three */}
         <SwiperSlide>
-          <div className="relative min-h-screen">
+        <Box position="relative" height="100vh">
+             {/* Slider Text */}
+             <Box position={"absolute"} zIndex={50} color={"white"} top={"40%"} left={{lg:"5%", sm:"10%", xs: "12%"}}>
+             
+              <Typography 
+              variant="h2"
+              fontSize={{xs: "30px", lg: "50px", sm: "40px"}}
+              width={{lg:"75%", xs: "100%"}} fontWeight="bold">Run, Jump, Conquer</Typography>
+              <Typography variant="subtitle1" fontSize={{xs:"14px", sm: "16px"}} width="70%">Conquer your fitness goals with a dash of fun, a splash of motivation, and a sprinkle of personalization.</Typography>
+            </Box>
             <Image
               alt="slider image one"
               src={sliderImg03}
               fill
-              
+              priority
               style={{
                 objectFit: "cover", // cover, contain, none
               }}
-            />
-          </div>
-           {/* overlay */}
-           <div className="h-screen absolute top-0 left-0 w-full bg-black/60"></div>
+            />  
+            {/* overlay */}
+            <Box className="h-screen absolute top-0 left-0 w-full bg-black/60"></Box>
+           
+          </Box>
         </SwiperSlide>
 
         {/* slider four */}
         <SwiperSlide>
-          <div className="relative min-h-screen">
+        <Box position="relative" height="100vh">
+             {/* Slider Text */}
+             <Box position={"absolute"} zIndex={50} color={"white"} top={"40%"} left={{lg:"5%", sm:"10%", xs: "12%"}}>
+             
+              <Typography 
+              variant="h2"
+              fontSize={{xs: "30px", lg: "50px", sm: "40px"}}
+              width={{lg:"75%", xs: "100%"}} fontWeight="bold">Fitness Redefined, Data Refined</Typography>
+              <Typography variant="subtitle1" fontSize={{xs:"14px", sm: "16px"}} width="70%">Redesign your fitness journey with precise data insights – because your body deserves the best analytics.</Typography>
+            </Box>
             <Image
               alt="slider image one"
               src={sliderImg04}
               fill
-            
+              priority
               style={{
                 objectFit: "cover", // cover, contain, none
               }}
-            />
-          </div>
-           {/* overlay */}
-           <div className="h-screen absolute top-0 left-0 w-full bg-black/70"></div>
+            />  
+            {/* overlay */}
+            <Box className="h-screen absolute top-0 left-0 w-full bg-black/70"></Box>
+           
+          </Box>
         </SwiperSlide>
       </Swiper>
-    </div>
+    </Box>
   );
 };
 export default CompetitionSlider;

@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
 import './Nav.css';
 import Image from 'next/image';
-import LOGO from '../../../assets/images/logo-transparent-png.png';
+import LOGO from '../../../assets/images/logo02.png';
 import Link from 'next/link';
 
 // Array of pages and settings for navigation
@@ -49,7 +49,7 @@ const Nav = () => {
         <div className=' absolute w-[100%] z-50'>
                 <div className='bg-transparent hidden lg:flex justify-center items-center max-w-[1536px] mx-auto px-8'>
                     <div>
-                        <Image className='bg-white rounded-lg p-2' src={LOGO} width={100} height={100} alt='Logo' />
+                        <Image src={LOGO} width={120} height={120} alt='Logo' />
                     </div>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
@@ -64,32 +64,26 @@ const Nav = () => {
                             ))}
 
                         </Box>
-                    <div className='flex gap-4'>
-                        <Link href='#' className='text-[#fff] font-bold'>Join Us |</Link>
-                        <Link href='#' className='text-[#fff] font-bold'>Sign In |</Link>
-                        <Link href='#' className='text-[#fff] font-bold'>Help </Link>
+                    <div className='flex gap-4 text-white font-bold items-center'>
+                        <Link href='#' >Join Us</Link>
+                        <span>|</span>
+                        <Link href='#' >Sign In</Link>
+                        <span>|</span>
+                        <Link href='#' >Help </Link>
+                        <span className='hidden lg:block pl-2'>
+                               
+                               <Tooltip title="Open settings">
+                               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                   <Avatar alt="Remy Sharp" src="https://cdn2.vectorstock.com/i/1000x1000/17/61/male-avatar-profile-picture-vector-10211761.jpg" />
+                               </IconButton>
+                           </Tooltip>
+                           </span>
                     </div>
                 </div>
             <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        {/* <Typography
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="#app-bar-with-responsive-menu"
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'none', md: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            <Image src={LOGO} width={200} height={200} alt='Logo' />
-                        </Typography> */}
+                       
                         {/* mobile */}
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                             <IconButton
@@ -175,11 +169,7 @@ const Nav = () => {
                         </Typography>
                        
                         <Box sx={{ display: "flex", alignItems:"center", position: "absolute", right: "0", top: "0" }}>
-                            {/* <Tooltip title="Open settings">
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="https://cdn2.vectorstock.com/i/1000x1000/17/61/male-avatar-profile-picture-vector-10211761.jpg" />
-                                </IconButton>
-                            </Tooltip> */}
+                
                             <Menu
                                 sx={{ mt: '45px' }}
                                 id="menu-appbar"
@@ -202,15 +192,7 @@ const Nav = () => {
                                     </MenuItem>
                                 ))}
                             </Menu>
-                            <span className='hidden lg:block' >
-                                <input className="search" type="search" placeholder="Search..." />
-                                {/* <LocalMallTwoToneIcon className='text-[#fff] text-3xl' /> */}
-                                <Tooltip title="Open settings">
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="https://cdn2.vectorstock.com/i/1000x1000/17/61/male-avatar-profile-picture-vector-10211761.jpg" />
-                                </IconButton>
-                            </Tooltip>
-                            </span>
+                          
                         </Box>
                     </Toolbar>
                 </Container>

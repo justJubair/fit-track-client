@@ -8,8 +8,8 @@ const page = () => {
         <div>
             <Banner></Banner>
             <Services />
-            <FAQ></FAQ>
             <Advertisement />
+            <FAQ></FAQ>
         </div>
     )
 }

@@ -18,7 +18,7 @@ const Service = ({ serv }) => {
             {/* HoverVideoPlayer for video hover on play */}
                 <HoverVideoPlayer
                 style={{ borderRadius:'10px' }}
-                    videoSrc={require('../../assets/bannerVideo.mp4')}
+                    videoSrc={serv.url}
                     pausedOverlay={
                         <img
                             src={serv.thumbnail}

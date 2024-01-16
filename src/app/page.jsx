@@ -6,7 +6,7 @@ const page = () => {
     return (
         <div>
             <Banner></Banner>
-            <Services/>
+            <Services />
             <FAQ></FAQ>
         </div>
     )

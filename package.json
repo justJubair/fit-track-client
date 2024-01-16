@@ -20,7 +20,8 @@
     "react-dom": "^18.2.0",
     "react-hover-video-player": "^10.0.1",
     "react-loader-spinner": "^6.1.6",
-    "save": "^2.9.0"
+    "save": "^2.9.0",
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

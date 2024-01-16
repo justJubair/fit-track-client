@@ -7,8 +7,8 @@ import FAQ from "@/components/FAQ/FAQ";
 const page = () => {
     return (
         <div>
-            <Banner />
-            <FAQ />
+            <Banner></Banner>
+            <FAQ></FAQ>
             <Advertisement />
         </div>
     )

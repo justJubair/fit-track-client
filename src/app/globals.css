@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-video {
-    border-radius: 10px;
-}
+
 .loader{
     position: absolute;
     z-index: 50;

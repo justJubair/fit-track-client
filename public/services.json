@@ -1,0 +1,57 @@
+[
+    {
+      "id": 1,
+      "title": "Introduction to React",
+      "url": "https://www.youtube.com/embed/EGsOTzM610E?si=kkNC2H-gb6zRIybX",
+      "thumbnail": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 2,
+      "title": "Node.js Basics",
+      "url": "https://www.youtube.com/embed/EGsOTzM610E?si=kkNC2H-gb6zRIybX",
+      "thumbnail": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 3,
+      "title": "CSS Flexbox Tutorial",
+      "url": "https://www.youtube.com/embed/EGsOTzM610E?si=kkNC2H-gb6zRIybX",
+      "thumbnail": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 4,
+      "title": "JavaScript Promises Explained",
+      "url": "https://www.youtube.com/embed/EGsOTzM610E?si=kkNC2H-gb6zRIybX",
+      "thumbnail": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 5,
+      "title": "Responsive Web Design Techniques",
+      "url": "https://www.youtube.com/embed/EGsOTzM610E?si=kkNC2H-gb6zRIybX",
+      "thumbnail": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 6,
+      "title": "MongoDB Basics",
+      "url": "https://www.youtube.com/embed/EGsOTzM610E?si=kkNC2H-gb6zRIybX",
+      "thumbnail": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 7,
+      "title": "Building RESTful APIs with Express",
+      "url": "https://www.youtube.com/embed/EGsOTzM610E?si=kkNC2H-gb6zRIybX",
+      "thumbnail": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 8,
+      "title": "Bootstrap 4 Tutorial",
+      "url": "https://www.youtube.com/embed/EGsOTzM610E?si=kkNC2H-gb6zRIybX",
+      "thumbnail": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 9,
+      "title": "Authentication with JWT in Node.js",
+      "url": "https://youtu.be/NVy2TO4yL8A?si=BXcw1olYSFnYmqRX",
+      "thumbnail": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    }
+  ]
+  

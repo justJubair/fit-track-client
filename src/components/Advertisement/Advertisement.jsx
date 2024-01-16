@@ -15,7 +15,7 @@ const Advertisement = () => {
                 {/* 2nd */}
                 <div className='flex-1 '>
                     <div className='space-y-5'>
-                        <Typography component='h1' className='text-6xl font-bold' >Run your journey with us.</Typography>
+                        <Typography component='h1' className='text-6xl font-bold text-red-500' >Run your journey with us.</Typography>
                         <Typography component='p' className='text-xl' style={{
                             textAlign: "justify",
                             whiteSpace: "pre-line"

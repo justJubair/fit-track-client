@@ -1,13 +1,15 @@
-
 import Banner from "@/components/Banner/Banner";
-import Nav from "@/components/Shared/Nav/Nav";
+import FAQ from "@/components/FAQ/FAQ";
+
 
 
 const page = () => {
-    return(
+    return (
         <div>
-           <Nav/>
+          
          <Banner></Banner>
+         <FAQ></FAQ>
         </div>
-    )}
+    )
+}
 export default page;

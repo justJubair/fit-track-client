@@ -9,7 +9,6 @@ const page = () => {
         <div>
             <Banner></Banner>
             <Services />
-            
             <Advertisement />
             <FAQ></FAQ>
             <Poster></Poster>

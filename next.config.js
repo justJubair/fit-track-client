@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-
-
 // next.config.js
 const withVideos = require('next-videos')
 

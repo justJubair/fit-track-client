@@ -7,7 +7,7 @@ import Services from "@/components/Services/Services";
 const page = () => {
     return (
         <div>
-            <Banner></Banner>
+            <Banner/>
             <Services />
             <Advertisement />
             <FAQ></FAQ>

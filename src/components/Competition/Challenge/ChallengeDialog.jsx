@@ -21,7 +21,7 @@ const ChallegeDialog =()=>{
   
     return (
       <>
-        <Button variant="outlined" onClick={handleClickOpen}>
+        <Button variant="contain" className='bg-black' onClick={handleClickOpen}>
           View details
         </Button>
         <Dialog
@@ -52,13 +52,29 @@ const ChallegeDialog =()=>{
           <Typography variant="h6" paragraph>
             Rewards:
           </Typography>
-          <div>
-            <div>
+          <div className='flex gap-1 justify-center items-center flex-wrap'>
+            <div className='p-2 border border-black rounded-md'>
             <Typography className='text-sm font-bold '>
             1st Place
           </Typography>
           <Typography className='text-xs'>
           [1st Place Reward]
+          </Typography>
+            </div>
+            <div className='p-2 border border-black rounded-md'>
+            <Typography className='text-sm font-bold '>
+            2nd Place
+          </Typography>
+          <Typography className='text-xs'>
+          [2nd Place Reward]
+          </Typography>
+            </div>
+            <div className='p-2 border border-black rounded-md'>
+            <Typography className='text-sm font-bold '>
+            3rd Place
+          </Typography>
+          <Typography className='text-xs'>
+          [3rd Place Reward]
           </Typography>
             </div>
           </div>
@@ -67,8 +83,8 @@ const ChallegeDialog =()=>{
       </div>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>close</Button>
-            <Button onClick={handleClose} autoFocus>
+            <Button variant='contain text-white hover:text-black' className='bg-red-600' onClick={handleClose}>close</Button>
+            <Button variant='contain' className='bg-green-600 text-white hover:text-black' onClick={handleClose} autoFocus>
               Take part
             </Button>
           </DialogActions>

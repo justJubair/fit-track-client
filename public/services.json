@@ -4,55 +4,55 @@
       "id": 1,
       "title": "Introduction to React",
       "url": "https://player.vimeo.com/external/214483087.sd.mp4?s=34f2503001f3deabe44cb74d79583f5f265fc4ec&amp;profile_id=164&amp;oauth2_token_id=57447761",
-      "thumbnail": "https://images.pexels.com/photos/2294363/pexels-photo-2294363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      "thumbnail": "https://i.ibb.co/fkjX7Mw/mobility.jpg"
     },
     {
       "id": 2,
       "title": "Node.js Basics",
       "url": "https://player.vimeo.com/external/300844987.sd.mp4?s=8e13637d6b4d05392d0263e6b3ffce4713c0e0a3&amp;profile_id=164&amp;oauth2_token_id=57447761",
-      "thumbnail": "https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      "thumbnail": "https://i.ibb.co/pKwp8jX/pilates-phase-two.jpg"
     },
     {
       "id": 3,
       "title": "CSS Flexbox Tutorial",
       "url": "https://player.vimeo.com/external/371843598.sd.mp4?s=39b62dcc6808500d11dc29ba5adb3fe365fb6586&amp;profile_id=164&amp;oauth2_token_id=57447761",
-      "thumbnail": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "thumbnail": "https://i.ibb.co/7S6Gmmh/dbk.jpg"
     },
     {
       "id": 4,
       "title": "JavaScript Promises Explained",
       "url": "https://player.vimeo.com/external/371843598.sd.mp4?s=39b62dcc6808500d11dc29ba5adb3fe365fb6586&amp;profile_id=164&amp;oauth2_token_id=57447761",
-      "thumbnail": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "thumbnail": "https://i.ibb.co/7S6Gmmh/dbk.jpg"
     },
     {
       "id": 5,
       "title": "Responsive Web Design Techniques",
       "url": "https://player.vimeo.com/external/371843598.sd.mp4?s=39b62dcc6808500d11dc29ba5adb3fe365fb6586&amp;profile_id=164&amp;oauth2_token_id=57447761",
-      "thumbnail": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "thumbnail": "https://i.ibb.co/KjmWqDg/power-cardio.jpg"
     },
     {
       "id": 6,
       "title": "MongoDB Basics",
       "url": "https://player.vimeo.com/external/403637875.sd.mp4?s=203929c386ecb701b2d70b551df5450a45a38ec0&amp;profile_id=164&amp;oauth2_token_id=57447761",
-      "thumbnail": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "thumbnail": "https://i.ibb.co/PtJTXCn/undefeated.jpg"
     },
     {
       "id": 7,
       "title": "Building RESTful APIs with Express",
       "url": "https://player.vimeo.com/external/353347126.sd.mp4?s=4011f34802a3c2c104cd76c1e5949908adba1612&amp;profile_id=164&amp;oauth2_token_id=57447761",
-      "thumbnail": "https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      "thumbnail": "https://i.ibb.co/gZwm8QX/yoga-fundamentals.jpg"
     },
     {
       "id": 8,
       "title": "Bootstrap 4 Tutorial",
       "url": "https://player.vimeo.com/external/368484050.sd.mp4?s=e5836460013a63181bcaea491d47fba7bacb3d55&amp;profile_id=164&amp;oauth2_token_id=57447761",
-      "thumbnail": "https://images.pexels.com/photos/2827392/pexels-photo-2827392.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      "thumbnail": "https://i.ibb.co/9Hf8Kky/db10.jpg"
     },
     {
       "id": 9,
       "title": "Authentication with JWT in Node.js",
       "url": "https://player.vimeo.com/external/403637875.sd.mp4?s=203929c386ecb701b2d70b551df5450a45a38ec0&amp;profile_id=164&amp;oauth2_token_id=57447761",
-      "thumbnail": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "thumbnail": "https://i.ibb.co/PtJTXCn/undefeated.jpg"
     }
   ]
   

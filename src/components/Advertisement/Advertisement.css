@@ -1,0 +1,78 @@
+.card {
+  width: 250px;
+  height: 500px;
+  margin: 0 auto;
+  background-color: #e9edf1;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  padding: 9px;
+}
+
+.circle {
+  padding: 0 4px;
+}
+
+.box {
+  display: inline-block;
+  align-items: center;
+  width: 10px;
+  height: 10px;
+  padding: 1px;
+  border-radius: 50%;
+}
+
+.red {
+  background-color: #ff605c;
+}
+
+.yellow {
+  background-color: #ffbd44;
+}
+
+.green {
+  background-color: #00ca4e;
+}
+
+/* Responsive styles for Tabs */
+@media only screen and (max-width: 768px) {
+  .card {
+    width: 150%; 
+    height: 470px; 
+  }
+
+  .tools {
+    padding: 5px; 
+  }
+  .advertise {
+    position: absolute;
+    right: 100px; 
+    top: 75px; 
+  }
+  .box {
+    width: 8px;
+    height: 8px; 
+  }
+}
+
+/* Responsive styles for mobiles */
+@media only screen and (max-width: 480px) {
+  .card {
+    width: 100%; 
+    height: 360px; 
+  }
+  .advertise {
+    position: absolute;
+    right: 2px; 
+    top: 25px; 
+  }
+
+  .box {
+    width: 8px; 
+    height: 8px; 
+  }
+}

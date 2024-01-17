@@ -1,4 +1,5 @@
 import React from 'react';
+import bannerVideo from "../../../public/videos/bannerVideo.mp4"
 
 const Banner = () => {
   return (
@@ -10,7 +11,7 @@ const Banner = () => {
           Button
         </button>
       </div>
-      <video className='h-screen w-full object-cover' src={require('../../assets/bannerVideo.mp4')} autoPlay muted loop />
+      <video className='h-screen w-full object-cover' src={bannerVideo} autoPlay muted loop />
     </div>
 
   );

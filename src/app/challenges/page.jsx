@@ -1,10 +1,12 @@
 import Challenge from "@/components/Competition/Challenge/Challenge";
-import CompetitionSlider from "@/components/CompetitionSlider/CompetitionSlider";
+import ChallengeSlider from "@/components/Competition/ChallengeSlider/ChallengeSlider";
+
+
 
 const page = () => {
     return(
         <div>
-            <CompetitionSlider/>
+            <ChallengeSlider/>
             <Challenge></Challenge>
         </div>
     )}

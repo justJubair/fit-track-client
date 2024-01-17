@@ -17,7 +17,7 @@ import sliderImg04 from "../../assets/images/slider04.jpg";
 import { Box, Typography } from "@mui/material";
 
 
-const CompetitionSlider = () => {
+const ChallengeSlider = () => {
 
   return (
     <Box>
@@ -140,4 +140,4 @@ const CompetitionSlider = () => {
     </Box>
   );
 };
-export default CompetitionSlider;
+export default ChallengeSlider;

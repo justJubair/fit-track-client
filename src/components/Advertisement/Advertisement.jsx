@@ -23,7 +23,7 @@ const Advertisement = () => {
             <div className='flex flex-col gap-28 md:gap-14 lg:gap-0 lg:flex-row'>
                 {/* 1st */}
                 <div className='flex-1 relative'>
-                    <Image data-aos="zoom-in-up" className='w-4/5 lg:h-4/5 object-contain ' src={image2} alt='running-image' placeholder='blur' quality={100} />
+                    <Image data-aos="zoom-in-up" className='w-4/5 lg:h-4/5 object-contain h-auto' src={image2} alt='running-image' placeholder='blur' quality={100} />
                     <div data-aos="zoom-in-up" className=' absolute   lg:right-20 lg:bottom-12 advertise'>
                         <div data-aos="fade-up"
                             data-aos-duration="2000" className="card ">
@@ -99,7 +99,7 @@ const Advertisement = () => {
                                 </div>
                             </div>
                         </div>
-                        <Image className=' w-1/3' src={image1} alt='running-image' placeholder='blur' quality={100} />
+                        <Image className=' w-1/3 h-auto' src={image1} alt='running-image' placeholder='blur' quality={100} />
                     </div>
                 </div>
             </div>

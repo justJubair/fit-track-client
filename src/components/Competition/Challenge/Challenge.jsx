@@ -47,7 +47,7 @@ const Challenge = () => {
      </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
         {challenges.map((challenge) => (
-          <ChallengeCard key={challenge} challenge={challenge} />
+          <ChallengeCard key={challenge?.name} challenge={challenge} />
         ))}
       </div>
     </div>

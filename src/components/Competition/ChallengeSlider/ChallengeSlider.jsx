@@ -10,10 +10,12 @@ import "swiper/css/effect-fade";
 // import required modules
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import Image from "next/image";
-import sliderImg01 from "../../assets/images/slider01.jpg";
-import sliderImg02 from "../../assets/images/slider05.jpg";
-import sliderImg03 from "../../assets/images/slider06.jpg";
-import sliderImg04 from "../../assets/images/slider04.jpg";
+import sliderImg01 from "../../../assets/images/slider01.jpg";
+import sliderImg02 from "../../../assets/images/slider02.jpg";
+import sliderImg03 from "../../../assets/images/slider03.jpg";
+import sliderImg04 from "../../../assets/images/slider04.jpg";
+
+
 import { Box, Typography } from "@mui/material";
 
 

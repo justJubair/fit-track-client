@@ -20,15 +20,18 @@ import Link from "next/link";
 
 // Array of pages and settings for navigation
 const pages = [
-    {
-        nav: "Home",
-        route: "/"
-    },
+  {
+    nav: "Home",
+    route: "/"
+  },
   {
     nav: "Challenges",
     route: "challenges",
   },
-  { nav: "Accessories", route: "accessories" },
+  {
+    nav: "Accessories",
+    route: "accessories"
+  },
   {
     nav: "Pricing",
     route: "pricing",
@@ -65,9 +68,9 @@ const Nav = () => {
   return (
     <div className=" absolute w-[100%] z-50">
       <div className="bg-transparent hidden lg:flex justify-center items-center max-w-[1536px] mx-auto px-8">
-        <div>
-          <Image src={LOGO} width={120} height={120} alt="Logo" />
-        </div>
+       
+          <Image src={LOGO} width={120} sx={{height: "auto"}} alt="Logo" />
+        
 
         <Box
           sx={{
@@ -78,21 +81,21 @@ const Nav = () => {
         >
           {pages.map((page) => (
             <Link href={page?.route} key={page.route}>
-             <Button
-              
-             
-              onClick={handleCloseNavMenu}
-              sx={{
-                my: 2,
-                color: "#fff",
-                display: "block",
-                fontWeight: "bold",
-              }}
-            >
-              {page.nav}
-            </Button>
+              <Button
+
+
+                onClick={handleCloseNavMenu}
+                sx={{
+                  my: 2,
+                  color: "#fff",
+                  display: "block",
+                  fontWeight: "bold",
+                }}
+              >
+                {page.nav}
+              </Button>
             </Link>
-           
+
           ))}
         </Box>
         <div className="flex gap-4 text-white font-bold items-center">

@@ -1,11 +1,10 @@
-/* eslint-disable react/no-unescaped-entities */
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import FlipCountdown from "@rumess/react-flip-countdown";
 import {
   CardContent,
   List,
@@ -13,7 +12,6 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import CountDown from "./CountDown";
 const positions = [
   {
     position: "1st",
@@ -44,8 +42,13 @@ const ChallegeDialog = ({ challenge }) => {
     <div>
       <Button
         variant="contained"
-        color="primary"
-        className="bg-black"
+        sx={{
+          backgroundColor: "black",
+          color: "white",
+          "&:hover": {
+            backgroundColor: "darkgrey",
+          },
+        }}
         onClick={handleClickOpen}
       >
         View details
@@ -56,114 +59,111 @@ const ChallegeDialog = ({ challenge }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <div className="bg-black text-white">
-          <DialogTitle id="alert-dialog-title">
-            <CountDown></CountDown>
-          </DialogTitle>
-          <DialogContent>
-            <CardContent>
-              <Typography variant="body1" paragraph>
-                This competition is centered around{" "}
-                <strong>Theme: [Competition Theme]</strong>.
-              </Typography>
-              <Typography variant="body1" paragraph>
-                It will run for <strong>[Duration]</strong>, and there are
-                special rules to make it even more exciting!
-              </Typography>
-              <div>
-                <Typography variant="h6">Rules description below :</Typography>
-                <List>
-                  <ListItem>
-                    <ListItemText
-                      primary={
-                        <>
-                          <strong>Form & Technique:</strong> Perform exercises
-                          with proper form and technique for safety. Judges
-                          assess posture, range of motion, and control.
-                        </>
-                      }
-                    />
+        <DialogContent sx={{ backgroundColor: "black", color: "white" }}>
+          <div sx={{ color: "gray.500" }}>
+            <Typography variant="h5" className="text-center font-bold py-2">
+              <strong>Time left to take part!</strong>.
+            </Typography>
+            <FlipCountdown
+              hideYear
+              endAt={"2024-12-12 01:26:58"}
+              size="small"
+              titlePosition="bottom"
+            ></FlipCountdown>
+          </div>
+          <CardContent>
+            <Typography variant="h6">
+              This competition is centered around{" "}
+              <strong>Theme: [Competition Theme]</strong>.
+            </Typography>
+            <Typography variant="body1">
+              It will run for <strong>[Duration]</strong>, and there are special
+              rules to make it even more exciting!
+            </Typography>
+            <div>
+              <Typography variant="h6">Rules description below :</Typography>
+              <List>
+                {[
+                  {
+                    text:
+                      "Form & Technique: Perform exercises with proper form and technique for safety. Judges assess posture, range of motion, and control.",
+                  },
+                  {
+                    text:
+                      "Scoring System: Clear points system for workout achievements. Judges consider reps, time, and exercise difficulty.",
+                  },
+                  {
+                    text:
+                      "Variety of Workouts: Diverse set of workouts for strength, endurance, and flexibility. Include weightlifting, cardio, and bodyweight exercises.",
+                  },
+                ].map((item, index) => (
+                  <ListItem key={index}>
+                    <ListItemText primary={<>{item.text}</>} />
                   </ListItem>
-                  <ListItem>
-                    <ListItemText
-                      primary={
-                        <>
-                          <strong>Scoring System:</strong> Clear points system
-                          for workout achievements. Judges consider reps, time,
-                          and exercise difficulty.
-                        </>
-                      }
-                    />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText
-                      primary={
-                        <>
-                          <strong>Variety of Workouts:</strong> Diverse set of
-                          workouts for strength, endurance, and flexibility.
-                          Include weightlifting, cardio, and bodyweight
-                          exercises.
-                        </>
-                      }
-                    />
-                  </ListItem>
-                </List>
-              </div>
-              <Typography variant="body1" className="text-red-600" paragraph>
-                Don't miss the chance to showcase your skills and creativity.
-                Exciting rewards await the winners!
+                ))}
+              </List>
+            </div>
+            <Typography variant="body1" color="error" paragraph>
+              Don't miss the chance to showcase your skills and creativity.
+              Exciting rewards await the winners!
+            </Typography>
+            <div>
+              <Typography variant="h6" paragraph>
+                Rewards:
               </Typography>
-              <div className="rewards-section">
-                <Typography variant="h6" paragraph>
-                  Rewards:
-                </Typography>
-                <div className="flex justify-center items-center flex-wrap gap-3 ">
-                  {positions.map((position) => (
-                    <div
-                      key={position?.points}
-                      className="flex gap-1 justify-center items-center flex-wrap"
-                    >
-                      <div className="bg-gray-300 px-4 py-2 rounded-xl text-center">
-                        <div className="mb-4 text-center ">
-                          <Typography
-                            component="span"
-                            className="uppercase px-4 py-1 bg-slate-500 text-white rounded-full text-xs font-bold "
-                          >
-                            {position.position} place
-                          </Typography>
-                        </div>
-
-                        <Typography component="p" className=" text-black">
-                          {" "}
-                          {position.points} points
+              <div className="flex justify-center items-center flex-wrap gap-3 ">
+                {positions.map((position, index) => (
+                  <div
+                    key={index}
+                    className="flex gap-1 justify-center items-center flex-wrap transform hover:scale-105 transition-transform "
+                  >
+                    <div className="bg-gray-300 px-4 py-2 rounded-xl text-center">
+                      <div className="mb-4 text-center ">
+                        <Typography
+                          component="span"
+                          className="uppercase px-4 py-1 bg-slate-500 text-white rounded-full text-xs font-bold "
+                        >
+                          {position.position} place
                         </Typography>
                       </div>
+
+                      <Typography component="p" className=" text-black">
+                        {position.points} points
+                      </Typography>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
-            </CardContent>
-          </DialogContent>
+            </div>
+          </CardContent>
           <DialogActions>
             <Button
               variant="contained"
-              color="primary"
-              className="bg-red-600"
+              sx={{
+                backgroundColor: "red.600",
+                "&:hover": {
+                  backgroundColor: "darkgrey",
+                },
+              }}
               onClick={handleClose}
             >
               Close
             </Button>
             <Button
               variant="contained"
-              color="primary"
-              className="bg-white text-black"
+              sx={{
+                backgroundColor: "white",
+                "&:hover": {
+                  backgroundColor: "darkgrey",
+                },
+              }}
               onClick={handleClose}
               autoFocus
             >
               Take part
             </Button>
           </DialogActions>
-        </div>
+        </DialogContent>
       </Dialog>
     </div>
   );

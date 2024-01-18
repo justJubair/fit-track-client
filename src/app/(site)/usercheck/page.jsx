@@ -1,22 +1,32 @@
 'use client';
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useRouter } from 'next/navigation';
+import Backdrop from '@mui/material/Backdrop';
+import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
 
 const Usercheck = () => {
   const [isUser, setUser] = React.useState(true);
   const router = useRouter();
+
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    outline: 'none',
+    p: 4,
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +35,9 @@ const Usercheck = () => {
     const password = formData.get('password');
     console.log('Email:', email);
     console.log('Password:', password);
-    if (isUser) {
+    if(email === ''){
+      return alert("Please write your email!")
+    }else if (isUser) {
       router.push('/login')
       alert('user ase')
     } else {
@@ -33,10 +45,13 @@ const Usercheck = () => {
     }
   }
 
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
-    <div className='my-12'>
-      <Container component="main" maxWidth="xs">
+    <div className='mt-36 mb-36'>
+      <Container component="main" maxWidth="md">
         <CssBaseline />
         <Box
           sx={{
@@ -46,10 +61,10 @@ const Usercheck = () => {
             alignItems: 'center',
           }}
         >
-          <Typography component="h1" variant="h5">
-            Sign in
+          <Typography component="h1" variant="h4" sx={{ width:{ xs:'100%', md:'50%' } ,color: '#252525', fontWeight: '600', marginTop:'25px' }}>
+            Enter your email to join with us!
           </Typography>
-          <Box component="form" onSubmit={(e) => handleSubmit(e)} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={(e) => handleSubmit(e)} noValidate sx={{ mt: 1, width:{ xs:'100%', md:'50%'} }}>
             <TextField
               margin="normal"
               required
@@ -60,13 +75,48 @@ const Usercheck = () => {
               autoComplete="email"
               autoFocus
             />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2, color:'#252525' }}
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              open={open}
+              onClose={handleClose}
+              closeAfterTransition
+              slots={{ backdrop: Backdrop }}
+              slotProps={{
+                backdrop: {
+                  timeout: 500,
+                },
+              }}
             >
-              Sign In
+              <Fade in={open}>
+                <Box sx={style}>
+                  <Typography id="transition-modal-title" variant="h6" component="h2">
+                    Terms & Conditions
+                  </Typography>
+                  <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+                    Must Have to be human.
+                  </Typography>
+                </Box>
+              </Fade>
+            </Modal>
+            <Typography component="h6" variant="h6" sx={{ fontSize: '16px', color: 'gray', fontWeight: '400', marginTop:'25px' }}>
+              By continuing, <span className='cursor-pointer underline' onClick={handleOpen}> I agree to Nike’s Privacy Policy and Terms of Use.</span>
+            </Typography>
+            <Button
+              className='bg-[#252525] hover:text-[#252525] '
+              type="submit"
+              sx={{
+                mt: 3,
+                mb: 2,
+                padding: '10px',
+                color: '#fff',
+                width: '50%',
+                borderRadius: '20px',
+                float: 'inline-end',
+                boxShadow: '24px 24px 49px #d9d9d9, -24px -24px 49px #ffffff',
+              }}
+            >
+              Continue
             </Button>
           </Box>
         </Box>

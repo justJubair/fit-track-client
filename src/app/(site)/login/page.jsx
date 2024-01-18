@@ -30,9 +30,8 @@ const Login = () => {
       }
 
     return (
-        <div className='my-12'>
-        <h1>This Login page</h1>
-      <Container component="main" maxWidth="xs">
+        <div className='mt-36 mb-36'>
+      <Container component="main" maxWidth="md">
         <CssBaseline />
         <Box
           sx={{
@@ -42,20 +41,10 @@ const Login = () => {
             alignItems: 'center',
           }}
         >
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <Box component="form" onSubmit={(e) => handleSubmit(e)} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
+        <Typography component="h1" variant="h4" sx={{ width:{ xs:'100%', md:'50%' } ,color: '#252525', fontWeight: '600', marginTop:'25px' }}>
+        Enter your password!
+      </Typography>
+          <Box component="form" onSubmit={(e) => handleSubmit(e)} noValidate sx={{ mt: 1, width:{ xs:'100%', md:'50%'} }}>
             <TextField
               margin="normal"
               required
@@ -71,10 +60,18 @@ const Login = () => {
               label="Remember me"
             />
             <Button
+              className='bg-[#252525] hover:text-[#252525] '
               type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2, color:'#252525' }}
+              sx={{
+                mt: 3,
+                mb: 2,
+                padding: '10px',
+                color: '#fff',
+                width: '50%',
+                borderRadius: '20px',
+                float: 'inline-end',
+                boxShadow: '24px 24px 49px #d9d9d9, -24px -24px 49px #ffffff',
+              }}
             >
               Sign In
             </Button>

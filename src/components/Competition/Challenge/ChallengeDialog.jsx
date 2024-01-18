@@ -167,4 +167,5 @@ const ChallegeDialog = ({ challenge }) => {
     </div>
   );
 };
+
 export default ChallegeDialog;

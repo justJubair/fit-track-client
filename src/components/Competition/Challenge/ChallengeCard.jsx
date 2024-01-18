@@ -43,7 +43,7 @@ const ChallengeCard = ({challenge}) => {
             <FavoriteIcon />
           </IconButton>
           {/* this is modal for  challenge details info */}
-          <ChallegeDialog></ChallegeDialog>
+          <ChallegeDialog challenge={challenge}></ChallegeDialog>
         </div>
       </Card>
     </div>

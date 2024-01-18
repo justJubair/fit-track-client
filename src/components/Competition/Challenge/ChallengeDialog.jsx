@@ -120,7 +120,7 @@ const ChallegeDialog = ({ challenge }) => {
                 <div className="flex justify-center items-center flex-wrap gap-3 ">
                   {positions.map((position) => (
                     <div
-                      key={position}
+                      key={position?.points}
                       className="flex gap-1 justify-center items-center flex-wrap"
                     >
                       <div className="bg-gray-300 px-4 py-2 rounded-xl text-center">

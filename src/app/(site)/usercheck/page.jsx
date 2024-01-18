@@ -12,7 +12,7 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 
 const Usercheck = () => {
-  const [isUser, setUser] = React.useState(true);
+  const [isUser, setUser] = React.useState(false);
   const router = useRouter();
 
 
@@ -42,6 +42,7 @@ const Usercheck = () => {
       alert('user ase')
     } else {
       alert('user nai')
+      router.push('/register')
     }
   }
 

@@ -9,7 +9,7 @@ const Poster = () => {
         <div className="flex flex-col gap-6">
           <Image
             src="https://shorturl.at/lKQZ1"
-            alt=""
+            alt="poster img 1"
             width="0"
             height="0"
             sizes="100vw"
@@ -17,7 +17,8 @@ const Poster = () => {
           />
           <Image
             src="https://shorturl.at/aikPQ"
-            alt=""
+            priority
+            alt="poster img 2"
             width="0"
             height="0"
             sizes="100vw"
@@ -25,7 +26,7 @@ const Poster = () => {
           />
           <Image
             src="https://shorturl.at/hCDEL"
-            alt=""
+            alt="poster img 3"
             width="0"
             height="0"
             sizes="100vw"
@@ -35,14 +36,20 @@ const Poster = () => {
         <div className=" mx-6 flex flex-col gap-6">
           <Image
             src="https://shorturl.at/cewVX"
-            alt=""
+            alt="poster img 4"
             width="0"
             height="0"
             sizes="100vw"
             style={{ width: '500px', height: '350px' }}
           />
-          <Image src="https://t.ly/B2eTb" alt="" width={500} height={500} />
-          <Image src="https://t.ly/lLzEX" alt="" width={500} height={500} />
+          <Image src="https://t.ly/B2eTb" alt="poster img 5" width="0"
+            height="0"
+            sizes="100vw"
+            style={{ width: '500px', height: '350px' }} />
+          <Image src="https://t.ly/lLzEX" alt="poster img 6" width="0"
+            height="0"
+            sizes="100vw"
+            style={{ width: '500px', height: '350px' }} />
         </div>
       </Marquee>
       <div className="bg-black">

@@ -9,13 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/mongodb-adapter": "^2.0.13",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.4",
     "@mui/material": "^5.15.4",
     "@react-spring/web": "^9.7.3",
     "aos": "^2.3.4",
+    "mongodb": "^6.3.0",
     "next": "^14.0.4",
+    "next-auth": "^4.24.5",
     "next-videos": "^1.4.1",
     "react": "^18.2.0",
     "react-countup": "^6.5.0",

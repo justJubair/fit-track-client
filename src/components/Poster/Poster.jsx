@@ -10,28 +10,36 @@ const Poster = () => {
           <Image
             src="https://shorturl.at/lKQZ1"
             alt=""
-            width={500}
-            height={500}
+            width="0"
+            height="0"
+            sizes="100vw"
+            style={{ width: 'auto', height: '350px' }}
           />
           <Image
             src="https://shorturl.at/aikPQ"
             alt=""
-            width={500}
-            height={500}
+            width="0"
+            height="0"
+            sizes="100vw"
+            style={{ width: '500px', height: '350px' }}
           />
           <Image
             src="https://shorturl.at/hCDEL"
             alt=""
-            width={500}
-            height={500}
+            width="0"
+            height="0"
+            sizes="100vw"
+            style={{ width: '500px', height: '350px' }}
           />
         </div>
         <div className=" mx-6 flex flex-col gap-6">
           <Image
             src="https://shorturl.at/cewVX"
             alt=""
-            width={500}
-            height={500}
+            width="0"
+            height="0"
+            sizes="100vw"
+            style={{ width: '500px', height: '350px' }}
           />
           <Image src="https://t.ly/B2eTb" alt="" width={500} height={500} />
           <Image src="https://t.ly/lLzEX" alt="" width={500} height={500} />

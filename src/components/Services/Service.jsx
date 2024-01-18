@@ -29,7 +29,7 @@ const Service = ({ serv }) => {
                                 style={{
                                     // Make the image expand to cover the video's dimensions
                                     width: '100%',
-                                    height: '100%',
+                                    height: 'auto',
                                     objectFit: 'cover',
                                     borderRadius: '10px'
                                 }}

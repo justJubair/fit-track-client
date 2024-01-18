@@ -65,9 +65,9 @@ const Nav = () => {
   return (
     <div className=" absolute w-[100%] z-50">
       <div className="bg-transparent hidden lg:flex justify-center items-center max-w-[1536px] mx-auto px-8">
-        <div>
-          <Image src={LOGO} width={120} height={120} alt="Logo" />
-        </div>
+       
+          <Image src={LOGO} width={120} sx={{height: "auto"}} alt="Logo" />
+        
 
         <Box
           sx={{

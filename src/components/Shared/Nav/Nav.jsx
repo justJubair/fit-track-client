@@ -20,22 +20,25 @@ import Link from "next/link";
 
 // Array of pages and settings for navigation
 const pages = [
-
+{
+  nav: "Home",
+  route: "/"
+},
   {
     nav: "Challenges",
-    route: "challenges",
+    route: "/challenges",
   },
   {
     nav: "Accessories",
-    route: "accessories"
+    route: "/accessories"
   },
   {
     nav: "Pricing",
-    route: "pricing",
+    route: "/pricing",
   },
   {
     nav: "Blog",
-    route: "blog",
+    route: "/blog",
   },
 ];
 

@@ -42,7 +42,13 @@ const ChallegeDialog = ({ challenge }) => {
     <div>
       <Button
         variant="contained"
-        className="bg-black"
+        sx={{
+          backgroundColor: "black",
+          color: "white",
+          "&:hover": {
+            backgroundColor: "darkgrey",
+          },
+        }}
         onClick={handleClickOpen}
       >
         View details
@@ -53,11 +59,11 @@ const ChallegeDialog = ({ challenge }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <div className="bg-black p-2">
-          <div className="text-gray-500">
-            <h5 className="text-center font-bold py-2 text-white">
+        <DialogContent sx={{ backgroundColor: "black", color: "white" }}>
+          <div sx={{ color: "gray.500" }}>
+            <Typography variant="h5" className="text-center font-bold py-2">
               <strong>Time left to take part!</strong>.
-            </h5>
+            </Typography>
             <FlipCountdown
               hideYear
               endAt={"2024-12-12 01:26:58"}
@@ -66,66 +72,49 @@ const ChallegeDialog = ({ challenge }) => {
             ></FlipCountdown>
           </div>
           <CardContent>
-            <Typography variant="h6" className="text-white">
+            <Typography variant="h6">
               This competition is centered around{" "}
               <strong>Theme: [Competition Theme]</strong>.
             </Typography>
-            <Typography variant="body1" className="text-white">
+            <Typography variant="body1">
               It will run for <strong>[Duration]</strong>, and there are special
               rules to make it even more exciting!
             </Typography>
             <div>
-              <Typography variant="h6" className="text-white">
-                Rules description below :
-              </Typography>
-              <List className="text-white">
-                <ListItem>
-                  <ListItemText
-                    primary={
-                      <>
-                        <strong>Form & Technique:</strong> Perform exercises
-                        with proper form and technique for safety. Judges assess
-                        posture, range of motion, and control.
-                      </>
-                    }
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemText
-                    primary={
-                      <>
-                        <strong>Scoring System:</strong> Clear points system for
-                        workout achievements. Judges consider reps, time, and
-                        exercise difficulty.
-                      </>
-                    }
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemText
-                    primary={
-                      <>
-                        <strong>Variety of Workouts:</strong> Diverse set of
-                        workouts for strength, endurance, and flexibility.
-                        Include weightlifting, cardio, and bodyweight exercises.
-                      </>
-                    }
-                  />
-                </ListItem>
+              <Typography variant="h6">Rules description below :</Typography>
+              <List>
+                {[
+                  {
+                    text:
+                      "Form & Technique: Perform exercises with proper form and technique for safety. Judges assess posture, range of motion, and control.",
+                  },
+                  {
+                    text:
+                      "Scoring System: Clear points system for workout achievements. Judges consider reps, time, and exercise difficulty.",
+                  },
+                  {
+                    text:
+                      "Variety of Workouts: Diverse set of workouts for strength, endurance, and flexibility. Include weightlifting, cardio, and bodyweight exercises.",
+                  },
+                ].map((item, index) => (
+                  <ListItem key={index}>
+                    <ListItemText primary={<>{item.text}</>} />
+                  </ListItem>
+                ))}
               </List>
             </div>
-            <Typography variant="body1" className="text-red-600" paragraph>
+            <Typography variant="body1" color="error" paragraph>
               Don't miss the chance to showcase your skills and creativity.
               Exciting rewards await the winners!
             </Typography>
-            <div className="rewards-section text-white">
+            <div>
               <Typography variant="h6" paragraph>
                 Rewards:
               </Typography>
               <div className="flex justify-center items-center flex-wrap gap-3 ">
-                {positions.map((position) => (
+                {positions.map((position, index) => (
                   <div
-                    key={position?.points}
+                    key={index}
                     className="flex gap-1 justify-center items-center flex-wrap transform hover:scale-105 transition-transform "
                   >
                     <div className="bg-gray-300 px-4 py-2 rounded-xl text-center">
@@ -139,7 +128,6 @@ const ChallegeDialog = ({ challenge }) => {
                       </div>
 
                       <Typography component="p" className=" text-black">
-                        {" "}
                         {position.points} points
                       </Typography>
                     </div>
@@ -151,21 +139,31 @@ const ChallegeDialog = ({ challenge }) => {
           <DialogActions>
             <Button
               variant="contained"
-              className="bg-red-600"
+              sx={{
+                backgroundColor: "red.600",
+                "&:hover": {
+                  backgroundColor: "darkgrey",
+                },
+              }}
               onClick={handleClose}
             >
               Close
             </Button>
             <Button
               variant="contained"
-              className="bg-white text-black"
+              sx={{
+                backgroundColor: "white",
+                "&:hover": {
+                  backgroundColor: "darkgrey",
+                },
+              }}
               onClick={handleClose}
               autoFocus
             >
               Take part
             </Button>
           </DialogActions>
-        </div>
+        </DialogContent>
       </Dialog>
     </div>
   );

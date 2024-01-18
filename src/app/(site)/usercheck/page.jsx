@@ -1,5 +1,4 @@
 'use client';
-import * as React from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -10,9 +9,10 @@ import { useRouter } from 'next/navigation';
 import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
+import { useState } from 'react';
 
 const Usercheck = () => {
-  const [isUser, setUser] = React.useState(false);
+  const isUser = false
   const router = useRouter();
 
 
@@ -33,8 +33,7 @@ const Usercheck = () => {
     const formData = new FormData(e.target);
     const email = formData.get('email');
     const password = formData.get('password');
-    console.log('Email:', email);
-    console.log('Password:', password);
+   
     if(email === ''){
       return alert("Please write your email!")
     }else if (isUser) {

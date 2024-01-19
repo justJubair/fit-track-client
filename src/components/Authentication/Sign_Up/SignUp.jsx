@@ -87,7 +87,7 @@ const SignUp = () => {
                             name="lastname"
                             label="Last Name"
                             type="text"
-                            id="name"
+                            id="lastName"
                         />
                     </Grid>
                 </Grid>

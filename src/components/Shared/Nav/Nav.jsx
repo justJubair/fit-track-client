@@ -20,10 +20,10 @@ import Link from "next/link";
 
 // Array of pages and settings for navigation
 const pages = [
-{
-  nav: "Home",
-  route: "/"
-},
+  {
+    nav: "Home",
+    route: "/"
+  },
   {
     nav: "Challenges",
     route: "/challenges",
@@ -66,11 +66,10 @@ const Nav = () => {
   };
 
   return (
-    <div className=" absolute w-[100%] z-50">
+    <div className=" absolute w-[100%] z-50 top-0">
       <div className="bg-transparent hidden lg:flex justify-center items-center max-w-[1536px] mx-auto px-8">
-       
-          <Image src={LOGO} width={120} sx={{height: "auto"}} alt="Logo" />
-        
+
+       <Link href='/'><Image src={LOGO} width={120} sx={{ height: "auto" }} alt="Logo" /></Link> 
 
         <Box
           sx={{
@@ -99,9 +98,9 @@ const Nav = () => {
           ))}
         </Box>
         <div className="flex gap-4 text-white font-bold items-center">
-          <Link href="#">Join Us</Link>
+          <Link href="/register">Join Us</Link>
           <span>|</span>
-          <Link href="#">Sign In</Link>
+          <Link href="/usercheck">Sign In</Link>
           <span>|</span>
           <Link href="#">Help </Link>
           <span className="hidden lg:block pl-2">
@@ -181,9 +180,11 @@ const Nav = () => {
                     ))}
                   </Menu>
                   <span className="flex flex-col gap-2">
-                    <button className="border-[1px] border-[#252525] py-2 rounded-[20px] mx-[10px]">
-                      Sign In
-                    </button>
+                    <Link href='/usercheck'>
+                      <button className="border-[1px] border-[#252525] py-2 rounded-[20px] mx-[10px]">
+                        Sign In
+                      </button>
+                    </Link>
                   </span>
                 </Box>
               </Menu>

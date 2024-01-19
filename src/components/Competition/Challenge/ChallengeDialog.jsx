@@ -153,7 +153,7 @@ const ChallegeDialog = ({ challenge }) => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "red.600",
+                backgroundColor: "red",
                 "&:hover": {
                   backgroundColor: "darkgrey",
                 },
@@ -165,7 +165,7 @@ const ChallegeDialog = ({ challenge }) => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "white",
+                backgroundColor: "black",
                 "&:hover": {
                   backgroundColor: "darkgrey",
                 },

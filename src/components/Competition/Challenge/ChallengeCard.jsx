@@ -46,7 +46,6 @@ const ChallengeCard = ({challenge}) => {
           <FavoriteIcon />
         </IconButton>
         {/* this is modal for challenge details info */}
-        {/* Assuming you have a ChallengeDialog component */}
         <ChallegeDialog challenge={challenge}></ChallegeDialog>
       </div>
     </Card>

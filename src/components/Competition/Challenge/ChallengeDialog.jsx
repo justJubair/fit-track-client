@@ -30,15 +30,25 @@ const positions = [
 
 const ChallegeDialog = ({ challenge }) => {
   const [open, setOpen] = React.useState(false);
+  const [scroll, setScroll] = React.useState('paper');
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (scrollType) => () => {
     setOpen(true);
+    setScroll(scrollType);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
-
+  const descriptionElementRef = React.useRef(null);
+  React.useEffect(() => {
+    if (open) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [open]);
   return (
     <div>
       <Button
@@ -47,20 +57,23 @@ const ChallegeDialog = ({ challenge }) => {
           backgroundColor: "black",
           color: "white",
           "&:hover": {
-            backgroundColor: "darkgrey",
+            color: "black",
+            backgroundColor: "white",
           },
         }}
-        onClick={handleClickOpen}
+        onClick={handleClickOpen('paper')}
       >
         View details
       </Button>
       <Dialog
         open={open}
+        scroll={scroll}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogContent sx={{ backgroundColor: "black", color: "white" }}>
+        <DialogContent dividers={scroll === 'paper'} sx={{ backgroundColor: "black", color: "white" , }}>
+          
           <div sx={{ color: "gray.500" }}>
             <Typography variant="h5" className="text-center font-bold py-2">
               <strong>Time left to take part!</strong>.
@@ -141,7 +154,7 @@ const ChallegeDialog = ({ challenge }) => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "red.600",
+                backgroundColor: "red",
                 "&:hover": {
                   backgroundColor: "darkgrey",
                 },
@@ -153,7 +166,7 @@ const ChallegeDialog = ({ challenge }) => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "white",
+                backgroundColor: "black",
                 "&:hover": {
                   backgroundColor: "darkgrey",
                 },
@@ -164,6 +177,7 @@ const ChallegeDialog = ({ challenge }) => {
               Take part
             </Button>
           </DialogActions>
+
         </DialogContent>
       </Dialog>
     </div>

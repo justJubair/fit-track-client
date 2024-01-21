@@ -20,7 +20,7 @@ const Advertisement = () => {
 
 
     return (
-        <div className='px-4 lg:w-4/5 mx-auto '>
+        <div className='px-4 lg:w-4/5 mx-auto pt-12 lg:pt-32 '>
             <div className='flex flex-col gap-28 md:gap-14 lg:gap-0 lg:flex-row'>
                 {/* 1st */}
                 <div className='flex-1 relative'>

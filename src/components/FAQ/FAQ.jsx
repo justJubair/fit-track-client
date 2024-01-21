@@ -26,7 +26,7 @@ const faqData = [
 
 const FAQ = () => {
   return (
-    <div className="faqSection w-3/5 mx-auto my-10">
+    <div className="faqSection px-4 lg:w-3/5 mx-auto my-10 ">
         <h1 className='text-center text-3xl mb-5 font-semibold'>FAQ</h1>
       {faqData.map((faq, index) => (
         <Accordion key={index}>

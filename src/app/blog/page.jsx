@@ -1,9 +1,9 @@
+import Blog from "@/components/Blog/Blog";
 
 
 const page = () => {
-    return(
-        <div>
-            <h1>Under development</h1>
-        </div>
-    )}
+    return (
+        <Blog />
+    )
+}
 export default page;

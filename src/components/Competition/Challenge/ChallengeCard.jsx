@@ -13,18 +13,18 @@ import Image from "next/image";
 const ChallengeCard = ({challenge}) => {
   return (
     <div style={{ margin: '0.5rem 1rem' }}>
-    <Card sx={{ backgroundColor: 'grey' }}>
+    <Card sx={{ backgroundColor: 'white' }}>
       <CardHeader
         avatar={
           <Avatar sx={{ backgroundColor: 'black' }} aria-label="recipe">
             <Image width={500} height={500} src="https://imgs.search.brave.com/srvbJUX3E27xiBy5dZpnZTvW5yjuZhn50u4FeP1V43Y/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9taXJv/Lm1lZGl1bS5jb20v/djIvMSpNNmRmZmZo/dVgySFVCSXpSV3Zm/ZWdBLmpwZWc" alt="" />
           </Avatar>
         }
-        title={ <Typography variant="h6" sx={{ color: 'white', fontSize: '1rem' }}>
+        title={ <Typography variant="h6" sx={{ color: 'black', fontSize: '1rem' }}>
         Challenge Created by {challenge.createdBy.toUpperCase()}
       </Typography>}
         subheader="September 14, 2016"
-        sx={{ title: { color: 'white' } }}
+        sx={{ title: { color: 'black' } }}
       />
       
       <CardMedia
@@ -34,8 +34,8 @@ const ChallengeCard = ({challenge}) => {
         alt="Paella dish"
       />
       <CardContent>
-        <Typography variant="h6" sx={{ color: 'white' }}>{challenge.name}</Typography>
-        <Typography variant="body2" sx={{ color: 'white' }}>
+        <Typography variant="h6" sx={{ color: 'black' }}>{challenge.name}</Typography>
+        <Typography variant="body2" sx={{ color: 'black' }}>
           This impressive paella is a perfect party dish and a fun meal to
           cook together with your guests. Add 1 cup of frozen peas along with
           the mussels, if you like.
@@ -46,7 +46,6 @@ const ChallengeCard = ({challenge}) => {
           <FavoriteIcon />
         </IconButton>
         {/* this is modal for challenge details info */}
-        {/* Assuming you have a ChallengeDialog component */}
         <ChallegeDialog challenge={challenge}></ChallegeDialog>
       </div>
     </Card>

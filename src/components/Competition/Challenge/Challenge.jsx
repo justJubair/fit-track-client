@@ -1,5 +1,7 @@
+"use client"
 import React from "react";
 import ChallengeCard from "./ChallengeCard";
+import { Button } from "@mui/material";
 
 const Challenge = () => {
   const challenges = [
@@ -49,6 +51,9 @@ const Challenge = () => {
         {challenges.map((challenge) => (
           <ChallengeCard key={challenge?.name} challenge={challenge} />
         ))}
+      </div>
+      <div className="flex justify-end my-5"> 
+        <Button variant="outlined">View more Challenges</Button>
       </div>
     </div>
   );

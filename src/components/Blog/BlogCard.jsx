@@ -6,11 +6,12 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
-import IconButton from "@mui/material/IconButton";
+import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
+import { IconButton } from "@mui/material";
 const BlogCard = ({ challenge }) => {
     return (
         <div style={{ margin: '0.5rem 1rem' }}>
@@ -43,7 +44,7 @@ const BlogCard = ({ challenge }) => {
                 </CardContent>
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem' }}>
                     <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
+                        <BookmarksIcon />
                     </IconButton>
                     <div className="space-x-4 flex items-center">
                         <div className="space-y-1">

@@ -42,11 +42,11 @@ const Blog = () => {
         <div className='mb-[120px]' >
             <div className='bg-black pt-20 '>
                 {/* popular blogs */}
-                <div className='grid grid-cols-3 gap-4 bg-white pt-10 px-10'>
+                <div className='lg:grid grid-cols-3 gap-4 bg-white pt-10 px-2 lg:px-10'>
                     <div className='  col-span-2'>
-                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/-SeN8HdroDE?si=3lXXBidFA114r9Jy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe width="100%" height="415" src="https://www.youtube.com/embed/Q8rN3JKqUc8?si=pj9Te_keLZYwtfcl&amp;start=40" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <div className='flex flex-col gap-4'>
+                    <div className=' hidden lg:flex flex-col gap-4 '>
                         <div className=' flex-grow'>
                             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/z7EewP9k_7w?si=aWESJ1Q1JIFh6FNp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
@@ -58,16 +58,16 @@ const Blog = () => {
                 </div>
             </div>
             {/* recent blogs */}
-            <div className='px-10'>
+            <div className='lg:px-10'>
                 <h3 className=' font-semibold text-3xl p-6'>Recent Post</h3>
 
                 {/* challengecard will be replaced with blog cards */}
                 {/* TODO: Design Blog Cards */}
 
-                <div className='grid grid-cols-3 gap-4'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-4'>
                     {/* mapping all services one by one */}
-                    {challenges.map((challenge) => (
-                        <BlogCard key={challenge} challenge={challenge} />
+                    {challenges.map((challenge,i) => (
+                        <BlogCard key={i} challenge={challenge} />
                     ))}
 
                 </div>

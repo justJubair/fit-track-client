@@ -31,12 +31,6 @@ const UserInfoDialog = ({ serv }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    if (!data.exerciseTypes || data.exerciseTypes.length === 0) {
-      // Add toast here for prefered exercise
-      console.error("At least one preferred exercise type is required");
-      return;
-    }
-
     console.log(data);
     return handleClose();
   };
@@ -163,8 +157,6 @@ const UserInfoDialog = ({ serv }) => {
               )}
             </FormControl>
 
-            {/* ... (other form fields) ... */}
-
             <FormGroup margin="normal">
               <Typography variant="subtitle1">
                 Preferred Exercise Types
@@ -173,6 +165,14 @@ const UserInfoDialog = ({ serv }) => {
                 name="exerciseTypes"
                 control={control}
                 defaultValue={[]}
+                rules={{
+                  validate: (value) => {
+                    if (!value || value.length === 0) {
+                      return "At least one preferred exercise type is required";
+                    }
+                    return value;
+                  },
+                }}
                 render={({ field }) => (
                   <>
                     <FormControlLabel
@@ -211,7 +211,6 @@ const UserInfoDialog = ({ serv }) => {
             variant="contained"
             color="primary"
             fullWidth
-            style={{ marginTop: 20 }}
             onClick={handleSubmit(onSubmit)}
           >
             Get Suggestions

@@ -4,8 +4,9 @@ import Banner from "@/components/Banner/Banner";
 import FAQ from "@/components/FAQ/FAQ";
 import Poster from "@/components/Poster/Poster";
 import Services from "@/components/Services/Services";
+import Nav from "@/components/Shared/Nav/Nav";
 
-const page = () => {
+const HomePage = () => {
     return (
         <div>
             <Banner/>
@@ -17,4 +18,4 @@ const page = () => {
         </div>
     )
 }
-export default page;
+export default HomePage;

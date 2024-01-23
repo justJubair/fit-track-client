@@ -31,6 +31,12 @@ const UserInfoDialog = ({ serv }) => {
   } = useForm();
 
   const onSubmit = (data) => {
+    if (!data.exerciseTypes || data.exerciseTypes.length === 0) {
+      // Add toast here for prefered exercise
+      console.error("At least one preferred exercise type is required");
+      return;
+    }
+
     console.log(data);
     return handleClose();
   };
@@ -75,6 +81,26 @@ const UserInfoDialog = ({ serv }) => {
             onSubmit={handleSubmit(onSubmit)}
             style={{ width: "100%", marginTop: 10 }}
           >
+            <Typography variant="subtitle1">Username</Typography>
+            <TextField
+              label="Username"
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              InputProps={{ readOnly: true }}
+              value="SampleUsername" // Replace with the actual username
+            />
+
+            {/* Read-only email field */}
+            <Typography variant="subtitle1">Email</Typography>
+            <TextField
+              label="Email"
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              InputProps={{ readOnly: true }}
+              value="sample@email.com" // Replace with the actual email
+            />
             <Controller
               name="weight"
               control={control}
@@ -170,7 +196,7 @@ const UserInfoDialog = ({ serv }) => {
                     if (!value || value.length === 0) {
                       return "At least one preferred exercise type is required";
                     }
-                    return value;
+                    return true;
                   },
                 }}
                 render={({ field }) => (

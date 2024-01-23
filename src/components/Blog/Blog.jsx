@@ -1,6 +1,8 @@
 
 "use client"
+import { Avatar, TextField } from "@mui/material";
 import BlogCard from "./BlogCard";
+import './Blog.css'
 
 
 const Blog = () => {
@@ -40,21 +42,23 @@ const Blog = () => {
 
     return (
         <div className='mb-[120px]' >
-            <div className='bg-black pt-20 '>
-                {/* popular blogs */}
-                <div className='lg:grid grid-cols-3 gap-4 bg-white pt-10 px-2 lg:px-10'>
-                    <div className='  col-span-2'>
-                    <iframe width="100%" height="415" src="https://www.youtube.com/embed/Q8rN3JKqUc8?si=pj9Te_keLZYwtfcl&amp;start=40" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div className=' hidden lg:flex flex-col gap-4 '>
-                        <div className=' flex-grow'>
-                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/z7EewP9k_7w?si=aWESJ1Q1JIFh6FNp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        </div>
-                        <div className=' flex-grow'>
-                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/IrWwEr5n4eE?si=GPETfGkOp7Ll1xx1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        </div>
-                    </div>
+            <div className='mt-10 px-4'>
 
+                <div className="lg:w-1/2 mx-auto px-2 py-8 lg:p-10 bg-gray-100 rounded-lg" >
+                    <h1 className="text-xl uppercase text-center mb-4 font-bold">Upload Your Blog</h1>
+                    <div className=" flex items-center gap-4">
+                        <Avatar alt="Bravis Howard" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2AAr5br4BWpaw7bNRDCEzfKzMcO3PzzTqOw&usqp=CAU" />
+                        <TextField id="filled-basic" label="Title" variant="filled" fullWidth />
+                    </div>
+                    <textarea name="" id="" cols="100%" rows="8" placeholder="Description" className="w-full mt-8 p-2 " ></textarea>
+                    {/* image input file */}
+                    <div className="flex items-center gap-2  border w-32 mx-auto rounded-lg p-2 border-black mt-6">
+                        <p>IMAGE</p>
+                        <div class="input-div">
+                            <input type="file" class="input" name="file" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" class="icon"><polyline points="16 16 12 12 8 16"></polyline><line y2="21" x2="12" y1="12" x1="12"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
+                        </div>
+                    </div>
                 </div>
             </div>
             {/* recent blogs */}
@@ -66,7 +70,7 @@ const Blog = () => {
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-4'>
                     {/* mapping all services one by one */}
-                    {challenges.map((challenge,i) => (
+                    {challenges.map((challenge, i) => (
                         <BlogCard key={i} challenge={challenge} />
                     ))}
 

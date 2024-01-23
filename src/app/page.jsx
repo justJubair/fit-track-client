@@ -1,4 +1,5 @@
 import Advertisement from "@/components/Advertisement/Advertisement";
+import AiChatbot from "@/components/AiChatbot/AiChatbot";
 import Banner from "@/components/Banner/Banner";
 import FAQ from "@/components/FAQ/FAQ";
 import Poster from "@/components/Poster/Poster";
@@ -12,6 +13,7 @@ const page = () => {
             <FAQ></FAQ>
             <Advertisement />
             <Poster></Poster>
+            <AiChatbot/>
         </div>
     )
 }

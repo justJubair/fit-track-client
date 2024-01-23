@@ -1,9 +1,9 @@
 import Blog from "@/components/Blog/Blog";
 
 
-const page = () => {
+const BlogPage = () => {
     return (
         <Blog />
     )
 }
-export default page;
+export default BlogPage;

@@ -28,16 +28,21 @@ const UserInfoDialog = ({ serv }) => {
     control,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm();
+  const username = "SampleUsername"; 
+  const email = "sample@email.com";
 
+  
   const onSubmit = (data) => {
-    if (!data.exerciseTypes || data.exerciseTypes.length === 0) {
-      // Add toast here for prefered exercise
-      console.error("At least one preferred exercise type is required");
-      return;
-    }
+    // Add username and email to the form data
+    const formData = {
+      username: username,
+      email: email,
+      ...data,
+    };
 
-    console.log(data);
+    console.log("Form Data:", formData);
     return handleClose();
   };
 
@@ -88,10 +93,9 @@ const UserInfoDialog = ({ serv }) => {
               margin="normal"
               fullWidth
               InputProps={{ readOnly: true }}
-              value="SampleUsername" // Replace with the actual username
+              value={username} // Replace with the actual username
             />
 
-            {/* Read-only email field */}
             <Typography variant="subtitle1">Email</Typography>
             <TextField
               label="Email"
@@ -99,7 +103,7 @@ const UserInfoDialog = ({ serv }) => {
               margin="normal"
               fullWidth
               InputProps={{ readOnly: true }}
-              value="sample@email.com" // Replace with the actual email
+        value={email} // Replace with the actual email
             />
             <Controller
               name="weight"
@@ -183,51 +187,7 @@ const UserInfoDialog = ({ serv }) => {
               )}
             </FormControl>
 
-            <FormGroup margin="normal">
-              <Typography variant="subtitle1">
-                Preferred Exercise Types
-              </Typography>
-              <Controller
-                name="exerciseTypes"
-                control={control}
-                defaultValue={[]}
-                rules={{
-                  validate: (value) => {
-                    if (!value || value.length === 0) {
-                      return "At least one preferred exercise type is required";
-                    }
-                    return true;
-                  },
-                }}
-                render={({ field }) => (
-                  <>
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      label="Cardio"
-                      {...field}
-                      value="cardio"
-                    />
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      label="Strength Training"
-                      {...field}
-                      value="strengthTraining"
-                    />
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      label="Yoga"
-                      {...field}
-                      value="yoga"
-                    />
-                  </>
-                )}
-              />
-              {errors.exerciseTypes && (
-                <Typography color="error">
-                  {errors.exerciseTypes.message}
-                </Typography>
-              )}
-            </FormGroup>
+          
           </form>
         </DialogContent>
         <DialogActions>

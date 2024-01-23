@@ -12,7 +12,7 @@ const HomePage = () => {
             <Banner/>
             <Services />
             <FAQ></FAQ>
-            <Advertisement />
+            <Advertisement/>
             <Poster></Poster>
             <AiChatbot/>
         </div>

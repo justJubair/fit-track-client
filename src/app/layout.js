@@ -1,8 +1,6 @@
 
 import "./globals.css";
-import Footer from "@/components/Shared/Footer/Footer";
-import Nav from "@/components/Shared/Nav/Nav";
-import SmoothScroll from "@/components/SmoothScroll/SmoothScroll";
+
 
 
 
@@ -16,11 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* <SmoothScroll> */}
-          <Nav />
           {children}
-          <Footer />
-        {/* </SmoothScroll> */}
       </body>
     </html>
   );

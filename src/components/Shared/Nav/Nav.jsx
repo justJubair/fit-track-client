@@ -69,6 +69,7 @@ const Nav = () => {
 
        <Link href='/'><Image src={LOGO} width={120} sx={{ height: "auto" }} alt="Logo" /></Link> 
 
+{/* desktop */}
         <Box
           sx={{
             flexGrow: 1,
@@ -96,6 +97,8 @@ const Nav = () => {
           ))}
           <UserInfoDialog></UserInfoDialog>
         </Box>
+
+        {/* desktop */}
         <div className="flex gap-4 text-white font-bold items-center">
           <Link href="/register">Join Us</Link>
           <span>|</span>
@@ -151,9 +154,12 @@ const Nav = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page.route} onClick={handleCloseNavMenu}>
+                  <Link href={page.route} key={page.route}>
+                   <MenuItem key={page.route} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page.nav}</Typography>
                   </MenuItem>
+                  </Link>
+                 
                 ))}
                 <UserInfoDialog></UserInfoDialog>
                 <Box sx={{ flexGrow: 0, padding: "6px" }}>
@@ -181,7 +187,7 @@ const Nav = () => {
                   </Menu>
                   <span className="flex flex-col gap-2">
                     <Link href='/usercheck'>
-                      <button className="border-[1px] border-[#252525] py-2 rounded-[20px] mx-[10px]">
+                      <button className=" py-2 mx-[10px]">
                         Sign In
                       </button>
                     </Link>
@@ -206,10 +212,10 @@ const Nav = () => {
                 textDecoration: "none",
               }}
             >
-              <Image src={LOGO} width={100} height={100} alt="Logo" />
+              <Image src={LOGO} width={100} sx={{ height: "auto" }} alt="Logo" />
             </Typography>
 
-            <Box
+            {/* <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -240,7 +246,7 @@ const Nav = () => {
                   </MenuItem>
                 ))}
               </Menu>
-            </Box>
+            </Box> */}
           </Toolbar>
         </Container>
       </AppBar>

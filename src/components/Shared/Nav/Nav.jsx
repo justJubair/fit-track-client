@@ -17,6 +17,7 @@ import Image from "next/image";
 import LOGO from "../../../assets/images/logo02.png";
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react"
+import { useRouter } from "next/navigation";
 
 // Array of pages and settings for navigation
 const pages = [
@@ -49,6 +50,7 @@ const Nav = () => {
   //loading state
   const [loader, setLoader] = useState(true);
 
+  const router = useRouter();
   // State variables to manage menu anchor elements
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -75,10 +77,17 @@ const Nav = () => {
   // useEffect to update loader state when session is available
   useEffect(() => {
     if (session) {
+      console.log(session)
       setLoader(false)
     }
   }, [session])
 
+  const handleLogout = () =>{
+    signOut();
+  }
+  const handleSignIn = () =>{
+    router.push('/usercheck')
+  }
   return (
     // Top-level container for the navigation component
     <div className=" absolute w-[100%] z-50 top-0">
@@ -204,24 +213,24 @@ const Nav = () => {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                   >
-                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '3rem', paddingRight: '3rem' }}>
+                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Home</Typography>
                     </MenuItem>
-                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '3rem', paddingRight: '3rem' }}>
+                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Profile</Typography>
                     </MenuItem>
-                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '3rem', paddingRight: '3rem' }}>
+                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Dashboard</Typography>
                     </MenuItem>
 
                     {/* Conditionally rendering Logout/Sign In based on session */}
                     {
                       session ?
-                        <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '3rem', paddingRight: '3rem' }}>
+                        <MenuItem onClick={handleLogout} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                           <Typography textAlign="center">Log Out</Typography>
                         </MenuItem>
                         :
-                        <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '3rem', paddingRight: '3rem' }}>
+                        <MenuItem onClick={handleSignIn} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                           <Typography textAlign="center">Sign In</Typography>
                         </MenuItem>
                     }
@@ -285,24 +294,24 @@ const Nav = () => {
               >
 
                 {/* User menu items */}
-                <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '3rem', paddingRight: '3rem' }}>
+                <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                   <Typography textAlign="center">Home</Typography>
                 </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '3rem', paddingRight: '3rem' }}>
+                <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                 <Typography textAlign="center">Profile</Typography>
               </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '3rem', paddingRight: '3rem' }}>
+                <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                   <Typography textAlign="center">Dashboard</Typography>
                 </MenuItem>
 
                 {/* Conditionally rendering Logout or Sign In based on session */}
                 {
                   session ?
-                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '3rem', paddingRight: '3rem' }}>
+                    <MenuItem onClick={handleLogout} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Log Out</Typography>
                     </MenuItem>
                     :
-                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '3rem', paddingRight: '3rem' }}>
+                    <MenuItem onClick={handleSignIn} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Sign In</Typography>
                     </MenuItem>
                 }

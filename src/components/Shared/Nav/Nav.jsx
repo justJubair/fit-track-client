@@ -17,6 +17,7 @@ import "./Nav.css";
 import Image from "next/image";
 import LOGO from "../../../assets/images/logo02.png";
 import Link from "next/link";
+import UserInfoDialog from "@/components/CustomizeDiet/FormDialog/UserInfoDialog";
 
 // Array of pages and settings for navigation
 const pages = [
@@ -28,10 +29,7 @@ const pages = [
     nav: "Challenges",
     route: "/challenges",
   },
-  {
-    nav: "Accessories",
-    route: "/accessories"
-  },
+  
   {
     nav: "Pricing",
     route: "/pricing",
@@ -96,6 +94,7 @@ const Nav = () => {
             </Link>
 
           ))}
+          <UserInfoDialog></UserInfoDialog>
         </Box>
         <div className="flex gap-4 text-white font-bold items-center">
           <Link href="/register">Join Us</Link>
@@ -156,6 +155,7 @@ const Nav = () => {
                     <Typography textAlign="center">{page.nav}</Typography>
                   </MenuItem>
                 ))}
+                <UserInfoDialog></UserInfoDialog>
                 <Box sx={{ flexGrow: 0, padding: "6px" }}>
                   <Menu
                     sx={{ mt: "45px" }}

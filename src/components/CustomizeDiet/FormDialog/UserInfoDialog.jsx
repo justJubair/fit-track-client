@@ -18,7 +18,7 @@ import Paper from "@mui/material/Paper";
 import { Controller, useForm } from "react-hook-form";
 import { CustomCard } from "@tsamantanis/react-glassmorphism";
 import Image from "next/image";
-import LOGO from "../../../assets/images/logo04.png";
+import LOGO from "../../../assets/images/logo02.png";
 
 const UserInfoDialog = ({ serv }) => {
   const [open, setOpen] = useState(false);
@@ -95,142 +95,177 @@ const UserInfoDialog = ({ serv }) => {
           blur={10}
           borderRadius={0}
         >
-          <DialogTitle id="scroll-dialog-title">
+          <DialogTitle
+            sx={{ mx: "auto", display: "flex", justifyContent: "center" }}
+            id="scroll-dialog-title"
+          >
             <Image src={LOGO} width={150} height={150} alt="Logo" />
           </DialogTitle>
           <DialogContent dividers={scroll === "paper"}>
-            <Typography variant="h5">Exercise Suggestion Form</Typography>
+            <Typography
+              sx={{
+                color: "#fff",
+                textAlign: "center",
+                fontWeight: "bold",
+                textTransform: "uppercase",
+              }}
+              variant="h5"
+            >
+              Custom Diet Form
+            </Typography>
+
             <form
               onSubmit={handleSubmit(onSubmit)}
               style={{ width: "100%", marginTop: 10 }}
             >
-              <Typography variant="subtitle1">Username</Typography>
               <TextField
                 label="Username"
                 variant="outlined"
                 margin="normal"
                 fullWidth
-                InputProps={{ readOnly: true }}
-                value={username}
+                InputProps={{
+                  readOnly: true,
+                  style: { color: "#fff" },
+                }}
+                InputLabelProps={{
+                  style: { color: "#fff" },
+                }}
+                value={username} // Replace with the actual username
+                sx={{
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#fff",
+                  },
+                }}
               />
 
-              <Typography variant="subtitle1">Email</Typography>
               <TextField
                 label="Email"
                 variant="outlined"
                 margin="normal"
                 fullWidth
-                InputProps={{ readOnly: true }}
-                value={email}
+                InputProps={{
+                  readOnly: true,
+                  style: { color: "#fff" },
+                }}
+                InputLabelProps={{
+                  style: { color: "#fff" },
+                }}
+                value={email} // Replace with the actual email
+                sx={{
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#fff",
+                  },
+                }}
               />
 
-              <form
-                onSubmit={handleSubmit(onSubmit)}
-                style={{ width: "100%", marginTop: 10 }}
-              >
-                <Typography variant="subtitle1">Username</Typography>
-                <TextField
-                  label="Username"
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  InputProps={{ readOnly: true }}
-                  value={username} // Replace with the actual username
-                />
-
-                <Typography variant="subtitle1">Email</Typography>
-                <TextField
-                  label="Email"
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  InputProps={{ readOnly: true }}
-                  value={email} // Replace with the actual email
-                />
-                <Controller
-                  name="weight"
-                  control={control}
-                  defaultValue=""
-                  rules={{
-                    required: "Weight is required",
-                    pattern: {
-                      value: /^\d+$/,
-                      message: "Please enter a valid weight (Numbers only)",
-                    },
-                  }}
-                  render={({ field }) => (
-                    <TextField
-                      {...field}
-                      label="Weight (kg)"
-                      variant="outlined"
-                      margin="normal"
-                      fullWidth
-                      error={!!errors.weight}
-                      helperText={errors.weight?.message}
-                    />
-                  )}
-                />
-
-                <Controller
-                  name="height"
-                  control={control}
-                  defaultValue=""
-                  rules={{
-                    required: "Height is required",
-                    pattern: {
-                      value: /^\d+$/,
-                      message: "Please enter a valid height (Numbers only)",
-                    },
-                  }}
-                  render={({ field }) => (
-                    <TextField
-                      {...field}
-                      label="Height (cm)"
-                      variant="outlined"
-                      margin="normal"
-                      fullWidth
-                      error={!!errors.height}
-                      helperText={errors.height?.message}
-                    />
-                  )}
-                />
-
-                <FormControl component="fieldset" margin="normal">
-                  <Typography variant="subtitle1">
-                    Current Fitness Level
-                  </Typography>
-                  <Controller
-                    name="fitnessLevel"
-                    control={control}
-                    defaultValue=""
-                    rules={{ required: "Fitness level is required" }}
-                    render={({ field }) => (
-                      <RadioGroup {...field} row>
-                        <FormControlLabel
-                          value="beginner"
-                          control={<Radio />}
-                          label="Beginner"
-                        />
-                        <FormControlLabel
-                          value="intermediate"
-                          control={<Radio />}
-                          label="Intermediate"
-                        />
-                        <FormControlLabel
-                          value="advanced"
-                          control={<Radio />}
-                          label="Advanced"
-                        />
-                      </RadioGroup>
-                    )}
+              <Controller
+                name="weight"
+                control={control}
+                defaultValue=""
+                rules={{
+                  required: "Weight is required",
+                  pattern: {
+                    value: /^\d+$/,
+                    message: "Please enter a valid weight (Numbers only)",
+                  },
+                }}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Weight (kg)"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    error={!!errors.weight}
+                    helperText={errors.weight?.message}
+                    InputProps={{
+                      style: { color: "#fff" },
+                    }}
+                    InputLabelProps={{
+                      style: { color: "#fff" },
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#fff",
+                      },
+                    }}
                   />
-                  {errors.fitnessLevel && (
-                    <Typography color="error">
-                      {errors.fitnessLevel.message}
-                    </Typography>
+                )}
+              />
+
+              <Controller
+                name="height"
+                control={control}
+                defaultValue=""
+                rules={{
+                  required: "Height is required",
+                  pattern: {
+                    value: /^\d+$/,
+                    message: "Please enter a valid height (Numbers only)",
+                  },
+                }}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Height (cm)"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    error={!!errors.height}
+                    helperText={errors.height?.message}
+                    InputProps={{
+                      style: { color: "#fff" },
+                    }}
+                    InputLabelProps={{
+                      style: { color: "#fff" },
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#fff",
+                      },
+                    }}
+                  />
+                )}
+              />
+
+              <FormControl component="fieldset" margin="normal">
+                <Typography variant="subtitle1" style={{ color: "#fff" }}>
+                  Current Fitness Level
+                </Typography>
+                <Controller
+                  name="fitnessLevel"
+                  control={control}
+                  defaultValue=""
+                  rules={{ required: "Fitness level is required" }}
+                  render={({ field }) => (
+                    <RadioGroup {...field} row>
+                      <FormControlLabel
+                        value="beginner"
+                        control={<Radio style={{ color: "#fff" }} />}
+                        label="Beginner"
+                        style={{ color: "#fff" }}
+                      />
+                      <FormControlLabel
+                        value="intermediate"
+                        control={<Radio style={{ color: "#fff" }} />}
+                        label="Intermediate"
+                        style={{ color: "#fff" }}
+                      />
+                      <FormControlLabel
+                        value="advanced"
+                        control={<Radio style={{ color: "#fff" }} />}
+                        label="Advanced"
+                        style={{ color: "#fff" }}
+                      />
+                    </RadioGroup>
                   )}
-                </FormControl>
-              </form>
+                />
+                {errors.fitnessLevel && (
+                  <Typography color="error">
+                    {errors.fitnessLevel.message}
+                  </Typography>
+                )}
+              </FormControl>
             </form>
           </DialogContent>
           <DialogActions>

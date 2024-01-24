@@ -43,28 +43,31 @@ const Blog = () => {
         <div className='mb-[120px]' >
             <div className='mt-10 px-4'>
 
-                <div className="lg:w-1/2 mx-auto px-2 py-8 lg:p-10 bg-gray-100 rounded-lg" >
+                <div className="lg:w-1/2 mx-auto px-2 py-8 lg:p-10 bg-black rounded-lg text-white" >
                     <h1 className="text-xl uppercase text-center mb-4 font-bold">Upload Your Blog</h1>
                     <div className=" flex items-center gap-4">
                         <Avatar alt="Bravis Howard" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2AAr5br4BWpaw7bNRDCEzfKzMcO3PzzTqOw&usqp=CAU" />
-                        <TextField id="filled-basic" label="Title" variant="filled" fullWidth />
+                        {/* <TextField iid="outlined-basic" label="Outlined" variant="outlined" fullWidth  sx={{color:"white"}} /> */}
+                        <div className="relative z-0 w-full mb-6 group">
+                            <input
+                                type="text"
+                                name="username"
+                                id="floating_email"
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                            />
+                            <label
+                                htmlFor="floating_email"
+                                className="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                                Title
+                            </label>
+                        </div>
                     </div>
-                    <textarea name="" id="" cols="100%" rows="8" placeholder="Description" className="w-full mt-8 p-2 " ></textarea>
+                    <textarea name="" id="" cols="100%" rows="8" placeholder="Description" className="w-full mt-2 p-2 " ></textarea>
                     {/* image input file */}
-
                     
-                        <div className="flex items-center gap-2  border w-28 mx-auto rounded-lg p-2 border-black mt-6">
-                            <p>IMAGE</p>
-                            <div className="input-div">
-                                <input type="file" className="input" name="file" />
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" strokeLinejoin="round" strokeLinecap="round" viewBox="0 0 24 24" strokeWidth="2" fill="none" stroke="currentColor" className="icon"><polyline points="16 16 12 12 8 16"></polyline><line y2="21" x2="12" y1="12" x1="12"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
-                            </div>
-                        </div>
-                        <div className="">
-                            <Button variant="outlined" fullWidth>Post</Button>
-                        </div>
-                 
-
                 </div>
             </div>
             {/* recent blogs */}

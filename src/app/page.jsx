@@ -4,17 +4,20 @@ import Banner from "@/components/Banner/Banner";
 import FAQ from "@/components/FAQ/FAQ";
 import Poster from "@/components/Poster/Poster";
 import Services from "@/components/Services/Services";
+import Footer from "@/components/Shared/Footer/Footer";
 import Nav from "@/components/Shared/Nav/Nav";
 
 const HomePage = () => {
     return (
         <div>
+            <Nav/>
             <Banner/>
             <Services />
-            <FAQ></FAQ>
             <Advertisement/>
             <Poster></Poster>
+            <FAQ></FAQ>
             <AiChatbot/>
+            <Footer/>
         </div>
     )
 }

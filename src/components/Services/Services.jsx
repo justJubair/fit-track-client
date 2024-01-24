@@ -1,5 +1,6 @@
 import { getAllServices } from "@/utils/getAllServices";
 import Service from "./Service";
+import UserInfoDialog from "../CustomizeDiet/FormDialog/UserInfoDialog";
 
 
 const Services = async () => {
@@ -13,8 +14,9 @@ const Services = async () => {
             <h1 className="text-3xl my-4 font-semibold text-center">Our Services</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* mapping all services one by one */}
+              {/* adding dialog to take user info */}
                 {
-                    services.map((serv) => <Service serv={serv} key={serv.id}></Service>)
+                    services.map((serv) => <UserInfoDialog serv={serv} key={serv.id}></UserInfoDialog>)
                 }
             </div>
         </div>

@@ -3,11 +3,11 @@ import ChallengeSlider from "@/components/Competition/ChallengeSlider/ChallengeS
 
 
 
-const page = () => {
+const ChallengesPage = () => {
     return(
         <div>
             <ChallengeSlider/>
             <Challenge></Challenge>
         </div>
     )}
-export default page;
+export default ChallengesPage;

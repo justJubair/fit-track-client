@@ -180,9 +180,12 @@ const Nav = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page.route} onClick={handleCloseNavMenu}>
+                  <Link href={page.route} key={page.route}>
+                   <MenuItem key={page.route} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page.nav}</Typography>
                   </MenuItem>
+                  </Link>
+                 
                 ))}
                 <Box sx={{ flexGrow: 0, padding: "6px" }}>
                   <Menu
@@ -225,7 +228,7 @@ const Nav = () => {
                   </Menu>
                   <span className="flex flex-col gap-2">
                     <Link href='/usercheck'>
-                      <button className="border-[1px] border-[#252525] py-2 rounded-[20px] mx-[10px]">
+                      <button className=" py-2 mx-[10px]">
                         Sign In
                       </button>
                     </Link>
@@ -251,7 +254,7 @@ const Nav = () => {
                 textDecoration: "none",
               }}
             >
-              <Image src={LOGO} width={100} height={100} alt="Logo" />
+              <Image src={LOGO} width={100} sx={{ height: "auto" }} alt="Logo" />
             </Typography>
 
             {/* User menu in desktop */}
@@ -292,7 +295,7 @@ const Nav = () => {
                   <Typography textAlign="center">Dashboard</Typography>
                 </MenuItem>
 
-                {/* Conditionally rendering Logout/Sign In based on session */}
+                {/* Conditionally rendering Logout or Sign In based on session */}
                 {
                   session ?
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '3rem', paddingRight: '3rem' }}>
@@ -305,7 +308,7 @@ const Nav = () => {
                 }
 
               </Menu>
-            </Box>
+            </Box> 
           </Toolbar>
         </Container>
       </AppBar>

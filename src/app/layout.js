@@ -17,11 +17,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <AuthProvider>
           <Nav />
-          <AuthProvider>
           {children}
-          </AuthProvider>
           <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

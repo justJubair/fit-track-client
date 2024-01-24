@@ -39,15 +39,24 @@ const Blog = () => {
             createdBy: "Frank",
         },
     ];
-
+    const handelBlog = (e) => {
+        e.preventDefault()
+        const form = e.target
+        const title = form.title.value
+        const description = form.description.value
+        const photo = form.photo.value
+        console.log({ title, description, photo })
+    }
     return (
         <div className='mb-[120px]' >
             <div className="bg-black h-16"></div>
             <div className='mt-10 px-4'>
-                <form className="lg:w-1/2 mx-auto px-2 py-8 lg:p-10 bg-black rounded-lg text-white" >
+                <form
+                    onSubmit={handelBlog}
+                    className="lg:w-1/2 mx-auto px-2 py-8 lg:p-10 bg-black rounded-lg text-white" >
                     <h1 className="text-xl uppercase text-center mb-4 font-bold">Upload Your Blog</h1>
                     <div className=" flex items-center gap-4">
-                        <Avatar alt="Bravis Howard" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2AAr5br4BWpaw7bNRDCEzfKzMcO3PzzTqOw&usqp=CAU" sx={{mb:"20px"}} />
+                        <Avatar alt="Bravis Howard" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2AAr5br4BWpaw7bNRDCEzfKzMcO3PzzTqOw&usqp=CAU" sx={{ mb: "20px" }} />
                         {/* <TextField iid="outlined-basic" label="Outlined" variant="outlined" fullWidth  sx={{color:"white"}} /> */}
                         <div className="relative z-0 w-full mb-6 group">
                             <input
@@ -73,7 +82,7 @@ const Blog = () => {
                             <input type="file" name="photo" className="border bg-blue-600 rounded-lg  w-full cursor-pointer" required />
                         </div>
                         <div className="flex-1">
-                            <Button type="submit" variant="outlined" fullWidth size="small" sx={{ fontWeight: "bold"}}>Post</Button>
+                            <Button type="submit" variant="outlined" fullWidth size="small" sx={{ fontWeight: "bold" }}>Post</Button>
                         </div>
                     </div>
                 </form>

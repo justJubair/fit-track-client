@@ -11,18 +11,14 @@ import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Grid from '@mui/material/Grid';
-import Divider from '@mui/material/Divider';
-import Chip from '@mui/material/Chip';
-import GoogleIcon from '@mui/icons-material/Google';
 import { useSession, signIn, signOut } from "next-auth/react"
 
 const SignUp = () => {
-     
-    const {data: session} = useSession();
-    console.log(session)
+
+    const { data: session } = useSession();
+
     const [isUser, setUser] = React.useState(false);
     const router = useRouter();
-    const [value, setValue] = React.useState(0);
     const style = {
         position: 'absolute',
         top: '50%',
@@ -57,10 +53,16 @@ const SignUp = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const handleSignUp = () =>{
-        signIn()
-        if(session){
-           router.push('/')
+    const handleSignUpGoogle = () => {
+        signIn('google')
+        if (session) {
+            router.push('/')
+        }
+    }
+    const handleSignUpFacebook = () => {
+        signIn('facebook')
+        if (session) {
+            router.push('/')
         }
     }
 
@@ -167,15 +169,13 @@ const SignUp = () => {
                         Continue
                     </Button>
                 </Box>
-                <Divider>
-                    <Chip label="Or" size="large" />
-                </Divider>
+                <Typography component="h5" variant="h5" sx={{color: '#378AE5', fontWeight: '600', marginBottom: '20px', textAlign:'center' }}>
+                    Or
+                </Typography>
                 <Box>
-                    <Typography component="h6" variant="h6" sx={{ fontSize: '16px', color: 'gray', fontWeight: '400' }}>
-                        Continue with,
-                    </Typography>
-                    <Box sx={{ width: 500 }}>
-                    <Button onClick={() => handleSignUp()} variant="outlined"><GoogleIcon/> Continue with google</Button>
+                    <Box className='grid gird-cols-1 md:grid-cols-2 gap-4'>
+                        <Box onClick={() => handleSignUpGoogle()} sx={{display: 'flex', gap: '5px', alignItems:'center', backgroundColor:'#252525', borderRadius:'20px',  padding: '8px',color: '#fff', cursor:'pointer' }}><img className='max-w-[50px]' src='https://i.ibb.co/kmsjzFF/Animation-1700836595835.gif'/><span className='text-lg'> Continue with Google</span></Box>
+                        <Box onClick={() => handleSignUpFacebook()} sx={{display: 'flex', gap: '5px', alignItems:'center', backgroundColor:'#252525', borderRadius:'20px',  padding: '8px',color: '#fff', cursor:'pointer' }}><img className='max-w-[50px]' src='https://i.ibb.co/5R4LB8n/Animation-1706101317533.gif'/><span className='text-lg'> Continue with Facebook</span></Box>
                     </Box>
                 </Box>
             </Box>

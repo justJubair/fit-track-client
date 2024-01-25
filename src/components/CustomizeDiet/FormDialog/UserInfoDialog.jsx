@@ -21,6 +21,7 @@ import LOGO from "../../../assets/images/logo04.png";
 import Image from "next/image";
 import { Controller, useForm } from "react-hook-form";
 
+
 const UserInfoDialog = ({ serv }) => {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");

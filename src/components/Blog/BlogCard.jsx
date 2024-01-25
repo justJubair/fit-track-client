@@ -58,6 +58,7 @@ const BlogCard = ({ challenge }) => {
                     </div>
 
                 </div>
+                
             </Card>
         </div>
     );

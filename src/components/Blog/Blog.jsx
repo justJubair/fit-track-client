@@ -3,6 +3,9 @@ import { Avatar, Button } from "@mui/material";
 import BlogCard from "./BlogCard";
 
 import './Blog.css';
+import axios from "axios";
+import { VerticalAlignBottom } from "@mui/icons-material";
+import { useState } from "react";
 
 
 const Blog = () => {
@@ -39,13 +42,36 @@ const Blog = () => {
             createdBy: "Frank",
         },
     ];
-    const handelBlog = (e) => {
+    const handelBlog = async (e) => {
         e.preventDefault()
         const form = e.target
         const title = form.title.value
         const description = form.description.value
-        const photo = form.photo.value
-        console.log({ title, description, photo })
+        const imageFile = { image: form.photo?.files[0] }
+
+        const currentDate = new Date();
+        const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+
+        const time = `${monthNames[currentDate.getMonth()]} ${currentDate.getDate()}, ${currentDate.getFullYear()}`;
+
+        const dbResponse = await axios.post("https://api.imgbb.com/1/upload?key=ae66490f64c3dbadf60adcdd1d5d93f7", imageFile, {
+            headers: {
+                "content-type": "multipart/form-data",
+            },
+        });
+        console.log(dbResponse.data)
+        const blog = {
+            title,
+            description,
+            image: dbResponse.data.data.url,
+            time
+
+        }
+        console.log(blog)
+
     }
     return (
         <div className='mb-[120px]' >
@@ -57,7 +83,7 @@ const Blog = () => {
                     <h1 className="text-xl uppercase text-center mb-4 font-bold">Upload Your Blog</h1>
                     <div className=" flex items-center gap-4">
                         <Avatar alt="Bravis Howard" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2AAr5br4BWpaw7bNRDCEzfKzMcO3PzzTqOw&usqp=CAU" sx={{ mb: "20px" }} />
-                        {/* <TextField iid="outlined-basic" label="Outlined" variant="outlined" fullWidth  sx={{color:"white"}} /> */}
+
                         <div className="relative z-0 w-full mb-6 group">
                             <input
                                 type="text"
@@ -79,7 +105,7 @@ const Blog = () => {
                     {/* image input file */}
                     <div className="flex gap-10 mt-5">
                         <div className="flex-1 ">
-                            <input type="file" name="photo" className="border bg-blue-600 rounded-lg  w-full cursor-pointer" required />
+                            <input type="file" name="photo" className="border bg-gray-600 rounded-lg  w-full cursor-pointer" required />
                         </div>
                         <div className="flex-1">
                             <Button type="submit" variant="outlined" fullWidth size="small" sx={{ fontWeight: "bold" }}>Post</Button>

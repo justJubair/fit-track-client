@@ -8,7 +8,6 @@ import {
   DialogTitle,
   FormControl,
   FormControlLabel,
-  FormGroup,
   Radio,
   RadioGroup,
   TextField,
@@ -118,46 +117,40 @@ const UserInfoDialog = ({ serv }) => {
               onSubmit={handleSubmit(onSubmit)}
               style={{ width: "100%", marginTop: 10 }}
             >
-              <TextField
-                label="Username"
-                variant="outlined"
-                margin="normal"
-                fullWidth
-                InputProps={{
-                  readOnly: true,
-                  style: { color: "#fff" },
-                }}
-                InputLabelProps={{
-                  style: { color: "#fff" },
-                }}
-                value={username} // Replace with the actual username
-                sx={{
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#fff",
+              <Controller
+                name="age"
+                control={control}
+                defaultValue=""
+                rules={{
+                  required: "Age is required",
+                  pattern: {
+                    value: /^\d+$/,
+                    message: "Please enter a valid age (Numbers only)",
                   },
                 }}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Age"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    error={!!errors.age}
+                    helperText={errors.age?.message}
+                    InputProps={{
+                      style: { color: "#fff" },
+                    }}
+                    InputLabelProps={{
+                      style: { color: "#fff" },
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#fff",
+                      },
+                    }}
+                  />
+                )}
               />
-
-              <TextField
-                label="Email"
-                variant="outlined"
-                margin="normal"
-                fullWidth
-                InputProps={{
-                  readOnly: true,
-                  style: { color: "#fff" },
-                }}
-                InputLabelProps={{
-                  style: { color: "#fff" },
-                }}
-                value={email} // Replace with the actual email
-                sx={{
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#fff",
-                  },
-                }}
-              />
-
               <Controller
                 name="weight"
                 control={control}

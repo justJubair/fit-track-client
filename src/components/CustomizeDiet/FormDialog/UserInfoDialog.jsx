@@ -18,7 +18,9 @@ import { Controller, useForm } from "react-hook-form";
 import { CustomCard } from "@tsamantanis/react-glassmorphism";
 import Image from "next/image";
 import LOGO from "../../../assets/images/logo02.png";
-
+import { useSession } from "next-auth/react";
+import { toast } from "react-toastify";
+import submitHealthInfo from "@/utils/postUserHealthInfo";
 
 const UserInfoDialog = ({ serv }) => {
   const [open, setOpen] = useState(false);
@@ -29,9 +31,12 @@ const UserInfoDialog = ({ serv }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { data: session } = useSession();
 
-  const username = "SampleUsername";
-  const email = "sample@email.com";
+  const email = session?.user?.email;
+  const username = session?.user?.name;
+  console.log(email);
+  console.log(username);
 
   const onSubmit = (data) => {
     const formData = {
@@ -41,6 +46,8 @@ const UserInfoDialog = ({ serv }) => {
     };
 
     console.log("Form Data:", formData);
+    submitHealthInfo(formData);
+    toast.success("Hello World!");
     handleClose();
   };
 

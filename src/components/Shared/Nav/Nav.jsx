@@ -16,12 +16,9 @@ import "./Nav.css";
 import Image from "next/image";
 import LOGO from "../../../assets/images/logo02.png";
 import Link from "next/link";
-<<<<<<< HEAD
 import UserInfoDialog from "@/components/CustomizeDiet/FormDialog/UserInfoDialog";
-=======
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from "next/navigation";
->>>>>>> 123375f4facdc559b03d20cdce8d0a6e7b8de274
 
 // Array of pages and settings for navigation
 const pages = [
@@ -44,7 +41,7 @@ const pages = [
   },
 ];
 
-const Nav = async() => {
+const Nav =() => {
 
   //loading state
   const [loader, setLoader] = useState(true);

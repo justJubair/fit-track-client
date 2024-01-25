@@ -1,7 +1,7 @@
-
+import { ToastContainer } from "react-toastify";
 import "./globals.css";
 import AuthProvider from "@/components/Authentication/AuthProvider/AuthProvider";
-
+import zIndex from "@mui/material/styles/zIndex";
 
 export const metadata = {
   title: "Fit Track",
@@ -12,10 +12,24 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        <AuthProvider>{children}</AuthProvider>
+       
       </body>
+      <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          className="z-50"
+        />
+        {/* Same as */}
+        <ToastContainer />
     </html>
   );
 }

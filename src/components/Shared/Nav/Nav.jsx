@@ -43,9 +43,7 @@ const pages = [
   },
 ];
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
-const Nav = () => {
+const Nav = async() => {
 
   //loading state
   const [loader, setLoader] = useState(true);

@@ -19,6 +19,7 @@ import { CustomCard } from "@tsamantanis/react-glassmorphism";
 import Image from "next/image";
 import LOGO from "../../../assets/images/logo02.png";
 
+
 const UserInfoDialog = ({ serv }) => {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");

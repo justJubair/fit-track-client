@@ -22,7 +22,11 @@
     "@studio-freight/react-lenis": "^0.0.43",
     "@tsamantanis/react-glassmorphism": "^1.1.2",
     "aos": "^2.3.4",
+<<<<<<< HEAD
     "color": "^4.2.3",
+=======
+    "axios": "^1.6.6",
+>>>>>>> 123375f4facdc559b03d20cdce8d0a6e7b8de274
     "mongodb": "^6.3.0",
     "next": "^14.0.4",
     "next-auth": "^4.24.5",
@@ -34,6 +38,7 @@
     "react-hook-form": "^7.49.3",
     "react-hover-video-player": "^10.0.1",
     "react-loader-spinner": "^6.1.6",
+    "react-toastify": "^10.0.4",
     "save": "^2.9.0",
     "swiper": "^11.0.5"
   },

@@ -6,18 +6,20 @@ import Poster from "@/components/Poster/Poster";
 import Services from "@/components/Services/Services";
 import Footer from "@/components/Shared/Footer/Footer";
 import Nav from "@/components/Shared/Nav/Nav";
+import { ToastContainer } from "react-toastify";
 
 const HomePage = () => {
     return (
         <div>
-            <Nav/>
-            <Banner/>
+            <Nav />
+            <Banner />
             <Services />
-            <Advertisement/>
+            <Advertisement />
             <Poster></Poster>
             <FAQ></FAQ>
-            <AiChatbot/>
-            <Footer/>
+            <AiChatbot />
+            <Footer />
+            <ToastContainer />
         </div>
     )
 }

@@ -4,17 +4,22 @@ import Banner from "@/components/Banner/Banner";
 import FAQ from "@/components/FAQ/FAQ";
 import Poster from "@/components/Poster/Poster";
 import Services from "@/components/Services/Services";
+import Footer from "@/components/Shared/Footer/Footer";
+import Nav from "@/components/Shared/Nav/Nav";
+import SmoothScroll from "@/components/SmoothScroll/SmoothScroll";
 
-const page = () => {
+const HomePage = () => {
     return (
         <div>
-            <Banner/>
-            <Services />
-            <FAQ></FAQ>
-            <Advertisement />
-            <Poster></Poster>
-            <AiChatbot/>
+                <Nav />
+                <Banner />
+                <Services />
+                <Advertisement />
+                <Poster></Poster>
+                <FAQ></FAQ>
+                <AiChatbot />
+                <Footer />
         </div>
     )
 }
-export default page;
+export default HomePage;

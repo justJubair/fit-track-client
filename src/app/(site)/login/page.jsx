@@ -1,7 +1,6 @@
 import Login_Pass from "@/components/Authentication/Login_Password/Login_Pass";
 
 
-
 const Login = () => {
 
     return (

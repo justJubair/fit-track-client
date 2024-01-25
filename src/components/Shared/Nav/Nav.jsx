@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,11 +12,12 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-// import AdbIcon from '@mui/icons-material/Adb';
 import "./Nav.css";
 import Image from "next/image";
 import LOGO from "../../../assets/images/logo02.png";
 import Link from "next/link";
+import { useSession, signIn, signOut } from "next-auth/react"
+import { useRouter } from "next/navigation";
 
 // Array of pages and settings for navigation
 const pages = [
@@ -42,9 +43,12 @@ const pages = [
   },
 ];
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const Nav = async() => {
 
-const Nav = () => {
+  //loading state
+  const [loader, setLoader] = useState(true);
+
+  const router = useRouter();
   // State variables to manage menu anchor elements
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -65,12 +69,29 @@ const Nav = () => {
     setAnchorElUser(null);
   };
 
+  // User session
+  const { data: session } = useSession();
+
+  // useEffect to update loader state when session is available
+  useEffect(() => {
+    if (session) {
+      console.log(session)
+      setLoader(false)
+    }
+  }, [session])
+
+  const handleLogout = () =>{
+    signOut();
+  }
+  const handleSignIn = () =>{
+    router.push('/usercheck')
+  }
   return (
-    <div className=" absolute w-[100%] z-40 top-0">
+    // Top-level container for the navigation component
+    <div className=" absolute w-[100%] z-50 top-0">
       <div className="bg-transparent hidden lg:flex justify-center items-center max-w-[1536px] mx-auto px-8">
-
-       <Link href='/'><Image src={LOGO} width={120} sx={{ height: "auto" }} alt="Logo" /></Link> 
-
+        <Link href='/'><Image src={LOGO} width={120} sx={{ height: "auto" }} alt="Logo" /></Link>
+        {/* Navigation links */}
         <Box
           sx={{
             flexGrow: 1,
@@ -81,8 +102,6 @@ const Nav = () => {
           {pages.map((page) => (
             <Link href={page?.route} key={page.route}>
               <Button
-
-
                 onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
@@ -97,24 +116,38 @@ const Nav = () => {
 
           ))}
         </Box>
+
+        {/* Join/Sign In/Help section */}
         <div className="flex gap-4 text-white font-bold items-center">
           <Link href="/register">Join Us</Link>
           <span>|</span>
           <Link href="/usercheck">Sign In</Link>
           <span>|</span>
           <Link href="#">Help </Link>
+
+          {/* User Avatar or Sign In button */}
           <span className="hidden lg:block pl-2">
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src="https://cdn2.vectorstock.com/i/1000x1000/17/61/male-avatar-profile-picture-vector-10211761.jpg"
-                />
+                {
+                  session ? <Avatar
+                    alt="Remy Sharp"
+                    src={session.user.image}
+                  />
+                    :
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="https://cdn2.vectorstock.com/i/1000x1000/17/61/male-avatar-profile-picture-vector-10211761.jpg"
+                    />
+                }
+
               </IconButton>
             </Tooltip>
           </span>
         </div>
       </div>
+
+      {/* Mobile navigation */}
       <AppBar
         position="static"
         sx={{ backgroundColor: "transparent", boxShadow: "none" }}
@@ -133,6 +166,8 @@ const Nav = () => {
               >
                 <MenuIcon className=" text-[#fff] " />
               </IconButton>
+
+              {/* Mobile navigation menu */}
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorElNav}
@@ -152,9 +187,12 @@ const Nav = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page.route} onClick={handleCloseNavMenu}>
+                  <Link href={page.route} key={page.route}>
+                   <MenuItem key={page.route} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page.nav}</Typography>
                   </MenuItem>
+                  </Link>
+                 
                 ))}
                 <Box sx={{ flexGrow: 0, padding: "6px" }}>
                   <Menu
@@ -173,15 +211,31 @@ const Nav = () => {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                   >
-                    {settings.map((setting) => (
-                      <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                        <Typography textAlign="center">{setting}</Typography>
-                      </MenuItem>
-                    ))}
+                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                      <Typography textAlign="center">Home</Typography>
+                    </MenuItem>
+                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                      <Typography textAlign="center">Profile</Typography>
+                    </MenuItem>
+                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                      <Typography textAlign="center">Dashboard</Typography>
+                    </MenuItem>
+
+                    {/* Conditionally rendering Logout/Sign In based on session */}
+                    {
+                      session ?
+                        <MenuItem onClick={handleLogout} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                          <Typography textAlign="center">Log Out</Typography>
+                        </MenuItem>
+                        :
+                        <MenuItem onClick={handleSignIn} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                          <Typography textAlign="center">Sign In</Typography>
+                        </MenuItem>
+                    }
                   </Menu>
                   <span className="flex flex-col gap-2">
                     <Link href='/usercheck'>
-                      <button className="border-[1px] border-[#252525] py-2 rounded-[20px] mx-[10px]">
+                      <button className=" py-2 mx-[10px]">
                         Sign In
                       </button>
                     </Link>
@@ -189,7 +243,8 @@ const Nav = () => {
                 </Box>
               </Menu>
             </Box>
-            {/* mobile */}
+
+            {/* Logo in mobile */}
             <Typography
               variant="h5"
               noWrap
@@ -206,9 +261,10 @@ const Nav = () => {
                 textDecoration: "none",
               }}
             >
-              <Image src={LOGO} width={100} height={100} alt="Logo" />
+              <Image src={LOGO} width={100} sx={{ height: "auto" }} alt="Logo" />
             </Typography>
 
+            {/* User menu in desktop */}
             <Box
               sx={{
                 display: "flex",
@@ -234,13 +290,32 @@ const Nav = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
+
+                {/* User menu items */}
+                <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                  <Typography textAlign="center">Home</Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                <Typography textAlign="center">Profile</Typography>
+              </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                  <Typography textAlign="center">Dashboard</Typography>
+                </MenuItem>
+
+                {/* Conditionally rendering Logout or Sign In based on session */}
+                {
+                  session ?
+                    <MenuItem onClick={handleLogout} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                      <Typography textAlign="center">Log Out</Typography>
+                    </MenuItem>
+                    :
+                    <MenuItem onClick={handleSignIn} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                      <Typography textAlign="center">Sign In</Typography>
+                    </MenuItem>
+                }
+
               </Menu>
-            </Box>
+            </Box> 
           </Toolbar>
         </Container>
       </AppBar>

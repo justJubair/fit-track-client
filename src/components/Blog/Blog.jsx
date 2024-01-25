@@ -2,10 +2,9 @@
 import { Avatar, Button } from "@mui/material";
 import BlogCard from "./BlogCard";
 
-import './Blog.css';
 import axios from "axios";
-import { VerticalAlignBottom } from "@mui/icons-material";
-import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import './Blog.css';
 
 
 const Blog = () => {
@@ -68,9 +67,22 @@ const Blog = () => {
             description,
             image: dbResponse.data.data.url,
             time
-
         }
         console.log(blog)
+        const res = await axios.post("http://localhost:5000/api/v1/blogs", blog)
+        if (res.data._id) {
+            toast.success('🦄 Wow so easy!', {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            form.reset()
+        }
 
     }
     return (
@@ -116,19 +128,16 @@ const Blog = () => {
             {/* recent blogs */}
             <div className='lg:px-10'>
                 <h3 className=' font-semibold text-3xl p-6'>Recent Post</h3>
-
-                {/* challengecard will be replaced with blog cards */}
-                {/* TODO: Design Blog Cards */}
-
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-4'>
                     {/* mapping all services one by one */}
                     {challenges.map((challenge, i) => (
                         <BlogCard key={i} challenge={challenge} />
                     ))}
-
                 </div>
             </div>
+            <ToastContainer />
         </div>
+
     );
 };
 

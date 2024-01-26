@@ -1,50 +1,54 @@
 "use client";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import Service from "@/components/Services/Service";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
-  Checkbox,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
   FormControl,
   FormControlLabel,
-  FormGroup,
-  Paper,
   Radio,
   RadioGroup,
   TextField,
   Typography,
 } from "@mui/material";
-import LOGO from "../../../assets/images/logo04.png";
-import Image from "next/image";
+import Paper from "@mui/material/Paper";
 import { Controller, useForm } from "react-hook-form";
+import { CustomCard } from "@tsamantanis/react-glassmorphism";
+import Image from "next/image";
+import LOGO from "../../../assets/images/logo02.png";
+import { useSession } from "next-auth/react";
+import { toast } from "react-toastify";
+import submitHealthInfo from "@/app/api/post/postUserHealthInfo";
 
 
 const UserInfoDialog = ({ serv }) => {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
+
   const {
     control,
     handleSubmit,
     formState: { errors },
-    getValues,
   } = useForm();
-  const username = "SampleUsername"; 
-  const email = "sample@email.com";
+  const { data: session } = useSession();
 
-  
+  const email = session?.user?.email;
+  const username = session?.user?.name;
+
+
   const onSubmit = (data) => {
-    // Add username and email to the form data
     const formData = {
       username: username,
       email: email,
       ...data,
     };
 
-    console.log("Form Data:", formData);
-    return handleClose();
+   
+    submitHealthInfo(formData);
+    toast.success("Hello World!");
+    handleClose();
   };
 
   const handleClickOpen = (scrollType) => () => {
@@ -68,8 +72,16 @@ const UserInfoDialog = ({ serv }) => {
 
   return (
     <>
-      <Button onClick={handleClickOpen("paper")}>
-        <Service onClick={handleClickOpen("paper")} serv={serv}></Service>
+      <Button
+        sx={{
+          my: 2,
+          color: { xs: "#000000", md: "#fff" },
+          display: "block",
+          fontWeight: { xs: "regular", md: "bold" },
+        }}
+        onClick={handleClickOpen("paper")}
+      >
+        Customized Diet
       </Button>
       <Dialog
         open={open}
@@ -77,132 +89,199 @@ const UserInfoDialog = ({ serv }) => {
         scroll={scroll}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
+        PaperComponent={(props) => (
+          <Paper
+            {...props}
+            style={{ backgroundColor: "transparent", boxShadow: "none" }}
+          />
+        )}
       >
-        <DialogTitle id="scroll-dialog-title">
-          <Image src={LOGO} width={150} height={150} alt="Logo" />
-        </DialogTitle>
-        <DialogContent dividers={scroll === "paper"}>
-          <Typography variant="h5">Exercise Suggestion Form</Typography>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            style={{ width: "100%", marginTop: 10 }}
+        <CustomCard
+          effectColor="#00000"
+          color="#14AEFF"
+          blur={10}
+          borderRadius={0}
+        >
+          <DialogTitle
+            sx={{ mx: "auto", display: "flex", justifyContent: "center" }}
+            id="scroll-dialog-title"
           >
-            <Typography variant="subtitle1">Username</Typography>
-            <TextField
-              label="Username"
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              InputProps={{ readOnly: true }}
-              value={username} // Replace with the actual username
-            />
-
-            <Typography variant="subtitle1">Email</Typography>
-            <TextField
-              label="Email"
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              InputProps={{ readOnly: true }}
-        value={email} // Replace with the actual email
-            />
-            <Controller
-              name="weight"
-              control={control}
-              defaultValue=""
-              rules={{
-                required: "Weight is required",
-                pattern: {
-                  value: /^\d+$/,
-                  message: "Please enter a valid weight (Numbers only)",
-                },
+            <Image src={LOGO} width={150} sx={{ height: "auto" }} alt="Logo" />
+          </DialogTitle>
+          <DialogContent dividers={scroll === "paper"}>
+            <Typography
+              sx={{
+                color: "#fff",
+                textAlign: "center",
+                fontWeight: "bold",
+                textTransform: "uppercase",
               }}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  label="Weight (kg)"
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  error={!!errors.weight}
-                  helperText={errors.weight?.message}
-                />
-              )}
-            />
+              variant="h5"
+            >
+              Custom Diet Form
+            </Typography>
 
-            <Controller
-              name="height"
-              control={control}
-              defaultValue=""
-              rules={{
-                required: "Height is required",
-                pattern: {
-                  value: /^\d+$/,
-                  message: "Please enter a valid height (Numbers only)",
-                },
-              }}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  label="Height (cm)"
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  error={!!errors.height}
-                  helperText={errors.height?.message}
-                />
-              )}
-            />
-
-            <FormControl component="fieldset" margin="normal">
-              <Typography variant="subtitle1">Current Fitness Level</Typography>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              style={{ width: "100%", marginTop: 10 }}
+            >
               <Controller
-                name="fitnessLevel"
+                name="age"
                 control={control}
                 defaultValue=""
-                rules={{ required: "Fitness level is required" }}
+                rules={{
+                  required: "Age is required",
+                  pattern: {
+                    value: /^\d+$/,
+                    message: "Please enter a valid age (Numbers only)",
+                  },
+                }}
                 render={({ field }) => (
-                  <RadioGroup {...field} row>
-                    <FormControlLabel
-                      value="beginner"
-                      control={<Radio />}
-                      label="Beginner"
-                    />
-                    <FormControlLabel
-                      value="intermediate"
-                      control={<Radio />}
-                      label="Intermediate"
-                    />
-                    <FormControlLabel
-                      value="advanced"
-                      control={<Radio />}
-                      label="Advanced"
-                    />
-                  </RadioGroup>
+                  <TextField
+                    {...field}
+                    label="Age"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    error={!!errors.age}
+                    helperText={errors.age?.message}
+                    InputProps={{
+                      style: { color: "#fff" },
+                    }}
+                    InputLabelProps={{
+                      style: { color: "#fff" },
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#fff",
+                      },
+                    }}
+                  />
                 )}
               />
-              {errors.fitnessLevel && (
-                <Typography color="error">
-                  {errors.fitnessLevel.message}
-                </Typography>
-              )}
-            </FormControl>
+              <Controller
+                name="weight"
+                control={control}
+                defaultValue=""
+                rules={{
+                  required: "Weight is required",
+                  pattern: {
+                    value: /^\d+$/,
+                    message: "Please enter a valid weight (Numbers only)",
+                  },
+                }}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Weight (kg)"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    error={!!errors.weight}
+                    helperText={errors.weight?.message}
+                    InputProps={{
+                      style: { color: "#fff" },
+                    }}
+                    InputLabelProps={{
+                      style: { color: "#fff" },
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#fff",
+                      },
+                    }}
+                  />
+                )}
+              />
 
-          
-          </form>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            onClick={handleSubmit(onSubmit)}
-          >
-            Get Suggestions
-          </Button>
-        </DialogActions>
+              <Controller
+                name="height"
+                control={control}
+                defaultValue=""
+                rules={{
+                  required: "Height is required",
+                  pattern: {
+                    value: /^\d+$/,
+                    message: "Please enter a valid height (Numbers only)",
+                  },
+                }}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Height (cm)"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    error={!!errors.height}
+                    helperText={errors.height?.message}
+                    InputProps={{
+                      style: { color: "#fff" },
+                    }}
+                    InputLabelProps={{
+                      style: { color: "#fff" },
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#fff",
+                      },
+                    }}
+                  />
+                )}
+              />
+
+              <FormControl component="fieldset" margin="normal">
+                <Typography variant="subtitle1" style={{ color: "#fff" }}>
+                  Current Fitness Level
+                </Typography>
+                <Controller
+                  name="fitnessLevel"
+                  control={control}
+                  defaultValue=""
+                  rules={{ required: "Fitness level is required" }}
+                  render={({ field }) => (
+                    <RadioGroup {...field} row>
+                      <FormControlLabel
+                        value="beginner"
+                        control={<Radio style={{ color: "#fff" }} />}
+                        label="Beginner"
+                        style={{ color: "#fff" }}
+                      />
+                      <FormControlLabel
+                        value="intermediate"
+                        control={<Radio style={{ color: "#fff" }} />}
+                        label="Intermediate"
+                        style={{ color: "#fff" }}
+                      />
+                      <FormControlLabel
+                        value="advanced"
+                        control={<Radio style={{ color: "#fff" }} />}
+                        label="Advanced"
+                        style={{ color: "#fff" }}
+                      />
+                    </RadioGroup>
+                  )}
+                />
+                {errors.fitnessLevel && (
+                  <Typography color="error">
+                    {errors.fitnessLevel.message}
+                  </Typography>
+                )}
+              </FormControl>
+            </form>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Cancel</Button>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              onClick={handleSubmit(onSubmit)}
+            >
+              Get Suggestions
+            </Button>
+          </DialogActions>
+        </CustomCard>
       </Dialog>
     </>
   );

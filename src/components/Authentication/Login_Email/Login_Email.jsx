@@ -9,14 +9,19 @@ import { useRouter } from 'next/navigation';
 import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
-import { useState } from 'react';
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useEffect, useState } from 'react';
+import { useSession, signIn } from "next-auth/react"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Login_Email = () => {
 
+  const notify = () => toast("Logged In!");
   const { data: session } = useSession();
-  console.log(session)
-  const isUser = true;
+ 
+
   const router = useRouter();
+
 
   const style = {
     position: 'absolute',
@@ -30,22 +35,20 @@ const Login_Email = () => {
     p: 4,
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const email = formData.get('email');
-    const password = formData.get('password');
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+   
 
-    if (email === '') {
-      return alert("Please write your email!")
-    } else if (isUser) {
-      router.push('/login')
-      alert('user ase')
-    } else {
-      alert('user nai')
-      router.push('/register')
-    }
+    const res = await signIn('credentials', {
+      email: email,
+      password: password,
+    })
+    notify();
   }
+
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -63,6 +66,13 @@ const Login_Email = () => {
       router.push('/')
     }
   }
+  useEffect(() => {
+    if (session) {
+      setTimeout(function () {
+        router.push('/')
+      }, 2000);
+    }
+  }, [session])
 
   return (
     <Container component="main" maxWidth="md">
@@ -88,6 +98,16 @@ const Login_Email = () => {
             name="email"
             autoComplete="email"
             autoFocus
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
           />
           <Modal
             aria-labelledby="transition-modal-title"
@@ -136,13 +156,25 @@ const Login_Email = () => {
         <Typography component="h5" variant="h5" sx={{ color: '#378AE5', fontWeight: '600', marginBottom: '20px', textAlign: 'center' }}>
           Or
         </Typography>
-        <Box sx={{ width: { xs: '100%', md: '50%' }}}>
+        <Box sx={{ width: { xs: '100%', md: '50%' } }}>
           <Box className='grid gird-cols-1 gap-4'>
-            <Box onClick={() => handleSignUpGoogle()} sx={{ display: 'flex', justifyContent:'center' ,gap: '5px', alignItems: 'center', backgroundColor: '#fff', borderRadius: '5px', padding: '8px', color: '#252525', cursor: 'pointer', boxShadow:3 }}><img className='max-w-[50px]' src='https://i.ibb.co/kmsjzFF/Animation-1700836595835.gif' /><span className='text-lg'> Continue with Google</span></Box>
-            <Box onClick={() => handleSignUpFacebook()} sx={{ display: 'flex', justifyContent:'center' ,gap: '5px', alignItems: 'center', backgroundColor: '#252525', borderRadius: '5px', padding: '8px', color: '#fff', cursor: 'pointer', boxShadow:3  }}><img className='max-w-[50px]' src='https://i.ibb.co/5R4LB8n/Animation-1706101317533.gif' /><span className='text-lg'> Continue with Facebook</span></Box>
+            <Box onClick={() => handleSignUpGoogle()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#fff', borderRadius: '5px', padding: '8px', color: '#252525', cursor: 'pointer', boxShadow: 3 }}><img className='max-w-[50px]' src='https://i.ibb.co/kmsjzFF/Animation-1700836595835.gif' /><span className='text-lg'> Continue with Google</span></Box>
+            <Box onClick={() => handleSignUpFacebook()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#252525', borderRadius: '5px', padding: '8px', color: '#fff', cursor: 'pointer', boxShadow: 3 }}><img className='max-w-[50px]' src='https://i.ibb.co/5R4LB8n/Animation-1706101317533.gif' /><span className='text-lg'> Continue with Facebook</span></Box>
           </Box>
         </Box>
       </Box>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </Container>
   );
 };

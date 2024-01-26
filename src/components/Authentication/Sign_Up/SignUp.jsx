@@ -12,13 +12,70 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Grid from '@mui/material/Grid';
 import { useSession, signIn, signOut } from "next-auth/react"
+import { useState } from 'react';
 
 const SignUp = () => {
 
     const { data: session } = useSession();
 
     const [isUser, setUser] = React.useState(false);
+
+    // state to store form data
+    const [formData, setFormData] = React.useState({});
+    // console.log(formData)
+    // state to handle error message
+    const [errorMessage, setErrorMessage] = useState('');
+
     const router = useRouter();
+
+    // Terms and conditions modal open and close function
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    // function for google sign in
+    const handleSignUpGoogle = () => {
+        signIn('google')
+        if (session) {
+            router.push('/')
+        }
+    }
+
+    // function for facebook sign in
+    const handleSignUpFacebook = () => {
+        signIn('facebook')
+        if (session) {
+            router.push('/')
+        }
+    }
+
+    const handleChange = (e) => {
+        const value = e.target.value;
+        const name = e.target.name;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(0);
+        setErrorMessage('')
+        const res = await fetch('/api/Users', {
+            method: 'POST',
+            body: JSON.stringify({ formData }),
+            'content-type': 'application/json',
+        });
+
+        if (!res.ok) {
+            const response = await res.json();
+            setErrorMessage(response.message);
+        } else {
+            router.refresh();
+            router.push('/')
+        }
+    }
+    //custom style for terms and conditions
     const style = {
         position: 'absolute',
         top: '50%',
@@ -31,40 +88,6 @@ const SignUp = () => {
         p: 4,
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const email = formData.get('email');
-        const password = formData.get('password');
-        console.log('Email:', email);
-        console.log('Password:', password);
-        if (email === '') {
-            return alert("Please write your email!")
-        } else if (isUser) {
-            router.push('/login')
-            alert('user ase')
-        } else {
-            alert('user nai')
-            router.push('/register')
-        }
-    }
-
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
-    const handleSignUpGoogle = () => {
-        signIn('google')
-        if (session) {
-            router.push('/')
-        }
-    }
-    const handleSignUpFacebook = () => {
-        signIn('facebook')
-        if (session) {
-            router.push('/')
-        }
-    }
 
     return (
         <Container component="main" maxWidth="md">
@@ -80,7 +103,7 @@ const SignUp = () => {
                 <Typography component="h1" variant="h4" sx={{ width: { xs: '100%', md: '50%' }, color: '#378AE5', fontWeight: '600', marginTop: '25px' }}>
                     Create your account & join with us!
                 </Typography>
-                <Box component="form" onSubmit={(e) => handleSubmit(e)} noValidate sx={{ mt: 1, mb: 3, width: { xs: '100%', md: '50%' } }}>
+                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, mb: 3, width: { xs: '100%', md: '50%' } }}>
                     <Grid container spacing={2}>
                         <Grid item xs>
                             <TextField
@@ -91,6 +114,7 @@ const SignUp = () => {
                                 label="First Name"
                                 type="text"
                                 id="name"
+                                onChange={handleChange}
                             />
                         </Grid>
                         <Grid item>
@@ -102,6 +126,7 @@ const SignUp = () => {
                                 label="Last Name"
                                 type="text"
                                 id="lastName"
+                                onChange={handleChange}
                             />
                         </Grid>
                     </Grid>
@@ -114,6 +139,7 @@ const SignUp = () => {
                         name="email"
                         autoComplete="email"
                         autoFocus
+                        onChange={handleChange}
                     />
                     <TextField
                         margin="normal"
@@ -124,7 +150,11 @@ const SignUp = () => {
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        onChange={handleChange}
                     />
+                    {errorMessage && <Typography component="h6" variant="h6" sx={{ fontSize: '1rem', color: 'red', fontWeight: '400', textAlign: 'start', marginTop:'10px' }}>
+                        {errorMessage}
+                    </Typography>}
                     <Modal
                         aria-labelledby="transition-modal-title"
                         aria-describedby="transition-modal-description"
@@ -149,7 +179,7 @@ const SignUp = () => {
                             </Box>
                         </Fade>
                     </Modal>
-                    <Typography component="h6" variant="h6" sx={{ fontSize: '16px', color: 'gray', fontWeight: '400', marginTop: '25px' }}>
+                    <Typography component="h6" variant="h6" sx={{ fontSize: '16px', color: 'gray', fontWeight: '400' }}>
                         By continuing, <span className='cursor-pointer underline' onClick={handleOpen}> I agree to Nike’s Privacy Policy and Terms of Use.</span>
                     </Typography>
                     <Button
@@ -168,7 +198,9 @@ const SignUp = () => {
                     >
                         Continue
                     </Button>
+
                 </Box>
+
                 <Typography component="h5" variant="h5" sx={{ color: '#378AE5', fontWeight: '600', marginBottom: '20px', textAlign: 'center' }}>
                     Or
                 </Typography>

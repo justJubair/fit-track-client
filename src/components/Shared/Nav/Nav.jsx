@@ -43,7 +43,7 @@ const pages = [
   },
 ];
 
-const Nav = async() => {
+const Nav = async () => {
 
   //loading state
   const [loader, setLoader] = useState(true);
@@ -80,10 +80,11 @@ const Nav = async() => {
     }
   }, [session])
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     signOut();
   }
-  const handleSignIn = () =>{
+  const handleSignIn = () => {
+    signIn()
     router.push('/usercheck')
   }
   return (
@@ -121,7 +122,7 @@ const Nav = async() => {
         <div className="flex gap-4 text-white font-bold items-center">
           <Link href="/register">Join Us</Link>
           <span>|</span>
-          <Link href="/usercheck">Sign In</Link>
+          <Button onClick={() => { signIn() }} sx={{ color: '#fff' }}>Sign In</Button>
           <span>|</span>
           <Link href="#">Help </Link>
 
@@ -130,10 +131,11 @@ const Nav = async() => {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 {
-                  session ? <Avatar
-                    alt="Remy Sharp"
-                    src={session.user.image}
-                  />
+                  session ?
+                    <Avatar
+                      alt="Remy Sharp"
+                      src={session.user.image}
+                    />
                     :
                     <Avatar
                       alt="Remy Sharp"
@@ -188,11 +190,11 @@ const Nav = async() => {
               >
                 {pages.map((page) => (
                   <Link href={page.route} key={page.route}>
-                   <MenuItem key={page.route} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page.nav}</Typography>
-                  </MenuItem>
+                    <MenuItem key={page.route} onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">{page.nav}</Typography>
+                    </MenuItem>
                   </Link>
-                 
+
                 ))}
                 <Box sx={{ flexGrow: 0, padding: "6px" }}>
                   <Menu
@@ -212,7 +214,12 @@ const Nav = async() => {
                     onClose={handleCloseUserMenu}
                   >
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                      <Typography textAlign="center">Home</Typography>
+                      <Typography variant="h5" sx={{ color: '#252525' }}>
+                        {session?.user.email}
+                      </Typography>
+                    </MenuItem>
+                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                      <Link href='/' textAlign="center">Home</Link>
                     </MenuItem>
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Profile</Typography>
@@ -228,7 +235,7 @@ const Nav = async() => {
                           <Typography textAlign="center">Log Out</Typography>
                         </MenuItem>
                         :
-                        <MenuItem onClick={handleSignIn} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                        <MenuItem onClick={() => signIn()} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                           <Typography textAlign="center">Sign In</Typography>
                         </MenuItem>
                     }
@@ -296,8 +303,8 @@ const Nav = async() => {
                   <Typography textAlign="center">Home</Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                <Typography textAlign="center">Profile</Typography>
-              </MenuItem>
+                  <Typography textAlign="center">Profile</Typography>
+                </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                   <Typography textAlign="center">Dashboard</Typography>
                 </MenuItem>
@@ -309,13 +316,13 @@ const Nav = async() => {
                       <Typography textAlign="center">Log Out</Typography>
                     </MenuItem>
                     :
-                    <MenuItem onClick={handleSignIn} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                    <MenuItem onClick={() => signIn()} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Sign In</Typography>
                     </MenuItem>
                 }
 
               </Menu>
-            </Box> 
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>

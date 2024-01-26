@@ -24,7 +24,7 @@ const SignUp = () => {
 
     // state to store form data
     const [formData, setFormData] = React.useState({});
-    // console.log(formData)
+
     // state to handle error message
     const [errorMessage, setErrorMessage] = useState('');
 

@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth";
 
 const Login = () => {
       const session = getServerSession(options)
-      console.log(session)
+    
     return (
         <div className='mt-36 mb-36'>
            <Login_Pass/>

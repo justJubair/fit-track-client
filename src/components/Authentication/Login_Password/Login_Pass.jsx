@@ -22,26 +22,11 @@ const Login_Pass = () => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const password = formData.get('password');
-<<<<<<< HEAD
- 
-
-        // const res = await signIn('credentials',{
-        //     email: userEmail,
-        //     password: password,
-        //     redirect: true,
-        //     callbackUrl:'/'
-        // })
-
-        // console.log('Email:', data);
-        // console.log('Password:', password);
-
-=======
         if (isUser) {
             alert('user ase')
         } else {
             alert('user nai')
         }
->>>>>>> dd3503f549459df869a2af045296d9bf085aadaa
     }
 
     return (

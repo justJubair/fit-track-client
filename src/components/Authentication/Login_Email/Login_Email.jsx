@@ -18,7 +18,7 @@ const Login_Email = () => {
 
   const notify = () => toast("Logged In!");
   const { data: session } = useSession();
-  // console.log(session)
+ 
 
   const router = useRouter();
 
@@ -40,7 +40,7 @@ const Login_Email = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    // console.log(email, password)
+   
 
     const res = await signIn('credentials', {
       email: email,

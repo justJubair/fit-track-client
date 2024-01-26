@@ -23,10 +23,10 @@ export const options = {
       },
       async authorize(credentials, req) {
 
-         console.log(credentials.email, credentials.password)
+     
         try {
           const findUser = await User.findOne({ email: credentials.email })
-          console.log(findUser)
+       
 
           //validate user
           const validatePass = await bcrypt.compare( credentials.password, findUser.password )

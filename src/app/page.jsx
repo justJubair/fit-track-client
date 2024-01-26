@@ -8,6 +8,7 @@ import Services from "@/components/Services/Services";
 import Footer from "@/components/Shared/Footer/Footer";
 import Nav from "@/components/Shared/Nav/Nav";
 import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const HomePage = () => {
     return (

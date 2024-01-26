@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import HoverVideoPlayer from 'react-hover-video-player';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from 'react';
@@ -17,14 +16,7 @@ const Service = ({ serv }) => {
     return (
         <div className='rounded-md mx-4 lg:mx-0' data-aos="zoom-in-up">
             <Link href='#' className='rounded-md'>
-                {/* HoverVideoPlayer for video hover on play */}
-                {
-                    serv.url &&
-                    <HoverVideoPlayer
-                        style={{ borderRadius: '10px' }}
-                        videoSrc={serv.url}
-                        pausedOverlay={
-                            <img
+            <Image width={300} height={300} sx={{ height: "auto" }}
                                 src={serv.thumbnail}
                                 alt=""
                                 style={{
@@ -35,14 +27,6 @@ const Service = ({ serv }) => {
                                     borderRadius: '10px'
                                 }}
                             />
-                        }
-                        loadingOverlay={
-                            <div className="loading-overlay">
-                                <div className="loading-spinner" />
-                            </div>
-                        }
-                    />
-                }
 
             </Link>
         </div>

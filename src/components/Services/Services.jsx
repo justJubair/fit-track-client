@@ -1,6 +1,5 @@
 import { getAllServices } from "@/utils/getAllServices";
 import Service from "./Service";
-import UserInfoDialog from "../CustomizeDiet/FormDialog/UserInfoDialog";
 
 
 const Services = async () => {

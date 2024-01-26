@@ -13,6 +13,8 @@ import Fade from '@mui/material/Fade';
 import Grid from '@mui/material/Grid';
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
 
@@ -27,6 +29,10 @@ const SignUp = () => {
     const [errorMessage, setErrorMessage] = useState('');
 
     const router = useRouter();
+
+    const notify = () => toast("Registration successful!");
+
+
 
     // Terms and conditions modal open and close function
     const [open, setOpen] = React.useState(false);
@@ -71,8 +77,11 @@ const SignUp = () => {
             const response = await res.json();
             setErrorMessage(response.message);
         } else {
+            notify();
             router.refresh();
-            router.push('/')
+            setTimeout(function(){
+                router.push('/')
+           }, 2000);
         }
     }
     //custom style for terms and conditions
@@ -110,7 +119,7 @@ const SignUp = () => {
                                 margin="normal"
                                 required
                                 fullWidth
-                                name="firstname"
+                                name="fname"
                                 label="First Name"
                                 type="text"
                                 id="name"
@@ -122,7 +131,7 @@ const SignUp = () => {
                                 margin="normal"
                                 required
                                 fullWidth
-                                name="lastname"
+                                name="lname"
                                 label="Last Name"
                                 type="text"
                                 id="lastName"
@@ -211,6 +220,18 @@ const SignUp = () => {
                     </Box>
                 </Box>
             </Box>
+            <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </Container>
     );
 };

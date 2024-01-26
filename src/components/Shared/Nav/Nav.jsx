@@ -16,6 +16,7 @@ import "./Nav.css";
 import Image from "next/image";
 import LOGO from "../../../assets/images/logo02.png";
 import Link from "next/link";
+import UserInfoDialog from "@/components/CustomizeDiet/FormDialog/UserInfoDialog";
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from "next/navigation";
 
@@ -29,10 +30,7 @@ const pages = [
     nav: "Challenges",
     route: "/challenges",
   },
-  {
-    nav: "Accessories",
-    route: "/accessories"
-  },
+  
   {
     nav: "Pricing",
     route: "/pricing",
@@ -43,7 +41,7 @@ const pages = [
   },
 ];
 
-const Nav = async () => {
+const Nav =() => {
 
   //loading state
   const [loader, setLoader] = useState(true);
@@ -116,11 +114,12 @@ const Nav = async () => {
             </Link>
 
           ))}
+          <UserInfoDialog></UserInfoDialog>
         </Box>
 
         {/* Join/Sign In/Help section */}
         <div className="flex gap-4 text-white font-bold items-center">
-          <Link href="/register">Join Us</Link>
+          <Link href="/api/auth/register">Join Us</Link>
           <span>|</span>
           <Button onClick={() => { signIn() }} sx={{ color: '#fff' }}>Sign In</Button>
           <span>|</span>
@@ -196,6 +195,7 @@ const Nav = async () => {
                   </Link>
 
                 ))}
+                <UserInfoDialog></UserInfoDialog>
                 <Box sx={{ flexGrow: 0, padding: "6px" }}>
                   <Menu
                     sx={{ mt: "45px" }}
@@ -227,6 +227,9 @@ const Nav = async () => {
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Dashboard</Typography>
                     </MenuItem>
+                    <Link href="/diettable"> <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                      <Typography textAlign="center">Diet Chart</Typography>
+                    </MenuItem> </Link>
 
                     {/* Conditionally rendering Logout/Sign In based on session */}
                     {

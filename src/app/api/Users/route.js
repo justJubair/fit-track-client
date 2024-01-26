@@ -6,7 +6,9 @@ export async function POST(req){
     try{
        const body = await req.json();
        const userData = body.formData;
-
+    
+       console.log(userData)
+       
        if(!userData?.email || !userData.password){
         return NextResponse.json(
             {message: 'Please fill all the fields'}, {status: 400}

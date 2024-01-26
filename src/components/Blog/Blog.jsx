@@ -2,6 +2,8 @@
 import { Avatar, Button } from "@mui/material";
 import BlogCard from "./BlogCard";
 
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 import './Blog.css';
 
 
@@ -39,13 +41,49 @@ const Blog = () => {
             createdBy: "Frank",
         },
     ];
-    const handelBlog = (e) => {
+    const handelBlog = async (e) => {
         e.preventDefault()
         const form = e.target
         const title = form.title.value
         const description = form.description.value
-        const photo = form.photo.value
-        console.log({ title, description, photo })
+        const imageFile = { image: form.photo?.files[0] }
+
+        const currentDate = new Date();
+        const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+
+        const time = `${monthNames[currentDate.getMonth()]} ${currentDate.getDate()}, ${currentDate.getFullYear()}`;
+
+        const dbResponse = await axios.post("https://api.imgbb.com/1/upload?key=ae66490f64c3dbadf60adcdd1d5d93f7", imageFile, {
+            headers: {
+                "content-type": "multipart/form-data",
+            },
+        });
+        console.log(dbResponse.data)
+        const blog = {
+            title,
+            description,
+            image: dbResponse.data.data.url,
+            time
+        }
+        console.log(blog)
+        const res = await axios.post("http://localhost:5000/api/v1/blogs", blog)
+        if (res.data._id) {
+            toast.success('🦄 Wow so easy!', {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            form.reset()
+        }
+
     }
     return (
         <div className='mb-[120px]' >
@@ -57,7 +95,7 @@ const Blog = () => {
                     <h1 className="text-xl uppercase text-center mb-4 font-bold">Upload Your Blog</h1>
                     <div className=" flex items-center gap-4">
                         <Avatar alt="Bravis Howard" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2AAr5br4BWpaw7bNRDCEzfKzMcO3PzzTqOw&usqp=CAU" sx={{ mb: "20px" }} />
-                        {/* <TextField iid="outlined-basic" label="Outlined" variant="outlined" fullWidth  sx={{color:"white"}} /> */}
+
                         <div className="relative z-0 w-full mb-6 group">
                             <input
                                 type="text"
@@ -79,7 +117,7 @@ const Blog = () => {
                     {/* image input file */}
                     <div className="flex gap-10 mt-5">
                         <div className="flex-1 ">
-                            <input type="file" name="photo" className="border bg-blue-600 rounded-lg  w-full cursor-pointer" required />
+                            <input type="file" name="photo" className="border bg-gray-600 rounded-lg  w-full cursor-pointer" required />
                         </div>
                         <div className="flex-1">
                             <Button type="submit" variant="outlined" fullWidth size="small" sx={{ fontWeight: "bold" }}>Post</Button>
@@ -90,19 +128,16 @@ const Blog = () => {
             {/* recent blogs */}
             <div className='lg:px-10'>
                 <h3 className=' font-semibold text-3xl p-6'>Recent Post</h3>
-
-                {/* challengecard will be replaced with blog cards */}
-                {/* TODO: Design Blog Cards */}
-
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-4'>
                     {/* mapping all services one by one */}
                     {challenges.map((challenge, i) => (
                         <BlogCard key={i} challenge={challenge} />
                     ))}
-
                 </div>
             </div>
+            <ToastContainer />
         </div>
+
     );
 };
 

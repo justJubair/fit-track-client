@@ -5,7 +5,8 @@ mongoose.Promise = global.Promise;
 
 const userShcema = new Schema(
     {
-        name: String,
+        fname: String,
+        lname: String,
         email: String,
         password:String
     },

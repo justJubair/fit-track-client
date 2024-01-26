@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import {
+  Box,
   Button,
   Dialog,
   DialogActions,
@@ -15,13 +16,11 @@ import {
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { Controller, useForm } from "react-hook-form";
-// import { CustomCard } from "@tsamantanis/react-glassmorphism";
 import Image from "next/image";
 import LOGO from "../../../assets/images/logo02.png";
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
 import submitHealthInfo from "@/app/api/post/postUserHealthInfo";
-
 
 const UserInfoDialog = ({ serv }) => {
   const [open, setOpen] = useState(false);
@@ -37,7 +36,6 @@ const UserInfoDialog = ({ serv }) => {
   const email = session?.user?.email;
   const username = session?.user?.name;
 
-
   const onSubmit = (data) => {
     const formData = {
       username: username,
@@ -45,9 +43,7 @@ const UserInfoDialog = ({ serv }) => {
       ...data,
     };
 
-   
     submitHealthInfo(formData);
-    toast.success("Hello World!");
     handleClose();
   };
 
@@ -96,11 +92,12 @@ const UserInfoDialog = ({ serv }) => {
           />
         )}
       >
-        {/* <CustomCard
-          effectColor="#00000"
-          color="#14AEFF"
-          blur={10}
-          borderRadius={0}
+        <Box
+          sx={{
+            backgroundColor: (theme) => `rgba(90, 80, 85, 0.44)`,
+            blur: 100,
+            borderRadius: 0,
+          }}
         >
           <DialogTitle
             sx={{ mx: "auto", display: "flex", justifyContent: "center" }}
@@ -281,7 +278,7 @@ const UserInfoDialog = ({ serv }) => {
               Get Suggestions
             </Button>
           </DialogActions>
-        </CustomCard> */}
+        </Box>
       </Dialog>
     </>
   );

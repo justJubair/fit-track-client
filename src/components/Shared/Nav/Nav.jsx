@@ -43,7 +43,7 @@ const pages = [
   },
 ];
 
-const Nav = async() => {
+const Nav = () => {
 
   //loading state
   const [loader, setLoader] = useState(true);
@@ -212,7 +212,9 @@ const Nav = async() => {
                     onClose={handleCloseUserMenu}
                   >
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                    <Link href="/">
                       <Typography textAlign="center">Home</Typography>
+                    </Link>
                     </MenuItem>
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Profile</Typography>

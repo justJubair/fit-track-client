@@ -61,14 +61,14 @@ const Blog = () => {
                 "content-type": "multipart/form-data",
             },
         });
-        console.log(dbResponse.data)
+
         const blog = {
             title,
             description,
             image: dbResponse.data.data.url,
             time
         }
-        console.log(blog)
+  
         const res = await axios.post("http://localhost:5000/api/v1/blogs", blog)
         if (res.data._id) {
             toast.success('🦄 Wow so easy!', {

@@ -73,7 +73,6 @@ const Nav = () => {
   // useEffect to update loader state when session is available
   useEffect(() => {
     if (session) {
-      // console.log(session)
       setLoader(false)
     }
   }, [session])

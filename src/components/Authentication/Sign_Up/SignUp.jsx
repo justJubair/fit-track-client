@@ -77,6 +77,7 @@ const SignUp = () => {
             const response = await res.json();
             setErrorMessage(response.message);
         } else {
+
             notify();
             router.refresh();
             setTimeout(function(){

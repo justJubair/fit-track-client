@@ -65,7 +65,7 @@ const DietTable = () => {
         if (email) {
           const planData = await getDietPlan(email);
           setDietPlanData(planData);
-      
+
           setLoader(false);
         }
       } catch (error) {
@@ -156,32 +156,31 @@ const DietTable = () => {
                 </React.Fragment>
               ))}
               <TableRow>
-                <TableCell
-                  colSpan={4}
-                  style={{ marginTop: "20px", border: "0" }}
-                >
+                <TableCell colSpan={4} style={{ marginTop: "20px", border: "0" }}>
                   <Table>
-                    <TableRow>
-                      <TableCell sx={{ fontWeight: "bold" }} rowSpan={5}>
-                        Nutritional Information:
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Calories</TableCell>
-                      <TableCell>{dietPlanData.calories}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Protein</TableCell>
-                      <TableCell>{dietPlanData.protein_grams}g</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Carbs</TableCell>
-                      <TableCell>{dietPlanData.carbs_grams}g</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Fat</TableCell>
-                      <TableCell>{dietPlanData.fat_grams}g</TableCell>
-                    </TableRow>
+                    <tbody>
+                      <TableRow>
+                        <TableCell sx={{ fontWeight: "bold" }} rowSpan={5}>
+                          Nutritional Information:
+                        </TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Calories</TableCell>
+                        <TableCell>{dietPlanData.calories}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Protein</TableCell>
+                        <TableCell>{dietPlanData.protein_grams}g</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Carbs</TableCell>
+                        <TableCell>{dietPlanData.carbs_grams}g</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Fat</TableCell>
+                        <TableCell>{dietPlanData.fat_grams}g</TableCell>
+                      </TableRow>
+                    </tbody>
                   </Table>
                 </TableCell>
               </TableRow>
@@ -197,7 +196,7 @@ const DietTable = () => {
           }}
           id="scroll-dialog-title"
         >
-          <Image src={LOGO} width={150} height={150} alt="Logo" />
+          <Image src={LOGO} width={150} sx={{height: "auto"}} alt="Logo" />
         </Box>
       </div>
       <Button
@@ -226,7 +225,7 @@ const DietTable = () => {
         }}
         onClick={downloadPDF}
       >
-        Download PDf
+        Download PDF
       </Button>
     </div>
   );

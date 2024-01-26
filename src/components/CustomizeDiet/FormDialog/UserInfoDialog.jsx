@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { Controller, useForm } from "react-hook-form";
-import { CustomCard } from "@tsamantanis/react-glassmorphism";
+// import { CustomCard } from "@tsamantanis/react-glassmorphism";
 import Image from "next/image";
 import LOGO from "../../../assets/images/logo02.png";
 import { useSession } from "next-auth/react";
@@ -96,7 +96,7 @@ const UserInfoDialog = ({ serv }) => {
           />
         )}
       >
-        <CustomCard
+        {/* <CustomCard
           effectColor="#00000"
           color="#14AEFF"
           blur={10}
@@ -281,7 +281,7 @@ const UserInfoDialog = ({ serv }) => {
               Get Suggestions
             </Button>
           </DialogActions>
-        </CustomCard>
+        </CustomCard> */}
       </Dialog>
     </>
   );

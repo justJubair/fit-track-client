@@ -12,15 +12,11 @@
     "@auth/mongodb-adapter": "^2.0.13",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.15.4",
     "@mui/material": "^5.15.6",
     "@mui/system": "^5.15.6",
     "@react-spring/web": "^9.7.3",
     "@rumess/react-flip-countdown": "^1.2.6",
-    "@studio-freight/lenis": "^1.0.33",
-    "@studio-freight/react-lenis": "^0.0.43",
-    "@tsamantanis/react-glassmorphism": "^1.1.2",
     "aos": "^2.3.4",
     "axios": "^1.6.7",
     "bcrypt": "^5.1.1",
@@ -39,6 +35,7 @@
     "react-loader-spinner": "^6.1.6",
     "react-toastify": "^10.0.4",
     "save": "^2.9.0",
+    "sharp": "^0.33.2",
     "swiper": "^11.0.5"
   },
   "devDependencies": {

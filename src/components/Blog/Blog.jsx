@@ -2,9 +2,10 @@
 import { Avatar, Button } from "@mui/material";
 import BlogCard from "./BlogCard";
 
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import './Blog.css';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 
 
 const Blog = () => {
@@ -41,6 +42,7 @@ const Blog = () => {
             createdBy: "Frank",
         },
     ];
+
     const handelBlog = async (e) => {
         e.preventDefault()
         const form = e.target
@@ -65,13 +67,13 @@ const Blog = () => {
         const blog = {
             title,
             description,
-            image: dbResponse.data.data.url,
+            image: dbResponse?.data?.data?.url,
             time
         }
-  
+
         const res = await axios.post("http://localhost:5000/api/v1/blogs", blog)
-        if (res.data._id) {
-            toast.success('🦄 Wow so easy!', {
+        if (res.data?._id) {
+            toast.success('🦄Blog Uploaded!', {
                 position: "top-center",
                 autoClose: 1000,
                 hideProgressBar: false,
@@ -83,7 +85,6 @@ const Blog = () => {
             });
             form.reset()
         }
-
     }
     return (
         <div className='mb-[120px]' >
@@ -136,6 +137,7 @@ const Blog = () => {
                 </div>
             </div>
             <ToastContainer />
+
         </div>
 
     );

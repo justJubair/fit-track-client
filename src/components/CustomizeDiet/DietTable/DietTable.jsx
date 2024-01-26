@@ -22,7 +22,6 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { useRouter } from "next/navigation";
 
-
 const DietTable = () => {
   const { data: session } = useSession();
   const email = session?.user?.email;
@@ -202,8 +201,34 @@ const DietTable = () => {
           <Image src={LOGO} width={150} height={150} alt="Logo" />
         </Box>
       </div>
-      <Button onClick={goHome}>GO HOME</Button>
-      <Button onClick={downloadPDF}>Download PDf</Button>
+      <Button
+        sx={{
+          mx: "2rem",
+          backgroundColor: "black !important",
+          color: "white",
+          "&:hover": {
+            color: "black",
+            backgroundColor: "white !important",
+          },
+        }}
+        onClick={goHome}
+      >
+        GO HOME
+      </Button>
+      <Button
+        sx={{
+          mx: "2rem",
+          backgroundColor: "blue !important",
+          color: "white",
+          "&:hover": {
+            color: "black",
+            backgroundColor: "white !important",
+          },
+        }}
+        onClick={downloadPDF}
+      >
+        Download PDf
+      </Button>
     </div>
   );
 };

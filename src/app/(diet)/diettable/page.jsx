@@ -7,5 +7,4 @@ const page = () => {
 };
 
 export default page;
-import Blog from "@/components/Blog/Blog";
 

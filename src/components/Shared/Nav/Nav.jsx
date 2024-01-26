@@ -73,15 +73,15 @@ const Nav = () => {
   // useEffect to update loader state when session is available
   useEffect(() => {
     if (session) {
-    
       setLoader(false)
     }
   }, [session])
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     signOut();
   }
-  const handleSignIn = () =>{
+  const handleSignIn = () => {
+    signIn()
     router.push('/usercheck')
   }
   return (
@@ -118,9 +118,9 @@ const Nav = () => {
 
         {/* Join/Sign In/Help section */}
         <div className="flex gap-4 text-white font-bold items-center">
-          <Link href="/register">Join Us</Link>
+          <Link href="/api/auth/register">Join Us</Link>
           <span>|</span>
-          <Link href="/usercheck">Sign In</Link>
+          <Button onClick={() => { signIn() }} sx={{ color: '#fff' }}>Sign In</Button>
           <span>|</span>
           <Link href="#">Help </Link>
 
@@ -129,10 +129,11 @@ const Nav = () => {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 {
-                  session ? <Avatar
-                    alt="Remy Sharp"
-                    src={session.user.image}
-                  />
+                  session ?
+                    <Avatar
+                      alt="Remy Sharp"
+                      src={session.user.image}
+                    />
                     :
                     <Avatar
                       alt="Remy Sharp"
@@ -187,11 +188,11 @@ const Nav = () => {
               >
                 {pages.map((page) => (
                   <Link href={page.route} key={page.route}>
-                   <MenuItem key={page.route} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page.nav}</Typography>
-                  </MenuItem>
+                    <MenuItem key={page.route} onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">{page.nav}</Typography>
+                    </MenuItem>
                   </Link>
-                 
+
                 ))}
                 <UserInfoDialog></UserInfoDialog>
                 <Box sx={{ flexGrow: 0, padding: "6px" }}>
@@ -211,6 +212,11 @@ const Nav = () => {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                   >
+                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                      <Typography variant="h5" sx={{ color: '#252525' }}>
+                        {session?.user.email}
+                      </Typography>
+                    </MenuItem>
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                     <Link href="/">
                       <Typography textAlign="center">Home</Typography>
@@ -233,7 +239,7 @@ const Nav = () => {
                           <Typography textAlign="center">Log Out</Typography>
                         </MenuItem>
                         :
-                        <MenuItem onClick={handleSignIn} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                        <MenuItem onClick={() => signIn()} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                           <Typography textAlign="center">Sign In</Typography>
                         </MenuItem>
                     }
@@ -301,8 +307,8 @@ const Nav = () => {
                   <Typography textAlign="center">Home</Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                <Typography textAlign="center">Profile</Typography>
-              </MenuItem>
+                  <Typography textAlign="center">Profile</Typography>
+                </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                   <Typography textAlign="center">Dashboard</Typography>
                 </MenuItem>
@@ -314,13 +320,13 @@ const Nav = () => {
                       <Typography textAlign="center">Log Out</Typography>
                     </MenuItem>
                     :
-                    <MenuItem onClick={handleSignIn} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                    <MenuItem onClick={() => signIn()} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Sign In</Typography>
                     </MenuItem>
                 }
 
               </Menu>
-            </Box> 
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>

@@ -20,7 +20,8 @@ import Image from "next/image";
 import LOGO from "../../../assets/images/logo02.png";
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
-import submitHealthInfo from "@/utils/postUserHealthInfo";
+import submitHealthInfo from "@/app/api/post/postUserHealthInfo";
+
 
 const UserInfoDialog = ({ serv }) => {
   const [open, setOpen] = useState(false);

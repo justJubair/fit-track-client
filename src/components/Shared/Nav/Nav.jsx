@@ -220,6 +220,9 @@ const Nav =() => {
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Dashboard</Typography>
                     </MenuItem>
+                    <Link href="/diettable"> <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                      <Typography textAlign="center">Diet Chart</Typography>
+                    </MenuItem> </Link>
 
                     {/* Conditionally rendering Logout/Sign In based on session */}
                     {

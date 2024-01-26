@@ -15,21 +15,6 @@ export default function RootLayout({ children }) {
         <AuthProvider>{children}</AuthProvider>
        
       </body>
-      <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-          className="z-50"
-        />
-        {/* Same as */}
-        <ToastContainer />
     </html>
   );
 }

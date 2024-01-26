@@ -41,7 +41,7 @@ const pages = [
   },
 ];
 
-const Nav =() => {
+const Nav = () => {
 
   //loading state
   const [loader, setLoader] = useState(true);
@@ -73,7 +73,7 @@ const Nav =() => {
   // useEffect to update loader state when session is available
   useEffect(() => {
     if (session) {
-      console.log(session)
+      // console.log(session)
       setLoader(false)
     }
   }, [session])
@@ -219,7 +219,9 @@ const Nav =() => {
                       </Typography>
                     </MenuItem>
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                      <Link href='/' textAlign="center">Home</Link>
+                    <Link href="/">
+                      <Typography textAlign="center">Home</Typography>
+                    </Link>
                     </MenuItem>
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Profile</Typography>

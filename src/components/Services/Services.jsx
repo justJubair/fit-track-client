@@ -6,7 +6,7 @@ const Services = async () => {
   
     //get fetched services data from getAllServices.jsx
     const services = await getAllServices();
-    // console.log(services)
+   
 
     return (
         <div className="max-w-[1536px] mx-auto my-24">

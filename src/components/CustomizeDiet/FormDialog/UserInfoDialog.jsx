@@ -36,8 +36,7 @@ const UserInfoDialog = ({ serv }) => {
 
   const email = session?.user?.email;
   const username = session?.user?.name;
-  console.log(email);
-  console.log(username);
+
 
   const onSubmit = (data) => {
     const formData = {
@@ -46,7 +45,7 @@ const UserInfoDialog = ({ serv }) => {
       ...data,
     };
 
-    console.log("Form Data:", formData);
+   
     submitHealthInfo(formData);
     toast.success("Hello World!");
     handleClose();
@@ -107,7 +106,7 @@ const UserInfoDialog = ({ serv }) => {
             sx={{ mx: "auto", display: "flex", justifyContent: "center" }}
             id="scroll-dialog-title"
           >
-            <Image src={LOGO} width={150} height={150} alt="Logo" />
+            <Image src={LOGO} width={150} sx={{ height: "auto" }} alt="Logo" />
           </DialogTitle>
           <DialogContent dividers={scroll === "paper"}>
             <Typography

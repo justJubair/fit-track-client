@@ -14,7 +14,6 @@ import { useSession, signIn, signOut } from "next-auth/react"
 const Login_Email = () => {
 
   const { data: session } = useSession();
-  console.log(session)
   const isUser = true;
   const router = useRouter();
 

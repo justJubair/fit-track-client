@@ -27,7 +27,6 @@ const DietTable = () => {
   const email = session?.user?.email;
   const image = session?.user?.image;
   const name = session?.user?.name;
-  console.log(session.user);
   const [dietPlanData, setDietPlanData] = useState(null);
   const [loader, setLoader] = useState(true);
   const pdfRef = useRef();
@@ -66,7 +65,7 @@ const DietTable = () => {
         if (email) {
           const planData = await getDietPlan(email);
           setDietPlanData(planData);
-          console.log(planData);
+      
           setLoader(false);
         }
       } catch (error) {

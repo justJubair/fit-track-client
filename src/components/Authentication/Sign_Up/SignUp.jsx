@@ -36,8 +36,7 @@ const SignUp = () => {
         const formData = new FormData(e.target);
         const email = formData.get('email');
         const password = formData.get('password');
-        console.log('Email:', email);
-        console.log('Password:', password);
+
         if (email === '') {
             return alert("Please write your email!")
         } else if (isUser) {

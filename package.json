@@ -31,6 +31,7 @@
     "react-hook-form": "^7.49.3",
     "react-hover-video-player": "^10.0.1",
     "react-loader-spinner": "^6.1.6",
+    "react-toastify": "^10.0.4",
     "save": "^2.9.0",
     "swiper": "^11.0.5"
   },

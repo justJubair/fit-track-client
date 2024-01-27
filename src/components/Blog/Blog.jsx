@@ -6,10 +6,12 @@ import { ToastContainer, toast } from "react-toastify";
 import './Blog.css';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
+import { useSession } from "next-auth/react";
 
 
 const Blog = () => {
-
+    const { data: session } = useSession();
+    console.log(session)
     const challenges = [
         {
             name: "Object 1",
@@ -42,7 +44,10 @@ const Blog = () => {
             createdBy: "Frank",
         },
     ];
-
+    const user = {
+        userName: "John",
+        userImageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2AAr5br4BWpaw7bNRDCEzfKzMcO3PzzTqOw&usqp=CAU"
+    }
     const handelBlog = async (e) => {
         e.preventDefault()
         const form = e.target
@@ -68,12 +73,14 @@ const Blog = () => {
             title,
             description,
             image: dbResponse?.data?.data?.url,
-            time
+            time,
+            userName: user?.userName,
+            userImageURL: user?.userImageURL
         }
 
         const res = await axios.post("http://localhost:5000/api/v1/blogs", blog)
         if (res.data?._id) {
-            toast.success('🦄Blog Uploaded!', {
+            toast.success('Blog Uploaded!', {
                 position: "top-center",
                 autoClose: 1000,
                 hideProgressBar: false,
@@ -95,7 +102,7 @@ const Blog = () => {
                     className="lg:w-1/2 mx-auto px-2 py-8 lg:p-10 bg-black rounded-lg text-white" >
                     <h1 className="text-xl uppercase text-center mb-4 font-bold">Upload Your Blog</h1>
                     <div className=" flex items-center gap-4">
-                        <Avatar alt="Bravis Howard" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2AAr5br4BWpaw7bNRDCEzfKzMcO3PzzTqOw&usqp=CAU" sx={{ mb: "20px" }} />
+                        <Avatar alt={session?.user?.name} src={session?.user?.image} sx={{ mb: "20px" }} />
 
                         <div className="relative z-0 w-full mb-6 group">
                             <input

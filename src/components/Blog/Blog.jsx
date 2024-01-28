@@ -7,47 +7,56 @@ import './Blog.css';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import { useSession } from "next-auth/react";
+// import { useState } from "react";
+import getAllBlogs from "@/utils/getAllBlogs";
+import { useState } from "react";
 
 
 const Blog = () => {
+    const [challenges, setChallenges] = useState()
     const { data: session } = useSession();
-    console.log(session)
-    const challenges = [
-        {
-            name: "Object 1",
-            imageURL: "https://images.pexels.com/photos/2827392/pexels-photo-2827392.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            createdBy: "Alice",
-        },
-        {
-            name: "Object 2",
-            imageURL: "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            createdBy: "Bob",
-        },
-        {
-            name: "Object 3",
-            imageURL: "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            createdBy: "Charlie",
-        },
-        {
-            name: "Object 4",
-            imageURL: "https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            createdBy: "David",
-        },
-        {
-            name: "Object 5",
-            imageURL: "https://images.pexels.com/photos/841131/pexels-photo-841131.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            createdBy: "Eve",
-        },
-        {
-            name: "Object 6",
-            imageURL: "https://images.pexels.com/photos/3253501/pexels-photo-3253501.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            createdBy: "Frank",
-        },
-    ];
-    const user = {
-        userName: "John",
-        userImageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2AAr5br4BWpaw7bNRDCEzfKzMcO3PzzTqOw&usqp=CAU"
-    }
+    const getAllBlogs = async () => {
+        const allBlogs = await fetch("http://localhost:5000/api/v1/all-blogs");
+        return allBlogs.json();
+    };
+
+    // Call the function and log the result
+    getAllBlogs().then(result => setChallenges(result));
+
+    // console.log(session)
+    // const challenges = [
+    //     {
+    //         name: "Object 1",
+    //         imageURL: "https://images.pexels.com/photos/2827392/pexels-photo-2827392.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    //         createdBy: "Alice",
+    //     },
+    //     {
+    //         name: "Object 2",
+    //         imageURL: "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    //         createdBy: "Bob",
+    //     },
+    //     {
+    //         name: "Object 3",
+    //         imageURL: "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    //         createdBy: "Charlie",
+    //     },
+    //     {
+    //         name: "Object 4",
+    //         imageURL: "https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    //         createdBy: "David",
+    //     },
+    //     {
+    //         name: "Object 5",
+    //         imageURL: "https://images.pexels.com/photos/841131/pexels-photo-841131.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    //         createdBy: "Eve",
+    //     },
+    //     {
+    //         name: "Object 6",
+    //         imageURL: "https://images.pexels.com/photos/3253501/pexels-photo-3253501.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    //         createdBy: "Frank",
+    //     },
+    // ];
+
     const handelBlog = async (e) => {
         e.preventDefault()
         const form = e.target
@@ -74,8 +83,8 @@ const Blog = () => {
             description,
             image: dbResponse?.data?.data?.url,
             time,
-            userName: user?.userName,
-            userImageURL: user?.userImageURL
+            userName: session.user?.name,
+            userImageURL: session.user?.image
         }
 
         const res = await axios.post("http://localhost:5000/api/v1/blogs", blog)
@@ -138,7 +147,7 @@ const Blog = () => {
                 <h3 className=' font-semibold text-3xl p-6'>Recent Post</h3>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-4'>
                     {/* mapping all services one by one */}
-                    {challenges.map((challenge, i) => (
+                    {challenges?.map((challenge, i) => (
                         <BlogCard key={i} challenge={challenge} />
                     ))}
                 </div>

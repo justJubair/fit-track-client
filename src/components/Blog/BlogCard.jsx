@@ -12,7 +12,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import { IconButton } from "@mui/material";
 const BlogCard = ({ challenge }) => {
-    // console.log(challenge)
+    console.log(challenge)
     return (
         <div className="lg:w-4/5 mx-auto">
             <Card sx={{ backgroundColor: 'white'}}>
@@ -33,7 +33,7 @@ const BlogCard = ({ challenge }) => {
                     title={<Typography variant="h6" sx={{ color: 'black', fontSize: '1rem' }}>
                         {challenge?.userName}
                     </Typography>}
-                    subheader="September 14, 2016"
+                    subheader={challenge?.time}
                     sx={{ title: { color: 'black' } }}
                 />
                 <CardContent>

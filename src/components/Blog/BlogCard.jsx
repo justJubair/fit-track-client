@@ -14,15 +14,16 @@ import { IconButton } from "@mui/material";
 const BlogCard = ({ challenge }) => {
     // console.log(challenge)
     return (
-        <div style={{ margin: '0.5rem 1rem' }}>
-            <Card sx={{ backgroundColor: 'white' }}>
-                <CardMedia
+        <div className="lg:w-4/5 mx-auto">
+            <Card sx={{ backgroundColor: 'white'}}>
+                {/* <CardMedia
                     component="img"
-                    height="200px"
+                    height="100px"
                     image={challenge?.image}
                     alt="Paella dish"
                     // sx={{height:"200px"}}
-                />
+                /> */}
+                <Image width={500} height={500} src={challenge?.image} alt="Card Image" className="w-full h-96 object-cover" />
                 <CardHeader
                     avatar={
                         <Avatar sx={{ backgroundColor: 'black' }} aria-label="recipe">

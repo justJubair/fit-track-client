@@ -105,7 +105,7 @@ const Blog = () => {
     return (
         <div className='mb-[120px]' >
             <div className="bg-black h-16"></div>
-            <div className='mt-10 px-4'>
+            <div className='mt-10 px-2'>
                 <form
                     onSubmit={handelBlog}
                     className="lg:w-1/2 mx-auto px-2 py-8 lg:p-10 bg-black rounded-lg text-white" >
@@ -143,9 +143,9 @@ const Blog = () => {
                 </form>
             </div>
             {/* recent blogs */}
-            <div className='lg:px-10'>
+            <div className='px-2 lg:px-10'>
                 <h3 className=' font-semibold text-3xl p-6'>Recent Post</h3>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-4'>
+                <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-4'>
                     {/* mapping all services one by one */}
                     {challenges?.map((challenge, i) => (
                         <BlogCard key={i} challenge={challenge} />

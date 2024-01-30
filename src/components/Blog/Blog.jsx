@@ -8,20 +8,26 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import { useSession } from "next-auth/react";
 // import { useState } from "react";
-import getAllBlogs from "@/utils/getAllBlogs";
-import { useState } from "react";
-
+// import getAllBlogs from "@/utils/getAllBlogs";
+import { useEffect, useState } from "react";
+// import getAllBlogs from "@/utils/getAllBlogs";
+// const blog = getAllBlogs()
+// console.log(blog)
 
 const Blog = () => {
     const [challenges, setChallenges] = useState()
-    const { data: session } = useSession();
-    const getAllBlogs = async () => {
-        const allBlogs = await fetch("http://localhost:5000/api/v1/all-blogs");
-        return allBlogs.json();
-    };
 
+    const { data: session } = useSession();
+    useEffect(() => {
+        const getAllBlogs = async () => {
+            const allBlogs = await fetch("http://localhost:5000/api/v1/all-blogs");
+            return allBlogs.json();
+        };
+        getAllBlogs().then(result => setChallenges(result));
+    }, [])
+    console.log(challenges)
     // Call the function and log the result
-    getAllBlogs().then(result => setChallenges(result));
+
 
     // console.log(session)
     // const challenges = [
@@ -84,7 +90,9 @@ const Blog = () => {
             image: dbResponse?.data?.data?.url,
             time,
             userName: session.user?.name,
-            userImageURL: session.user?.image
+            userImageURL: session.user?.image,
+            likes: 0,
+            disLikes: 0,
         }
 
         const res = await axios.post("http://localhost:5000/api/v1/blogs", blog)

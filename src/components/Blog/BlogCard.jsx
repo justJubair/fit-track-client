@@ -12,33 +12,36 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import { IconButton } from "@mui/material";
 const BlogCard = ({ challenge }) => {
+    console.log(challenge)
     return (
-        <div style={{ margin: '0.5rem 1rem' }}>
-            <Card sx={{ backgroundColor: 'white' }}>
-                <CardMedia
+        <div className="lg:w-4/5 mx-auto">
+            <Card sx={{ backgroundColor: 'white'}}>
+                {/* <CardMedia
                     component="img"
-                    height="194"
-                    image={challenge.imageURL}
+                    height="100px"
+                    image={challenge?.image}
                     alt="Paella dish"
-                />
+                    // sx={{height:"200px"}}
+                /> */}
+                <Image width={500} height={500} src={challenge?.image} alt="Card Image" className="w-full h-96 object-cover" />
                 <CardHeader
                     avatar={
                         <Avatar sx={{ backgroundColor: 'black' }} aria-label="recipe">
-                            <Image width={500} height={500} src="https://imgs.search.brave.com/srvbJUX3E27xiBy5dZpnZTvW5yjuZhn50u4FeP1V43Y/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9taXJv/Lm1lZGl1bS5jb20v/djIvMSpNNmRmZmZo/dVgySFVCSXpSV3Zm/ZWdBLmpwZWc" alt="" />
+                            <Image width={500} height={500} src={challenge?.userImageURL} alt="" />
                         </Avatar>
                     }
                     title={<Typography variant="h6" sx={{ color: 'black', fontSize: '1rem' }}>
-                        {challenge.createdBy.toUpperCase()}
+                        {challenge?.userName}
                     </Typography>}
-                    subheader="September 14, 2016"
+                    subheader={challenge?.time}
                     sx={{ title: { color: 'black' } }}
                 />
                 <CardContent>
-                    <Typography variant="h6" sx={{ color: 'black' }}>{challenge.name}</Typography>
+                    <Typography variant="h6" sx={{ color: 'black' }}>{challenge?.title}</Typography>
                     <Typography variant="body2" sx={{ color: 'black' }}>
-                        This impressive paella is a perfect party dish and a fun meal to
-                        cook together with your guests. Add 1 cup of frozen peas along with
-                        the mussels, if you like.
+                        {
+                            challenge?.description
+                        }
                     </Typography>
                 </CardContent>
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem' }}>
@@ -58,7 +61,7 @@ const BlogCard = ({ challenge }) => {
                     </div>
 
                 </div>
-                
+
             </Card>
         </div>
     );

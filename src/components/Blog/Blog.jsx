@@ -1,47 +1,29 @@
 "use client"
 import { Avatar, Button } from "@mui/material";
 import BlogCard from "./BlogCard";
-
 import { ToastContainer, toast } from "react-toastify";
 import './Blog.css';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 
 const Blog = () => {
 
-    const challenges = [
-        {
-            name: "Object 1",
-            imageURL: "https://images.pexels.com/photos/2827392/pexels-photo-2827392.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            createdBy: "Alice",
-        },
-        {
-            name: "Object 2",
-            imageURL: "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            createdBy: "Bob",
-        },
-        {
-            name: "Object 3",
-            imageURL: "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            createdBy: "Charlie",
-        },
-        {
-            name: "Object 4",
-            imageURL: "https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            createdBy: "David",
-        },
-        {
-            name: "Object 5",
-            imageURL: "https://images.pexels.com/photos/841131/pexels-photo-841131.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            createdBy: "Eve",
-        },
-        {
-            name: "Object 6",
-            imageURL: "https://images.pexels.com/photos/3253501/pexels-photo-3253501.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            createdBy: "Frank",
-        },
-    ];
+    //states
+    const [challenges, setChallenges] = useState()
+    
+    //states
+    const { data: session } = useSession();
+    useEffect(() => {
+        const getAllBlogs = async () => {
+            const allBlogs = await fetch("http://localhost:5000/api/v1/all-blogs");
+            return allBlogs.json();
+        };
+        getAllBlogs().then(result => setChallenges(result));
+    }, [])
+    // console.log(challenges)
 
     const handelBlog = async (e) => {
         e.preventDefault()
@@ -49,31 +31,32 @@ const Blog = () => {
         const title = form.title.value
         const description = form.description.value
         const imageFile = { image: form.photo?.files[0] }
-
         const currentDate = new Date();
         const monthNames = [
             'January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'
         ];
-
         const time = `${monthNames[currentDate.getMonth()]} ${currentDate.getDate()}, ${currentDate.getFullYear()}`;
-
         const dbResponse = await axios.post("https://api.imgbb.com/1/upload?key=ae66490f64c3dbadf60adcdd1d5d93f7", imageFile, {
             headers: {
                 "content-type": "multipart/form-data",
             },
         });
-
+        //Final Blog
         const blog = {
             title,
             description,
             image: dbResponse?.data?.data?.url,
-            time
+            time,
+            userName: session.user?.name,
+            userImageURL: session.user?.image,
+            likes: 0,
+            disLikes: 0,
         }
-
+        //Final Blog
         const res = await axios.post("http://localhost:5000/api/v1/blogs", blog)
         if (res.data?._id) {
-            toast.success('🦄Blog Uploaded!', {
+            toast.success('Blog Uploaded!', {
                 position: "top-center",
                 autoClose: 1000,
                 hideProgressBar: false,
@@ -89,13 +72,13 @@ const Blog = () => {
     return (
         <div className='mb-[120px]' >
             <div className="bg-black h-16"></div>
-            <div className='mt-10 px-4'>
+            <div className='mt-10 px-2'>
                 <form
                     onSubmit={handelBlog}
                     className="lg:w-1/2 mx-auto px-2 py-8 lg:p-10 bg-black rounded-lg text-white" >
                     <h1 className="text-xl uppercase text-center mb-4 font-bold">Upload Your Blog</h1>
                     <div className=" flex items-center gap-4">
-                        <Avatar alt="Bravis Howard" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2AAr5br4BWpaw7bNRDCEzfKzMcO3PzzTqOw&usqp=CAU" sx={{ mb: "20px" }} />
+                        <Avatar alt={session?.user?.name} src={session?.user?.image} sx={{ mb: "20px" }} />
 
                         <div className="relative z-0 w-full mb-6 group">
                             <input
@@ -127,11 +110,11 @@ const Blog = () => {
                 </form>
             </div>
             {/* recent blogs */}
-            <div className='lg:px-10'>
+            <div className='px-2 lg:px-10'>
                 <h3 className=' font-semibold text-3xl p-6'>Recent Post</h3>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-4'>
+                <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-4'>
                     {/* mapping all services one by one */}
-                    {challenges.map((challenge, i) => (
+                    {challenges?.map((challenge, i) => (
                         <BlogCard key={i} challenge={challenge} />
                     ))}
                 </div>

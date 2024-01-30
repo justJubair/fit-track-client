@@ -65,7 +65,7 @@ const DietTable = () => {
         if (email) {
           const planData = await getDietPlan(email);
           setDietPlanData(planData);
-      
+
           setLoader(false);
         }
       } catch (error) {
@@ -87,152 +87,10 @@ const DietTable = () => {
   }
 
   return (
-    // <div
-    //   style={{
-    //     textAlign: "center",
-    //     maxWidth: "600px",
-    //     margin: "20px auto",
-    //   }}
-    // >
-    //   <div
-    //     ref={pdfRef}
-    //     style={{
-    //       textAlign: "center",
-    //       maxWidth: "600px",
-    //       margin: "20px auto",
-    //       border: "1px solid gray",
-    //       borderRadius: "50px",
-    //     }}
-    //   >
-    //     <Box
-    //       sx={{
-    //         mx: "2rem",
-    //         my: "2rem",
-    //         display: "flex",
-    //         flexDirection: "row",
-    //         justifyContent: "space-evenly",
-    //         alignItems: "center",
-    //       }}
-    //     >
-    //       <Avatar sx={{ backgroundColor: "black" }} aria-label="recipe">
-    //         <Image width={500} height={500} src={image} alt="" />
-    //       </Avatar>
-    //       <Typography variant="h6" sx={{ color: "black" }}>
-    //         {name}
-    //       </Typography>
-    //       <Typography variant="h6" sx={{ color: "black" }}>
-    //         {email}
-    //       </Typography>
-    //     </Box>
-
-    //     <TableContainer>
-    //       <Table>
-    //         <TableHead>
-    //           <TableRow>
-    //             <TableCell>Meal</TableCell>
-    //             <TableCell>Food</TableCell>
-    //             <TableCell>Quantity</TableCell>
-    //             <TableCell>Unit</TableCell>
-    //           </TableRow>
-    //         </TableHead>
-    //         <TableBody>
-    //           {dietPlanData.meal_plan.map((meal, mealIndex) => (
-    //             <React.Fragment key={mealIndex}>
-    //               <TableRow>
-    //                 <TableCell
-    //                   sx={{ fontWeight: "bold" }}
-    //                   rowSpan={meal.foods.length + 1}
-    //                 >
-    //                   {meal.meal}
-    //                 </TableCell>
-    //               </TableRow>
-    //               {meal.foods.map((food, foodIndex) => (
-    //                 <TableRow key={foodIndex}>
-    //                   <TableCell>{food.food}</TableCell>
-    //                   <TableCell>{food.quantity}</TableCell>
-    //                   <TableCell>{food.unit}</TableCell>
-    //                 </TableRow>
-    //               ))}
-    //             </React.Fragment>
-    //           ))}
-    //           <TableRow>
-    //             <TableCell
-    //               colSpan={4}
-    //               style={{ marginTop: "20px", border: "0" }}
-    //             >
-    //               <Table>
-    //                 <TableRow>
-    //                   <TableCell sx={{ fontWeight: "bold" }} rowSpan={5}>
-    //                     Nutritional Information:
-    //                   </TableCell>
-    //                 </TableRow>
-    //                 <TableRow>
-    //                   <TableCell>Calories</TableCell>
-    //                   <TableCell>{dietPlanData.calories}</TableCell>
-    //                 </TableRow>
-    //                 <TableRow>
-    //                   <TableCell>Protein</TableCell>
-    //                   <TableCell>{dietPlanData.protein_grams}g</TableCell>
-    //                 </TableRow>
-    //                 <TableRow>
-    //                   <TableCell>Carbs</TableCell>
-    //                   <TableCell>{dietPlanData.carbs_grams}g</TableCell>
-    //                 </TableRow>
-    //                 <TableRow>
-    //                   <TableCell>Fat</TableCell>
-    //                   <TableCell>{dietPlanData.fat_grams}g</TableCell>
-    //                 </TableRow>
-    //               </Table>
-    //             </TableCell>
-    //           </TableRow>
-    //         </TableBody>
-    //       </Table>
-    //     </TableContainer>
-    //     <Box
-    //       sx={{
-    //         mb: "2rem",
-    //         mx: "2rem",
-    //         display: "flex",
-    //         justifyContent: "end",
-    //       }}
-    //       id="scroll-dialog-title"
-    //     >
-    //       <Image src={LOGO} width={150} height={150} alt="Logo" />
-    //     </Box>
-    //   </div>
-    //   <Button
-    //     sx={{
-    //       mx: "2rem",
-    //       backgroundColor: "black !important",
-    //       color: "white",
-    //       "&:hover": {
-    //         color: "black",
-    //         backgroundColor: "white !important",
-    //       },
-    //     }}
-    //     onClick={goHome}
-    //   >
-    //     GO HOME
-    //   </Button>
-    //   <Button
-    //     sx={{
-    //       mx: "2rem",
-    //       backgroundColor: "blue !important",
-    //       color: "white",
-    //       "&:hover": {
-    //         color: "black",
-    //         backgroundColor: "white !important",
-    //       },
-    //     }}
-    //     onClick={downloadPDF}
-    //   >
-    //     Download PDf
-    //   </Button>
-    // </div>
     <div
     style={{
       textAlign: "center",
-      maxWidth: "600px",
+      maxWidth: "700px",
       margin: "20px auto",
     }}
   >
@@ -240,10 +98,10 @@ const DietTable = () => {
       ref={pdfRef}
       style={{
         textAlign: "center",
-        maxWidth: "600px",
+        maxWidth: "800px",
         margin: "20px auto",
         border: "1px solid gray",
-        borderRadius: "50px",
+        borderRadius: "10px",
       }}
     >
       <Box
@@ -270,7 +128,7 @@ const DietTable = () => {
       <TableContainer>
         <Table>
           <TableHead>
-            <TableRow>
+            <TableRow className="bg-green-500  font-bold uppercase">
               <TableCell>Meal</TableCell>
               <TableCell>Food</TableCell>
               <TableCell>Quantity</TableCell>

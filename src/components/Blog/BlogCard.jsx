@@ -11,34 +11,40 @@ import Image from "next/image";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import { IconButton } from "@mui/material";
+import { useState } from "react";
+import { color } from "@mui/system";
 const BlogCard = ({ challenge }) => {
+
+    //states
+    const [likeBtn, setLikeBtn] = useState(false)
+    const [DislikeBtn, setDisLikeBtn] = useState(false)
+    //states
+
+
+
+    // console.log(likeBtn)
     return (
-        <div style={{ margin: '0.5rem 1rem' }}>
+        <div className="lg:w-4/5 mx-auto">
             <Card sx={{ backgroundColor: 'white' }}>
-                <CardMedia
-                    component="img"
-                    height="194"
-                    image={challenge.imageURL}
-                    alt="Paella dish"
-                />
+                <Image width={500} height={500} src={challenge?.image} alt="Card Image" className="w-full h-96 object-cover" />
                 <CardHeader
                     avatar={
                         <Avatar sx={{ backgroundColor: 'black' }} aria-label="recipe">
-                            <Image width={500} height={500} src="https://imgs.search.brave.com/srvbJUX3E27xiBy5dZpnZTvW5yjuZhn50u4FeP1V43Y/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9taXJv/Lm1lZGl1bS5jb20v/djIvMSpNNmRmZmZo/dVgySFVCSXpSV3Zm/ZWdBLmpwZWc" alt="" />
+                            <Image width={500} height={500} src={challenge?.userImageURL} alt="" />
                         </Avatar>
                     }
                     title={<Typography variant="h6" sx={{ color: 'black', fontSize: '1rem' }}>
-                        {challenge.createdBy.toUpperCase()}
+                        {challenge?.userName}
                     </Typography>}
-                    subheader="September 14, 2016"
+                    subheader={challenge?.time}
                     sx={{ title: { color: 'black' } }}
                 />
                 <CardContent>
-                    <Typography variant="h6" sx={{ color: 'black' }}>{challenge.name}</Typography>
+                    <Typography variant="h6" sx={{ color: 'black' }}>{challenge?.title}</Typography>
                     <Typography variant="body2" sx={{ color: 'black' }}>
-                        This impressive paella is a perfect party dish and a fun meal to
-                        cook together with your guests. Add 1 cup of frozen peas along with
-                        the mussels, if you like.
+                        {
+                            challenge?.description
+                        }
                     </Typography>
                 </CardContent>
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem' }}>
@@ -47,18 +53,24 @@ const BlogCard = ({ challenge }) => {
                     </IconButton>
                     <div className="space-x-4 flex items-center">
                         <div className="space-y-1">
-                            <ThumbUpIcon />
-                            <Typography>233</Typography>
+                            <IconButton onClick={() => setLikeBtn(!likeBtn)} aria-label="add to favorites">
+                                <ThumbUpIcon sx={{ mr: "10px", color: likeBtn ? "blue" : "" }} />
+                                <Typography>233</Typography>
+                            </IconButton>
+
                         </div>
                         <div className="border h-8 border-black"></div>
                         <div className="space-y-1">
-                            <ThumbDownAltIcon />
-                            <Typography>112</Typography>
+                            <IconButton onClick={() => setDisLikeBtn(!DislikeBtn)} aria-label="add to favorites">
+                                <ThumbDownAltIcon sx={{ mr: "10px", color: DislikeBtn ? "red" : "" }} />
+                                <Typography>112</Typography>
+                            </IconButton>
+
                         </div>
                     </div>
 
                 </div>
-                
+
             </Card>
         </div>
     );

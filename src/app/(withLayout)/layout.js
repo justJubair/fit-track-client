@@ -2,12 +2,12 @@ import Footer from "@/components/Shared/Footer/Footer"
 import Nav from "@/components/Shared/Nav/Nav"
 
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <div>
-        <Nav/>
+      <Nav />
       {children}
-      <Footer/>
+      <Footer />
     </div>
   )
 }

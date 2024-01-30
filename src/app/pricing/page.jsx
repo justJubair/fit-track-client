@@ -1,7 +1,9 @@
-const page = () => {
+import Prices from "@/components/Pricing/Pricing";
+
+const Pricing = () => {
     return(
-        <div>
-             <p> Under development </p>
+        <div className="max-w-6xl mx-auto my-40">
+             <Prices></Prices>
         </div>
     )}
-export default page;
+export default Pricing;

@@ -1,22 +1,20 @@
 "use client"
 import { Avatar, Button } from "@mui/material";
 import BlogCard from "./BlogCard";
-
 import { ToastContainer, toast } from "react-toastify";
 import './Blog.css';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import { useSession } from "next-auth/react";
-// import { useState } from "react";
-// import getAllBlogs from "@/utils/getAllBlogs";
 import { useEffect, useState } from "react";
-// import getAllBlogs from "@/utils/getAllBlogs";
-// const blog = getAllBlogs()
-// console.log(blog)
+
 
 const Blog = () => {
-    const [challenges, setChallenges] = useState()
 
+    //states
+    const [challenges, setChallenges] = useState()
+    
+    //states
     const { data: session } = useSession();
     useEffect(() => {
         const getAllBlogs = async () => {
@@ -25,43 +23,7 @@ const Blog = () => {
         };
         getAllBlogs().then(result => setChallenges(result));
     }, [])
-    console.log(challenges)
-    // Call the function and log the result
-
-
-    // console.log(session)
-    // const challenges = [
-    //     {
-    //         name: "Object 1",
-    //         imageURL: "https://images.pexels.com/photos/2827392/pexels-photo-2827392.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    //         createdBy: "Alice",
-    //     },
-    //     {
-    //         name: "Object 2",
-    //         imageURL: "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    //         createdBy: "Bob",
-    //     },
-    //     {
-    //         name: "Object 3",
-    //         imageURL: "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    //         createdBy: "Charlie",
-    //     },
-    //     {
-    //         name: "Object 4",
-    //         imageURL: "https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    //         createdBy: "David",
-    //     },
-    //     {
-    //         name: "Object 5",
-    //         imageURL: "https://images.pexels.com/photos/841131/pexels-photo-841131.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    //         createdBy: "Eve",
-    //     },
-    //     {
-    //         name: "Object 6",
-    //         imageURL: "https://images.pexels.com/photos/3253501/pexels-photo-3253501.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    //         createdBy: "Frank",
-    //     },
-    // ];
+    // console.log(challenges)
 
     const handelBlog = async (e) => {
         e.preventDefault()
@@ -69,21 +31,18 @@ const Blog = () => {
         const title = form.title.value
         const description = form.description.value
         const imageFile = { image: form.photo?.files[0] }
-
         const currentDate = new Date();
         const monthNames = [
             'January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'
         ];
-
         const time = `${monthNames[currentDate.getMonth()]} ${currentDate.getDate()}, ${currentDate.getFullYear()}`;
-
         const dbResponse = await axios.post("https://api.imgbb.com/1/upload?key=ae66490f64c3dbadf60adcdd1d5d93f7", imageFile, {
             headers: {
                 "content-type": "multipart/form-data",
             },
         });
-
+        //Final Blog
         const blog = {
             title,
             description,
@@ -94,7 +53,7 @@ const Blog = () => {
             likes: 0,
             disLikes: 0,
         }
-
+        //Final Blog
         const res = await axios.post("http://localhost:5000/api/v1/blogs", blog)
         if (res.data?._id) {
             toast.success('Blog Uploaded!', {

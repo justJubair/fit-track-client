@@ -11,18 +11,37 @@ import Image from "next/image";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import { IconButton } from "@mui/material";
+import { useState } from "react";
+import { useSession } from "next-auth/react";
+import axios from "axios";
+// import { color } from "@mui/system";
 const BlogCard = ({ challenge }) => {
-    console.log(challenge)
+
+    //states
+    // const [likeBtn, setLikeBtn] = useState(false)
+    const [DislikeBtn, setDisLikeBtn] = useState(false)
+    const { data: session } = useSession();
+    //states
+
+    const handelLikeBtn = async (_id) => {
+        try {
+            const like = {
+                blogId: _id,
+                likerEmail: session?.user?.email
+            };
+            
+            const res = await axios.patch("http://localhost:5000/api/v1/like", like);
+            console.log(res.data);
+            console.log('clicked')
+        } catch (error) {
+            console.error("Error liking blog:", error);
+        }
+    }
+
+    // console.log(challenge)
     return (
         <div className="lg:w-4/5 mx-auto">
-            <Card sx={{ backgroundColor: 'white'}}>
-                {/* <CardMedia
-                    component="img"
-                    height="100px"
-                    image={challenge?.image}
-                    alt="Paella dish"
-                    // sx={{height:"200px"}}
-                /> */}
+            <Card sx={{ backgroundColor: 'white' }}>
                 <Image width={500} height={500} src={challenge?.image} alt="Card Image" className="w-full h-96 object-cover" />
                 <CardHeader
                     avatar={
@@ -50,13 +69,17 @@ const BlogCard = ({ challenge }) => {
                     </IconButton>
                     <div className="space-x-4 flex items-center">
                         <div className="space-y-1">
-                            <ThumbUpIcon />
-                            <Typography>233</Typography>
+                            <IconButton onClick={() => handelLikeBtn(challenge._id)} aria-label="add to favorites">
+                                <ThumbUpIcon sx={{ mr: "10px" }} />
+                                <Typography>{challenge?.likes.length}</Typography>
+                            </IconButton>
                         </div>
                         <div className="border h-8 border-black"></div>
                         <div className="space-y-1">
-                            <ThumbDownAltIcon />
-                            <Typography>112</Typography>
+                            <IconButton onClick={() => setDisLikeBtn(!DislikeBtn)} aria-label="add to favorites">
+                                <ThumbDownAltIcon sx={{ mr: "10px", color: DislikeBtn ? "red" : "" }} />
+                                <Typography>{challenge?.disLikes.length}</Typography>
+                            </IconButton>
                         </div>
                     </div>
 

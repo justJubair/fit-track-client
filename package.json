@@ -34,6 +34,7 @@
     "react-hook-form": "^7.49.3",
     "react-loader-spinner": "^6.1.6",
     "react-toastify": "^10.0.4",
+    "react-vertical-timeline-component": "^3.6.0",
     "save": "^2.9.0",
     "sharp": "^0.33.2",
     "swiper": "^11.0.5"

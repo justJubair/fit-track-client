@@ -2,9 +2,8 @@
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
-import "./Service.css";
-import Image from "next/image";
+import { useEffect } from 'react';
+import Image from 'next/image';
 const Service = ({ serv }) => {
   // Initialization of AOS
   useEffect(() => {

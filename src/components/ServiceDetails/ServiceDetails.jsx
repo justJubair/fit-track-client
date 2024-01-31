@@ -4,18 +4,32 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Image from "next/image";
 
-// icons
-import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
+// React vertical timeline
+import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+
+
 
 // import raw css for animated arrow
 import "./AnimateArrow.css"
 
+// icons
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import AOS from "aos";
+import { useEffect } from "react";
+
 const ServiceDetails = () => {
+
+    // Initialization of AOS
+    useEffect(() => {
+      AOS.init();
+      AOS.refresh();
+    }, []);
   return (
-    <>
+    <Box>
       <Box position="relative" height="100vh">
         <Image
-          src="https://raw.githubusercontent.com/justJubair/fit-track-client/service-detail-page-jubair/src/assets/images/serviceDetailBanner.jpg?token=GHSAT0AAAAAACJ2ZZJBXVVCTLB3BOFUS7SMZN2AY3A"
+          src="https://raw.githubusercontent.com/justJubair/fit-track-client/service-detail-page-jubair/src/assets/images/serviceDetailBanner.jpg?token=GHSAT0AAAAAACJ2ZZJBRO5RUZLDWRK5K4J2ZN2L3GQ"
           fill
           priority
           style={{
@@ -68,7 +82,59 @@ const ServiceDetails = () => {
           <span></span><span></span><span></span>
         </div>
       </Box>
-    </>
+
+      {/* Timeline */}
+
+
+<VerticalTimeline>
+<div data-aos="zoom-in-up">
+<VerticalTimelineElement
+  visible={true}
+    className="vertical-timeline-element--work"
+    data-aos="zoom-in-up"
+    contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+    contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
+    date="2011 - present"
+    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+    
+  >
+    <h3 className="vertical-timeline-element-title">Creative Director</h3>
+    <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
+    <p>
+      Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+    </p>
+  </VerticalTimelineElement>
+</div>
+  <VerticalTimelineElement
+   visible={true}
+   data-aos="zoom-in-up"
+    className="vertical-timeline-element--work"
+    date="2010 - 2011"
+    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+    
+  >
+    <h3 className="vertical-timeline-element-title">Art Director</h3>
+    <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
+    <p>
+      Creative Direction, User Experience, Visual Design, SEO, Online Marketing
+    </p>
+  </VerticalTimelineElement>
+  <VerticalTimelineElement
+   visible={true}
+    className="vertical-timeline-element--work"
+    date="2008 - 2010"
+    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+    
+  >
+    <h3 className="vertical-timeline-element-title">Web Designer</h3>
+    <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
+    <p>
+      User Experience, Visual Design
+    </p>
+  </VerticalTimelineElement>
+  
+</VerticalTimeline>
+    </Box>
   );
 };
 export default ServiceDetails;

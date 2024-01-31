@@ -63,7 +63,7 @@ const ServiceDetails = () => {
       </Box>
 
       {/* animated arrow */}
-      <Box position="absolute" bottom="20%" right="50%">
+      <Box position="absolute" bottom="15%" right="50%">
         <div className="arrow">
           <span></span><span></span><span></span>
         </div>

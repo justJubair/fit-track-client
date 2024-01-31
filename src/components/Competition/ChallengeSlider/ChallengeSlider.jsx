@@ -68,7 +68,7 @@ const ChallengeSlider = () => {
               variant="h2"
               fontSize={{xs: "30px", lg: "50px", sm: "40px"}}
               width={{lg:"75%", xs: "100%"}} fontWeight="bold">Sweat Smart, Live Strong</Typography>
-              <Typography variant="subtitle1" fontSize={{xs:"14px", sm: "16px"}} width="70%">Elevate your fitness game intelligently – because every drop of sweat tells a success story.</Typography>
+              <Typography variant="subtitle1" fontSize={{xs:"14px", sm: "16px"}} width="70%">Elevate your fitness game intelligently, because every drop of sweat tells a success story.</Typography>
             </Box>
             <Image
               alt="slider image one"

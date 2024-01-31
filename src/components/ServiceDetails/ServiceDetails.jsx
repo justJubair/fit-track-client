@@ -1,6 +1,6 @@
 "use client";
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Button, Typography } from "@mui/material";
+import { Box, Container, Stack } from "@mui/system";
 import Image from "next/image";
 
 // React vertical timeline
@@ -39,10 +39,10 @@ const ServiceDetails = () => {
   const yyyy = today.getFullYear();
 
   today = dd + "-" + mm + "-" + yyyy;
-  console.log(today);
+
   return (
     <Box bgcolor="black">
-      <Box position="relative" height="100vh">
+      <Box position="relative" height="100vh" marginBottom="3rem">
         <Image
           src={serviceDetaillBanner}
           fill
@@ -100,8 +100,9 @@ const ServiceDetails = () => {
         </div>
       </Box>
 
-      {/* Timeline */}
-      <VerticalTimeline>
+     <Container>
+       {/* Timeline */}
+       <VerticalTimeline>
         {/* objective */}
         <div data-aos="zoom-in-up"
       data-aos-duration="1500">
@@ -155,6 +156,10 @@ const ServiceDetails = () => {
         </div>
       </VerticalTimeline>
           {/* timeline ends */}
+
+          {/* purchase button */}
+          <Stack direction="row" justifyContent="center" paddingTop="2rem" paddingBottom={{sm: "10rem", xs: "5rem"}}><Button sx={{width: "200px"}} variant="outlined" size="large">Enroll Now</Button></Stack>
+     </Container>
     </Box>
   );
 };

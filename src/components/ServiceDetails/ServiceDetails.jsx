@@ -8,13 +8,15 @@ import Image from "next/image";
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 
+// import banner img
+import serviceDetaillBanner from "../../assets/images/serviceDetailBanner.jpg"
+
 
 
 // import raw css for animated arrow
 import "./AnimateArrow.css"
 
-// icons
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+// import aos
 import AOS from "aos";
 import { useEffect } from "react";
 
@@ -26,10 +28,10 @@ const ServiceDetails = () => {
       AOS.refresh();
     }, []);
   return (
-    <Box>
+    <Box bgcolor="black">
       <Box position="relative" height="100vh">
         <Image
-          src="https://raw.githubusercontent.com/justJubair/fit-track-client/service-detail-page-jubair/src/assets/images/serviceDetailBanner.jpg?token=GHSAT0AAAAAACJ2ZZJBRO5RUZLDWRK5K4J2ZN2L3GQ"
+          src={serviceDetaillBanner}
           fill
           priority
           style={{
@@ -87,6 +89,8 @@ const ServiceDetails = () => {
 
 
 <VerticalTimeline>
+
+  {/* objective */}
 <div data-aos="zoom-in-up">
 <VerticalTimelineElement
   visible={true}
@@ -105,9 +109,12 @@ const ServiceDetails = () => {
     </p>
   </VerticalTimelineElement>
 </div>
-  <VerticalTimelineElement
+
+{/* total duration */}
+
+<VerticalTimelineElement
+data-aos="zoom-in-up"
    visible={true}
-   data-aos="zoom-in-up"
     className="vertical-timeline-element--work"
     date="2010 - 2011"
     iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
@@ -119,6 +126,10 @@ const ServiceDetails = () => {
       Creative Direction, User Experience, Visual Design, SEO, Online Marketing
     </p>
   </VerticalTimelineElement>
+
+  
+  {/* total vidoes */}
+  <div data-aos="zoom-in-up">
   <VerticalTimelineElement
    visible={true}
     className="vertical-timeline-element--work"
@@ -132,6 +143,8 @@ const ServiceDetails = () => {
       User Experience, Visual Design
     </p>
   </VerticalTimelineElement>
+  </div>
+ 
   
 </VerticalTimeline>
     </Box>

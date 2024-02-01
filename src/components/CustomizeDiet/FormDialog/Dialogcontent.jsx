@@ -1,99 +1,19 @@
-"use client";
-import React, { useEffect, useRef, useState } from "react";
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  FormControl,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
-  TextField,
-  Typography,
-} from "@mui/material";
-import Paper from "@mui/material/Paper";
-import { Controller, useForm } from "react-hook-form";
-import Image from "next/image";
-import LOGO from "../../../assets/images/logo02.png";
-import { useSession } from "next-auth/react";
-import { toast } from "react-toastify";
-import submitHealthInfo from "@/app/api/post/postUserHealthInfo";
+import { Button, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Radio, RadioGroup, TextField, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import Image from 'next/image';
+import React from 'react';
+import { Controller } from 'react-hook-form';
 
-const UserInfoDialog = ({ serv }) => {
-  const [open, setOpen] = useState(false);
-  const [scroll, setScroll] = useState("paper");
-
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const { data: session } = useSession();
-
-  const email = session?.user?.email;
-  const username = session?.user?.name;
-
-  const onSubmit = (data) => {
-    const formData = {
-      username: username,
-      email: email,
-      ...data,
-    };
-
-    submitHealthInfo(formData);
-    handleClose();
-  };
-
-  const handleClickOpen = (scrollType) => () => {
-    setOpen(true);
-    setScroll(scrollType);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const descriptionElementRef = useRef(null);
-  useEffect(() => {
-    if (open) {
-      const { current: descriptionElement } = descriptionElementRef;
-      if (descriptionElement !== null) {
-        descriptionElement.focus();
-      }
-    }
-  }, [open]);
-
-  return (
-    <>
-      <Button
-        sx={{
-          my: 2,
-          color: { xs: "#000000", md: "#fff" },
-          display: "block",
-          fontWeight: { xs: "regular", md: "bold" },
-        }}
-        onClick={handleClickOpen("paper")}
-      >
-        Customized Diet
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        scroll={scroll}
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
-        PaperComponent={(props) => (
-          <Paper
-            {...props}
-            style={{ backgroundColor: "transparent", boxShadow: "none" }}
-          />
-        )}
-      >
+const Dialogcontent = () => {
+    return (
+        <>
         <Box
-         
+        className="glass"
+        //   sx={{
+        //     backgroundColor: (theme) => `black`,
+        //     blur: 100,
+        //     borderRadius: 0,
+        //   }}
         >
           <DialogTitle
             sx={{ mx: "auto", display: "flex", justifyContent: "center" }}
@@ -275,9 +195,8 @@ const UserInfoDialog = ({ serv }) => {
             </Button>
           </DialogActions>
         </Box>
-      </Dialog>
-    </>
-  );
+        </>
+    );
 };
 
-export default UserInfoDialog;
+export default Dialogcontent;

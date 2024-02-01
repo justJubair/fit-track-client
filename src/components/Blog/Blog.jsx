@@ -13,7 +13,7 @@ const Blog = () => {
 
     //states
     const [challenges, setChallenges] = useState()
-    
+
     //states
     const { data: session } = useSession();
     useEffect(() => {
@@ -50,8 +50,8 @@ const Blog = () => {
             time,
             userName: session.user?.name,
             userImageURL: session.user?.image,
-            likes: 0,
-            disLikes: 0,
+            likes: [],
+            disLikes: [],
         }
         //Final Blog
         const res = await axios.post("http://localhost:5000/api/v1/blogs", blog)

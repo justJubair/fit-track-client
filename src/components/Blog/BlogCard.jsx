@@ -1,28 +1,45 @@
 "use client";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import BookmarksIcon from '@mui/icons-material/Bookmarks';
+import FastfoodIcon from '@mui/icons-material/Fastfood';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import { IconButton, Tooltip } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import Typography from "@mui/material/Typography";
+import axios from "axios";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
-import { IconButton } from "@mui/material";
-import { useState } from "react";
-import { color } from "@mui/system";
 const BlogCard = ({ challenge }) => {
 
     //states
-    const [likeBtn, setLikeBtn] = useState(false)
-    const [DislikeBtn, setDisLikeBtn] = useState(false)
+    const { data: session } = useSession();
     //states
 
-
-
-    // console.log(likeBtn)
+    const handelLikeBtn = async (_id) => {
+        try {
+            const like = {
+                blogId: _id,
+                likerEmail: session?.user?.email
+            };
+            const res = await axios.patch("http://localhost:5000/api/v1/like", like);
+        } catch (error) {
+            console.error("Error liking blog:", error);
+        }
+    }
+    const handelDisLikeBtn = async (_id) => {
+        try {
+            const DisLikes = {
+                blogId: _id,
+                DislikerEmail: session?.user?.email
+            }
+            const res = await axios.patch("http://localhost:5000/api/v1/Dislike", DisLikes);
+        }
+        catch (error) {
+            console.error("Error", error)
+        }
+    }
     return (
         <div className="lg:w-4/5 mx-auto">
             <Card sx={{ backgroundColor: 'white' }}>
@@ -48,24 +65,28 @@ const BlogCard = ({ challenge }) => {
                     </Typography>
                 </CardContent>
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem' }}>
-                    <IconButton aria-label="add to favorites">
-                        <BookmarksIcon />
-                    </IconButton>
+                    <Tooltip title="Save" arrow>
+                        <IconButton aria-label="add to favorites">
+                            <BookmarksIcon />
+                        </IconButton>
+                    </Tooltip>
                     <div className="space-x-4 flex items-center">
                         <div className="space-y-1">
-                            <IconButton onClick={() => setLikeBtn(!likeBtn)} aria-label="add to favorites">
-                                <ThumbUpIcon sx={{ mr: "10px", color: likeBtn ? "blue" : "" }} />
-                                <Typography>233</Typography>
-                            </IconButton>
-
+                            <Tooltip title="Like" arrow>
+                                <IconButton onClick={() => handelLikeBtn(challenge?._id)} aria-label="add to favorites">
+                                    <FitnessCenterIcon sx={{ mr: "10px" }} />
+                                    <Typography>{challenge?.likes.length}</Typography>
+                                </IconButton>
+                            </Tooltip>
                         </div>
                         <div className="border h-8 border-black"></div>
                         <div className="space-y-1">
-                            <IconButton onClick={() => setDisLikeBtn(!DislikeBtn)} aria-label="add to favorites">
-                                <ThumbDownAltIcon sx={{ mr: "10px", color: DislikeBtn ? "red" : "" }} />
-                                <Typography>112</Typography>
-                            </IconButton>
-
+                            <Tooltip title="Dislike" arrow >
+                                <IconButton onClick={() => handelDisLikeBtn(challenge?._id)} aria-label="add to favorites">
+                                    <FastfoodIcon sx={{ mr: "10px" }} />
+                                    <Typography>{challenge?.disLikes.length}</Typography>
+                                </IconButton>
+                            </Tooltip>
                         </div>
                     </div>
 

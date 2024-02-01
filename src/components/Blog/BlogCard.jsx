@@ -29,12 +29,22 @@ const BlogCard = ({ challenge }) => {
                 blogId: _id,
                 likerEmail: session?.user?.email
             };
-            
             const res = await axios.patch("http://localhost:5000/api/v1/like", like);
-            console.log(res.data);
-            console.log('clicked')
         } catch (error) {
             console.error("Error liking blog:", error);
+        }
+    }
+    const handelDisLikeBtn = async (_id) => {
+        try {
+            const DisLikes = {
+                blogId: _id,
+                DislikerEmail: session?.user?.email
+            }
+            const res = await axios.patch("http://localhost:5000/api/v1/Dislike", DisLikes);
+            console.log(res.data)
+        }
+        catch (error) {
+            console.error("Error", error)
         }
     }
 
@@ -69,14 +79,14 @@ const BlogCard = ({ challenge }) => {
                     </IconButton>
                     <div className="space-x-4 flex items-center">
                         <div className="space-y-1">
-                            <IconButton onClick={() => handelLikeBtn(challenge._id)} aria-label="add to favorites">
+                            <IconButton onClick={() => handelLikeBtn(challenge?._id)} aria-label="add to favorites">
                                 <ThumbUpIcon sx={{ mr: "10px" }} />
                                 <Typography>{challenge?.likes.length}</Typography>
                             </IconButton>
                         </div>
                         <div className="border h-8 border-black"></div>
                         <div className="space-y-1">
-                            <IconButton onClick={() => setDisLikeBtn(!DislikeBtn)} aria-label="add to favorites">
+                            <IconButton onClick={() => handelDisLikeBtn(challenge?._id)} aria-label="add to favorites">
                                 <ThumbDownAltIcon sx={{ mr: "10px", color: DislikeBtn ? "red" : "" }} />
                                 <Typography>{challenge?.disLikes.length}</Typography>
                             </IconButton>

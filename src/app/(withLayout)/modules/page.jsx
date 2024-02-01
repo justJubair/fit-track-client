@@ -1,13 +1,10 @@
-import EnrolledServices from "@/components/EnrolledServices/EnrolledServices";
-import { getAllServices } from "@/utils/getAllServices";
-import { getEnrolledServices } from "@/utils/getEnrolledServices";
+import UsersServices from "@/components/UsersServices/UsersServices";
 
-
-const Courses = async() => {
+const Courses = async () => {
 
     return (
         <div>
-           <EnrolledServices/>
+            <UsersServices />
         </div>
     );
 };

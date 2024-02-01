@@ -1,20 +1,20 @@
 'use client';
-import { getEnrolledServices } from "@/utils/getEnrolledServices";
 import { Box, Grid, Typography } from "@mui/material";
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Link from "next/link";
+import { getServices } from "@/utils/getServices";
 
-const EnrolledServices = async () => {
+const UsersServices = async () => {
 
     const user = 'Basic';
 
-    const enrolledServices = await getEnrolledServices();
+    const allServices = await getServices();
     // console.log(enrolledServices)
-    const servicesOnPlan = enrolledServices.filter((serv) => serv.category === user)
-    console.log(servicesOnPlan)
+    const userServices = allServices.filter((serv) => serv.category === user)
+    // console.log(userServices)
 
     return (
         <Box>
@@ -24,7 +24,7 @@ const EnrolledServices = async () => {
                 <Box sx={{ marginLeft: '10px', marginRight: '10px' }}>
                     <Grid container spacing={2} sx={{ justifyContent: "center" }}>
                         {
-                            servicesOnPlan.map(serv => (
+                            userServices.map(serv => (
                                 <Grid item xs={12} md={8} lg={4} key={serv.id}>
                                     <Box >
                                         <Card sx={{ borderRadius: '10px', boxShadow: 3 }}>
@@ -68,4 +68,4 @@ const EnrolledServices = async () => {
     );
 };
 
-export default EnrolledServices;
+export default UsersServices;

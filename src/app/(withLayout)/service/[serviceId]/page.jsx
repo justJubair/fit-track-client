@@ -1,9 +1,10 @@
 import ServiceDetails from "@/components/ServiceDetails/ServiceDetails";
 
-const ServiceDetailPage = () => {
+const ServiceDetailPage = ({params}) => {
+    
     return(
         <>
-            <ServiceDetails/>
+            <ServiceDetails id={params?.serviceId}/>
         </>
     )}
 export default ServiceDetailPage;

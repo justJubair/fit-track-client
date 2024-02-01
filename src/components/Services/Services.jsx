@@ -14,7 +14,7 @@ const Services = async () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* mapping all services one by one */}
                 {
-                    services.map((serv) => <Service serv={serv} key={serv.id}></Service>)
+                    services.map((serv) => <Service serv={serv} key={serv._id}></Service>)
                 }
             </div>
         </div>

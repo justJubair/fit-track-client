@@ -25,7 +25,9 @@ import FlagCircleIcon from '@mui/icons-material/FlagCircle';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 
-const ServiceDetails = () => {
+const ServiceDetails = ({id}) => {
+  // Get single service 
+  console.log(id)
   // Initialization of AOS
   useEffect(() => {
     AOS.init();

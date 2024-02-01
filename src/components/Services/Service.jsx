@@ -13,7 +13,7 @@ const Service = ({ serv }) => {
 
   return (
     <div className="rounded-md mx-4 lg:mx-0" data-aos="zoom-in-up">
-      <Link href="/service/1" className="rounded-md">
+      <Link href={`/service/${serv._id}`} className="rounded-md">
         <Image
           width={300}
           height={300}

@@ -1,9 +1,8 @@
-import ServiceDetails from "@/components/ServiceDetails/ServiceDetails";
 
 const ServiceDetailPage = () => {
     return(
         <>
-            <ServiceDetails/>
+            <h1>detail</h1>
         </>
     )}
 export default ServiceDetailPage;

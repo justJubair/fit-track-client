@@ -47,7 +47,7 @@ const BlogCard = ({ challenge }) => {
                 <CardHeader
                     avatar={
                         <Avatar sx={{ backgroundColor: 'black' }} aria-label="recipe">
-                            <Image width={500} height={500} src={challenge?.userImageURL} alt="" />
+                            <Image width={500} height={500} src={challenge?.userImageURL} alt="avatar" />
                         </Avatar>
                     }
                     title={<Typography variant="h6" sx={{ color: 'black', fontSize: '1rem' }}>

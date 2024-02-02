@@ -48,11 +48,12 @@ const Blog = () => {
             description,
             image: dbResponse?.data?.data?.url,
             time,
-            userName: session.user?.name,
-            userImageURL: session.user?.image,
+            userName: session?.user?.name,
+            userImageURL: session?.user?.image,
             likes: [],
             disLikes: [],
         }
+        // console.log(blog)
         //Final Blog
         const res = await axios.post("http://localhost:5000/api/v1/blogs", blog)
         if (res.data?._id) {
@@ -67,6 +68,12 @@ const Blog = () => {
                 theme: "dark",
             });
             form.reset()
+            const getAllBlogs = async () => {
+                const allBlogs = await fetch("http://localhost:5000/api/v1/all-blogs");
+                return allBlogs.json();
+            };
+            getAllBlogs().then(result => setChallenges(result));
+
         }
     }
     return (

@@ -31,7 +31,7 @@ const BlogCard = ({ challenge }) => {
                 blogId: _id,
                 likerEmail: session?.user?.email
             };
-            const res = await axios.patch("http://localhost:5000/api/v1/like", like);
+            const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/like", like);
             console.log(res.data)
             window.location.reload()
 
@@ -45,7 +45,7 @@ const BlogCard = ({ challenge }) => {
                 blogId: _id,
                 DislikerEmail: session?.user?.email
             }
-            const res = await axios.patch("http://localhost:5000/api/v1/Dislike", DisLikes);
+            const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/Dislike", DisLikes);
             window.location.reload()
         }
         catch (error) {

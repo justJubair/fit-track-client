@@ -5,14 +5,12 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Link from "next/link";
-import { getServices } from "@/utils/getServices";
 
-const UsersServices = ({userServices:allServices}) => {
 
-    const user = 'Basic';
+const UsersServices = ({userServices}) => {
 
-    // const allServices = await getServices();
-    const userServices = allServices.filter((serv) => serv.category === user)
+  
+    // const userServices = allServices.filter((serv) => serv.category === user)
 
 
     return (

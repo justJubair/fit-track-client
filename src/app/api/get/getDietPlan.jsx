@@ -4,7 +4,7 @@ import axios from 'axios';
 const getDietPlan = async (userEmail) => {
   try {
     // Replace 'YOUR_API_ENDPOINT' with the actual endpoint for your diet plan API
-    const response = await axios.get(`http://localhost:5000/api/v1/dietplan/${userEmail}`);
+    const response = await axios.get(`https://fit-track-server.vercel.app/api/v1/dietplan/${userEmail}`);
     return response.data;
   } catch (error) {
     // Handle errors

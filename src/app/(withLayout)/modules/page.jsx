@@ -1,8 +1,9 @@
 import UsersServices from "@/components/UsersServices/UsersServices";
-import { getServices } from "@/utils/getServices";
+import { getAllServices } from "@/utils/getAllServices";
+
 
 const Courses = async () => {
-    const userServices = await getServices()
+    const userServices = await getAllServices()
     
     return (
         <div>

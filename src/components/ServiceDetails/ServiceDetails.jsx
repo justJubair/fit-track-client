@@ -24,10 +24,10 @@ import { useEffect } from "react";
 import FlagCircleIcon from '@mui/icons-material/FlagCircle';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import { getSingleService } from "@/utils/getSingleService";
 
-const ServiceDetails = ({id}) => {
+const ServiceDetails = ({service}) => {
   // Get single service 
+  console.log(service)
 
   // Initialization of AOS
   useEffect(() => {

@@ -1,10 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 import Module from "@/components/Modules/Module";
 import { getServices } from "@/utils/getServices";
 
 
 const Modules = async ({ params }) => {
     // console.log(params)
-    const module = params.moduleid;
+    // const module = params.moduleid;
     // console.log(module)
 
     const allServices = await getServices();

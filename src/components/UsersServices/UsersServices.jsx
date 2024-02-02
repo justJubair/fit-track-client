@@ -7,13 +7,13 @@ import CardActions from '@mui/material/CardActions';
 import Link from "next/link";
 import { getServices } from "@/utils/getServices";
 
-const UsersServices = async () => {
+const UsersServices = () => {
 
     const user = 'Basic';
 
-    const allServices = await getServices();
+    // const allServices = await getServices();
     // console.log(enrolledServices)
-    const userServices = allServices.filter((serv) => serv.category === user)
+    // const userServices = allServices.filter((serv) => serv.category === user)
     // console.log(userServices)
 
     return (
@@ -24,7 +24,7 @@ const UsersServices = async () => {
                 <Box sx={{ marginLeft: '10px', marginRight: '10px' }}>
                     <Grid container spacing={2} sx={{ justifyContent: "center" }}>
                         {
-                            userServices.map(serv => (
+                            userServices?.map(serv => (
                                 <Grid item xs={12} md={8} lg={4} key={serv.id}>
                                     <Box >
                                         <Card sx={{ borderRadius: '10px', boxShadow: 3 }}>

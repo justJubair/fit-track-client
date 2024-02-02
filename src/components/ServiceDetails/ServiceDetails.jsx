@@ -76,7 +76,7 @@ const ServiceDetails = ({service}) => {
             WebkitTextFillColor: "transparent",
           }}
         >
-          Overview of Power Cardio
+         {service?.heading}
         </Typography>
         <Typography
           variant="subtitle1"
@@ -89,8 +89,7 @@ const ServiceDetails = ({service}) => {
             WebkitTextFillColor: "transparent",
           }}
         >
-          Transform your workouts into epic adventures with our cutting-edge
-          fitness tracking app.
+         {service?.subheading}.
         </Typography>
       </Box>
 
@@ -139,7 +138,7 @@ const ServiceDetails = ({service}) => {
           <h3 className="vertical-timeline-element-title">Duration</h3>
           
           <p>
-           10 Days of blood, sweat and tears
+           {service?.duration} Days of blood, sweat and tears
           </p>
         </VerticalTimelineElement>
 
@@ -154,7 +153,7 @@ const ServiceDetails = ({service}) => {
           >
             <h3 className="vertical-timeline-element-title">Total Workouts</h3>
     
-            <p>Ten workout sessions with our expert trainer</p>
+            <p>{service?.numberOfVideos} workout sessions with our expert trainer</p>
           </VerticalTimelineElement>
         </div>
       </VerticalTimeline>

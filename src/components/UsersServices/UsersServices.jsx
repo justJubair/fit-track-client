@@ -7,25 +7,24 @@ import CardActions from '@mui/material/CardActions';
 import Link from "next/link";
 import { getServices } from "@/utils/getServices";
 
-const UsersServices = () => {
+const UsersServices = ({userServices:allServices}) => {
 
     const user = 'Basic';
 
     // const allServices = await getServices();
-    // console.log(enrolledServices)
-    // const userServices = allServices.filter((serv) => serv.category === user)
-    // console.log(userServices)
+    const userServices = allServices.filter((serv) => serv.category === user)
+    console.log(userServices)
 
     return (
         <Box>
             <Box className="bg-black h-16"></Box>
-            <div className="max-w-6xl mx-auto my-40">
+            <div className="max-w-6xl mx-auto mt-20 mb-40">
                 <Typography variant="h4" sx={{ width: 1 / 2, textAlign: 'center', fontWeight: '500', mx: 'auto', marginBottom: '40px' }}>Your <span className="text-[#378ae5]">Services</span></Typography>
                 <Box sx={{ marginLeft: '10px', marginRight: '10px' }}>
                     <Grid container spacing={2} sx={{ justifyContent: "center" }}>
                         {
                             userServices?.map(serv => (
-                                <Grid item xs={12} md={8} lg={4} key={serv.id}>
+                                <Grid item xs={12} md={8} lg={4} key={serv._id}>
                                     <Box >
                                         <Card sx={{ borderRadius: '10px', boxShadow: 3 }}>
                                             <CardMedia

@@ -1,25 +1,27 @@
+/* eslint-disable react/no-unescaped-entities */
 import Module from "@/components/Modules/Module";
-import { getServices } from "@/utils/getServices";
+import { getAllServices } from "@/utils/getAllServices";
 
 
 const Modules = async ({ params }) => {
     // console.log(params)
-    const module = params.moduleid;
+    // const module = params.moduleid;
     // console.log(module)
 
-    const allServices = await getServices();
-    // console.log(allServices)
+    const allServices = await getAllServices();
+    console.log(allServices)
+   
 
-    const userModules = allServices.filter((serv) => serv.serviceId === module)
-    console.log(userModules)
+    // const userModules = allServices.filter((serv) => serv.serviceId === params?.moduleid)
+    // console.log(userModules)
 
     return (
         <div>
             <div className="bg-black h-16"></div>
-            <div className="max-w-6xl mx-auto my-40">
+            <div className="max-w-6xl mx-auto mt-20 mb-40">
                 <h1 className="text-4xl text-center uppercase">Welcome back. Ready for your today's workout?</h1>
                      {
-                        userModules.map((module)=> <Module module={module} key={module._id}></Module>)
+                        allServices.slice(0,1).map((module)=> <Module module={module} key={module._id}></Module>)
                      }           
                 </div>
         </div>

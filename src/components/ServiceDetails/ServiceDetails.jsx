@@ -24,8 +24,12 @@ import { useEffect } from "react";
 import FlagCircleIcon from '@mui/icons-material/FlagCircle';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import Link from "next/link";
 
-const ServiceDetails = () => {
+const ServiceDetails = ({service}) => {
+  // Get single service 
+  console.log(service)
+
   // Initialization of AOS
   useEffect(() => {
     AOS.init();
@@ -73,7 +77,7 @@ const ServiceDetails = () => {
             WebkitTextFillColor: "transparent",
           }}
         >
-          Overview of Power Cardio
+         {service?.heading}
         </Typography>
         <Typography
           variant="subtitle1"
@@ -86,8 +90,7 @@ const ServiceDetails = () => {
             WebkitTextFillColor: "transparent",
           }}
         >
-          Transform your workouts into epic adventures with our cutting-edge
-          fitness tracking app.
+         {service?.subheading}.
         </Typography>
       </Box>
 
@@ -136,7 +139,7 @@ const ServiceDetails = () => {
           <h3 className="vertical-timeline-element-title">Duration</h3>
           
           <p>
-           10 Days of blood, sweat and tears
+           {service?.duration} Days of blood, sweat and tears
           </p>
         </VerticalTimelineElement>
 
@@ -151,14 +154,16 @@ const ServiceDetails = () => {
           >
             <h3 className="vertical-timeline-element-title">Total Workouts</h3>
     
-            <p>Ten workout sessions with our expert trainer</p>
+            <p>{service?.numberOfVideos} workout sessions with our expert trainer</p>
           </VerticalTimelineElement>
         </div>
       </VerticalTimeline>
           {/* timeline ends */}
 
           {/* purchase button */}
+          <Link href="/modules">
           <Stack direction="row" justifyContent="center" paddingTop="2rem" paddingBottom={{sm: "10rem", xs: "5rem"}}><Button sx={{width: "200px"}} variant="outlined" size="large">Enroll Now</Button></Stack>
+          </Link>
      </Container>
     </Box>
   );

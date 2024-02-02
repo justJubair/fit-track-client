@@ -55,11 +55,11 @@ const BlogCard = ({ challenge }) => {
     return (
         <div className="lg:w-4/5 mx-auto">
             <Card sx={{ backgroundColor: 'white' }}>
-                <Image width={500} height={500} src={challenge?.image} alt="Card Image" className="w-full h-96 object-cover" />
+                <Image width={500} height={300} src={challenge?.image} alt="Card Image" className="w-full h-60 object-cover" />
                 <CardHeader
                     avatar={
                         <Avatar sx={{ backgroundColor: 'black' }} aria-label="recipe">
-                            <Image width={500} height={500} src={challenge?.userImageURL} alt="" />
+                            <Image width={500} height={500} src={challenge?.userImageURL} alt="avatar" />
                         </Avatar>
                     }
                     title={<Typography variant="h6" sx={{ color: 'black', fontSize: '1rem' }}>

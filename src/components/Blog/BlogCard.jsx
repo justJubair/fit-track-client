@@ -11,12 +11,20 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
+
 const BlogCard = ({ challenge }) => {
 
     //states
     const { data: session } = useSession();
+    const router = useRouter();
     //states
+    // console.log(challenge.likes)
 
+    // const isLiked = challenge.likes.filter(item => item.email !== session?.user?.email);
+    // const isLiked = challenge.likes.filter(item => item.email !== session?.user?.email).length > 0;
+    // const isDisLiked = challenge.disLikes.filter(item => item.email !== session?.user?.email).length > 0;
+    // console.log(isLiked)
     const handelLikeBtn = async (_id) => {
         try {
             const like = {
@@ -24,6 +32,9 @@ const BlogCard = ({ challenge }) => {
                 likerEmail: session?.user?.email
             };
             const res = await axios.patch("http://localhost:5000/api/v1/like", like);
+            console.log(res.data)
+            window.location.reload()
+
         } catch (error) {
             console.error("Error liking blog:", error);
         }
@@ -35,6 +46,7 @@ const BlogCard = ({ challenge }) => {
                 DislikerEmail: session?.user?.email
             }
             const res = await axios.patch("http://localhost:5000/api/v1/Dislike", DisLikes);
+            window.location.reload()
         }
         catch (error) {
             console.error("Error", error)

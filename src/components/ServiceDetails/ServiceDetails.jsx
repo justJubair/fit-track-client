@@ -24,6 +24,7 @@ import { useEffect } from "react";
 import FlagCircleIcon from '@mui/icons-material/FlagCircle';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import Link from "next/link";
 
 const ServiceDetails = ({service}) => {
   // Get single service 
@@ -160,7 +161,9 @@ const ServiceDetails = ({service}) => {
           {/* timeline ends */}
 
           {/* purchase button */}
+          <Link href="/modules">
           <Stack direction="row" justifyContent="center" paddingTop="2rem" paddingBottom={{sm: "10rem", xs: "5rem"}}><Button sx={{width: "200px"}} variant="outlined" size="large">Enroll Now</Button></Stack>
+          </Link>
      </Container>
     </Box>
   );

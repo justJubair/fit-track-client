@@ -1,0 +1,386 @@
+[
+  {
+    "id": 1,
+    "heading": "Personalized Workout Plans",
+    "subheading": "Tailored fitness plans based on your goals",
+    "thumbnail": "https://i.ibb.co/fkjX7Mw/mobility.jpg",
+    "serviceId": "workout_plan",
+    "duration": 30,
+    "category": "Basic",
+    "numberOfVideos": 10,
+    "videos": [
+      {
+        "title": "Getting Started with HTML",
+        "vlink": "https://example.com/html_intro"
+      },
+      {
+        "title": "CSS Fundamentals",
+        "vlink": "https://example.com/css_fundamentals"
+      },
+      {
+        "title": "Introduction to JavaScript",
+        "vlink": "https://example.com/js_intro"
+      },
+      {
+        "title": "Responsive Web Design",
+        "vlink": "https://example.com/responsive_design"
+      },
+      {
+        "title": "Basics of Frontend Frameworks",
+        "vlink": "https://example.com/frontend_frameworks"
+      },
+      {
+        "title": "Introduction to Backend Development",
+        "vlink": "https://example.com/backend_intro"
+      },
+      {
+        "title": "Working with Databases",
+        "vlink": "https://example.com/database_work"
+      },
+      {
+        "title": "Web Development Best Practices",
+        "vlink": "https://example.com/best_practices"
+      },
+      {
+        "title": "Final Project: Building a Simple Website",
+        "vlink": "https://example.com/final_project"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "heading": "15 Days workout plan",
+    "subheading": "Tailored fitness plans based on your goals",
+    "thumbnail": "https://i.ibb.co/pKwp8jX/pilates-phase-two.jpg",
+    "serviceId": "workout15",
+    "duration": 30,
+    "category": "Basic",
+    "numberOfVideos": 10,
+    "videos": [
+      {
+        "title": "Getting Started with HTML",
+        "vlink": "https://example.com/html_intro"
+      },
+      {
+        "title": "CSS Fundamentals",
+        "vlink": "https://example.com/css_fundamentals"
+      },
+      {
+        "title": "Introduction to JavaScript",
+        "vlink": "https://example.com/js_intro"
+      },
+      {
+        "title": "Responsive Web Design",
+        "vlink": "https://example.com/responsive_design"
+      },
+      {
+        "title": "Basics of Frontend Frameworks",
+        "vlink": "https://example.com/frontend_frameworks"
+      },
+      {
+        "title": "Introduction to Backend Development",
+        "vlink": "https://example.com/backend_intro"
+      },
+      {
+        "title": "Working with Databases",
+        "vlink": "https://example.com/database_work"
+      },
+      {
+        "title": "Web Development Best Practices",
+        "vlink": "https://example.com/best_practices"
+      },
+      {
+        "title": "Final Project: Building a Simple Website",
+        "vlink": "https://example.com/final_project"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "heading": "8 Days workout plan",
+    "subheading": "Tailored fitness plans based on your goals",
+    "thumbnail": "https://i.ibb.co/7S6Gmmh/dbk.jpg",
+    "serviceId": "workout8",
+    "duration": 30,
+    "category": "Basic",
+    "numberOfVideos": 10,
+    "videos": [
+      {
+        "title": "Getting Started with HTML",
+        "vlink": "https://example.com/html_intro"
+      },
+      {
+        "title": "CSS Fundamentals",
+        "vlink": "https://example.com/css_fundamentals"
+      },
+      {
+        "title": "Introduction to JavaScript",
+        "vlink": "https://example.com/js_intro"
+      },
+      {
+        "title": "Responsive Web Design",
+        "vlink": "https://example.com/responsive_design"
+      },
+      {
+        "title": "Basics of Frontend Frameworks",
+        "vlink": "https://example.com/frontend_frameworks"
+      },
+      {
+        "title": "Introduction to Backend Development",
+        "vlink": "https://example.com/backend_intro"
+      },
+      {
+        "title": "Working with Databases",
+        "vlink": "https://example.com/database_work"
+      },
+      {
+        "title": "Web Development Best Practices",
+        "vlink": "https://example.com/best_practices"
+      },
+      {
+        "title": "Final Project: Building a Simple Website",
+        "vlink": "https://example.com/final_project"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "heading": "Personalized Workout Plans",
+    "subheading": "Tailored fitness plans based on your goals",
+    "thumbnail": "https://i.ibb.co/7S6Gmmh/dbk.jpg",
+    "serviceId": "workout_plan",
+    "duration": 30,
+    "category": "Basic",
+    "numberOfVideos": 10,
+    "videos": [
+      {
+        "title": "Getting Started with HTML",
+        "vlink": "https://example.com/html_intro"
+      },
+      {
+        "title": "CSS Fundamentals",
+        "vlink": "https://example.com/css_fundamentals"
+      },
+      {
+        "title": "Introduction to JavaScript",
+        "vlink": "https://example.com/js_intro"
+      },
+      {
+        "title": "Responsive Web Design",
+        "vlink": "https://example.com/responsive_design"
+      },
+      {
+        "title": "Basics of Frontend Frameworks",
+        "vlink": "https://example.com/frontend_frameworks"
+      },
+      {
+        "title": "Introduction to Backend Development",
+        "vlink": "https://example.com/backend_intro"
+      },
+      {
+        "title": "Working with Databases",
+        "vlink": "https://example.com/database_work"
+      },
+      {
+        "title": "Web Development Best Practices",
+        "vlink": "https://example.com/best_practices"
+      },
+      {
+        "title": "Final Project: Building a Simple Website",
+        "vlink": "https://example.com/final_project"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "heading": "Personalized Workout Plans",
+    "subheading": "Tailored fitness plans based on your goals",
+    "thumbnail": "https://i.ibb.co/KjmWqDg/power-cardio.jpg",
+    "serviceId": "workout_plan",
+    "duration": 30,
+    "category": "Basic",
+    "numberOfVideos": 10,
+    "videos": [
+      {
+        "title": "Getting Started with HTML",
+        "vlink": "https://example.com/html_intro"
+      },
+      {
+        "title": "CSS Fundamentals",
+        "vlink": "https://example.com/css_fundamentals"
+      },
+      {
+        "title": "Introduction to JavaScript",
+        "vlink": "https://example.com/js_intro"
+      },
+      {
+        "title": "Responsive Web Design",
+        "vlink": "https://example.com/responsive_design"
+      },
+      {
+        "title": "Basics of Frontend Frameworks",
+        "vlink": "https://example.com/frontend_frameworks"
+      },
+      {
+        "title": "Introduction to Backend Development",
+        "vlink": "https://example.com/backend_intro"
+      },
+      {
+        "title": "Working with Databases",
+        "vlink": "https://example.com/database_work"
+      },
+      {
+        "title": "Web Development Best Practices",
+        "vlink": "https://example.com/best_practices"
+      },
+      {
+        "title": "Final Project: Building a Simple Website",
+        "vlink": "https://example.com/final_project"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "heading": "Personalized Workout Plans",
+    "subheading": "Tailored fitness plans based on your goals",
+    "thumbnail": "https://i.ibb.co/PtJTXCn/undefeated.jpg",
+    "serviceId": "workout_plan",
+    "duration": 30,
+    "category": "Basic",
+    "numberOfVideos": 10,
+    "videos": [
+      {
+        "title": "Getting Started with HTML",
+        "vlink": "https://example.com/html_intro"
+      },
+      {
+        "title": "CSS Fundamentals",
+        "vlink": "https://example.com/css_fundamentals"
+      },
+      {
+        "title": "Introduction to JavaScript",
+        "vlink": "https://example.com/js_intro"
+      },
+      {
+        "title": "Responsive Web Design",
+        "vlink": "https://example.com/responsive_design"
+      },
+      {
+        "title": "Basics of Frontend Frameworks",
+        "vlink": "https://example.com/frontend_frameworks"
+      },
+      {
+        "title": "Introduction to Backend Development",
+        "vlink": "https://example.com/backend_intro"
+      },
+      {
+        "title": "Working with Databases",
+        "vlink": "https://example.com/database_work"
+      },
+      {
+        "title": "Web Development Best Practices",
+        "vlink": "https://example.com/best_practices"
+      },
+      {
+        "title": "Final Project: Building a Simple Website",
+        "vlink": "https://example.com/final_project"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "heading": "Personalized Workout Plans",
+    "subheading": "Tailored fitness plans based on your goals",
+    "thumbnail": "https://i.ibb.co/gZwm8QX/yoga-fundamentals.jpg",
+    "serviceId": "workout_plan",
+    "duration": 30,
+    "category": "Basic",
+    "numberOfVideos": 10,
+    "videos": [
+      {
+        "title": "Getting Started with HTML",
+        "vlink": "https://example.com/html_intro"
+      },
+      {
+        "title": "CSS Fundamentals",
+        "vlink": "https://example.com/css_fundamentals"
+      },
+      {
+        "title": "Introduction to JavaScript",
+        "vlink": "https://example.com/js_intro"
+      },
+      {
+        "title": "Responsive Web Design",
+        "vlink": "https://example.com/responsive_design"
+      },
+      {
+        "title": "Basics of Frontend Frameworks",
+        "vlink": "https://example.com/frontend_frameworks"
+      },
+      {
+        "title": "Introduction to Backend Development",
+        "vlink": "https://example.com/backend_intro"
+      },
+      {
+        "title": "Working with Databases",
+        "vlink": "https://example.com/database_work"
+      },
+      {
+        "title": "Web Development Best Practices",
+        "vlink": "https://example.com/best_practices"
+      },
+      {
+        "title": "Final Project: Building a Simple Website",
+        "vlink": "https://example.com/final_project"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "heading": "Personalized Workout Plans",
+    "subheading": "Tailored fitness plans based on your goals",
+    "thumbnail": "https://i.ibb.co/9Hf8Kky/db10.jpg",
+    "serviceId": "workout_plan",
+    "duration": 30,
+    "category": "Basic",
+    "numberOfVideos": 10,
+    "videos": [
+      {
+        "title": "Getting Started with HTML",
+        "vlink": "https://example.com/html_intro"
+      },
+      {
+        "title": "CSS Fundamentals",
+        "vlink": "https://example.com/css_fundamentals"
+      },
+      {
+        "title": "Introduction to JavaScript",
+        "vlink": "https://example.com/js_intro"
+      },
+      {
+        "title": "Responsive Web Design",
+        "vlink": "https://example.com/responsive_design"
+      },
+      {
+        "title": "Basics of Frontend Frameworks",
+        "vlink": "https://example.com/frontend_frameworks"
+      },
+      {
+        "title": "Introduction to Backend Development",
+        "vlink": "https://example.com/backend_intro"
+      },
+      {
+        "title": "Working with Databases",
+        "vlink": "https://example.com/database_work"
+      },
+      {
+        "title": "Web Development Best Practices",
+        "vlink": "https://example.com/best_practices"
+      },
+      {
+        "title": "Final Project: Building a Simple Website",
+        "vlink": "https://example.com/final_project"
+      }
+    ]
+  }
+]

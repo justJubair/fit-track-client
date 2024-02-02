@@ -9,7 +9,7 @@ const Modules = async ({ params }) => {
     // console.log(module)
 
     const allServices = await getAllServices();
-    console.log(allServices)
+  
    
 
     // const userModules = allServices.filter((serv) => serv.serviceId === params?.moduleid)

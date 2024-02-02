@@ -9,11 +9,11 @@ const Module = ({ module }) => {
 
     const [currentVideo, setCurrentVideo] = useState(module.videos[0].vlink);
     const {data: session}= useSession();
-    console.log(session)
+   
     const handleModule = (vid) => {
         setCurrentVideo('')
         setCurrentVideo(vid.vlink)
-        console.log(vid)
+
         const watchDetails={
             userEmail: session?.user.email,
             vidId: vid?._id

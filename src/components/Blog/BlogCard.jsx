@@ -71,9 +71,12 @@ const BlogCard = ({ challenge }) => {
                 <CardContent>
                     <Typography variant="h6" sx={{ color: 'black' }}>{challenge?.title}</Typography>
                     <Typography variant="body2" sx={{ color: 'black' }}>
-                        {
-                            challenge?.description
+
+                        {challenge.description.length > 250
+                            ? challenge.description.slice(0, 250).concat("...")
+                            : challenge.description
                         }
+
                     </Typography>
                 </CardContent>
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem' }}>

@@ -17,7 +17,7 @@ const Modules = async ({ params }) => {
         <div>
             <div className="bg-black h-16"></div>
             <div className="max-w-6xl mx-auto my-40">
-                <h1 className="text-4xl text-center uppercase">Welcome back. Ready for your today's workout?</h1>
+                <h1 className="text-4xl text-center uppercase my-10 font-bold w-full md:w-1/2 mx-auto">Welcome back. Ready for your <span className="text-[#378ae5]"> today's workout?</span></h1>
                      {
                         userModules.map((module)=> <Module module={module} key={module._id}></Module>)
                      }           

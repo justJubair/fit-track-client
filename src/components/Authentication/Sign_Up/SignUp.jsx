@@ -120,22 +120,10 @@ const SignUp = () => {
                                 margin="normal"
                                 required
                                 fullWidth
-                                name="fname"
-                                label="First Name"
+                                name="username"
+                                label="Name"
                                 type="text"
                                 id="name"
-                                onChange={handleChange}
-                            />
-                        </Grid>
-                        <Grid item>
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="lname"
-                                label="Last Name"
-                                type="text"
-                                id="lastName"
                                 onChange={handleChange}
                             />
                         </Grid>

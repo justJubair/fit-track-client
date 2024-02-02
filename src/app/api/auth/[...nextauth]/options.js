@@ -18,6 +18,7 @@ export const options = {
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
+        username:{label:'Username', type:'text', placeholder:'Name'},
         email: { label: "Email", type: "text", placeholder: "Email" },
         password: { label: "Password", type: "password" },
       },
@@ -26,8 +27,7 @@ export const options = {
      
         try {
           const findUser = await User.findOne({ email: credentials.email })
-       
-
+    
           //validate user
           const validatePass = await bcrypt.compare( credentials.password, findUser.password )
           //return validated user

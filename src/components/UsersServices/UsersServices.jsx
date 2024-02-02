@@ -13,7 +13,7 @@ const UsersServices = ({userServices:allServices}) => {
 
     // const allServices = await getServices();
     const userServices = allServices.filter((serv) => serv.category === user)
-    console.log(userServices)
+
 
     return (
         <Box>

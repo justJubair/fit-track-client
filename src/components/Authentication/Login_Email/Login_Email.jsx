@@ -72,7 +72,7 @@ const Login_Email = () => {
         router.push('/')
       }, 2000);
     }
-  }, [session])
+  }, [session, router])
 
   return (
     <Container component="main" maxWidth="md">
@@ -158,8 +158,8 @@ const Login_Email = () => {
         </Typography>
         <Box sx={{ width: { xs: '100%', md: '50%' } }}>
           <Box className='grid gird-cols-1 gap-4'>
-            <Box onClick={() => handleSignUpGoogle()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#fff', borderRadius: '5px', padding: '8px', color: '#252525', cursor: 'pointer', boxShadow: 3 }}><img className='max-w-[50px]' src='https://i.ibb.co/kmsjzFF/Animation-1700836595835.gif' /><span className='text-lg'> Continue with Google</span></Box>
-            <Box onClick={() => handleSignUpFacebook()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#252525', borderRadius: '5px', padding: '8px', color: '#fff', cursor: 'pointer', boxShadow: 3 }}><img className='max-w-[50px]' src='https://i.ibb.co/5R4LB8n/Animation-1706101317533.gif' /><span className='text-lg'> Continue with Facebook</span></Box>
+            <Box onClick={() => handleSignUpGoogle()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#fff', borderRadius: '5px', padding: '8px', color: '#252525', cursor: 'pointer', boxShadow: 3 }}><img className='max-w-[50px]' src='https://i.ibb.co/kmsjzFF/Animation-1700836595835.gif' alt="image" /><span className='text-lg'> Continue with Google</span></Box>
+            <Box onClick={() => handleSignUpFacebook()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#252525', borderRadius: '5px', padding: '8px', color: '#fff', cursor: 'pointer', boxShadow: 3 }}><img className='max-w-[50px]' src='https://i.ibb.co/5R4LB8n/Animation-1706101317533.gif' alt="login image"/><span className='text-lg'> Continue with Facebook</span></Box>
           </Box>
         </Box>
       </Box>

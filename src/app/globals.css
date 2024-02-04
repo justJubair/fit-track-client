@@ -1,24 +1,104 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-body{
-    font-family: "Roboto", sans-serif;
+body {
+  font-family: "Roboto", sans-serif;
 }
 
-.loader{
-    position: absolute;
-    z-index: 50;
-    left: 50%;
-    top: 50%;
+.loader {
+  position: absolute;
+  z-index: 50;
+  left: 50%;
+  top: 50%;
 }
 
-.MuiDialog-paperScrollPaper{
-    background: rgba(90, 80, 85, 0.20) !important;
-    backdrop-filter: blur(20px) !important;
-    box-shadow: inset 1px 1px 10px rgba(209, 204, 204, 0.63) !important;
-    padding: 10px  0 20px 0 !important;
-    border-radius: 20px;
+.MuiDialog-paperScrollPaper {
+  background: rgba(90, 80, 85, 0.2) !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: inset 1px 1px 10px rgba(209, 204, 204, 0.63) !important;
+  padding: 10px 0 20px 0 !important;
+  border-radius: 20px;
+}
+
+.glow-effect {
+  --glow-line-color: rgb(7, 205, 255);
+  --glow-line-thickness: 5px;
+  --glow-line-length: 20px;
+  --glow-blur-color: rgb(7, 255, 234);
+  --glow-blur-size: 5px;
+  --glow-offset: -1px;
+  --animation-speed: 2000ms;
+  /* do not change, used for calculations */
+  --container-offset: 200px;
+  position: relative;
+  border-radius: .4rem;
+  box-shadow: 1px 3px 5px 2px #00000071 ;
+}
+
+.glow-container {
+  pointer-events: none;
+  position: absolute;
+  inset: calc(var(--container-offset) / -2);
+  width: calc(100% + var(--container-offset));
+  height: calc(100% + var(--container-offset));
+  opacity: 0;
+  /* outline: 3px solid blue; */
+}
+
+.glow-blur,
+.glow-line {
+  width: calc(100% - var(--container-offset) + var(--glow-offset));
+  height: calc(100% - var(--container-offset) + var(--glow-offset));
+  x: calc((var(--container-offset) / 2) + calc(var(--glow-offset) / -2));
+  y: calc((var(--container-offset) / 2) + calc(var(--glow-offset) / -2));
+  rx: .4rem;
+  fill: transparent;
+  stroke: black;
+  stroke-width: 5px;
+  stroke-dasharray: var(--glow-line-length) calc(50px - var(--glow-line-length));
+}
+
+.glow-effect:is(:hover, :focus) :is(.glow-line, .glow-blur) {
+  stroke-dashoffset: -80px;
+  transition: stroke-dashoffset var(--animation-speed) ease-in;
+}
+
+.glow-line {
+  stroke: var(--glow-line-color);
+  stroke-width: var(--glow-line-thickness);
+}
+
+.glow-blur {
+  filter: blur(var(--glow-blur-size));
+  stroke: var(--glow-blur-color);
+  stroke-width: var(--glow-blur-size);
+}
+
+.glow-effect:is(:hover, :focus) .glow-container {
+  animation: glow-visibility ease-in-out var(--animation-speed);
+}
+
+@keyframes glow-visibility {
+  0%,
+  100% {
+    opacity: 0;
   }
+  25%,
+  75% {
+    opacity: 1;
+  }
+}
+
+/* .glow-effect[data-glow-animation="false"] {
+  --glow-line-length: 50px;
+}
+.glow-effect[data-glow-offset="true"] {
+  --glow-offset: 10px;
+}
+
+.glow-effect[data-glow-animation="grow"]:is(:hover, :focus) .glow-container {
+  scale: 1.3;
+  transition: scale var(--animation-speed) linear;
+} */

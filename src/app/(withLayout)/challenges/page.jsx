@@ -5,7 +5,7 @@ import ChallengeSlider from "@/components/Competition/ChallengeSlider/ChallengeS
 
 const ChallengesPage = () => {
     return(
-        <div>
+        <div className=" ">
             <ChallengeSlider/>
             <Challenge></Challenge>
         </div>

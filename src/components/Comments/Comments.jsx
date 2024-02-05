@@ -48,7 +48,7 @@ const Comments = () => {
                         Comments
                     </AccordionSummary>
                     <AccordionDetails className="space-y-4">
-                        <div className="border p-2">
+                        <div className="border p-2 rounded-xl ">
                             <div className="flex  gap-2">
                                 <Avatar alt={session?.user?.name} src={session?.user?.image} sx={{ mb: "20px" }} />
                                 <Typography sx={{ mt: "8px", fontSize: "15px", fontWeight: "700" }}>
@@ -59,7 +59,7 @@ const Comments = () => {
                                 Lorem ipsum dolor sit amet.
                             </Typography>
                         </div>
-                        <div className="border p-2">
+                        <div className="border p-2 rounded-xl">
                             <div className="flex  gap-2">
                                 <Avatar alt={session?.user?.name} src={session?.user?.image} sx={{ mb: "20px" }} />
                                 <Typography sx={{ mt: "8px", fontSize: "15px", fontWeight: "700" }}>
@@ -70,7 +70,7 @@ const Comments = () => {
                                 Lorem ipsum dolor sit amet.
                             </Typography>
                         </div>
-                        <div className="border p-2">
+                        <div className="border p-2 rounded-xl">
                             <div className="flex  gap-2">
                                 <Avatar alt={session?.user?.name} src={session?.user?.image} sx={{ mb: "20px" }} />
                                 <Typography sx={{ mt: "8px", fontSize: "15px", fontWeight: "700" }}>
@@ -81,7 +81,7 @@ const Comments = () => {
                                 Lorem ipsum dolor sit amet.
                             </Typography>
                         </div>
-                        <div className="border p-2">
+                        <div className="border p-2 rounded-xl">
                             <div className="flex  gap-2">
                                 <Avatar alt={session?.user?.name} src={session?.user?.image} sx={{ mb: "20px" }} />
                                 <Typography sx={{ mt: "8px", fontSize: "15px", fontWeight: "700" }}>

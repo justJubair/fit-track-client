@@ -1,23 +1,22 @@
-import Module from "@/components/Modules/Module";
-import { getServices } from "@/utils/getServices";
+import Module from "@/components/Module/Module";
+import { getAllServices } from "@/utils/getAllServices";
 
 
-const Modules = async ({ params }) => {
-    // console.log(params)
+const Modules = async ({params}) => {
+     
     const module = params.moduleid;
-    // console.log(module)
 
-    const allServices = await getServices();
+    const allServices = await getAllServices();
     // console.log(allServices)
 
     const userModules = allServices.filter((serv) => serv.serviceId === module)
-    console.log(userModules)
+    // console.log(userModules)
 
     return (
         <div>
             <div className="bg-black h-16"></div>
-            <div className="max-w-6xl mx-auto my-40">
-                <h1 className="text-4xl text-center uppercase my-10 font-bold w-full md:w-1/2 mx-auto">Welcome back. Ready for your <span className="text-[#378ae5]"> today's workout?</span></h1>
+            <div className="max-w-7xl mx-auto mt-20 mb-40">
+                <h1 className="text-4xl text-center uppercase my-12">Welcome back. Ready for your todays workout?</h1>
                      {
                         userModules.map((module)=> <Module module={module} key={module._id}></Module>)
                      }           

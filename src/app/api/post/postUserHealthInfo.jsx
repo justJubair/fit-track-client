@@ -5,7 +5,7 @@ import axios from "axios";
 const submitHealthInfo = async (formData) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/v1/healthinfo",
+      "https://fit-track-server.vercel.app/api/v1/healthinfo",
       formData
     );
 

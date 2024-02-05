@@ -11,12 +11,20 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
+
 const BlogCard = ({ challenge }) => {
 
     //states
     const { data: session } = useSession();
+    const router = useRouter();
     //states
+    // console.log(challenge.likes)
 
+    // const isLiked = challenge.likes.filter(item => item.email !== session?.user?.email);
+    // const isLiked = challenge.likes.filter(item => item.email !== session?.user?.email).length > 0;
+    // const isDisLiked = challenge.disLikes.filter(item => item.email !== session?.user?.email).length > 0;
+    // console.log(isLiked)
     const handelLikeBtn = async (_id) => {
         try {
             const like = {
@@ -24,6 +32,9 @@ const BlogCard = ({ challenge }) => {
                 likerEmail: session?.user?.email
             };
             const res = await axios.patch("http://localhost:5000/api/v1/like", like);
+            console.log(res.data)
+            window.location.reload()
+
         } catch (error) {
             console.error("Error liking blog:", error);
         }
@@ -35,6 +46,7 @@ const BlogCard = ({ challenge }) => {
                 DislikerEmail: session?.user?.email
             }
             const res = await axios.patch("http://localhost:5000/api/v1/Dislike", DisLikes);
+            window.location.reload()
         }
         catch (error) {
             console.error("Error", error)
@@ -43,11 +55,11 @@ const BlogCard = ({ challenge }) => {
     return (
         <div className="lg:w-4/5 mx-auto">
             <Card sx={{ backgroundColor: 'white' }}>
-                <Image width={500} height={500} src={challenge?.image} alt="Card Image" className="w-full h-96 object-cover" />
+                <Image width={500} height={300} src={challenge?.image} alt="Card Image" className="w-full h-60 object-cover" />
                 <CardHeader
                     avatar={
                         <Avatar sx={{ backgroundColor: 'black' }} aria-label="recipe">
-                            <Image width={500} height={500} src={challenge?.userImageURL} alt="" />
+                            <Image width={500} height={500} src={challenge?.userImageURL} alt="avatar" />
                         </Avatar>
                     }
                     title={<Typography variant="h6" sx={{ color: 'black', fontSize: '1rem' }}>
@@ -59,9 +71,12 @@ const BlogCard = ({ challenge }) => {
                 <CardContent>
                     <Typography variant="h6" sx={{ color: 'black' }}>{challenge?.title}</Typography>
                     <Typography variant="body2" sx={{ color: 'black' }}>
-                        {
-                            challenge?.description
+
+                        {challenge.description.length > 250
+                            ? challenge.description.slice(0, 250).concat("...")
+                            : challenge.description
                         }
+
                     </Typography>
                 </CardContent>
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem' }}>

@@ -1,8 +1,13 @@
+import ServiceDetails from "@/components/ServiceDetails/ServiceDetails";
+import { getSingleService } from "@/utils/getSingleService";
 
-const ServiceDetailPage = () => {
+const ServiceDetailPage = async({params}) => {
+ 
+    const service = await getSingleService(params?.serviceId)
+    
     return(
         <>
-            <h1>detail</h1>
+            <ServiceDetails service={service}/>
         </>
     )}
 export default ServiceDetailPage;

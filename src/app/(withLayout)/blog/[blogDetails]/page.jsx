@@ -1,3 +1,4 @@
+import Comments from '@/components/Comments/Comments';
 import { Fullscreen } from '@mui/icons-material';
 import Image from 'next/image';
 import React from 'react';
@@ -22,7 +23,7 @@ const page = () => {
                 </div>
                 {/* comments section */}
                 <div>
-
+                    <Comments />
                 </div>
                 {/* comments section */}
             </div>

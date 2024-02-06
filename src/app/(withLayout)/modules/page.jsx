@@ -7,7 +7,7 @@ const Courses = async () => {
     
     return (
         <div>
-            <UsersServices/>
+            <UsersServices userServices={userServices}/>
         </div>
     );
 };

@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 const page = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { id } = useParams()
-    console.log(id)
+    // console.log(id)
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [blog, setBlog] = useState()
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -19,7 +19,7 @@ const page = () => {
         getBlog().then(result => setBlog(result));
     }, [])
     // console.log(blog)
-
+    // console.log(blog?.blogComments)
     return (
         <div >
             <div className="bg-black h-16"></div>
@@ -39,7 +39,7 @@ const page = () => {
                 </div>
                 {/* comments section */}
                 <div>
-                    <Comments id={blog?._id} />
+                    <Comments id={blog?._id} comments={blog?.blogComments} />
                 </div>
                 {/* comments section */}
             </div>

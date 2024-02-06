@@ -18,7 +18,7 @@ const page = () => {
         };
         getBlog().then(result => setBlog(result));
     }, [])
-    console.log(blog)
+    // console.log(blog)
 
     return (
         <div >
@@ -39,7 +39,7 @@ const page = () => {
                 </div>
                 {/* comments section */}
                 <div>
-                    <Comments />
+                    <Comments id={blog?._id} />
                 </div>
                 {/* comments section */}
             </div>

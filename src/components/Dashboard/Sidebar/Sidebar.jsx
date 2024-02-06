@@ -19,7 +19,7 @@ const Sidebar = () => {
     useEffect(()=>{
         const navItems = document.querySelectorAll(".nav-item");
 
-        navItems.forEach((navItem, i) => {
+        navItems.forEach((navItem) => {
           navItem.addEventListener("click", () => {
             navItems.forEach((item) => {
               item.className = "nav-item";
@@ -33,7 +33,7 @@ const Sidebar = () => {
   return (
     <Box>
       {/* logo */}
-      <div className="flex justify-center mt-5">
+      <div className="hidden md:flex justify-center mt-5">
         <Image
           width={30}
           height={30}

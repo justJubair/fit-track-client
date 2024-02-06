@@ -14,8 +14,9 @@ import { useSession } from "next-auth/react";
 import { ToastContainer, toast } from 'react-toastify';
 
 
-const Comments = (id) => {
+const Comments = ({ id, comments }) => {
     const { data: session } = useSession();
+    // console.log(comments)
 
     const handelComment = async (e) => {
         e.preventDefault()
@@ -46,6 +47,7 @@ const Comments = (id) => {
                     progress: undefined,
                     theme: "dark",
                 });
+                form.reset()
             };
         } catch (error) {
             console.error("Error occurred while making the request:", error);
@@ -95,72 +97,21 @@ const Comments = (id) => {
                         Comments
                     </AccordionSummary>
                     <AccordionDetails className="space-y-4 overflow-y-scroll h-[500px]">
-                        <div className="border p-2 rounded-xl ">
-                            <div className="flex  gap-2">
-                                <Avatar alt={session?.user?.name} src={session?.user?.image} sx={{ mb: "20px" }} />
-                                <Typography sx={{ mt: "8px", fontSize: "15px", fontWeight: "700" }}>
-                                    {session?.user?.name}
-                                </Typography>
-                            </div>
-                            <Typography>
-                                Lorem ipsum dolor sit amet.
-                            </Typography>
-                        </div>
-                        <div className="border p-2 rounded-xl ">
-                            <div className="flex  gap-2">
-                                <Avatar alt={session?.user?.name} src={session?.user?.image} sx={{ mb: "20px" }} />
-                                <Typography sx={{ mt: "8px", fontSize: "15px", fontWeight: "700" }}>
-                                    {session?.user?.name}
-                                </Typography>
-                            </div>
-                            <Typography>
-                                Lorem ipsum dolor sit amet.
-                            </Typography>
-                        </div>
-                        <div className="border p-2 rounded-xl">
-                            <div className="flex  gap-2">
-                                <Avatar alt={session?.user?.name} src={session?.user?.image} sx={{ mb: "20px" }} />
-                                <Typography sx={{ mt: "8px", fontSize: "15px", fontWeight: "700" }}>
-                                    {session?.user?.name}
-                                </Typography>
-                            </div>
-                            <Typography>
-                                Lorem ipsum dolor sit amet.
-                            </Typography>
-                        </div>
-                        <div className="border p-2 rounded-xl">
-                            <div className="flex  gap-2">
-                                <Avatar alt={session?.user?.name} src={session?.user?.image} sx={{ mb: "20px" }} />
-                                <Typography sx={{ mt: "8px", fontSize: "15px", fontWeight: "700" }}>
-                                    {session?.user?.name}
-                                </Typography>
-                            </div>
-                            <Typography>
-                                Lorem ipsum dolor sit amet.
-                            </Typography>
-                        </div>
-                        <div className="border p-2 rounded-xl">
-                            <div className="flex  gap-2">
-                                <Avatar alt={session?.user?.name} src={session?.user?.image} sx={{ mb: "20px" }} />
-                                <Typography sx={{ mt: "8px", fontSize: "15px", fontWeight: "700" }}>
-                                    {session?.user?.name}
-                                </Typography>
-                            </div>
-                            <Typography>
-                                Lorem ipsum dolor sit amet.
-                            </Typography>
-                        </div>
-                        <div className="border p-2 rounded-xl">
-                            <div className="flex  gap-2">
-                                <Avatar alt={session?.user?.name} src={session?.user?.image} sx={{ mb: "20px" }} />
-                                <Typography sx={{ mt: "8px", fontSize: "15px", fontWeight: "700" }}>
-                                    {session?.user?.name}
-                                </Typography>
-                            </div>
-                            <Typography>
-                                Lorem ipsum dolor sit amet.
-                            </Typography>
-                        </div>
+                        {
+                            comments?.map((comment,i) => (
+                                <div key={i} className="border p-2 rounded-xl ">
+                                    <div className="flex  gap-2">
+                                        <Avatar alt={comment?.userName} src={comment?.userImage} sx={{ mb: "20px" }} />
+                                        <Typography sx={{ mt: "8px", fontSize: "15px", fontWeight: "700" }}>
+                                            {comment?.userName}
+                                        </Typography>
+                                    </div>
+                                    <Typography>
+                                        {comment?.comment}
+                                    </Typography>
+                                </div>
+                            ))
+                        }
                     </AccordionDetails>
                 </Accordion>
             </div>

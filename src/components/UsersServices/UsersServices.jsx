@@ -4,16 +4,15 @@ import Link from "next/link";
 import { getAllServices } from "@/utils/getAllServices";
 
 
-const UsersServices = async() => {
+const UsersServices = ({userServices}) => {
 
     //checking user plan
     const user = 'Basic';
     
-    //getting all available services
-    const allServices = await getAllServices();
+
  
     //filtering services according to user plan
-    const userServices = allServices.filter((serv) => serv.category === user)
+    const userModules = userServices.filter((serv) => serv.category === user)
 
     return (
         <Box>
@@ -23,7 +22,7 @@ const UsersServices = async() => {
                 <Box sx={{ marginLeft: '10px', marginRight: '10px' }}>
                 <Grid container spacing={3} sx={{ justifyContent: "center" }}>
                 {
-                    userServices?.map(serv => (
+                    userModules?.map(serv => (
                         <Grid item xs={12} md={8} lg={4} key={serv._id}>
                             <Box >
                                 <Box sx={{

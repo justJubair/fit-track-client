@@ -4,12 +4,12 @@ import { getAllServices } from "@/utils/getAllServices";
 
 const Modules = async ({params}) => {
      
-    const module = params.moduleid;
+    const id = params.moduleid;
 
     const allServices = await getAllServices();
     // console.log(allServices)
 
-    const userModules = allServices.filter((serv) => serv.serviceId === module)
+    const userModules = allServices.filter((serv) => serv.serviceId === id)
     // console.log(userModules)
 
     return (

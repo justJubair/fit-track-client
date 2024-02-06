@@ -5,7 +5,7 @@ import ChallengeSlider from "@/components/Competition/ChallengeSlider/ChallengeS
 
 const ChallengesPage = () => {
     return(
-        <div className=" ">
+        <div className=" overflow-x-hidden bg-challenge ">
             <ChallengeSlider/>
             <Challenge></Challenge>
         </div>

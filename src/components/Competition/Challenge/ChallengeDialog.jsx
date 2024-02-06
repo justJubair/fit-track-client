@@ -27,6 +27,8 @@ const positions = [
   },
 ];
 
+
+
 const ChallegeDialog = ({ challenge }) => {
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState('paper');
@@ -48,16 +50,17 @@ const ChallegeDialog = ({ challenge }) => {
       }
     }
   }, [open]);
+  console.log(challenge.rules)
   return (
     <div>
       <Button
         variant="contained"
         sx={{
-          backgroundColor: "black",
+          backgroundColor: "black !important",
           color: "white",
           "&:hover": {
             color: "black",
-            backgroundColor: "white",
+            backgroundColor: "white !important",
           },
         }}
         onClick={handleClickOpen('paper')}
@@ -70,16 +73,17 @@ const ChallegeDialog = ({ challenge }) => {
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        
       >
-        <DialogContent dividers={scroll === 'paper'} sx={{ backgroundColor: "black", color: "white" , }}>
+        <DialogContent  dividers={scroll === 'paper'} sx={{color: "white" , }}>
           
-          <div sx={{ color: "gray.500" }}>
+          <div >
             <Typography variant="h5" className="text-center font-bold py-2">
               <strong>Time left to take part!</strong>.
             </Typography>
             <FlipCountdown
               hideYear
-              endAt={"2024-12-12 01:26:58"}
+              endAt={`${challenge.lastDateForSubmissions}`}
               size="small"
               titlePosition="bottom"
             ></FlipCountdown>
@@ -87,36 +91,19 @@ const ChallegeDialog = ({ challenge }) => {
           <CardContent>
             <Typography variant="h6">
               This competition is centered around{" "}
-              <strong>Theme: [Competition Theme]</strong>.
-            </Typography>
-            <Typography variant="body1">
-              It will run for <strong>[Duration]</strong>, and there are special
-              rules to make it even more exciting!
+              <strong>{challenge.challengeName}</strong>.
             </Typography>
             <div>
               <Typography variant="h6">Rules description below :</Typography>
               <List>
-                {[
-                  {
-                    text:
-                      "Form & Technique: Perform exercises with proper form and technique for safety. Judges assess posture, range of motion, and control.",
-                  },
-                  {
-                    text:
-                      "Scoring System: Clear points system for workout achievements. Judges consider reps, time, and exercise difficulty.",
-                  },
-                  {
-                    text:
-                      "Variety of Workouts: Diverse set of workouts for strength, endurance, and flexibility. Include weightlifting, cardio, and bodyweight exercises.",
-                  },
-                ].map((item, index) => (
+              {challenge.rules?.map((item, index) => (
                   <ListItem key={index}>
-                    <ListItemText primary={<>{item.text}</>} />
+                    <ListItemText > {index+1}. {item}</ListItemText>
                   </ListItem>
                 ))}
               </List>
             </div>
-            <Typography variant="body1" color="error" paragraph>
+            <Typography variant="h6" color="error">
               Don't miss the chance to showcase your skills and creativity.
               Exciting rewards await the winners!
             </Typography>
@@ -153,9 +140,9 @@ const ChallegeDialog = ({ challenge }) => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "red",
+                backgroundColor: "red !important",
                 "&:hover": {
-                  backgroundColor: "darkgrey",
+                  backgroundColor: "darkgrey !important",
                 },
               }}
               onClick={handleClose}
@@ -165,9 +152,9 @@ const ChallegeDialog = ({ challenge }) => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "black",
+                backgroundColor: "black !important",
                 "&:hover": {
-                  backgroundColor: "darkgrey",
+                  backgroundColor: "darkgrey !important",
                 },
               }}
               onClick={handleClose}

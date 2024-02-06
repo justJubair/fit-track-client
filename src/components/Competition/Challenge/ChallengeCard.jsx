@@ -14,41 +14,46 @@ import { Box } from "@mui/material";
 const ChallengeCard = ({ challenge }) => {
   return (
     <div style={{ margin: "0.5rem 1rem" }}>
-      <Box className="glow-effect  shadow-black" sx={{ backgroundColor: "transparent",minHeight: "500px"  }}>
-        <CardHeader
+      <Box
+        className="glow-effect transform transition-transform ease-in-out duration-200 hover:scale-105 shadow-black"
+        sx={{ backgroundColor: "#7c6c0052", minHeight: "500px", minWidth:'320px'}}
+      >
+        <CardHeader 
           avatar={
             <Avatar sx={{ backgroundColor: "black" }} aria-label="recipe">
               <Image
                 width={500}
                 height={500}
-                src="https://imgs.search.brave.com/srvbJUX3E27xiBy5dZpnZTvW5yjuZhn50u4FeP1V43Y/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9taXJv/Lm1lZGl1bS5jb20v/djIvMSpNNmRmZmZo/dVgySFVCSXpSV3Zm/ZWdBLmpwZWc"
-                alt=""
+                src={challenge.postedBy.image}
+                alt={challenge.postedBy.name}
               />
             </Avatar>
           }
           title={
             <Typography variant="h6" sx={{ color: "black", fontSize: "1rem" }}>
-              Challenge Created by {challenge.createdBy.toUpperCase()}
+              Challenge Posted by {challenge.postedBy.name.toUpperCase()}
             </Typography>
           }
           subheader="September 14, 2016"
-          sx={{ title: { color: "black" } }}
+          sx={{ title: { color: "black" } ,minHeight: "130px"}}
         />
 
-        <CardMedia
-          component="img"
-          height="194"
-          image={challenge.imageURL}
-          alt="Paella dish"
-        />
-        <CardContent>
+        <Box sx={{minHeight:'200px'}}>
+          <Image
+            component="img"
+            height={500}
+            
+            width={500}
+            src={challenge.imageLink}
+            alt={challenge.challengeName}
+          />
+        </Box>
+        <CardContent sx={{ height: "100%" }}>
           <Typography variant="h6" sx={{ color: "black" }}>
-            {challenge.name}
+            {challenge.challengeName}
           </Typography>
-          <Typography variant="body2" sx={{ color: "black" }}>
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
+          <Typography variant="body2" sx={{ color: "black" ,minHeight:'100px' }}>
+            {challenge.description.slice(0,200)}...
           </Typography>
         </CardContent>
         <div
@@ -65,9 +70,17 @@ const ChallengeCard = ({ challenge }) => {
           <ChallegeDialog challenge={challenge}></ChallegeDialog>
         </div>
         <svg className="glow-container">
-    <rect pathLength="100" stroke-linecap="round" className="glow-blur"></rect>
-    <rect pathLength="100" stroke-linecap="round" className="glow-line"></rect>
-  </svg>
+          <rect
+            pathLength="100"
+            strokeLinecap="round"
+            className="glow-blur"
+          ></rect>
+          <rect
+            pathLength="100"
+            strokeLinecap="round"
+            className="glow-line"
+          ></rect>
+        </svg>
       </Box>
     </div>
   );

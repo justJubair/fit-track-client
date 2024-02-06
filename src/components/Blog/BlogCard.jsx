@@ -73,7 +73,7 @@ const BlogCard = ({ challenge }) => {
                         subheader={challenge?.time}
                         sx={{ title: { color: 'black' } }}
                     />
-                    <Link href={"blog/blogDetails"}>
+                    <Link href={`blog/${challenge?._id}`}>
                         <Button size='small' color='inherit' variant="outlined" sx={{ mr: '10px' }}>Details</Button>
                     </Link>
                 </div>

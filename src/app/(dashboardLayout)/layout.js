@@ -1,4 +1,4 @@
-import Sidebar from "@/components/Dashboard/Sidebar";
+import Sidebar from "@/components/Dashboard/Sidebar/Sidebar";
 import { Grid } from "@mui/material";
 
 const DashboardLayout = ({ children }) => {
@@ -6,12 +6,12 @@ const DashboardLayout = ({ children }) => {
     <>
       <Grid container minHeight="100vh">
         {/* sidebar */}
-        <Grid item xs={2} bgcolor="#1a237e">
+        <Grid item xs={1} bgcolor="#1565c0">
           <Sidebar />
         </Grid>
 
         {/* Dashboard content */}
-        <Grid item xs={10} bgcolor="green">
+        <Grid item xs={11} bgcolor="green">
           {children}
         </Grid>
       </Grid>

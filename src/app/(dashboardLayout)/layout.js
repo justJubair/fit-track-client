@@ -11,7 +11,7 @@ const DashboardLayout = ({ children }) => {
         </Grid>
 
         {/* Dashboard content */}
-        <Grid item xs={11} bgcolor="green">
+        <Grid item xs={11}>
           {children}
         </Grid>
       </Grid>

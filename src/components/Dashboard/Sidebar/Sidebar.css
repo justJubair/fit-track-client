@@ -1,6 +1,16 @@
+ul,
+ul li {
+  outline: 0;
+}
+
+ul li a {
+  text-decoration: none;
+}
+
 .nav-item {
     position: relative;
     display: block;
+    margin: 20px 0px;
   }
   
   .nav-item a {
@@ -12,7 +22,7 @@
     color: #fff;
     font-size: 1rem;
     padding: 8px 0;
-    margin-left: 10px;
+    margin-left: 5px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
   }

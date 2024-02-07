@@ -11,7 +11,7 @@ const ManageProgress = () => {
   return (
     <div>
       {/* main container */}
-      <div className="flex justify-around items-center mt-10">
+      <div className="flex flex-col md:flex-row mt-10">
         <div className="center">
           <h1>Progress Dashboard</h1>
           <div className="row1">

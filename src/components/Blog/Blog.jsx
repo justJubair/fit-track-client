@@ -120,7 +120,7 @@ const Blog = () => {
             {/* recent blogs */}
             <div className='px-2 lg:px-10'>
                 <h3 className=' font-semibold text-3xl p-6'>Recent Post</h3>
-                <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-4'>
+                <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-3 lg:w-4/5 mx-auto'>
                     {/* mapping all services one by one */}
                     {challenges?.map((challenge, i) => (
                         <BlogCard key={i} challenge={challenge} />

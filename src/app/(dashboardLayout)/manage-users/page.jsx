@@ -1,9 +1,12 @@
 import ManageUsers from "@/components/Dashboard/ManageUsers/ManageUsers";
+import { getAllUsers } from "@/utils/getAllUsers";
 
-const ManageUsersPage = () => {
+const ManageUsersPage = async() => {
+    const users = await getAllUsers()
+    
     return(
         <div>
-           <ManageUsers/>
+           <ManageUsers users={users}/>
         </div>
     )}
 export default ManageUsersPage;

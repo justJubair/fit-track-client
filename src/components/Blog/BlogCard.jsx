@@ -55,9 +55,9 @@ const BlogCard = ({ challenge }) => {
         }
     }
     return (
-        <div className="lg:w-4/5 mx-auto">
+        <div className="flex">
 
-            <Card sx={{ backgroundColor: 'white' }}>
+            <Card sx={{ backgroundColor: 'white', flexGrow: "1", }}>
                 <Image width={500} height={500} src={challenge?.image} alt="Card Image" className="w-full h-96 object-cover" />
 
                 <div className='flex justify-between mt-2 items-center '>
@@ -77,8 +77,8 @@ const BlogCard = ({ challenge }) => {
                         <Button size='small' color='inherit' variant="outlined" sx={{ mr: '10px' }}>Details</Button>
                     </Link>
                 </div>
-                <CardContent>
-                    <Typography variant="h6" sx={{ color: 'black' }}>
+                <CardContent sx={{ border: "8px", borderColor: "black" }} >
+                    <Typography variant="h6" sx={{ color: 'black', mb: "8px" }} >
                         {
                             challenge?.title?.length > 40 ?
                                 challenge?.title.slice(0, 40) + "..."
@@ -86,14 +86,14 @@ const BlogCard = ({ challenge }) => {
                                 challenge?.title
                         }
                     </Typography>
-                    <Typography variant="body2" sx={{ color: 'black' }}>
+                    <Typography variant="body2" sx={{ color: 'black',height:"50px"}}>
                         {challenge.description.length > 250
                             ? challenge.description.slice(0, 250).concat("...")
                             : challenge.description
                         }
                     </Typography>
                 </CardContent>
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem' }}>
+                <Box style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem' }} className="mt-4" >
                     <Tooltip title="Save" arrow>
                         <IconButton aria-label="add to favorites">
                             <BookmarksIcon />
@@ -119,7 +119,7 @@ const BlogCard = ({ challenge }) => {
                         </div>
                     </div>
 
-                </div>
+                </Box>
 
             </Card>
 

@@ -2,7 +2,7 @@ import Module from "@/components/Module/Module";
 import { getAllServices } from "@/utils/getAllServices";
 
 
-const Modules = async ({params}) => {
+const Modules = async({params}) => {
      
     const id = params.moduleid;
 

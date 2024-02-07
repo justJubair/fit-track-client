@@ -23,7 +23,7 @@ const Blog = () => {
         };
         getAllBlogs().then(result => setChallenges(result));
     }, [])
-    // console.log(challenges)
+    console.log(challenges)
 
     const handelBlog = async (e) => {
         e.preventDefault()
@@ -52,10 +52,11 @@ const Blog = () => {
             userImageURL: session?.user?.image,
             likes: [],
             disLikes: [],
+            blogComments:[],
         }
         // console.log(blog)
-        //Final Blog
-        const res = await axios.post("https://fit-track-server.vercel.app/api/v1/blogs", blog)
+        // Final Blog
+        const res = await axios.post("http://localhost:5000/api/v1/blogs", blog)
         if (res.data?._id) {
             toast.success('Blog Uploaded!', {
                 position: "top-center",
@@ -119,7 +120,7 @@ const Blog = () => {
             {/* recent blogs */}
             <div className='px-2 lg:px-10'>
                 <h3 className=' font-semibold text-3xl p-6'>Recent Post</h3>
-                <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-4'>
+                <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-3 lg:w-4/5 mx-auto'>
                     {/* mapping all services one by one */}
                     {challenges?.map((challenge, i) => (
                         <BlogCard key={i} challenge={challenge} />

@@ -9,7 +9,6 @@ const UsersServices = ({userServices}) => {
     //checking user plan
     const user = 'Basic';
     
-
  
     //filtering services according to user plan
     const userModules = userServices.filter((serv) => serv.category === user)

@@ -74,7 +74,7 @@ const Module = ({ module }) => {
               console.error('Error fetching user watch history:', error);
           });
   }, [unlockedVideos]);
-  
+
   useEffect(() => {
     // This effect is triggered whenever the triggerUpdate state changes
 }, [triggerUpdate]);

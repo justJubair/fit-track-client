@@ -1,0 +1,73 @@
+[
+    {
+      "id": 1,
+      "paymentDate": "2024-02-07",
+      "amount": 1000.00,
+      "paymentMethod": "Credit Card",
+      "status": "Paid"
+    },
+    {
+      "id": 2,
+      "paymentDate": "2024-01-15",
+      "amount": 750.50,
+      "paymentMethod": "Bank Transfer",
+      "status": "Paid"
+    },
+    {
+      "id": 3,
+      "paymentDate": "2023-12-22",
+      "amount": 500.25,
+      "paymentMethod": "PayPal",
+      "status": "Paid"
+    },
+    {
+      "id": 4,
+      "paymentDate": "2023-11-30",
+      "amount": 1200.75,
+      "paymentMethod": "Cheque",
+      "status": "Pending"
+    },
+    {
+      "id": 5,
+      "paymentDate": "2023-10-18",
+      "amount": 850.30,
+      "paymentMethod": "Credit Card",
+      "status": "Paid"
+    },
+    {
+      "id": 6,
+      "paymentDate": "2023-09-25",
+      "amount": 600.90,
+      "paymentMethod": "Bank Transfer",
+      "status": "Paid"
+    },
+    {
+      "id": 7,
+      "paymentDate": "2023-08-12",
+      "amount": 300.50,
+      "paymentMethod": "PayPal",
+      "status": "Paid"
+    },
+    {
+      "id": 8,
+      "paymentDate": "2023-07-30",
+      "amount": 950.25,
+      "paymentMethod": "Cheque",
+      "status": "Paid"
+    },
+    {
+      "id": 9,
+      "paymentDate": "2023-06-15",
+      "amount": 1100.75,
+      "paymentMethod": "Credit Card",
+      "status": "Paid"
+    },
+    {
+      "id": 10,
+      "paymentDate": "2023-05-22",
+      "amount": 454,
+      "paymentMethod": "Bank Transfer",
+      "status": "Paid"
+    }
+  ]
+  

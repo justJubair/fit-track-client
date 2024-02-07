@@ -1,7 +1,11 @@
-const ManagePaymentsPage = () => {
+import { getAllPayments } from "@/utils/getAllPayments";
+
+const ManagePaymentsPage = async() => {
+    const payments = await getAllPayments()
+    console.log(payments)
     return(
         <div>
-             <p> HELLO I Am payment page </p>
+            <ManagePaymentsPage/>
         </div>
     )}
 export default ManagePaymentsPage;

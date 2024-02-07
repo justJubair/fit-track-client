@@ -1,7 +1,9 @@
+import ManageUsers from "@/components/Dashboard/ManageUsers/ManageUsers";
+
 const ManageUsersPage = () => {
     return(
         <div>
-             <p> HELLO I Am users page </p>
+           <ManageUsers/>
         </div>
     )}
 export default ManageUsersPage;

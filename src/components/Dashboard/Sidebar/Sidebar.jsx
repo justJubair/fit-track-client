@@ -12,6 +12,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
+import WidgetsIcon from '@mui/icons-material/Widgets';
 import { useEffect } from "react";
 
 const Sidebar = () => {
@@ -54,7 +55,7 @@ const Sidebar = () => {
             </Link>
           </li>
         </ul>
-        {/* Route one */}
+        {/* Route Two */}
         <ul>
           <li className="nav-item ">
             <Link href="/manage-users">
@@ -62,7 +63,7 @@ const Sidebar = () => {
             </Link>
           </li>
         </ul>
-        {/* Route one */}
+        {/* Route Three */}
         <ul>
           <li className="nav-item ">
             <Link href="/manage-payments">
@@ -70,11 +71,11 @@ const Sidebar = () => {
             </Link>
           </li>
         </ul>
-        {/* Route one */}
+        {/* Route four */}
         <ul>
           <li className="nav-item ">
             <Link href="/manage-progress">
-              <EventRepeatIcon sx={{ fontSize: "28px" }} />
+              <WidgetsIcon sx={{ fontSize: "28px" }} />
             </Link>
           </li>
         </ul>

@@ -1,11 +1,12 @@
+import ManagePayments from "@/components/Dashboard/ManagePayments/ManagePayments";
 import { getAllPayments } from "@/utils/getAllPayments";
 
 const ManagePaymentsPage = async() => {
     const payments = await getAllPayments()
-    console.log(payments)
+    
     return(
         <div>
-            <ManagePaymentsPage/>
+            <ManagePayments payments={payments}/>
         </div>
     )}
 export default ManagePaymentsPage;

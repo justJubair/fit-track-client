@@ -1,7 +1,9 @@
-const ManageProgress = () => {
+import ManageProgress from "@/components/Dashboard/ManageProgress/ManageProgress";
+
+const ManageProgressPage = () => {
     return(
-        <div>
-             <p> HELLO I Am progress page </p>
-        </div>
+        <>
+             <ManageProgress/>
+        </>
     )}
-export default ManageProgress;
+export default ManageProgressPage;

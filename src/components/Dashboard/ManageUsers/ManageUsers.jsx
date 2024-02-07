@@ -10,6 +10,10 @@ import Paper from "@mui/material/Paper";
 import { Container } from "@mui/system";
 import { Typography } from "@mui/material";
 
+// icons
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+
 const ManageUsers = ({ users }) => {
   return (
     <Container>
@@ -35,7 +39,7 @@ const ManageUsers = ({ users }) => {
               <TableCell>Name</TableCell>
               <TableCell align="right">Username</TableCell>
               <TableCell align="right">Email</TableCell>
-              <TableCell align="right">Website</TableCell>
+              <TableCell align="right">Action</TableCell>
               {/* <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
             </TableRow>
           </TableHead>
@@ -50,8 +54,12 @@ const ManageUsers = ({ users }) => {
                 </TableCell>
                 <TableCell align="right">{user.username}</TableCell>
                 <TableCell align="right">{user.email}</TableCell>
-                <TableCell align="right">{user.website}</TableCell>
-                {/* <TableCell align="right">{row.protein}</TableCell> */}
+                <TableCell align="right">
+                  {/* delete */}
+                <DeleteForeverIcon sx={{color: "red", marginRight: "1.2rem"}}/>
+                <EditNoteIcon sx={{color: "green"}}/>
+                  </TableCell>
+         
               </TableRow>
             ))}
           </TableBody>

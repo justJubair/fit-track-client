@@ -6,12 +6,12 @@ const DashboardLayout = ({ children }) => {
     <>
       <Grid container minHeight="100vh">
         {/* sidebar */}
-        <Grid item xs={1} bgcolor="#1565c0">
+        <Grid item xs={0.7} bgcolor="#1565c0">
           <Sidebar />
         </Grid>
 
         {/* Dashboard content */}
-        <Grid item xs={11}>
+        <Grid item xs={11.3}>
           {children}
         </Grid>
       </Grid>

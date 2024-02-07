@@ -11,25 +11,23 @@ import "./Sidebar.css";
 import HomeIcon from "@mui/icons-material/Home";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import EventRepeatIcon from '@mui/icons-material/EventRepeat';
-import WidgetsIcon from '@mui/icons-material/Widgets';
+import LogoutIcon from "@mui/icons-material/Logout";
+import WidgetsIcon from "@mui/icons-material/Widgets";
 import { useEffect } from "react";
 
 const Sidebar = () => {
+  useEffect(() => {
+    const navItems = document.querySelectorAll(".nav-item");
 
-    useEffect(()=>{
-        const navItems = document.querySelectorAll(".nav-item");
-
-        navItems.forEach((navItem) => {
-          navItem.addEventListener("click", () => {
-            navItems.forEach((item) => {
-              item.className = "nav-item";
-            });
-            navItem.className = "nav-item active";
-          });
+    navItems.forEach((navItem) => {
+      navItem.addEventListener("click", () => {
+        navItems.forEach((item) => {
+          item.className = "nav-item";
         });
-    },[])
-  
+        navItem.className = "nav-item active";
+      });
+    });
+  }, []);
 
   return (
     <Box>
@@ -46,40 +44,49 @@ const Sidebar = () => {
       </div>
 
       {/* Routes */}
-      <Box marginTop="1rem">
-        {/* Route one */}
-        <ul>
+      <div>
+      
+         {/* Route one */}
+         <ul>
           <li className="nav-item active">
             <Link href="/dashboard">
               <HomeIcon sx={{ fontSize: "28px" }} />
             </Link>
           </li>
-        </ul>
-        {/* Route Two */}
-        <ul>
+
+          {/* Route Two */}
           <li className="nav-item ">
             <Link href="/manage-users">
               <ManageAccountsIcon sx={{ fontSize: "28px" }} />
             </Link>
           </li>
-        </ul>
-        {/* Route Three */}
-        <ul>
+
+          {/* Route Three */}
           <li className="nav-item ">
             <Link href="/manage-payments">
               <MonetizationOnIcon sx={{ fontSize: "28px" }} />
             </Link>
           </li>
-        </ul>
-        {/* Route four */}
-        <ul>
+
+          {/* Route four */}
+
           <li className="nav-item ">
             <Link href="/manage-progress">
               <WidgetsIcon sx={{ fontSize: "28px" }} />
             </Link>
           </li>
         </ul>
-      </Box>
+
+
+        {/* logout button */}
+        <span>
+        <LogoutIcon
+            sx={{ color: "white", fontSize: "28px", margin: "0px 25px" }}
+          />
+        </span>
+        
+       
+      </div>
     </Box>
   );
 };

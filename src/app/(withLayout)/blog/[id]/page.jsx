@@ -17,7 +17,7 @@ const page = () => {
             return allBlogs.json();
         };
         getBlog().then(result => setBlog(result));
-    }, [])
+    }, [id])
     // console.log(blog)
     // console.log(blog?.blogComments)
     return (

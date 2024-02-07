@@ -9,8 +9,6 @@ const UsersServices = ({userServices}) => {
     //checking user plan
     const user = 'Basic';
     
-    //getting all available services
-    // const allServices = await getAllServices();
  
     //filtering services according to user plan
     const userModules = userServices.filter((serv) => serv.category === user)

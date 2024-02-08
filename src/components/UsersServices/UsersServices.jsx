@@ -1,7 +1,7 @@
 'use client';
 import { Box, Grid, Typography } from "@mui/material";
 import Link from "next/link";
-import { getAllServices } from "@/utils/getAllServices";
+import { getAllServices } from "@/api/getAllServices";
 
 
 const UsersServices = ({userServices}) => {

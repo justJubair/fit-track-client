@@ -1,5 +1,5 @@
 import Module from "@/components/Module/Module";
-import { getAllServices } from "@/utils/getAllServices";
+import { getAllServices } from "@/api/getAllServices";
 
 
 const Modules = async({params}) => {
@@ -7,10 +7,10 @@ const Modules = async({params}) => {
     const id = params.moduleid;
 
     const allServices = await getAllServices();
-    // console.log(allServices)
+  
 
     const userModules = allServices.filter((serv) => serv.serviceId === id)
-    // console.log(userModules)
+
 
     return (
         <div>

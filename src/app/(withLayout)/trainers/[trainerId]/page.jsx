@@ -1,5 +1,5 @@
+import { getAllTrainers } from "@/api/getAllTrainers";
 
-import { getAllTrainers } from "@/utils/getAllTrainers";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,7 +13,6 @@ const TrainerDetails = async ({ params }) => {
 
     //filtering the specific trainer from allTrainers using the id
     const trainer = allTrainers.filter(tr => tr._id === id)
-    console.log(trainer)
 
     return (
         <div>

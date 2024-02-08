@@ -13,17 +13,14 @@ import Image from 'next/image';
 
 // import logo
 import LOGO from "../../assets/images/logo02.png"
+import { Box } from '@mui/system';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const TrainerForm =({open, setOpen})=> {
-//   const [open, setOpen] = React.useState(false);
 
-//   const handleClickOpen = () => {
-//     setOpen(true);
-//   };
 
 const {
   control,
@@ -36,23 +33,14 @@ const {
   };
 
   const onSubmit = (data) => {
-    const formData = {
-      username: username,
-      email: email,
-      ...data,
-    };
-
-    // submitHealthInfo(formData);
-    // handleClose();
+    console.log(data)
+    console.log("hello, data koi?")
   };
 
 
 
   return (
     <React.Fragment>
-      {/* <Button variant="outlined" onClick={handleClickOpen}>
-        Slide in alert dialog
-      </Button> */}
       <Dialog
         open={open}
         TransitionComponent={Transition}
@@ -72,59 +60,21 @@ const {
               style={{ width: "100%", marginTop: 10 }}
             >
               <Controller
-                name="age"
+                name="name"
                 control={control}
                 defaultValue=""
                 rules={{
-                  required: "Age is required",
-                  pattern: {
-                    value: /^\d+$/,
-                    message: "Please enter a valid age (Numbers only)",
-                  },
+                  required: "Name is required",
                 }}
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    label="Age"
+                    label="Name"
                     variant="outlined"
                     margin="normal"
                     fullWidth
-                    error={!!errors.age}
-                    helperText={errors.age?.message}
-                    InputProps={{
-                      style: { color: "#fff" },
-                    }}
-                    InputLabelProps={{
-                      style: { color: "#fff" },
-                    }}
-                    sx={{
-                      "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#fff",
-                      },
-                    }}
-                  />
-                )}
-              />
-              <Controller
-                name="weight"
-                control={control}
-                defaultValue=""
-                rules={{
-                  required: "Weight is required",
-                  pattern: {
-                    value: /^\d+$/,
-                    message: "Please enter a valid weight (Numbers only)",
-                  },
-                }}
-                render={({ field }) => (
-                  <TextField
-                    {...field}
-                    label="Weight (kg)"
-                    variant="outlined"
-                    margin="normal"
-                    fullWidth
-                    error={!!errors.weight}
-                    helperText={errors.weight?.message}
+                    error={!!errors.name}
+                    helperText={errors.name?.message}
                     InputProps={{
                       style: { color: "#fff" },
                     }}
@@ -140,26 +90,200 @@ const {
                 )}
               />
 
-              <Controller
-                name="height"
+            <Box display="flex" gap="1rem">
+                {/* specialization */}
+                <Controller
+                name="specialization"
                 control={control}
                 defaultValue=""
                 rules={{
-                  required: "Height is required",
+                  required: "Specialization is required",
+                 
+                }}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="What's your specialization"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    error={!!errors.specialization}
+                    helperText={errors.specialization?.message}
+                    InputProps={{
+                      style: { color: "#fff" },
+                    }}
+                    InputLabelProps={{
+                      style: { color: "#fff" },
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#fff",
+                      },
+                    }}
+                  />
+                )}
+              />
+              {/* Location */}
+              <Controller
+                name="location"
+                control={control}
+                defaultValue=""
+                rules={{
+                  required: "location is required",
+                 
+                }}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Your Location"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    error={!!errors.location}
+                    helperText={errors.location?.message}
+                    InputProps={{
+                      style: { color: "#fff" },
+                    }}
+                    InputLabelProps={{
+                      style: { color: "#fff" },
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#fff",
+                      },
+                    }}
+                  />
+                )}
+              />
+            </Box>
+
+
+
+            <Box display="flex" gap="1rem">
+                {/* phone */}
+                <Controller
+                name="phone"
+                control={control}
+                defaultValue=""
+                rules={{
+                  required: "Phone is required",
                   pattern: {
                     value: /^\d+$/,
-                    message: "Please enter a valid height (Numbers only)",
+                    message: "Please enter a valid experience (Numbers only)",
                   },
                 }}
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    label="Height (cm)"
+                    label="Phone number"
                     variant="outlined"
                     margin="normal"
                     fullWidth
-                    error={!!errors.height}
-                    helperText={errors.height?.message}
+                    error={!!errors.phone}
+                    helperText={errors.phone?.message}
+                    InputProps={{
+                      style: { color: "#fff" },
+                    }}
+                    InputLabelProps={{
+                      style: { color: "#fff" },
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#fff",
+                      },
+                    }}
+                  />
+                )}
+              />
+
+                    {/* experience */}
+              <Controller
+                name="experience"
+                control={control}
+                defaultValue=""
+                rules={{
+                  required: "experience is required",
+                  pattern: {
+                    value: /^\d+$/,
+                    message: "Please enter a valid experience (Numbers only)",
+                  },
+                }}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Years of experience"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    error={!!errors.experience}
+                    helperText={errors.experience?.message}
+                    InputProps={{
+                      style: { color: "#fff" },
+                    }}
+                    InputLabelProps={{
+                      style: { color: "#fff" },
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#fff",
+                      },
+                    }}
+                  />
+                )}
+              />
+            </Box>
+
+                    {/* email */}
+              <Controller
+                name="email"
+                control={control}
+                defaultValue=""
+                rules={{
+                  required: "email is required",
+                 
+                }}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Email"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    error={!!errors.email}
+                    helperText={errors.email?.message}
+                    InputProps={{
+                      style: { color: "#fff" },
+                    }}
+                    InputLabelProps={{
+                      style: { color: "#fff" },
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#fff",
+                      },
+                    }}
+                  />
+                )}
+              />
+
+              {/* bio */}
+              <Controller
+                name="bio"
+                control={control}
+                defaultValue=""
+                rules={{
+                  required: "bio is required",
+                 
+                }}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Your Bio"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    error={!!errors.bio}
+                    helperText={errors.bio?.message}
                     InputProps={{
                       style: { color: "#fff" },
                     }}
@@ -177,48 +301,52 @@ const {
 
               <FormControl component="fieldset" margin="normal">
                 <Typography variant="subtitle1" style={{ color: "#fff" }}>
-                  Current Fitness Level
+                  Gender
                 </Typography>
                 <Controller
-                  name="fitnessLevel"
+                  name="gender"
                   control={control}
                   defaultValue=""
-                  rules={{ required: "Fitness level is required" }}
+                  rules={{ required: "Gender is required" }}
                   render={({ field }) => (
                     <RadioGroup {...field} row>
                       <FormControlLabel
-                        value="beginner"
+                        value="male"
                         control={<Radio style={{ color: "#fff" }} />}
-                        label="Beginner"
+                        label="Male"
                         style={{ color: "#fff" }}
                       />
                       <FormControlLabel
-                        value="intermediate"
+                        value="female"
                         control={<Radio style={{ color: "#fff" }} />}
-                        label="Intermediate"
-                        style={{ color: "#fff" }}
-                      />
-                      <FormControlLabel
-                        value="advanced"
-                        control={<Radio style={{ color: "#fff" }} />}
-                        label="Advanced"
+                        label="Female"
                         style={{ color: "#fff" }}
                       />
                     </RadioGroup>
                   )}
                 />
-                {errors.fitnessLevel && (
+                 {errors.gender && (
                   <Typography color="error">
-                    {errors.fitnessLevel.message}
+                    {errors.gender.message}
                   </Typography>
                 )}
+               
               </FormControl>
             </form>
+              
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose}>Agree</Button>
-        </DialogActions>
+            <Button sx={{color: "#42a5f5", paddingLeft: "1rem"}} onClick={handleClose}>Cancel</Button>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              onClick={handleSubmit(onSubmit)}
+            >
+              Be a Trainer
+            </Button>
+          </DialogActions>
       </Dialog>
     </React.Fragment>
   );

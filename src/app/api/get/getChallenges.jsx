@@ -1,15 +1,9 @@
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-
-const submitHealthInfo = async (formData) => {
+import { toast } from "react-toastify";
+export const getChallenges = async () => {
   try {
-    const response = await axios.post(
-      "https://fit-track-server.vercel.app/api/v1/healthinfo",
-      formData
-    );
-
-    toast.success("HealthInfo submitted successfully", {
+    const response = await axios.get("http://localhost:5000/api/v1/challenges");
+    toast.success("challenges displayed", {
       position: "top-center",
       autoClose: 1000,
       hideProgressBar: false,
@@ -19,10 +13,9 @@ const submitHealthInfo = async (formData) => {
       progress: undefined,
       theme: "dark",
     });
-
     return response.data;
   } catch (error) {
-    toast.error("Error submitting HealthInfo. Please try again.", {
+    toast.error(`${error.message}`, {
       position: "top-center",
       autoClose: 1000,
       hideProgressBar: false,
@@ -32,9 +25,7 @@ const submitHealthInfo = async (formData) => {
       progress: undefined,
       theme: "dark",
     });
-
     throw error;
   }
 };
-
-export default submitHealthInfo;
+export default getChallenges;

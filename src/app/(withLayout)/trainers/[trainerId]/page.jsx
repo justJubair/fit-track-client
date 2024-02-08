@@ -43,7 +43,7 @@ const TrainerDetails = async ({ params }) => {
                             <div className="w-[70%] p-4 bg-black rounded-md">
                              <h2 className="text-[#378ae5] text-2xl">Bio</h2>
                                 <p className="text-white leading-9">{tr.bio}</p>
-                                <button onClick={handleHire} className="bg-white px-6 py-2 rounded-[20px] text-black transition-transform duration-300 transform hover:scale-90 focus:outline-none active:scale-110">Hire</button>
+                                <button className="bg-white px-6 py-2 rounded-[20px] text-black transition-transform duration-300 transform hover:scale-90 focus:outline-none active:scale-110">Hire</button>
                                 </div>
                         </div>)
                 }

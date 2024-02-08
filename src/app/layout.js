@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import "./globals.css";
 import AuthProvider from "@/components/Authentication/AuthProvider/AuthProvider";
 
@@ -9,8 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="overflow-x-hidden">
         <AuthProvider>{children}</AuthProvider>
+        <ToastContainer />
       </body>
     </html>
   );

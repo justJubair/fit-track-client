@@ -1,5 +1,6 @@
+import { getAllUsers } from "@/api/getAllUsers";
 import ManageUsers from "@/components/Dashboard/ManageUsers/ManageUsers";
-import { getAllUsers } from "@/utils/getAllUsers";
+
 
 const ManageUsersPage = async() => {
     const users = await getAllUsers()

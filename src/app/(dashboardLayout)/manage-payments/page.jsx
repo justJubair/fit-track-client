@@ -1,5 +1,5 @@
 import ManagePayments from "@/components/Dashboard/ManagePayments/ManagePayments";
-import { getAllPayments } from "@/utils/getAllPayments";
+import { getAllPayments } from "@/api/getAllPayments";
 
 const ManagePaymentsPage = async() => {
     const payments = await getAllPayments()

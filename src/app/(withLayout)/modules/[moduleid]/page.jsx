@@ -1,5 +1,5 @@
 import Module from "@/components/Module/Module";
-import { getAllServices } from "@/utils/getAllServices";
+import { getAllServices } from "@/api/getAllServices";
 
 
 const Modules = async({params}) => {

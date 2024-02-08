@@ -1,5 +1,5 @@
 
-import { getAllServices } from "@/utils/getAllServices";
+import { getAllServices } from "@/api/getAllServices";
 import { Grid } from "@mui/material";
 import Service from "./Service";
 

@@ -1,5 +1,6 @@
+import { getAllTrainers } from "@/api/getAllTrainers";
 import TrainerCard from "@/components/Trainers/TrainerCard";
-import { getAllTrainers } from "@/utils/getAllTrainers";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,7 +23,7 @@ const TrainerDetails = async ({ params }) => {
             <div className="max-w-6xl mx-auto my-8">
                 {
                     trainer.map(tr =>
-                        <div className="flex flex-col md:flex-row gap-4">
+                        <div key={tr._id} className="flex flex-col md:flex-row gap-4">
                             <div className="bg-[#378ae5] p-10 rounded-md flex-1">
                                 <ul className="">
                                     <li><Image className="my-4 rounded-md" width={300} height={300} src={tr.profile_image} alt='trainer img' /></li>

@@ -1,5 +1,6 @@
+import { getAllTrainers } from '@/api/getAllTrainers';
 import Trainers from '@/components/Trainers/Trainers';
-import { getAllTrainers } from '@/utils/getAllTrainers';
+
 import React from 'react';
 
 const Trainer = async() => {

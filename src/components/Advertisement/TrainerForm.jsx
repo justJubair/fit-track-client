@@ -14,6 +14,7 @@ import Image from 'next/image';
 // import logo
 import LOGO from "../../assets/images/logo02.png"
 import { Box } from '@mui/system';
+import { postTrainer } from '@/api/postTrainer';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -32,8 +33,9 @@ const {
     setOpen(false);
   };
 
-  const onSubmit = (data) => {
-   
+  const onSubmit = async(data) => {
+      const dbResponse = await postTrainer(data)
+      console.log(dbResponse)
    
   };
 

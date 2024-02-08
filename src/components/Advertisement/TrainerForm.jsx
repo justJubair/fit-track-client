@@ -34,7 +34,19 @@ const {
   };
 
   const onSubmit = async(data) => {
-      const dbResponse = await postTrainer(data)
+      const Trainer = {
+        experience_years: data?.experience,
+        name: data?.name,
+        age: 25,
+        gender: data?.gender,
+        specialization: data?.specialization,
+        email: data?.email,
+        phone: data?.phone,
+        location: data?.location,
+        bio: data?.bio,
+        profile_image: "https://acefitnessmediastorage.blob.core.windows.net/acepublicfiles/88bd0989-e540-4822-8fc5-cd5a443ba0d6.jpg"
+      }
+      const dbResponse = await postTrainer(Trainer)
       console.log(dbResponse)
    
   };
@@ -313,13 +325,13 @@ const {
                   render={({ field }) => (
                     <RadioGroup {...field} row>
                       <FormControlLabel
-                        value="male"
+                        value="Male"
                         control={<Radio style={{ color: "#fff" }} />}
                         label="Male"
                         style={{ color: "#fff" }}
                       />
                       <FormControlLabel
-                        value="female"
+                        value="Female"
                         control={<Radio style={{ color: "#fff" }} />}
                         label="Female"
                         style={{ color: "#fff" }}

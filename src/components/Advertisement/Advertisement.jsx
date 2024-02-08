@@ -72,15 +72,15 @@ const Advertisement = () => {
                 {/* 2nd */}
                 <div data-aos="zoom-in-up" className='flex-1 '>
                     <div className='space-y-5'>
-                        <p component='h1' className='text-6xl font-bold' >Run your journey with us.</p>
+                        <p component='h1' className='text-6xl font-bold'>Be a trainer and work with us.</p>
                         <p component='p' className='text-xl' style={{
                             textAlign: "justify",
                             whiteSpace: "pre-line"
                         }}>
-                            Whether you’re just starting out, or your shoes have already seen many miles, we’ll be by your side for every stride. All you have to do is get out the door, and we’ll take it from there.
+                           Whether you're embarking on a new fitness journey or already a seasoned pro, we invite you to join our team as a trainer on FitTrack. Turn your passion for fitness into a rewarding opportunity to earn money.
                         </p>
                         <Button className='bg-black hover:bg-black text-white font-semibold' variant="outlined" size="large">
-                            Start Running
+                            Become a trainer
                         </Button>
                     </div>
                     <div className='  bg-black rounded-lg md:px-8 flex flex-row-reverse items-center gap-4 my-10'>
@@ -98,6 +98,5 @@ const Advertisement = () => {
         </div>
     );
 };
-///////
-////
+
 export default Advertisement;

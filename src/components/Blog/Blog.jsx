@@ -13,6 +13,10 @@ const Blog = () => {
 
     //states
     const [challenges, setChallenges] = useState()
+    const [count, setCount] = useState(0)
+    const incrementCount = () => {
+        setCount(count + 1);
+    };
 
     //states
     const { data: session } = useSession();
@@ -22,7 +26,7 @@ const Blog = () => {
             return allBlogs.json();
         };
         getAllBlogs().then(result => setChallenges(result));
-    }, [])
+    }, [count])
     // console.log(challenges)
 
     const handelBlog = async (e) => {
@@ -69,12 +73,7 @@ const Blog = () => {
                 theme: "dark",
             });
             form.reset()
-            const getAllBlogs = async () => {
-                const allBlogs = await fetch("https://fit-track-server.vercel.app/api/v1/all-blogs");
-                return allBlogs.json();
-            };
-            getAllBlogs().then(result => setChallenges(result));
-
+            incrementCount()
         }
     }
     return (
@@ -126,7 +125,7 @@ const Blog = () => {
                 <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-3 lg:w-4/5 mx-auto'>
                     {/* mapping all services one by one */}
                     {challenges?.map((challenge, i) => (
-                        <BlogCard key={i} challenge={challenge} />
+                        <BlogCard key={i} challenge={challenge} incrementCount={incrementCount} />
                     ))}
                 </div>
             </div>

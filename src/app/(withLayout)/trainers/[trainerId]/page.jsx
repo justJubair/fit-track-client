@@ -1,4 +1,4 @@
-import TrainerCard from "@/components/Trainers/TrainerCard";
+
 import { getAllTrainers } from "@/utils/getAllTrainers";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,7 +22,7 @@ const TrainerDetails = async ({ params }) => {
             <div className="max-w-6xl mx-auto my-8">
                 {
                     trainer.map(tr =>
-                        <div className="flex flex-col md:flex-row gap-4">
+                        <div key={tr._id} className="flex flex-col md:flex-row gap-4">
                             <div className="bg-[#378ae5] p-10 rounded-md flex-1">
                                 <ul className="">
                                     <li><Image className="my-4 rounded-md" width={300} height={300} src={tr.profile_image} alt='trainer img' /></li>
@@ -41,8 +41,10 @@ const TrainerDetails = async ({ params }) => {
                                 </ul>
                             </div>
                             <div className="w-[70%] p-4 bg-black rounded-md">
-                                <p className="text-white">{tr.bio}</p>
-                            </div>
+                             <h2 className="text-[#378ae5] text-2xl">Bio</h2>
+                                <p className="text-white leading-9">{tr.bio}</p>
+                                <button onClick={handleHire} className="bg-white px-6 py-2 rounded-[20px] text-black transition-transform duration-300 transform hover:scale-90 focus:outline-none active:scale-110">Hire</button>
+                                </div>
                         </div>)
                 }
             </div>

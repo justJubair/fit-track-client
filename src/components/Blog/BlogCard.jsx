@@ -8,20 +8,21 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
-import { Box, Stack } from '@mui/system';
+import { Box } from '@mui/system';
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-const BlogCard = ({ challenge }) => {
+
+const BlogCard = ({ challenge, incrementCount }) => {
 
     //states
     const { data: session } = useSession();
     const router = useRouter();
     //states
-    // console.log(challenge.likes)
+    // console.log(challenge)
 
     // const isLiked = challenge.likes.filter(item => item.email !== session?.user?.email);
     // const isLiked = challenge.likes.filter(item => item.email !== session?.user?.email).length > 0;
@@ -34,8 +35,11 @@ const BlogCard = ({ challenge }) => {
                 likerEmail: session?.user?.email
             };
             const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/like", like);
-            console.log(res.data)
-            window.location.reload()
+            if (res.data.modifiedCount) {
+                incrementCount()
+            }
+            
+
 
         } catch (error) {
             console.error("Error liking blog:", error);
@@ -48,16 +52,19 @@ const BlogCard = ({ challenge }) => {
                 DislikerEmail: session?.user?.email
             }
             const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/Dislike", DisLikes);
-            window.location.reload()
+            if (res.data.modifiedCount) {
+                incrementCount()
+            }
         }
         catch (error) {
             console.error("Error", error)
         }
     }
-    return (
-        <div className="flex">
 
-            <Card sx={{ backgroundColor: 'white', flexGrow: "1", }}>
+    return (
+        <div className="">
+
+            <Card sx={{ backgroundColor: 'white' }}>
                 <Image width={500} height={500} src={challenge?.image} alt="Card Image" className="w-full h-96 object-cover" />
 
                 <div className='flex justify-between mt-2 items-center '>
@@ -86,7 +93,7 @@ const BlogCard = ({ challenge }) => {
                                 challenge?.title
                         }
                     </Typography>
-                    <Typography variant="body2" sx={{ color: 'black',height:"50px"}}>
+                    <Typography variant="body2" sx={{ color: 'black', height: "60px" }}>
                         {challenge.description.length > 250
                             ? challenge.description.slice(0, 250).concat("...")
                             : challenge.description
@@ -122,6 +129,7 @@ const BlogCard = ({ challenge }) => {
                 </Box>
 
             </Card>
+
 
         </div>
     );

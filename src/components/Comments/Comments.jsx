@@ -14,7 +14,7 @@ import { useSession } from "next-auth/react";
 import { ToastContainer, toast } from 'react-toastify';
 
 
-const Comments = ({ id, comments }) => {
+const Comments = ({ id, comments, incrementCount }) => {
     const { data: session } = useSession();
     console.log(comments)
 
@@ -49,6 +49,7 @@ const Comments = ({ id, comments }) => {
                     theme: "dark",
                 });
                 form.reset()
+                incrementCount()
             };
         } catch (error) {
             console.error("Error occurred while making the request:", error);

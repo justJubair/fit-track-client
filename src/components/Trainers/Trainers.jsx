@@ -2,11 +2,13 @@
 import { Avatar, Box, CardContent, Chip, Grid, Typography, CardOverflow, CardActions, ButtonGroup, Button, Card } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import TrainerCard from "./TrainerCard";
+import { ToastContainer, toast } from "react-toastify";
 
 const Trainers = ({ allTrainers }) => {
     // console.log(allTrainers)
-
+const handleConnect=()=>{
+    toast.success('Connect request sent to trainer.')
+}
     return (
         <div>
             <div className="bg-black h-16"></div>
@@ -37,7 +39,7 @@ const Trainers = ({ allTrainers }) => {
                                         <h2 className="mt-4 text-xl font-bold text-[#378ae5]">{train.name}</h2>
                                         <p className="mb-4 text-black">{train.specialization}</p>
                                         <div className="flex items-center justify-center gap-4">
-                                            <button className="bg-black px-6 py-2 rounded-[20px] text-white transition-transform duration-300 transform hover:scale-90 focus:outline-none active:scale-110">Connect</button>
+                                            <button onClick={handleConnect} className="bg-black px-6 py-2 rounded-[20px] text-white transition-transform duration-300 transform hover:scale-90 focus:outline-none active:scale-110">Connect</button>
                                             <Link href={`/trainers/${train._id}`}><button className="bg-black px-6 py-2 rounded-[20px] text-white transition-transform duration-300 transform hover:scale-90 focus:outline-none active:scale-110">Details</button></Link>
                                         </div>
                                     </div>
@@ -48,12 +50,8 @@ const Trainers = ({ allTrainers }) => {
                         )
                     }
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mx-3">
-                    {
-                        allTrainers.map((train) => <TrainerCard train={train} key={train._id}></TrainerCard> )
-                    }
-                </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

@@ -16,9 +16,9 @@ const ChallengeCard = ({ challenge }) => {
     <div style={{ margin: "0.5rem 1rem" }}>
       <Box
         className="glow-effect transform transition-transform ease-in-out duration-200 hover:scale-105 shadow-black"
-        sx={{ backgroundColor: "#7c6c0052", minHeight: "500px", minWidth:'320px'}}
+        sx={{ backgroundColor: "gray", minHeight: "500px", minWidth: "320px" }}
       >
-        <CardHeader 
+        <CardHeader
           avatar={
             <Avatar sx={{ backgroundColor: "black" }} aria-label="recipe">
               <Image
@@ -34,16 +34,19 @@ const ChallengeCard = ({ challenge }) => {
               Challenge Posted by {challenge.postedBy.name.toUpperCase()}
             </Typography>
           }
-          subheader="September 14, 2016"
-          sx={{ title: { color: "black" } ,minHeight: "130px"}}
+          subheader={new Date(challenge.postedOn).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+          sx={{ title: { color: "black" }, minHeight: "130px" }}
         />
 
-        <Box sx={{minHeight:'200px'}}>
+        <Box sx={{ minHeight: "200px" }}>
           <Image
             component="img"
-            height={500}
-            
-            width={500}
+            height={100}
+            width={300}
             src={challenge.imageLink}
             alt={challenge.challengeName}
           />
@@ -52,8 +55,11 @@ const ChallengeCard = ({ challenge }) => {
           <Typography variant="h6" sx={{ color: "black" }}>
             {challenge.challengeName}
           </Typography>
-          <Typography variant="body2" sx={{ color: "black" ,minHeight:'100px' }}>
-            {challenge.description.slice(0,200)}...
+          <Typography
+            variant="body2"
+            sx={{ color: "black", minHeight: "100px" }}
+          >
+            {challenge.description.slice(0, 200)}...
           </Typography>
         </CardContent>
         <div

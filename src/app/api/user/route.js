@@ -5,18 +5,18 @@ import bcrypt, { hash } from 'bcrypt';
 export async function POST(req){
     try{
        const body = await req.json();
-       const userData = body.formData;
+       const userDetails = body.userData;
     
-     
-       
-       if(!userData?.email || !userData.password){
-        return NextResponse.json(
-            {message: 'Please fill all the fields'}, {status: 400}
-        )
-       }
+    //    console.log(userDetails)
+   
+    //    if(!userDetails?.email || !userDetails.password){
+    //     return NextResponse.json(
+    //         {message: 'Please fill all the fields'}, {status: 400}
+    //     )
+    //    }
 
        // check if ther is any duplicate email
-       const isDuplicate = await User.findOne({ email: userData.email })
+       const isDuplicate = await User.findOne({ email: userDetails.email })
        .lean()
        .exec()
 
@@ -24,10 +24,10 @@ export async function POST(req){
         return NextResponse.json({ message: 'User is already in Database' }, {status: 409})
        }
 
-       const hashPassword = await bcrypt.hash(userData.password, 10);
-       userData.password = hashPassword;
+    //    const hashPassword = await bcrypt.hash(userDetails?.password, 10);
+    //    userDetails?.password = hashPassword;
 
-       await User.create(userData)
+       await User.create(userDetails)
        return NextResponse.json({message: 'Registratin successful!'}, {status: 201})
     }catch(error){
         console.log(error)

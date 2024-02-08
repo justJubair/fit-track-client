@@ -18,16 +18,16 @@ export const options = {
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
+        username:{label:'Username', type:'text', placeholder:'Name'},
         email: { label: "Email", type: "text", placeholder: "Email" },
+        userimage: { label: "User Image", type: "text", placeholder: "Image" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
 
-     
         try {
           const findUser = await User.findOne({ email: credentials.email })
-       
-
+    
           //validate user
           const validatePass = await bcrypt.compare( credentials.password, findUser.password )
           //return validated user
@@ -43,6 +43,37 @@ export const options = {
     })
     // ...add more providers here
   ],
+  callbacks:{
+    async signIn({user, account}){
+          //  console.log('user', user)
+          //  console.log('account', account)
+          
+           if(account.provider === 'google'){
+            
+            const userData = { username: user.name, email: user.email, userimage: user.image }
+            // console.log(userData)
+
+            try{
+              const res = fetch('http://localhost:3000/api/user',{
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({userData})
+              });
+
+              if(res.ok){
+                return user
+              }
+
+            }catch(err){
+              console.log(err)
+            }
+           }
+
+           return user;
+    }
+  },
   secret: process.env.SECRET,
   pages:{
     signIn:'/api/auth/usercheck'

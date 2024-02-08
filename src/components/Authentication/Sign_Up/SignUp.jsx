@@ -23,7 +23,7 @@ const SignUp = () => {
     const [isUser, setUser] = React.useState(false);
 
     // state to store form data
-    const [formData, setFormData] = React.useState({});
+    const [userData, setUserData] = React.useState({});
 
     // state to handle error message
     const [errorMessage, setErrorMessage] = useState('');
@@ -58,7 +58,7 @@ const SignUp = () => {
     const handleChange = (e) => {
         const value = e.target.value;
         const name = e.target.name;
-        setFormData((prev) => ({
+        setUserData((prev) => ({
             ...prev,
             [name]: value,
         }));
@@ -67,9 +67,9 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault(0);
         setErrorMessage('')
-        const res = await fetch('/api/Users', {
+        const res = await fetch('/api/user', {
             method: 'POST',
-            body: JSON.stringify({ formData }),
+            body: JSON.stringify({ userData }),
             'content-type': 'application/json',
         });
 
@@ -120,26 +120,24 @@ const SignUp = () => {
                                 margin="normal"
                                 required
                                 fullWidth
-                                name="fname"
-                                label="First Name"
+                                name="username"
+                                label="Name"
                                 type="text"
                                 id="name"
                                 onChange={handleChange}
                             />
                         </Grid>
-                        <Grid item>
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="lname"
-                                label="Last Name"
-                                type="text"
-                                id="lastName"
-                                onChange={handleChange}
-                            />
-                        </Grid>
                     </Grid>
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="userImg"
+                        label="User Photo"
+                        name="userimage"
+                        autoFocus
+                        onChange={handleChange}
+                    />
                     <TextField
                         margin="normal"
                         required

@@ -18,8 +18,8 @@ const page = () => {
         };
         getBlog().then(result => setBlog(result));
     }, [])
-    // console.log(blog)
-    // console.log(blog?.blogComments)
+    console.log(blog)
+    console.log(blog?.blogComments)
     return (
         <div >
             <div className="bg-black h-16"></div>

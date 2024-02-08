@@ -16,7 +16,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const Comments = ({ id, comments }) => {
     const { data: session } = useSession();
-    // console.log(comments)
+    console.log(comments)
 
     const handelComment = async (e) => {
         e.preventDefault()
@@ -36,6 +36,7 @@ const Comments = ({ id, comments }) => {
         // console.log(finalComment)
         try {
             const res = await axios.patch("http://localhost:5000/api/v1/comment", finalComment);
+            // console.log(res.data)
             if (res.data.modifiedCount) {
                 toast.success('Comment Uploaded!', {
                     position: "top-center",
@@ -98,7 +99,7 @@ const Comments = ({ id, comments }) => {
                     </AccordionSummary>
                     <AccordionDetails className="space-y-4 overflow-y-scroll h-[500px]">
                         {
-                            comments?.map((comment,i) => (
+                            comments?.map((comment, i) => (
                                 <div key={i} className="border p-2 rounded-xl ">
                                     <div className="flex  gap-2">
                                         <Avatar alt={comment?.userName} src={comment?.userImage} sx={{ mb: "20px" }} />

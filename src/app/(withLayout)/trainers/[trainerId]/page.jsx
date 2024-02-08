@@ -3,7 +3,6 @@ import { getAllTrainers } from "@/utils/getAllTrainers";
 import Image from "next/image";
 import Link from "next/link";
 
-
 const TrainerDetails = async ({ params }) => {
 
     //cllecting specefic trainer id from params
@@ -33,9 +32,9 @@ const TrainerDetails = async ({ params }) => {
                                     <li className="my-4 text-xl text-white">Year of experience: {tr.experience_years}</li>
                                     <li>
                                         <div className="flex justify-between">
-                                            <span><Link href='#'>FB</Link></span>
-                                            <span><Link href='#'>FB</Link></span>
-                                            <span><Link href='#'>FB</Link></span>
+                                            <span><Link className="text-white" href='#'>Facebook</Link></span>
+                                            <span><Link className="text-white" href='#'>Instagram</Link></span>
+                                            <span><Link className="text-white" href='#'>Twitter</Link></span>
                                         </div>
                                     </li>
                                 </ul>

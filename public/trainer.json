@@ -1,0 +1,55 @@
+[
+    {
+      "id": 1,
+      "name": "John Smith",
+      "age": 35,
+      "gender": "Male",
+      "specialization": "Weightlifting",
+      "experience_years": 10,
+      "email": "john.smith@example.com",
+      "phone": "+1234567890",
+      "location": "New York City",
+      "bio": "John Smith is a passionate fitness trainer with a decade of experience in weightlifting. He believes in a holistic approach to health and fitness, focusing not only on physical strength but also on mental well-being. John's training sessions are tailored to individual needs and goals, ensuring effective and enjoyable workouts for his clients.",
+      "profile_image": "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Emma Johnson",
+      "age": 28,
+      "gender": "Female",
+      "specialization": "Yoga",
+      "experience_years": 6,
+      "email": "emma.johnson@example.com",
+      "phone": "+1987654321",
+      "location": "Los Angeles",
+      "bio": "Emma Johnson is a certified yoga instructor with six years of experience. She is passionate about helping her clients find balance and inner peace through yoga practice. Emma's teaching style is gentle yet effective, focusing on alignment, breath work, and mindfulness. Whether you're a beginner or an experienced yogi, Emma welcomes you to join her classes and embark on a journey of self-discovery.",
+      "profile_image": "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Michael Brown",
+      "age": 40,
+      "gender": "Male",
+      "specialization": "Cardio",
+      "experience_years": 15,
+      "email": "michael.brown@example.com",
+      "phone": "+1122334455",
+      "location": "Chicago",
+      "bio": "Michael Brown is a seasoned fitness trainer specializing in cardio workouts. With over fifteen years of experience, he has helped numerous clients achieve their fitness goals and improve their overall health. Michael's energetic and motivating training sessions are designed to challenge and inspire you. Whether you're looking to lose weight, increase stamina, or boost cardiovascular health, Michael is here to support you every step of the way.",
+      "profile_image": "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Sophia Lee",
+      "age": 32,
+      "gender": "Female",
+      "specialization": "Pilates",
+      "experience_years": 8,
+      "email": "sophia.lee@example.com",
+      "phone": "+1555666777",
+      "location": "San Francisco",
+      "bio": "Sophia Lee is a certified Pilates instructor with eight years of experience. She is passionate about helping her clients build core strength, improve flexibility, and enhance overall body awareness. Sophia's approach to Pilates is rooted in precision and alignment, ensuring safe and effective workouts for all fitness levels. Whether you're recovering from an injury, seeking to enhance athletic performance, or simply looking to tone and sculpt your body, Sophia is committed to guiding you toward your goals with patience and expertise.",
+      "profile_image": "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"
+    }
+  ]
+  

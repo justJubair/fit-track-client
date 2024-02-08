@@ -19,6 +19,6 @@ body{
     background: rgba(90, 80, 85, 0.20) !important;
     backdrop-filter: blur(20px) !important;
     box-shadow: inset 1px 1px 10px rgba(2, 1, 1, 0.63) !important;
-    padding: 10px  0 20px 0 ;
+    padding: 10px  20px 20px 20px ;
     border-radius: 20px;
   }

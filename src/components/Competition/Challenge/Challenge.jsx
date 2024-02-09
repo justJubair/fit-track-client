@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ChallengeCard from "./ChallengeCard";
 import { Button } from "@mui/material";
 import getChallenges from "@/app/api/get/getChallenges";
+import { ToastContainer } from "react-toastify";
 
 const Challenge = () => {
   const [challenges, setChallenges] = useState([]);
@@ -23,7 +24,7 @@ const Challenge = () => {
           optio modi tempora!
         </p>
       </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="grid md:grid-cols-2  gap-6">
         {challenges.map((challenge) => (
           <ChallengeCard key={challenge?.challengeName} challenge={challenge} />
         ))}
@@ -31,6 +32,7 @@ const Challenge = () => {
       <div className="flex justify-end my-5">
         <Button variant="outlined">View more Challenges</Button>
       </div>
+      <ToastContainer />
     </div>
   );
 };

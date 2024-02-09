@@ -15,6 +15,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Image from 'next/image';
 
 const SignUp = () => {
 
@@ -23,7 +24,7 @@ const SignUp = () => {
     const [isUser, setUser] = React.useState(false);
 
     // state to store form data
-    const [formData, setFormData] = React.useState({});
+    const [userData, setUserData] = React.useState({});
 
     // state to handle error message
     const [errorMessage, setErrorMessage] = useState('');
@@ -58,7 +59,7 @@ const SignUp = () => {
     const handleChange = (e) => {
         const value = e.target.value;
         const name = e.target.name;
-        setFormData((prev) => ({
+        setUserData((prev) => ({
             ...prev,
             [name]: value,
         }));
@@ -67,9 +68,9 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault(0);
         setErrorMessage('')
-        const res = await fetch('/api/Users', {
+        const res = await fetch('/api/user', {
             method: 'POST',
-            body: JSON.stringify({ formData }),
+            body: JSON.stringify({ userData }),
             'content-type': 'application/json',
         });
 
@@ -120,26 +121,24 @@ const SignUp = () => {
                                 margin="normal"
                                 required
                                 fullWidth
-                                name="fname"
-                                label="First Name"
+                                name="username"
+                                label="Name"
                                 type="text"
                                 id="name"
                                 onChange={handleChange}
                             />
                         </Grid>
-                        <Grid item>
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="lname"
-                                label="Last Name"
-                                type="text"
-                                id="lastName"
-                                onChange={handleChange}
-                            />
-                        </Grid>
                     </Grid>
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="userImg"
+                        label="User Photo"
+                        name="userimage"
+                        autoFocus
+                        onChange={handleChange}
+                    />
                     <TextField
                         margin="normal"
                         required
@@ -216,8 +215,8 @@ const SignUp = () => {
                 </Typography>
                 <Box sx={{ width: { xs: '100%', md: '50%' } }}>
                     <Box className='grid gird-cols-1 gap-4'>
-                        <Box onClick={() => handleSignUpGoogle()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#fff', borderRadius: '5px', padding: '8px', color: '#252525', cursor: 'pointer', boxShadow: 3 }}><img className='max-w-[50px]' src='https://i.ibb.co/kmsjzFF/Animation-1700836595835.gif'  alt="login image"/><span className='text-lg'> Continue with Google</span></Box>
-                        <Box onClick={() => handleSignUpFacebook()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#252525', borderRadius: '5px', padding: '8px', color: '#fff', cursor: 'pointer', boxShadow: 3 }}><img className='max-w-[50px]' src='https://i.ibb.co/5R4LB8n/Animation-1706101317533.gif' alt="login image"/><span className='text-lg'> Continue with Facebook</span></Box>
+                        <Box onClick={() => handleSignUpGoogle()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#fff', borderRadius: '5px', padding: '8px', color: '#252525', cursor: 'pointer', boxShadow: 3 }}><Image width={100} height={100} className='max-w-[50px]' src='https://i.ibb.co/kmsjzFF/Animation-1700836595835.gif'  alt="login image"/><span className='text-lg'> Continue with Google</span></Box>
+                        <Box onClick={() => handleSignUpFacebook()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#252525', borderRadius: '5px', padding: '8px', color: '#fff', cursor: 'pointer', boxShadow: 3 }}><Image width={100} height={100} className='max-w-[50px]' src='https://i.ibb.co/5R4LB8n/Animation-1706101317533.gif' alt="login image"/><span className='text-lg'> Continue with Facebook</span></Box>
                     </Box>
                 </Box>
             </Box>

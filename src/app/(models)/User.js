@@ -5,14 +5,26 @@ mongoose.Promise = global.Promise;
 
 const userShcema = new Schema(
     {
-        fname: String,
-        lname: String,
-        email: String,
-        password:String
+        username: {
+            type: String,
+            required: true,
+            unique: true
+          },
+          userimage: {
+            type: String,
+            default: 'default_image.jpg' // You can set a default image path here
+          },
+          email: {
+            type: String,
+            required: true,
+            unique: true
+          },
+          password: {
+            type: String,
+          }
     },
     {
-        timestamps: true,
-        collection: 'userCollection'
+        timestamps: true
     }
 );
 

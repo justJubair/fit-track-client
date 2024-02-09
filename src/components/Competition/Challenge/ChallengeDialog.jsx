@@ -12,6 +12,11 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
+import { useSession } from "next-auth/react";
+
+import { toast } from "react-toastify";
+import postAcceptedChallengeInfo from "@/app/api/post/postAcceptedChallengeInfo";
+import sendMail from "@/api/mailSender";
 const positions = [
   {
     position: "1st",
@@ -29,8 +34,15 @@ const positions = [
 
 const ChallegeDialog = ({ challenge }) => {
   const [open, setOpen] = React.useState(false);
-  const [scroll, setScroll] = React.useState('paper');
-
+  const [scroll, setScroll] = React.useState("paper");
+  const { data: session } = useSession();
+  const challengeId = challenge?._id;
+  const email = session?.user?.email;
+  const name = session?.user?.name;
+  const user = { email, name };
+  const subject = "Confirmation of challenge in Fit Track";
+  const message = `Congratulations! 
+  You have successfully listed yourself to take part in ${challenge.challengeName}`;
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
     setScroll(scrollType);
@@ -48,19 +60,67 @@ const ChallegeDialog = ({ challenge }) => {
       }
     }
   }, [open]);
+  const handleTakePart = async () => {
+    postAcceptedChallengeInfo(challengeId, user)
+      .then(  async (result)=> {
+        try {
+         await sendMail(email, subject, message);
+          handleClose();
+        } catch (error) {
+          toast.error("Error while sending mail:", error, {
+            position: "top-center",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("", error);
+        toast.error("Failed to post accepted challenge:", error, {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      });
+    try {
+      await sendMail(email, subject, message);
+      handleClose();
+    } catch (error) {
+      toast.error("Error while sending mail:", error, {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+  };
   return (
     <div>
       <Button
         variant="contained"
         sx={{
-          backgroundColor: "black",
+          backgroundColor: "black !important",
           color: "white",
           "&:hover": {
             color: "black",
-            backgroundColor: "white",
+            backgroundColor: "white !important",
           },
         }}
-        onClick={handleClickOpen('paper')}
+        onClick={handleClickOpen("paper")}
       >
         View details
       </Button>
@@ -71,15 +131,14 @@ const ChallegeDialog = ({ challenge }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogContent dividers={scroll === 'paper'} sx={{ backgroundColor: "black", color: "white" , }}>
-          
-          <div sx={{ color: "gray.500" }}>
+        <DialogContent dividers={scroll === "paper"} sx={{ color: "white" }}>
+          <div>
             <Typography variant="h5" className="text-center font-bold py-2">
               <strong>Time left to take part!</strong>.
             </Typography>
             <FlipCountdown
               hideYear
-              endAt={"2024-12-12 01:26:58"}
+              endAt={`${challenge.lastDateForSubmissions}`}
               size="small"
               titlePosition="bottom"
             ></FlipCountdown>
@@ -87,36 +146,22 @@ const ChallegeDialog = ({ challenge }) => {
           <CardContent>
             <Typography variant="h6">
               This competition is centered around{" "}
-              <strong>Theme: [Competition Theme]</strong>.
-            </Typography>
-            <Typography variant="body1">
-              It will run for <strong>[Duration]</strong>, and there are special
-              rules to make it even more exciting!
+              <strong>{challenge.challengeName}</strong>.
             </Typography>
             <div>
               <Typography variant="h6">Rules description below :</Typography>
               <List>
-                {[
-                  {
-                    text:
-                      "Form & Technique: Perform exercises with proper form and technique for safety. Judges assess posture, range of motion, and control.",
-                  },
-                  {
-                    text:
-                      "Scoring System: Clear points system for workout achievements. Judges consider reps, time, and exercise difficulty.",
-                  },
-                  {
-                    text:
-                      "Variety of Workouts: Diverse set of workouts for strength, endurance, and flexibility. Include weightlifting, cardio, and bodyweight exercises.",
-                  },
-                ].map((item, index) => (
+                {challenge.rules?.map((item, index) => (
                   <ListItem key={index}>
-                    <ListItemText primary={<>{item.text}</>} />
+                    <ListItemText>
+                      {" "}
+                      {index + 1}. {item}
+                    </ListItemText>
                   </ListItem>
                 ))}
               </List>
             </div>
-            <Typography variant="body1" color="error" paragraph>
+            <Typography variant="h6" color="error">
               Don't miss the chance to showcase your skills and creativity.
               Exciting rewards await the winners!
             </Typography>
@@ -153,9 +198,9 @@ const ChallegeDialog = ({ challenge }) => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "red",
+                backgroundColor: "red !important",
                 "&:hover": {
-                  backgroundColor: "darkgrey",
+                  backgroundColor: "darkgrey !important",
                 },
               }}
               onClick={handleClose}
@@ -165,18 +210,17 @@ const ChallegeDialog = ({ challenge }) => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "black",
+                backgroundColor: "black !important",
                 "&:hover": {
-                  backgroundColor: "darkgrey",
+                  backgroundColor: "darkgrey !important",
                 },
               }}
-              onClick={handleClose}
+              onClick={handleTakePart}
               autoFocus
             >
               Take part
             </Button>
           </DialogActions>
-
         </DialogContent>
       </Dialog>
     </div>

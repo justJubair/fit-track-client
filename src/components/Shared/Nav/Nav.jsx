@@ -39,6 +39,10 @@ const pages = [
     nav: "Blog",
     route: "/blog",
   },
+  {
+    nav: "Trainers",
+    route: "/trainers"
+  }
 ];
 
 const Nav = () => {
@@ -226,7 +230,9 @@ const Nav = () => {
                       <Typography textAlign="center">Profile</Typography>
                     </MenuItem>
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                      <Link href="/dashboard">
                       <Typography textAlign="center">Dashboard</Typography>
+                      </Link>
                     </MenuItem>
                     <Link href="/diettable"> <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Diet Chart</Typography>

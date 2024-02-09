@@ -1,5 +1,5 @@
 import ServiceDetails from "@/components/ServiceDetails/ServiceDetails";
-import { getSingleService } from "@/utils/getSingleService";
+import { getSingleService } from "@/api/getSingleService";
 
 const ServiceDetailPage = async({params}) => {
  

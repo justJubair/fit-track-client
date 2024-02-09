@@ -1,5 +1,5 @@
 import UsersServices from "@/components/UsersServices/UsersServices";
-import { getAllServices } from "@/utils/getAllServices";
+import { getAllServices } from "@/api/getAllServices";
 
 
 const Courses = async () => {

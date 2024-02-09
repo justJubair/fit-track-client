@@ -9,12 +9,28 @@ const submitHealthInfo = async (formData) => {
       formData
     );
 
-    toast.success("HealthInfo submitted successfully", { autoClose: 2000 });
+    toast.success("HealthInfo submitted successfully", {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
 
     return response.data;
   } catch (error) {
     toast.error("Error submitting HealthInfo. Please try again.", {
-      autoClose: 2000,
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
     });
 
     throw error;

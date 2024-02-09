@@ -27,7 +27,7 @@ const Blog = () => {
         };
         getAllBlogs().then(result => setChallenges(result));
     }, [count])
-    // console.log(challenges)
+  
 
     const handelBlog = async (e) => {
         e.preventDefault()
@@ -58,7 +58,7 @@ const Blog = () => {
             disLikes: [],
             blogComments: [],
         }
-        // console.log(blog)
+     
         // Final Blog
         const res = await axios.post("http://localhost:5000/api/v1/blogs", blog)
         if (res.data?._id) {

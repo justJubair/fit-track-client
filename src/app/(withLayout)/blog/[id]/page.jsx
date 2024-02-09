@@ -21,7 +21,7 @@ const page = () => {
             return allBlogs.json();
         };
         getBlog().then(result => setBlog(result));
-    }, [count])
+    }, [count, id])
     return (
         <div >
             <div className="bg-black h-16"></div>

@@ -10,26 +10,25 @@ const Module = ({ module }) => {
     const router = useRouter();
 
     const defVideo = module.videos[0].vlink;
-    // console.log(defVideo)
+  
 
     const [currentVideo, setCurrentVideo] = useState(module.videos[0].vlink);
     const [currentVideoIndex, setVideoIndex] = useState(0);
     const [timerDuration, setTimerDuration] = useState(600);
 
     const { data: session } = useSession();
-    // console.log(session)
+   
 
     const handleModule = async (vid, vidIndex) => {
         setCurrentVideo('')
         setCurrentVideo(vid.vlink)
 
-        // console.log(vid)
-
+     
         
         setVideoIndex(vidIndex)
     }
 
-    // console.log(currentVideoIndex)
+ 
 
     const handleNext = () => {
         if (module.videos.length === currentVideoIndex) {
@@ -45,7 +44,7 @@ const Module = ({ module }) => {
             vidId: module.videos[currentVideoIndex]?._id
         } 
         axios.patch('http://localhost:5000/api/v1/updatewatchhistory', watchDetails)
-        // console.log(watchDetails)
+     
 
     }
     const userEmail = { email: 'arnab@gmail.com'}

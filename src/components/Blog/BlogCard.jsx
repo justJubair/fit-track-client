@@ -18,16 +18,10 @@ import { useRouter } from 'next/navigation';
 
 const BlogCard = ({ challenge, incrementCount }) => {
 
-    //states
+
     const { data: session } = useSession();
     const router = useRouter();
-    //states
-    // console.log(challenge)
-
-    // const isLiked = challenge.likes.filter(item => item.email !== session?.user?.email);
-    // const isLiked = challenge.likes.filter(item => item.email !== session?.user?.email).length > 0;
-    // const isDisLiked = challenge.disLikes.filter(item => item.email !== session?.user?.email).length > 0;
-    // console.log(isLiked)
+ 
     const handelLikeBtn = async (_id) => {
         try {
             const like = {

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 
 const Trainers = ({ allTrainers }) => {
-    // console.log(allTrainers)
+  
 const handleConnect=()=>{
     toast.success('Connect request sent to trainer.')
 }

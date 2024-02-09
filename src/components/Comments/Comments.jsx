@@ -16,7 +16,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const Comments = ({ id, comments, incrementCount }) => {
     const { data: session } = useSession();
-    console.log(comments)
+   
 
     const handelComment = async (e) => {
         e.preventDefault()
@@ -33,10 +33,10 @@ const Comments = ({ id, comments, incrementCount }) => {
             blogId,
             comment
         }
-        // console.log(finalComment)
+     
         try {
             const res = await axios.patch("http://localhost:5000/api/v1/comment", finalComment);
-            // console.log(res.data)
+  
             if (res.data.modifiedCount) {
                 toast.success('Comment Uploaded!', {
                     position: "top-center",

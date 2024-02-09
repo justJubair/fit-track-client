@@ -43,7 +43,7 @@ const Module = ({ module }) => {
             userEmail: 'arnab@gmail.com',
             vidId: module.videos[currentVideoIndex]?._id
         } 
-        axios.patch('http://localhost:5000/api/v1/updatewatchhistory', watchDetails)
+        axios.patch('https://fit-track-server.vercel.app/api/v1/updatewatchhistory', watchDetails)
      
 
     }
@@ -54,7 +54,7 @@ const Module = ({ module }) => {
   const [triggerUpdate, setTriggerUpdate] = useState(false);
   useEffect(() => {
       // Fetch user watch history from the backend
-      axios.get(`http://localhost:5000/api/v1/singleuser?email=${userEmail.email}`)
+      axios.get(`https://fit-track-server.vercel.app/api/v1/singleuser?email=${userEmail.email}`)
           .then(res => {
               // Extract the video IDs from the watch history
               const watchedVideoIds = res.data.watchHistory.map(item => item.videoId);
@@ -72,7 +72,7 @@ const Module = ({ module }) => {
           .catch(error => {
               console.error('Error fetching user watch history:', error);
           });
-  }, [unlockedVideos]);
+  }, [unlockedVideos, module.videos, userEmail.email]);
 
   useEffect(() => {
     // This effect is triggered whenever the triggerUpdate state changes

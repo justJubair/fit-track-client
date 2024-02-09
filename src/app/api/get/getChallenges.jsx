@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 export const getChallenges = async () => {
   try {
-    const response = await axios.get("http://localhost:5000/api/v1/challenges");
+    const response = await axios.get("https://fit-track-server.vercel.app/api/v1/challenges");
     toast.success("challenges displayed", {
       position: "top-center",
       autoClose: 1000,

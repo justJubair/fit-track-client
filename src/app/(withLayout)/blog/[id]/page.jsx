@@ -17,7 +17,7 @@ const page = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         const getBlog = async () => {
-            const allBlogs = await fetch(`http://localhost:5000/api/v1/blog/${id}`);
+            const allBlogs = await fetch(`https://fit-track-server.vercel.app/api/v1/blog/${id}`);
             return allBlogs.json();
         };
         getBlog().then(result => setBlog(result));

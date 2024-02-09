@@ -35,7 +35,7 @@ const Comments = ({ id, comments, incrementCount }) => {
         }
      
         try {
-            const res = await axios.patch("http://localhost:5000/api/v1/comment", finalComment);
+            const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/comment", finalComment);
   
             if (res.data.modifiedCount) {
                 toast.success('Comment Uploaded!', {

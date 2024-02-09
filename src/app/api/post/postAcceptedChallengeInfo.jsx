@@ -3,7 +3,7 @@ const axios = require("axios");
 const postAcceptedChallengeInfo = async (challengeId, user) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/v1/acceptedChallenges",
+      "https://fit-track-server.vercel.app/api/v1/acceptedChallenges",
       {
         challengeId,
         user,

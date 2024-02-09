@@ -60,7 +60,7 @@ const Blog = () => {
         }
      
         // Final Blog
-        const res = await axios.post("http://localhost:5000/api/v1/blogs", blog)
+        const res = await axios.post("https://fit-track-server.vercel.app/api/v1/blogs", blog)
         if (res.data?._id) {
             toast.success('Blog Uploaded!', {
                 position: "top-center",

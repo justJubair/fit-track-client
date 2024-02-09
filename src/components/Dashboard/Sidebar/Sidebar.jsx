@@ -33,7 +33,8 @@ const Sidebar = () => {
     <Box>
       {/* logo */}
       <div className="hidden md:flex justify-center mt-5">
-        <Image
+       <Link href="/">
+       <Image
           width={30}
           height={30}
           priority
@@ -41,6 +42,7 @@ const Sidebar = () => {
           src="https://raw.githubusercontent.com/ecemgo/mini-samples-great-tricks/main/fitness-app-dashboard/images/app-logo.png"
           alt="dashboard-logo"
         />
+       </Link>
       </div>
 
       {/* Routes */}

@@ -13,9 +13,10 @@ import {
   Typography,
 } from "@mui/material";
 import { useSession } from "next-auth/react";
-import sendMail from "@/utils/mailSender";
+
 import { toast } from "react-toastify";
 import postAcceptedChallengeInfo from "@/app/api/post/postAcceptedChallengeInfo";
+import sendMail from "@/api/mailSender";
 const positions = [
   {
     position: "1st",

@@ -45,13 +45,12 @@ export const options = {
   ],
   callbacks:{
     async signIn({user, account}){
-          //  console.log('user', user)
-          //  console.log('account', account)
+   
           
            if(account.provider === 'google'){
             
             const userData = { username: user.name, email: user.email, userimage: user.image }
-            // console.log(userData)
+        
 
             try{
               const res = fetch('http://localhost:3000/api/user',{

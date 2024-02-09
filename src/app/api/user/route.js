@@ -7,13 +7,6 @@ export async function POST(req){
        const body = await req.json();
        const userDetails = body.userData;
     
-    //    console.log(userDetails)
-   
-    //    if(!userDetails?.email || !userDetails.password){
-    //     return NextResponse.json(
-    //         {message: 'Please fill all the fields'}, {status: 400}
-    //     )
-    //    }
 
        // check if ther is any duplicate email
        const isDuplicate = await User.findOne({ email: userDetails.email })

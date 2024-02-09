@@ -15,6 +15,7 @@ import Image from 'next/image';
 import LOGO from "../../assets/images/logo02.png"
 import { Box } from '@mui/system';
 import { postTrainer } from '@/api/postTrainer';
+import { toast } from 'react-toastify';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -25,6 +26,7 @@ const TrainerForm =({open, setOpen})=> {
 
 const {
   control,
+  reset,
   handleSubmit,
   formState: { errors },
 } = useForm();
@@ -47,7 +49,19 @@ const {
         profile_image: "https://acefitnessmediastorage.blob.core.windows.net/acepublicfiles/88bd0989-e540-4822-8fc5-cd5a443ba0d6.jpg"
       }
       const dbResponse = await postTrainer(Trainer)
-      console.log(dbResponse)
+      if(dbResponse?._id){
+        toast.success("Registration successfull.", {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        reset()
+      }
    
   };
 

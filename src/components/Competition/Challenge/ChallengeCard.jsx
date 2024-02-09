@@ -45,8 +45,8 @@ const ChallengeCard = ({ challenge }) => {
         <Box sx={{ minHeight: "200px" }}>
           <Image
             component="img"
-            height={100}
-            width={300}
+            height={500}
+            width={500}
             src={challenge.imageLink}
             alt={challenge.challengeName}
           />

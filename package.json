@@ -18,6 +18,8 @@
     "@mui/system": "^5.15.6",
     "@react-spring/web": "^9.7.3",
     "@rumess/react-flip-countdown": "^1.2.6",
+    "@stripe/react-stripe-js": "^2.4.0",
+    "@stripe/stripe-js": "^2.4.0",
     "aos": "^2.3.4",
     "axios": "^1.6.7",
     "bcrypt": "^5.1.1",

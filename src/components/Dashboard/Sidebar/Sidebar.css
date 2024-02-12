@@ -77,4 +77,9 @@ ul li a {
     color: #000;
     background: rgb(254, 254, 254);
   }
+  .nav-item  :hover {
+    text-decoration: none;
+    color: #000;
+    background: rgb(254, 254, 254);
+  }
   

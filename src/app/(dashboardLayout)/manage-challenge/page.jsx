@@ -1,4 +1,4 @@
-import ManageChallenge from "@/components/Dashboard/ManageChallenge/MAnageChallenge";
+import ManageChallenge from "@/components/Dashboard/ManageChallenge/ManageChallenge";
 
 const ManageChallengePage = async() => {
     

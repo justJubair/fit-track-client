@@ -36,9 +36,7 @@ const UsersServices = ({userServices}) => {
                                             {serv?.heading}
                                         </Typography>
                                         <Typography variant="body2" color="black" sx={{ marginTop: '10px', marginBottom: '10px' }}>
-                                            This impressive paella is a perfect party dish and a fun meal to cook
-                                            together with your guests. Add 1 cup of frozen peas along with the mussels,
-                                            if you like.
+                                        {serv?.subheading}
                                         </Typography>
                                         <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', marginBottom: '10px' }}>
                                             <Typography>

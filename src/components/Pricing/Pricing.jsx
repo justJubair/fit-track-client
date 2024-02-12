@@ -1,114 +1,163 @@
-'use client'
-import { Box, Button, Container, List, ListItem, Typography, Grid, ListItemIcon } from "@mui/material";
+import React from 'react';
+import './pricing.css'
+const Pricing = () => {
+   return (
+      <div>
+      <div className="bg-black h-16"></div>
+         <section id="pricing-table">
+            <div class="price-box-container">
+               <div class="price-box">
+                  <div class="box-top-section">
+                     <div class="plan-name">
+                        <strong>Starter</strong>
+                        <span>Small Office/Home Office</span>
+                     </div>
+                     <div class="price-section">
+                        <strong class="price">
+                           <span>$</span>
+                           <strong>16</strong>
+                           <span>/mo</span>
+                        </strong>
+                     </div>
+                     <span class="per-month">or <strong>$19</strong> month-to-month</span>
+                  </div>
+                  <div class="box-features-section">
+                     <div class="features-box">
+                        <i class="fas fa-check"></i>
+                        <span>60-day chat history</span>
+                        <div class="feature-details">
+                           <p>Your chats will be lo stored in the archives for 60 days.</p>
+                        </div>
+                     </div>
+                     <div class="features-box">
+                        <i class="fas fa-check"></i>
+                        <span>Basic widget customization</span>
+                        <div class="feature-details">
+                           <p>Customization is limited to changing the theme and colors of the chat widget.</p>
+                        </div>
+                     </div>
+                     <div class="features-box">
+                        <i class="fas fa-check"></i>
+                        <span>Ticketing system</span>
+                        <div class="feature-details">
+                           <p>Built-in ticketing system that will allow you to create, manage, and track tougher cases. You can also use it to handle emails and messages left when your LiveChat is offline.</p>
+                        </div>
+                     </div>
+                     <div class="features-box">
+                        <i class="fas fa-check"></i>
+                        <span>Data security</span>
+                        <div class="feature-details">
+                           <p>Secure 256-bit SSL encryption for website visitors and agents connecting to your LiveChat.</p>
+                        </div>
+                     </div>
+                     <a href="#" class="Choose-plan-btn">Choose Plan
+                        <i class="fas fa-chevron-right"></i>
+                     </a>
+                  </div>
+               </div>
+               <div class="price-box popular">
+                  <div class="box-top-section">
+                     <div class="top-bar">
+                        <span>Popular</span>
+                     </div>
+                     <div class="plan-name">
+                        <strong>Business</strong>
+                        <span>Small Office/Home Office</span>
+                     </div>
+                     <div class="price-section">
+                        <strong class="price">
+                           <span>$</span>
+                           <strong>50</strong>
+                           <span>/mo</span>
+                        </strong>
+                     </div>
+                     <span class="per-month">or <strong>$50</strong> month-to-month</span>
+                  </div>
+                  <div class="box-features-section">
+                     <div class="features-box">
+                        <i class="fas fa-check"></i>
+                        <span>60-day chat history</span>
+                        <div class="feature-details">
+                           <p>Full customization, including changing the theme, colors, visibility.</p>
+                        </div>
+                     </div>
+                     <div class="features-box">
+                        <i class="fas fa-check"></i>
+                        <span>Basic widget customization</span>
+                        <div class="feature-details">
+                           <p>Built-in ticketing system that will allow you to create, manage, and track tougher cases. You can also use it to handle emails and messages left when your LiveChat is offline.</p>
+                        </div>
+                     </div>
+                     <div class="features-box">
+                        <i class="fas fa-check"></i>
+                        <span>Ticketing system</span>
+                        <div class="feature-details">
+                           <p>Secure 256-bit SSL encryption for website visitors and agents connecting to your LiveChat.</p>
+                        </div>
+                     </div>
+                     <div class="features-box">
+                        <i class="fas fa-check"></i>
+                        <span>Data security</span>
+                        <div class="feature-details">
+                           <p>Chat and ticket reports plus a daily recap of your account activity.</p>
+                        </div>
+                     </div>
 
-import CheckCircleSharpIcon from '@mui/icons-material/CheckCircleSharp';
+                     <a href="#" class="Choose-plan-btn">Choose Plan <i class="fas fa-chevron-right"></i></a>
+                  </div>
+               </div>
+               <div class="price-box">
+                  <div class="box-top-section">
+                     <div class="plan-name">
+                        <strong>Team</strong>
+                        <span>Small Office/Home Office</span>
+                     </div>
+                     <div class="price-section">
+                        <strong class="price">
+                           <span>$</span>
+                           <strong>33</strong>
+                           <span>/mo</span>
+                        </strong>
+                     </div>
+                     <span class="per-month">or <strong>$19</strong> month-to-month</span>
+                  </div>
+                  <div class="box-features-section">
+                     <div class="features-box">
+                        <i class="fas fa-check"></i>
+                        <span>60-day chat history</span>
+                        <div class="feature-details">
+                           <p>Full customization, including changing the theme, colors, visibility.</p>
+                        </div>
+                     </div>
+                     <div class="features-box">
+                        <i class="fas fa-check"></i>
+                        <span>Basic widget customization</span>
+                        <div class="feature-details">
+                           <p>Built-in ticketing system that will allow you to create, manage, and track tougher cases. You can also use it to handle emails and messages left when your LiveChat is offline.</p>
+                        </div>
+                     </div>
+                     <div class="features-box">
+                        <i class="fas fa-check"></i>
+                        <span>Ticketing system</span>
+                        <div class="feature-details">
+                           <p>Secure 256-bit SSL encryption for website visitors and agents connecting to your LiveChat.</p>
+                        </div>
+                     </div>
 
-const Prices = () => {
-    return (
-        <Box>
-            <Box className="bg-black h-16"></Box>
-            <div className="max-w-6xl mx-auto my-40">
-                <Box sx={{ marginLeft: '10px', marginRight: '10px' }}>
-                    <Typography variant="h4" sx={{ width:1/2 ,textAlign: 'center', fontWeight: '500', marginLeft:'auto', marginRight:'auto',marginBottom: '10px' }}>Unlock Your Fitness Journey with <span className="text-[#378ae5]">Tailored Pricing Plans</span></Typography>
-                    <Typography variant="h6" sx={{ textAlign: 'center', fontWeight: '300', marginBottom: '50px' }}>
-                        Elevate your lifestyle with our exclusive fitness plans—crafted for your best self. Experience invigorating workouts, personalized guidance, and a supportive community. Invest in your well-being today!
-                    </Typography>
-
-                    {/* Grid with 12 columns on large screens, 8 columns on medium screens, and 4 columns on small screens */}
-                    <Grid container spacing={2} sx={{ justifyContent: "center" }}>
-                        {/* First item */}
-                        <Grid item xs={12} md={8} lg={4}>
-                            <Box sx={{ border: '1px solid black', padding: '30px', borderRadius: '10px' }}>
-                                <Box sx={{ textAlign: 'start', marginBottom: '10px' }}>
-                                    <Typography variant="h5" sx={{ fontWeight: '600' }}>Basic</Typography>
-                                    <Typography variant="h6" sx={{ fontWeight: '300' }}>Basic plan with kool feature</Typography>
-                                </Box>
-                                <Box>
-                                    <Box sx={{ display: 'flex' }}>
-                                        <Typography variant="h3">
-                                            $15
-                                        </Typography>
-                                        <Typography>
-                                            /month
-                                        </Typography>
-                                    </Box>
-                                    <button className="bg-[#252525] px-8 py-2 my-6 text-white w-full rounded-md hover:bg-[#378ae5] transition-all">Buy Now</button>
-                                </Box>
-                                <Box>
-                                    <List>
-                                        <ListItem>✅ Personalized Workout Tracking</ListItem>
-                                        <ListItem>✅ Weekly Progress Reports</ListItem>
-                                        <ListItem>✅ Basic Fitness Analytics</ListItem>
-                                    </List>
-                                </Box>
-                            </Box>
-                        </Grid>
-                        <Grid item xs={12} md={8} lg={4}>
-                            <Box sx={{ border: '1px solid black', padding: '30px', borderRadius: '10px' }}>
-                                <Box sx={{ textAlign: 'start', marginBottom: '10px' }}>
-                                    <Typography variant="h5" sx={{ fontWeight: '600' }}>Pro</Typography>
-                                    <Typography variant="h6" sx={{ fontWeight: '300' }}>Pro plan with Pro feature</Typography>
-                                </Box>
-                                <Box>
-                                    <Box sx={{ display: 'flex' }}>
-                                        <Typography variant="h3">
-                                            $35
-                                        </Typography>
-                                        <Typography>
-                                            /month
-                                        </Typography>
-                                    </Box>
-                                    <button className="bg-[#252525] px-8 py-2 my-6 text-white w-full rounded-md hover:bg-[#378ae5] transition-all">Buy Now</button>
-                                </Box>
-                                <Box>
-                                    <List>
-                                        <ListItem>✅ Personalized Workout Tracking</ListItem>
-                                        <ListItem>✅ Weekly Progress Reports</ListItem>
-                                        <ListItem>✅ Basic Fitness Analytics</ListItem>
-                                        <ListItem>✅ Basic Fitness Analytics</ListItem>
-                                        <ListItem>✅ Basic Fitness Analytics</ListItem>
-                                    </List>
-                                </Box>
-                            </Box>
-                        </Grid>
-                        <Grid item xs={12} md={8} lg={4}>
-                            <Box sx={{ border: '1px solid black', padding: '30px', borderRadius: '10px' }}>
-                                <Box sx={{ textAlign: 'start', marginBottom: '10px' }}>
-                                    <Typography variant="h5" sx={{ fontWeight: '600' }}>Premium</Typography>
-                                    <Typography variant="h6" sx={{ fontWeight: '300' }}>Premium plan with premium feature</Typography>
-                                </Box>
-                                <Box>
-                                    <Box sx={{ display: 'flex' }}>
-                                        <Typography variant="h3">
-                                            $50
-                                        </Typography>
-                                        <Typography>
-                                            /month
-                                        </Typography>
-                                    </Box>
-                                    <button className="bg-[#252525] px-8 py-2 my-6 text-white w-full rounded-md hover:bg-[#378ae5] transition-all">Buy Now</button>
-                                </Box>
-                                <Box>
-                                    <List>
-                                        <ListItem>✅ Personalized Workout Tracking</ListItem>
-                                        <ListItem>✅ Weekly Progress Reports</ListItem>
-                                        <ListItem>✅ Basic Fitness Analytics</ListItem>
-                                        <ListItem>✅ Basic Fitness Analytics</ListItem>
-                                        <ListItem>✅ Basic Fitness Analytics</ListItem>
-                                        <ListItem>✅ Basic Fitness Analytics</ListItem>
-                                    </List>
-                                </Box>
-                            </Box>
-                        </Grid>
-                    </Grid>
-                    <Box>
-                    </Box>
-                </Box>
+                     <div class="features-box">
+                        <i class="fas fa-check"></i>
+                        <span>Multiple brandings</span>
+                        <div class="feature-details">
+                           <p>All your chats will be stored in the archives.</p>
+                        </div>
+                     </div>
+                     <a href="#" class="Choose-plan-btn">Choose Plan <i class="fas fa-chevron-right"></i></a>
+                  </div>
+               </div>
             </div>
-
-        </Box>
-
-    );
+         </section>
+      </div>
+   );
 };
 
-export default Prices;
+export default Pricing;

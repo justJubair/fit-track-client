@@ -83,7 +83,7 @@ const Blog = () => {
                 <div className='z-10 w-full px-2 '>
                     <form
                         onSubmit={handelBlog}
-                        className="lg:w-1/2 mx-auto px-2 py-8  lg:p-10 MuiDialog-paperScrollPaper rounded-lg text-white " >
+                        className="lg:w-1/2 mx-auto px-2 py-8 paperScrollPaper  lg:p-10  rounded-lg text-white " >
                         <h1 className="text-xl uppercase text-center mb-4 font-bold">Upload Your Blog</h1>
                         <div className=" flex items-center gap-4 ">
                             <Avatar alt={session?.user?.name} src={session?.user?.image} sx={{ mb: "20px" }} />
@@ -105,7 +105,7 @@ const Blog = () => {
                                 </label>
                             </div>
                         </div>
-                        <textarea name="description" id="" cols="100%" rows="8" placeholder="Description" className="w-full mt-2  text-white rounded-lg MuiDialog-paperScrollPaper " required ></textarea>
+                        <textarea name="description" id="" cols="100%" rows="8" placeholder="Description" className="w-full mt-2 paperScrollPaper text-white rounded-lg  " required ></textarea>
                         {/* image input file */}
                         <div className="flex gap-10 mt-5">
                             <div className="flex-1 ">

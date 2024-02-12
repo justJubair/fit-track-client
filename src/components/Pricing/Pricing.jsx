@@ -55,7 +55,7 @@ const Pricing = () => {
                      </a>
                   </div>
                </div>
-               <div class="price-box popular">
+               <div class="price-box popular" id='mprice'>
                   <div class="box-top-section">
                      <div class="top-bar">
                         <span>Popular</span>

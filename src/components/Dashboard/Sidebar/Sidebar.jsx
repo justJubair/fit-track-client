@@ -1,8 +1,10 @@
-"use client";
+"use client"
+import { usePathname } from "next/navigation";
 import { Box } from "@mui/system";
-import logo from "../../../assets/images/logo02.png";
 import Image from "next/image";
 import Link from "next/link";
+
+
 
 // import vanilla css
 import "./Sidebar.css";
@@ -13,21 +15,16 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import LogoutIcon from "@mui/icons-material/Logout";
 import WidgetsIcon from "@mui/icons-material/Widgets";
-import { useEffect } from "react";
+
+
+
+
+
 
 const Sidebar = () => {
-  useEffect(() => {
-    const navItems = document.querySelectorAll(".nav-item");
 
-    navItems.forEach((navItem) => {
-      navItem.addEventListener("click", () => {
-        navItems.forEach((item) => {
-          item.className = "nav-item";
-        });
-        navItem.className = "nav-item active";
-      });
-    });
-  }, []);
+  const pathname = usePathname()
+
 
   return (
     <Box>
@@ -50,21 +47,22 @@ const Sidebar = () => {
       
          {/* Route one */}
          <ul>
-          <li className="nav-item active">
-            <Link href="/dashboard">
+          <li className={pathname == "/dashboard" ? "active nav-item" : "nav-item"}>
+            
+            <Link href="/dashboard" >
               <HomeIcon sx={{ fontSize: "28px" }} />
             </Link>
           </li>
 
           {/* Route Two */}
-          <li className="nav-item ">
+          <li className={pathname == "/manage-users" ? "active nav-item" : "nav-item"}>
             <Link href="/manage-users">
               <ManageAccountsIcon sx={{ fontSize: "28px" }} />
             </Link>
           </li>
 
           {/* Route Three */}
-          <li className="nav-item ">
+          <li className={pathname == "/manage-payments" ? "active nav-item" : "nav-item"}>
             <Link href="/manage-payments">
               <MonetizationOnIcon sx={{ fontSize: "28px" }} />
             </Link>
@@ -72,7 +70,7 @@ const Sidebar = () => {
 
           {/* Route four */}
 
-          <li className="nav-item ">
+          <li className={pathname == "/manage-progress" ? "active nav-item" : "nav-item"}>
             <Link href="/manage-progress">
               <WidgetsIcon sx={{ fontSize: "28px" }} />
             </Link>

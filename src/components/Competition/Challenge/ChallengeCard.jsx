@@ -13,14 +13,40 @@ import { Box } from "@mui/material";
 
 const ChallengeCard = ({ challenge }) => {
   return (
-    <div style={{ margin: "0.5rem 1rem" }}>
-      <Box
-        className="glow-effect transform transition-transform ease-in-out duration-200 hover:scale-105 shadow-black"
-        sx={{ backgroundColor: "gray", minHeight: "500px", minWidth: "320px" }}
-      >
-        <CardHeader
-          avatar={
-            <Avatar sx={{ backgroundColor: "black" }} aria-label="recipe">
+  
+    <div
+      className="  bg-black w-full rounded-3xl  flex flex-col-reverse 
+    lg:flex-row-reverse items-center justify-evenly gap-2 p-3"
+    >
+      <div className="w-full h-full">
+        
+        <div className="MuiDialog-paperScrollPaper w-full h-full  flex  flex-col   rounded-lg transform hover:scale-110 transition-transform cursor-pointer  ">
+          <div className="p-2">
+            <Typography
+              variant="body2"
+              sx={{ color: "white", minHeight: "100px" }}
+            >
+              {challenge.description}
+            </Typography>
+          </div>
+
+          <div className="px-2 flex justify-end">
+          <ChallegeDialog challenge={challenge}></ChallegeDialog>
+          </div>
+        </div>
+      </div>
+      <div className=" ">
+        <div className="  h-full ">
+        <Image
+          component="img"
+          height={500}
+      width={500}
+          src={challenge.imageLink}
+          alt={challenge.challengeName}
+          className="rounded-xl "
+        />
+          <div className="flex items-center gap-2 pt-2">
+            <Avatar sx={{ backgroundColor: "white" }} aria-label="recipe">
               <Image
                 width={500}
                 height={500}
@@ -28,66 +54,24 @@ const ChallengeCard = ({ challenge }) => {
                 alt={challenge.postedBy.name}
               />
             </Avatar>
-          }
-          title={
-            <Typography variant="h6" sx={{ color: "black", fontSize: "1rem" }}>
-              Challenge Posted by {challenge.postedBy.name.toUpperCase()}
-            </Typography>
-          }
-          subheader={new Date(challenge.postedOn).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-          sx={{ title: { color: "black" }, minHeight: "130px" }}
-        />
-
-        <Box sx={{ minHeight: "200px" }}>
-          <Image
-            component="img"
-            height={500}
-            width={500}
-            src={challenge.imageLink}
-            alt={challenge.challengeName}
-          />
-        </Box>
-        <CardContent sx={{ height: "100%" }}>
-          <Typography variant="h6" sx={{ color: "black" }}>
-            {challenge.challengeName}
-          </Typography>
-          <Typography
-            variant="body2"
-            sx={{ color: "black", minHeight: "100px" }}
-          >
-            {challenge.description.slice(0, 200)}...
-          </Typography>
-        </CardContent>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            padding: "0.5rem 1rem",
-          }}
-        >
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          {/* this is modal for challenge details info */}
-          <ChallegeDialog challenge={challenge}></ChallegeDialog>
+            <Box variant="h6" sx={{ color: "white", fontSize: ".9rem" }}>
+              <Typography
+                variant="h6"
+                sx={{ letterSpacing: "2px", fontSize: ".7rem" }}
+              >
+            {challenge.postedBy.name.toUpperCase()}
+              </Typography>
+              <Typography sx={{ color: "white", fontSize: ".7rem" }}>
+                {new Date(challenge.postedOn).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </Typography>
+            </Box>
+          </div>
         </div>
-        <svg className="glow-container">
-          <rect
-            pathLength="100"
-            strokeLinecap="round"
-            className="glow-blur"
-          ></rect>
-          <rect
-            pathLength="100"
-            strokeLinecap="round"
-            className="glow-line"
-          ></rect>
-        </svg>
-      </Box>
+      </div>
     </div>
   );
 };

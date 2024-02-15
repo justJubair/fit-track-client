@@ -17,6 +17,7 @@ const handleConnect=()=>{
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mx-3">
                     {
                         allTrainers.map((train) =>
+                        // card
                             <div key={train._id}>
                                 <div className="flex items-center justify-center rounded-md">
                                     <div className="w-64 rounded-lg border-2  border-[#252525] bg-transparent p-4 text-center shadow-lg">

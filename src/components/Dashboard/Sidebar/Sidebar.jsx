@@ -18,7 +18,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="fixed min-h-screen flex flex-col justify-between">
+    <div className="fixed min-h-screen flex flex-col justify-between bg-blue-700">
       {/* logo and Routes */}
       <div>
         {/* logo */}

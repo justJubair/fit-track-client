@@ -1,4 +1,4 @@
-import { ToastContainer } from "react-toastify";
+
 import "./globals.css";
 import AuthProvider from "@/components/Authentication/AuthProvider/AuthProvider";
 
@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="overflow-x-hidden">
         <AuthProvider>{children}</AuthProvider>
-        <ToastContainer />
+       
       </body>
     </html>
   );

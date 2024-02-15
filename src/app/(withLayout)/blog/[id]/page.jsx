@@ -26,7 +26,7 @@ const page = () => {
         <div >
             <div className="bg-black h-16"></div>
             <div className='px-4 md:w-4/5 mx-auto'>
-                <div>
+                <div className=''>
                     <h1 className='text-6xl text-center my-4 italic font-bold'>{blog?.title}</h1>
                 </div>
                 <div className='flex justify-center my-4'>

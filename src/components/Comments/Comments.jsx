@@ -37,10 +37,10 @@ const Comments = ({ id, comments, incrementCount }) => {
             blogId,
             comment
         }
-        console.log(blogId)
+        // console.log(blogId)
         try {
             const res = await axios.patch("http://localhost:5000/api/v1/comment", finalComment);
-            console.log(res.data)
+            // console.log(res.data)
 
             if (res.data.modifiedCount) {
                 toast.success('Comment Uploaded!', {

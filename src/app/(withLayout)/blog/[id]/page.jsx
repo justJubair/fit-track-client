@@ -22,6 +22,7 @@ const page = () => {
         };
         getBlog().then(result => setBlog(result));
     }, [count, id])
+  
     return (
         <div >
             <div className="bg-black h-16"></div>
@@ -30,7 +31,7 @@ const page = () => {
                     <h1 className='text-6xl text-center my-4 italic font-bold'>{blog?.title}</h1>
                 </div>
                 <div className='flex justify-center my-4'>
-                    <Image width={"1000"} height={"800"} src={blog?.image} alt="Card Image" className="w-auto h-auto rounded-2xl " />
+                    <Image src={blog?.image} width={1000} height={800}  alt="Card Image" className="w-auto h-auto rounded-2xl " />
                 </div>
                 <div className='my-10'>
                     <p className='md:text-xl' style={{

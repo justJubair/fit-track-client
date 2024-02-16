@@ -253,7 +253,7 @@ const DashboardHome = () => {
             </div>
           </div>
 
-          <div className="active-calories">
+          {/* <div className="active-calories">
             <h1 style={{ alignSelf: "flex-start" }}>Active Calories</h1>
             <div className="active-calories-container">
               <div className="box" style={{ "--i": "85%" }}>
@@ -275,11 +275,11 @@ const DashboardHome = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
 
 
             {/* Mobile phone */}
-          <div className="mobile-personal-bests">
+          {/* <div className="mobile-personal-bests">
             <h1>Personal Bests</h1>
             <div className="personal-bests-container">
               <div className="best-item box-one">
@@ -304,8 +304,8 @@ const DashboardHome = () => {
                 />
               </div>
             </div>
-          </div>
-
+          </div> */}
+{/* 
           <div className="friends-activity">
             <h1>Friends Activity</h1>
             <div className="card-container">
@@ -341,7 +341,7 @@ const DashboardHome = () => {
                 <p>I just set a new record in cycling: 30 miles!💪</p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </Box>
     </>

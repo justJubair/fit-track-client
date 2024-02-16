@@ -19,8 +19,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const Comments = ({ id, comments, incrementCount }) => {
     const { data: session } = useSession();
-    // console.log(session?.user?.email)
-    // console.log(comments)
+   
 
     const handelComment = async (e) => {
         e.preventDefault()
@@ -65,10 +64,10 @@ const Comments = ({ id, comments, incrementCount }) => {
             blogId: id,
             comment
         }
-        console.log(D_Comment)
+     
         try {
-            const res = await axios.patch("http://localhost:5000/api/v1/comment-delete", D_Comment);
-            console.log(res.data)
+            const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/comment-delete", D_Comment);
+           
 
             if (res.data.modifiedCount) {
                 toast.success('Deleted!', {

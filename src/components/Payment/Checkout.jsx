@@ -26,7 +26,7 @@ const Checkout = ({planPrice}) => {
                 // console.log(res.data)
                 setClientSecret(res.data.clientSecret)
             })
-    }, []);
+    }, [planPrice]);
 
 
     const appearance = {

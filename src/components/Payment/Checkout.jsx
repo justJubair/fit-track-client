@@ -18,21 +18,21 @@ const Checkout = ({planPrice}) => {
 
     const router = useRouter();
     const { data: session, status } = useSession();
-    // console.log(session)
+   
   
     useEffect(() => {
         axios.post('https://fit-track-server.vercel.app/create-payment-intent', { price: planPrice })
             .then(res => {
-                // console.log(res.data)
+               
                 setClientSecret(res.data.clientSecret)
             })
-    }, []);
+    }, [planPrice]);
 
 
     const appearance = {
         theme: 'stripe'
     }
-    // console.log(clientSecret)
+   
     return (
         <PrivateRoute>
         <div className="my-24">

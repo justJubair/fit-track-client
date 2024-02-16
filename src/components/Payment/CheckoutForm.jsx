@@ -14,7 +14,7 @@ const CheckoutForm = ({ cSecret, planPrice }) => {
     const [plan, setPlan] = useState(null);
     //user session
     const { data: session } = useSession();
-    // console.log(session);
+  
 
 
     useEffect(() => {
@@ -51,7 +51,7 @@ const CheckoutForm = ({ cSecret, planPrice }) => {
                     setMessage(res.error.message);
                 } else {
                     setMessage(res.paymentIntent.status);
-                    console.log(res.paymentIntent.status)
+                   
                     if (res.paymentIntent.status === 'succeeded') {
                         Notify.success('Payment complete!')
                         setTrnsactionId(res.paymentIntent.id);
@@ -63,7 +63,7 @@ const CheckoutForm = ({ cSecret, planPrice }) => {
                             plan: plan
                         }
 
-                        // console.log(paymentInfo)
+                        
                     }
                 }
             });

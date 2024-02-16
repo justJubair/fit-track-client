@@ -25,8 +25,7 @@ const SubmitForm = () => {
       file: file,
     };
 
-    console.log("Form submitted with data:", formData);
-
+  
     // TODO : post video to youtube
     // TODO : post formdata to db
     

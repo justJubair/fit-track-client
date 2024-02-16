@@ -39,7 +39,7 @@ const Comments = ({ id, comments, incrementCount }) => {
         }
         console.log(blogId)
         try {
-            const res = await axios.patch("http://localhost:5000/api/v1/comment", finalComment);
+            const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/comment", finalComment);
             console.log(res.data)
 
             if (res.data.modifiedCount) {
@@ -67,7 +67,7 @@ const Comments = ({ id, comments, incrementCount }) => {
         }
         console.log(D_Comment)
         try {
-            const res = await axios.patch("http://localhost:5000/api/v1/comment-delete", D_Comment);
+            const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/comment-delete", D_Comment);
             console.log(res.data)
 
             if (res.data.modifiedCount) {

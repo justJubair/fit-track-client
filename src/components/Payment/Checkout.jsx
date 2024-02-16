@@ -21,7 +21,7 @@ const Checkout = ({planPrice}) => {
     // console.log(session)
   
     useEffect(() => {
-        axios.post('http://localhost:5000/create-payment-intent', { price: planPrice })
+        axios.post('https://fit-track-server.vercel.app/create-payment-intent', { price: planPrice })
             .then(res => {
                 // console.log(res.data)
                 setClientSecret(res.data.clientSecret)

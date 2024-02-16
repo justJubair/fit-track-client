@@ -29,7 +29,7 @@ const Sidebar = () => {
       {/* logo */}
       {openSidebar &&  <div
             onClick={() => setOpenSidebar(!openSidebar)}
-            className={`flex justify-center bg-blue-950 ${openSidebar ? "absolute p-4 rounded-xl top-4 left-4" : "relative pt-5"}`}
+            className={`flex justify-center bg-blue-950 ${openSidebar ? "fixed z-50 p-2 lg:p-4 rounded-xl top-4 left-4" : "relative pt-5"}`}
           >
             <Image
               width={25}

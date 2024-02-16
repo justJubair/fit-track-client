@@ -3,10 +3,10 @@ import Checkout from "@/components/Payment/Checkout";
 
 
 const PaymentId = ({ params }) => {
-    console.log(params)
+  
 
     const planPrice = params.paymentid
-    // console.log(planPrice);
+   
 
     let content;
 

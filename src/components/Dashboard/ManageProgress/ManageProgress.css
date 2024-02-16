@@ -3,7 +3,7 @@
 /* Center part styles */
 .center {
   width: 65%;
-  min-height: 627px;
+  /* min-height: 627px; */
   display: flex;
   flex-direction: column;
 }
@@ -34,7 +34,7 @@
   width: 28vw;
   max-width: 320px;
   min-width: 239px;
-  height: 130px;
+  /* height: 130px; */
   font-size: 12px;
   display: flex;
   flex-direction:  column;

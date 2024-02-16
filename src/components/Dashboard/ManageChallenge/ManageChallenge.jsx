@@ -58,32 +58,32 @@ const ManageChallenge = () => {
            
           </div>
           <div className="">
-            <div class="  flex flex-col bg-white shadow-lg rounded-lg overflow-hidden">
-              <div class="bg-gray-200 text-gray-700 text-lg px-6 py-4">
-                <div class="ml-4">
-                  <p class="font-bold">Challenges</p>
+            <div className="flex flex-col bg-white shadow-lg rounded-lg overflow-hidden">
+              <div className="bg-gray-200 text-gray-700 text-lg px-6 py-4">
+                <div className="ml-4">
+                  <p className="font-bold">Challenges</p>
                   
                 </div>
               </div>
 
-              <div class="flex justify-between items-center px-6 py-4">
-                <div class="bg-orange-600 text-xs uppercase px-2 py-1 rounded-full border border-gray-200 text-gray-200 font-bold">
+              <div className="flex justify-between items-center px-6 py-4">
+                <div className="bg-orange-600 text-xs uppercase px-2 py-1 rounded-full border border-gray-200 text-gray-200 font-bold">
                  Challenge Details
                 </div>
-                <div class="text-sm">May 14, 1988</div>
+                <div className="text-sm">May 14, 1988</div>
               </div>
 
-              <div class="px-6 py-4 border-t border-gray-200">
-                <div class="border rounded-lg p-4 bg-orange-300">
+              <div className="px-6 py-4 border-t border-gray-200">
+                <div className="border rounded-lg p-4 bg-orange-300">
                  Details
                 </div>
               </div>
 
-              <div class="bg-gray-200 px-6 py-4">
-                <div class="flex items-center pt-3">
-                  <div class="ml-4">
-                    <p class="font-bold">Saidul Arefin</p>
-                    <p class="text-sm text-gray-700 mt-1">3 Challenge painding</p>
+              <div className="bg-gray-200 px-6 py-4">
+                <div className="flex items-center pt-3">
+                  <div className="ml-4">
+                    <p className="font-bold">Saidul Arefin</p>
+                    <p className="text-sm text-gray-700 mt-1">3 Challenge painding</p>
                   </div>
                 </div>
               </div>

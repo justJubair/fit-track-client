@@ -44,11 +44,11 @@ const ManagePayments = ({ payments }) => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {payment?.paymentDate}
+                  {payment?.address?.zipcode}
                 </TableCell>
-                <TableCell align="right">{payment.paymentMethod}</TableCell>
-                <TableCell align="right">{payment?.amount}</TableCell>
-                <TableCell align="right">{payment?.status}</TableCell>
+                <TableCell align="right">{payment.name}</TableCell>
+                <TableCell align="right">{payment?.address?.geo?.lat}</TableCell>
+                <TableCell align="right">{payment?.address?.suite}</TableCell>
                 {/* <TableCell align="right">{row.protein}</TableCell> */}
               </TableRow>
             ))}

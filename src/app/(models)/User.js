@@ -1,6 +1,6 @@
 import mongoose, {Schema} from 'mongoose'
 
-mongoose.connect(process.env.DB_URI)
+mongoose.connect(process.env.db_URI)
 mongoose.Promise = global.Promise;
 
 const userShcema = new Schema(

@@ -13,6 +13,7 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import LogoutIcon from "@mui/icons-material/Logout";
 import WidgetsIcon from "@mui/icons-material/Widgets";
+import PoolIcon from '@mui/icons-material/Pool';
 import { useEffect } from "react";
 
 const Sidebar = () => {
@@ -50,21 +51,21 @@ const Sidebar = () => {
       
          {/* Route one */}
          <ul>
-          <li className="nav-item active">
+          <li className="nav-item hover:rounded-l-[20px] hover:ml-[5px]  ">
             <Link href="/dashboard">
               <HomeIcon sx={{ fontSize: "28px" }} />
             </Link>
           </li>
 
           {/* Route Two */}
-          <li className="nav-item ">
+          <li className="nav-item hover:rounded-l-[20px] hover:ml-[5px]  ">
             <Link href="/manage-users">
               <ManageAccountsIcon sx={{ fontSize: "28px" }} />
             </Link>
           </li>
 
           {/* Route Three */}
-          <li className="nav-item ">
+          <li className="nav-item hover:rounded-l-[20px] hover:ml-[5px]  ">
             <Link href="/manage-payments">
               <MonetizationOnIcon sx={{ fontSize: "28px" }} />
             </Link>
@@ -72,9 +73,15 @@ const Sidebar = () => {
 
           {/* Route four */}
 
-          <li className="nav-item ">
+          <li className="nav-item hover:rounded-l-[20px] hover:ml-[5px]  ">
             <Link href="/manage-progress">
               <WidgetsIcon sx={{ fontSize: "28px" }} />
+            </Link>
+          </li>
+          {/* Route five challenges */}
+          <li className="nav-item hover:rounded-l-[20px] hover:ml-[5px]  ">
+            <Link href="/manage-challenge">
+            <PoolIcon sx={{ fontSize: "28px" }} />
             </Link>
           </li>
         </ul>

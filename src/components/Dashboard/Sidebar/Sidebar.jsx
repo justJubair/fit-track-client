@@ -1,6 +1,5 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { Box } from "@mui/system";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,6 +11,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import LogoutIcon from "@mui/icons-material/Logout";
+import PoolIcon from '@mui/icons-material/Pool';
 import WidgetsIcon from "@mui/icons-material/Widgets";
 
 const Sidebar = () => {
@@ -78,6 +78,13 @@ const Sidebar = () => {
           >
             <Link href="/manage-progress">
               <WidgetsIcon sx={{ fontSize: "28px" }} />
+            </Link>
+          </li>
+
+          {/* Route five challenges */}
+          <li className="nav-item hover:rounded-l-[20px] hover:ml-[5px]  ">
+            <Link href="/manage-challenge">
+            <PoolIcon sx={{ fontSize: "28px" }} />
             </Link>
           </li>
         </ul>

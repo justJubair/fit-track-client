@@ -6,17 +6,21 @@ import {
     AccordionDetails,
     AccordionSummary,
     Avatar,
+    IconButton,
     Tooltip,
     Typography
 } from "@mui/material";
+import { Box } from '@mui/system';
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { ToastContainer, toast } from 'react-toastify';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 
 const Comments = ({ id, comments, incrementCount }) => {
     const { data: session } = useSession();
-   
+    // console.log(session?.user?.email)
+    // console.log(comments)
 
     const handelComment = async (e) => {
         e.preventDefault()
@@ -33,10 +37,11 @@ const Comments = ({ id, comments, incrementCount }) => {
             blogId,
             comment
         }
-     
+        console.log(blogId)
         try {
-            const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/comment", finalComment);
-  
+            const res = await axios.patch("http://localhost:5000/api/v1/comment", finalComment);
+            console.log(res.data)
+
             if (res.data.modifiedCount) {
                 toast.success('Comment Uploaded!', {
                     position: "top-center",
@@ -49,6 +54,33 @@ const Comments = ({ id, comments, incrementCount }) => {
                     theme: "dark",
                 });
                 form.reset()
+                incrementCount()
+            };
+        } catch (error) {
+            console.error("Error occurred while making the request:", error);
+        }
+    }
+    const deleteComment = async (comment) => {
+        const D_Comment = {
+            blogId: id,
+            comment
+        }
+        console.log(D_Comment)
+        try {
+            const res = await axios.patch("http://localhost:5000/api/v1/comment-delete", D_Comment);
+            console.log(res.data)
+
+            if (res.data.modifiedCount) {
+                toast.success('Deleted!', {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
                 incrementCount()
             };
         } catch (error) {
@@ -102,11 +134,22 @@ const Comments = ({ id, comments, incrementCount }) => {
                         {
                             comments?.map((comment, i) => (
                                 <div key={i} className="border p-2 rounded-xl ">
-                                    <div className="flex  gap-2">
-                                        <Avatar alt={comment?.userName} src={comment?.userImage} sx={{ mb: "20px" }} />
-                                        <Typography sx={{ mt: "8px", fontSize: "15px", fontWeight: "700" }}>
-                                            {comment?.userName}
-                                        </Typography>
+                                    <div className="flex justify-between  gap-2">
+                                        <Box sx={{ display: "flex", gap: "10px" }}>
+                                            <Avatar alt={comment?.userName} src={comment?.userImage} sx={{ mb: "20px" }} />
+                                            <Typography sx={{ mt: "8px", fontSize: "15px", fontWeight: "700" }}>
+                                                {comment?.userName}
+                                            </Typography>
+                                        </Box>
+                                        <Box sx={{ display: `${session?.user.name !== comment?.userName ? "none" : ""}` }}>
+                                            <Tooltip
+                                                onClick={() => deleteComment(comment?.comment)}
+                                                title="Delete" arrow>
+                                                <IconButton aria-label="add to favorites">
+                                                    <DeleteForeverIcon sx={{ color: "red" }} />
+                                                </IconButton>
+                                            </Tooltip>
+                                        </Box>
                                     </div>
                                     <Typography>
                                         {comment?.comment}

@@ -253,7 +253,7 @@ const DashboardHome = () => {
             </div>
           </div>
 
-          <div className="active-calories">
+          {/* <div className="active-calories">
             <h1 style={{ alignSelf: "flex-start" }}>Active Calories</h1>
             <div className="active-calories-container">
               <div className="box" style={{ "--i": "85%" }}>
@@ -275,7 +275,7 @@ const DashboardHome = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
 
 
             {/* Mobile phone */}

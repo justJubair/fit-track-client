@@ -50,7 +50,7 @@ const BlogDetailsPage = () => {
                     {/* comments section */}
                 </div>
                 <div className=' col-span-4 hidden lg:block  w-full '>
-                    <h1 className='text-2xl text-center my-4 italic font-bold '>More...</h1>
+                   
                     <div>
                         <MoreBlog />
                     </div>

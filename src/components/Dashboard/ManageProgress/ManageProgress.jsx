@@ -129,9 +129,11 @@ const ManageProgress = () => {
           </div>
         </div>
 
-        {/* user profile */}
-        <div className=" md:col-span-4">
-          <p>user profile</p>
+        {/* user profile section */}
+        <div className="flex flex-col items-center md:col-span-4">
+
+            {/* profile picture */}
+            <Image className="rounded-full" width={100} height={100} src="https://pyxis.nymag.com/v1/imgs/079/792/3ed0d94be0a9bd3d023f00532889bab152-30-chandler-bing.rsquare.w330.jpg" alt="profile picture"/>
         </div>
       </div>
     </div>

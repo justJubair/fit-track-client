@@ -134,6 +134,38 @@ const ManageProgress = () => {
 
             {/* profile picture */}
             <Image className="rounded-full" width={100} height={100} src="https://pyxis.nymag.com/v1/imgs/079/792/3ed0d94be0a9bd3d023f00532889bab152-30-chandler-bing.rsquare.w330.jpg" alt="profile picture"/>
+            <p className="text-gray-400 font-bold text-sm mt-2">Pro Member</p>
+
+            {/* discount card */}
+            <div className="flex items-center justify-between gap-4 shadow-xl rounded-xl p-4">
+              <div>
+              <p className="font-medium">Get 10% discount now</p>
+              <p className="text-gray-400 text-sm">for Meditation course</p>
+              </div>
+              <span className="bg-purple-200 p-2 rounded-full"><KeyboardArrowRightIcon/></span>
+            </div>
+
+            {/* course progress */}
+            <div className="mt-7 space-y-4">
+              <h2 className="text-xl md:text-2xl font-bold">Courses Progress</h2>
+
+              {/* course one */}
+              <div className="flex items-center gap-4">
+                <p className="font-bold text-lg text-[#5843BE]">63%</p>
+                <div>
+                  <p className="font-medium">Power Cardio</p>
+                  <p className="text-gray-400 text-sm">Grow your stamina</p>
+                </div>
+              </div>
+              {/* course two */}
+              <div className="flex items-center gap-4">
+                <p className="font-bold text-lg text-[#ff8b45]">34%</p>
+                <div>
+                  <p className="font-medium">Yoga</p>
+                  <p className="text-gray-400 text-sm">Become more flexible</p>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>

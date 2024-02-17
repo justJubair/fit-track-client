@@ -123,11 +123,11 @@ const Sidebar = () => {
         </div>
 
         {/* logout button */}
-        <span className="hover:cursor-pointer">
+        <Link href="/" className="hover:cursor-pointer">
           <LogoutIcon
             sx={{ color: "white", fontSize: "28px", margin: "0px 30px 50px" }}
           />
-        </span>
+        </Link>
       </div>
     </>
   );

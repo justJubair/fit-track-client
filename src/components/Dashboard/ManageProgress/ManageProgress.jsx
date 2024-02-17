@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-// import css
-// import "./ManageProgress.css";
+
 
 // icons
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
@@ -14,11 +13,12 @@ import { Slider, Typography } from "@mui/material";
 
 const ManageProgress = () => {
   return (
-    <div className="p-4">
+    <div className="p-4 mt-4 md:mt-14 lg:mt-4">
       {/* title */}
       <Typography
         variant="h4"
         fontWeight="bold"
+        textAlign={{xs: "center", sm: "start"}}
         fontSize={{ xs: "25px", sm: "30px" }}
       >
         Progress Dashboard

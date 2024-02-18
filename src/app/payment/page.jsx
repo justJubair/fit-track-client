@@ -1,9 +1,11 @@
+import Checkout from "@/components/Payment/Checkout";
 
-const Payment = () => {
+const Payment = async () => {
+
     return (
-        <div>
-            
-        </div>
+    <div>
+      <Checkout/>
+    </div>
     );
 };
 

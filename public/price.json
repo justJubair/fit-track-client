@@ -1,0 +1,37 @@
+[
+    {
+      "plan_type": "Starter",
+      "price_monthly": 4.99,
+      "price_yearly": 49.99,
+      "services": [
+        "Basic Activity Tracking",
+        "Weekly Progress Report",
+        "Limited Access to Workouts"
+      ]
+    },
+    {
+      "plan_type": "Standard",
+      "price_monthly": 9.99,
+      "price_yearly": 99.99,
+      "services": [
+        "Advanced Activity Tracking",
+        "Personalized Workout Plans",
+        "Nutrition Guidance",
+        "Full Access to Workouts"
+      ]
+    },
+    {
+      "plan_type": "Premium",
+      "price_monthly": 19.99,
+      "price_yearly": 199.99,
+      "services": [
+        "Advanced Activity Tracking",
+        "Personalized Workout Plans",
+        "Nutrition Guidance",
+        "Full Access to Workouts",
+        "Customized Training Programs",
+        "1-on-1 Coaching Sessions"
+      ]
+    }
+  ]
+  

@@ -27,7 +27,7 @@ const Blog = () => {
         };
         getAllBlogs().then(result => setChallenges(result));
     }, [count])
-  
+
 
     const handelBlog = async (e) => {
         e.preventDefault()
@@ -58,7 +58,7 @@ const Blog = () => {
             disLikes: [],
             blogComments: [],
         }
-     
+
         // Final Blog
         const res = await axios.post("https://fit-track-server.vercel.app/api/v1/blogs", blog)
         if (res.data?._id) {
@@ -121,7 +121,7 @@ const Blog = () => {
 
             {/* recent blogs */}
             <div className='px-2 lg:px-10'>
-                <h3 className=' font-semibold text-3xl p-6'>Recent Post</h3>
+                <h3 className=' font-semibold text-3xl p-6 '>Recent Post</h3>
                 <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-3 lg:w-4/5 mx-auto'>
                     {/* mapping all services one by one */}
                     {challenges?.map((challenge, i) => (

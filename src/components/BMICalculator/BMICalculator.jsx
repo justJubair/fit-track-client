@@ -83,7 +83,7 @@ const BMICalculator = () => {
 
                   {/* BMI meter */}
                   <GaugeChart
-                  className="text-black bg-[#378ae5]"
+                  className="text-black w-full bg-[#378ae5]"
                     id="gauge-chart5"
                     nrOfLevels={420}
                     arcsLength={[0.3, 0.3, 0.4]}
@@ -101,9 +101,20 @@ const BMICalculator = () => {
                 </div>
               )}
               {result === null && (
+                <>
+                <GaugeChart
+                className="text-black bg-[#378ae5] w-full"
+                  id="gauge-chart5"
+                  nrOfLevels={420}
+                  arcsLength={[0.3, 0.3, 0.4]}
+                  colors={["#F5CD19","#5BE12C", "#EA4228"]}
+                  percent={calculateGaugePercentage()}
+                  arcPadding={0.02}
+                />
                 <Typography variant="body1" className='text-[#378ae5]'>
                   Enter Your Height and Weight to get BMI result
                 </Typography>
+                </>
               )}
             </Paper>
           </div>

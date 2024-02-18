@@ -10,7 +10,10 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MessageIcon from '@mui/icons-material/Message';
 
 
+
 const DashboardHome = () => {
+
+  
   return (
     <>
       <Box className="content">
@@ -253,7 +256,7 @@ const DashboardHome = () => {
             </div>
           </div>
 
-          <div className="active-calories">
+          {/* <div className="active-calories">
             <h1 style={{ alignSelf: "flex-start" }}>Active Calories</h1>
             <div className="active-calories-container">
               <div className="box" style={{ "--i": "85%" }}>
@@ -275,6 +278,11 @@ const DashboardHome = () => {
                 </p>
               </div>
             </div>
+          </div> */}
+
+          {/* users bookmarked blogs */}
+          <div>
+          
           </div>
 
 

@@ -1,9 +1,12 @@
+import { getSingleUser } from "@/api/getSingleUser";
 import DashboardHome from "@/components/Dashboard/DashboardHome/DashboardHome";
 
-const DashboardPage = () => {
+
+const DashboardPage = async() => {
+   
     return(
         <div>
-            <DashboardHome/>
+            <DashboardHome  />
         </div>
     )}
 export default DashboardPage;

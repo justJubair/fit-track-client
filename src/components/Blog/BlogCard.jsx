@@ -14,14 +14,16 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 
 const BlogCard = ({ challenge, incrementCount }) => {
 
 
     const { data: session } = useSession();
+    // console.log(session.user.email)
     const router = useRouter();
- 
+
     const handelLikeBtn = async (_id) => {
         try {
             const like = {
@@ -32,7 +34,7 @@ const BlogCard = ({ challenge, incrementCount }) => {
             if (res.data.modifiedCount) {
                 incrementCount()
             }
-            
+
 
 
         } catch (error) {
@@ -54,7 +56,36 @@ const BlogCard = ({ challenge, incrementCount }) => {
             console.error("Error", error)
         }
     }
+    const handelBookmark = async (_id) => {
 
+        const email = await session?.user?.email
+        const res = await axios.patch(`http://localhost:5000/api/v1/bookMark/${_id}?email=${email}`)
+        // console.log(res?.data)
+        if (res.data.modifiedCount) {
+            toast.success(`Bookmarked`, {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        }
+        if (!res.data.modifiedCount) {
+            toast.warning(`Already Marked`, {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        }
+    }
     return (
         <div className="">
 
@@ -89,13 +120,15 @@ const BlogCard = ({ challenge, incrementCount }) => {
                     </Typography>
                     <Typography variant="body2" sx={{ color: 'black', height: "60px" }}>
                         {challenge.description.length > 250
-                            ? challenge.description.slice(0, 250).concat("...")
-                            : challenge.description
+                            ? challenge?.description.slice(0, 250).concat("...")
+                            : challenge?.description
                         }
                     </Typography>
                 </CardContent>
                 <Box style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem' }} className="mt-4" >
-                    <Tooltip title="Save" arrow>
+                    <Tooltip
+                        onClick={() => handelBookmark(challenge?._id)}
+                        title="Save" arrow>
                         <IconButton aria-label="add to favorites">
                             <BookmarksIcon />
                         </IconButton>

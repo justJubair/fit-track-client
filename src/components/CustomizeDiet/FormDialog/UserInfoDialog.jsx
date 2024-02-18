@@ -93,7 +93,7 @@ const UserInfoDialog = ({ serv }) => {
         )}
       >
         <Box
-         
+
         >
           <DialogTitle
             sx={{ mx: "auto", display: "flex", justifyContent: "center" }}
@@ -275,7 +275,7 @@ const UserInfoDialog = ({ serv }) => {
             </Button>
           </DialogActions>
         </Box>
-      </Dialog>
+      </Dialog >
     </>
   );
 };

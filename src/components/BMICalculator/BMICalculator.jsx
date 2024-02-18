@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button, Paper, Stack, TextField, Typography } from '@mui/material';
 import HealthMessage from '../HealthMessage/HealthMessage';
 import BMIResultMessage from '../BMIResultMessage/BMIResultMessage';
+import GaugeChart from 'react-gauge-chart';
 
 const BMICalculator = () => {
     const [weight, setWeight] = useState('')
@@ -21,10 +22,33 @@ const BMICalculator = () => {
             setResult(parseFloat(bmi))
         }
         else {
-            setResult("please enter a valid height and weight")
+          setResult(null)
         }
 
     }
+
+
+     const calculateGaugePercentage = () => {
+    // 0 to 30% = underweight
+    if(result  < 18.5) {
+      // ((result =18.5) / 18.5) = 1 * 0.30 = 0.30 means 30 %,result decrease = percentage decrease
+      return (result / 18.5) * 0.30
+    }
+    // 30% to 60% = Normal Weight
+    else if(result >=18.5 && result < 25) {
+      // add 30%  percentage, ((result 20 - 18.5 ) / 6.5 = 0.2307 * 0.30 = 0.0692 + 0.30 = 0.3692 = 36.92% 
+      return 0.30 + ((result - 18.5) / (25 - 18.5)) * 0.30
+    }
+    // 60% to 90% = Overweight
+    // 90% to 100% = Obesity
+    else {
+      // add 60%  percentage, ((result 40 - 25 ) / 15 = 1 * 0.40 = 0.4 + 0.60 = 1.00 = 100%
+      return 0.60 + ((result - 25) / (40 - 25)) * 0.40 
+    }
+
+  }
+
+
     return (
         <div className="max-w-[1336px] mx-auto">
         <Typography className='font-semibold text-black text-center mt-8 mb-6' variant='h4'>BMI Calculator</Typography>
@@ -56,6 +80,18 @@ const BMICalculator = () => {
                   <Typography variant="h6" gutterBottom>
                     BMI: {result}
                   </Typography>
+
+                  {/* BMI meter */}
+                  <GaugeChart
+                  className="text-black bg-[#378ae5]"
+                    id="gauge-chart5"
+                    nrOfLevels={420}
+                    arcsLength={[0.3, 0.3, 0.4]}
+                    colors={["#F5CD19","#5BE12C", "#EA4228"]}
+                    percent={calculateGaugePercentage()}
+                    arcPadding={0.02}
+                  />
+
                   <Typography variant="body1">
                     BMI Result: <span className='font-bold'><BMIResultMessage bmiResult={result} /></span>
                   </Typography>

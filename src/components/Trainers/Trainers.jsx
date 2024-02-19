@@ -5,12 +5,24 @@ import Link from "next/link";
 import "./trainer.css"
 import { ToastContainer, toast } from "react-toastify";
 import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
+import { useState } from "react";
+
+
 
 const Trainers = ({ allTrainers }) => {
-    console.log(allTrainers)
+    // console.log(allTrainers)
+
+    const [selectedTrainer, setSelectedTrainer] = useState(null);
     const handleConnect = () => {
         toast.success('Connect request sent to trainer.')
     }
+
+    const toggleModal = (trainerId) => {
+        setSelectedTrainer(trainerId);
+        document.body.classList.toggle("open-modal");
+    };
+
+
     return (
         <div>
             <div className="bg-black h-16"></div>
@@ -25,7 +37,6 @@ const Trainers = ({ allTrainers }) => {
                                         <div className="img-area">
                                             <div className="inner-area">
                                                 <Image width={100} height={100} src={train.profile_image} alt='trainer image' />
-
                                             </div>
                                         </div>
                                         <div className="icon arrow"><i className="fas fa-arrow-left"></i></div>
@@ -62,9 +73,18 @@ const Trainers = ({ allTrainers }) => {
                                         </div>
                                         <div className="buttons">
                                             <button onClick={handleConnect} >Connect</button>
-                                            <Link href={`/trainers/${train._id}`}>
-                                                <button>Details</button>
-                                            </Link>
+                                            <button onClick={() => toggleModal(train._id)}>Open Modal</button>
+
+                                            <div className="modal-container" onClick={toggleModal}></div>
+
+                                            {selectedTrainer && (
+                                                <div className="modal-window">
+                                                    <h2>Bio</h2>
+                                                    <p>{allTrainers.find(trainer => trainer._id === selectedTrainer)?.bio}</p>
+                                                    <button className="req-btn">Send hire request...</button>
+                                                </div>
+                                            )}
+            
                                         </div>
 
                                     </div>

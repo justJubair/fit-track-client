@@ -46,14 +46,12 @@ export const options = {
   callbacks:{
     async signIn({user, account}){
    
-          
            if(account.provider === 'google'){
             
             const userData = { username: user.name, email: user.email, userimage: user.image }
-        
 
             try{
-              const res = fetch('http://localhost:3000/api/user',{
+              const res = fetch('http://localhost:3000/api/user-provider',{
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json"

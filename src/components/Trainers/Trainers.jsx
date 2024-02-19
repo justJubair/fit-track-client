@@ -10,7 +10,7 @@ import { useState } from "react";
 
 
 const Trainers = ({ allTrainers }) => {
-    console.log(allTrainers)
+    // console.log(allTrainers)
 
     const [selectedTrainer, setSelectedTrainer] = useState(null);
     const handleConnect = () => {
@@ -23,9 +23,6 @@ const Trainers = ({ allTrainers }) => {
     };
 
 
-    //     <Link href={`/trainers/${train._id}`}>
-    //     <button>Details</button>
-    // </Link>
     return (
         <div>
             <div className="bg-black h-16"></div>

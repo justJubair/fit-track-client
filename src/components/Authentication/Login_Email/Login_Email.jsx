@@ -11,17 +11,54 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import { useEffect, useState } from 'react';
 import { useSession, signIn } from "next-auth/react"
-import { ToastContainer, toast } from 'react-toastify';
+import { Notify } from 'notiflix';
+import Notiflix from 'notiflix';
 import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image';
 
 const Login_Email = () => {
 
-  const notify = () => toast("Logged In!");
   const { data: session } = useSession();
  
 
   const router = useRouter();
+
+  Notiflix.Notify.init({
+    width: '300px',
+    position: 'right-top',
+    distance: '10px',
+    opacity: 1,
+    borderRadius: '5px',
+    rtl: false,
+    timeout: 2000,
+    messageMaxLength: 110,
+    backOverlay: true,
+    backOverlayColor: 'rgba(0,0,0,0.5)',
+    plainText: true,
+    showOnlyTheLastOne: true,
+    ID: 'NotiflixNotify',
+    className: 'notiflix-notify',
+    zindex: 4001,
+    fontFamily: 'Quicksand',
+    fontSize: '18px',
+    cssAnimation: true,
+    cssAnimationDuration: 600,
+    cssAnimationStyle: 'zoom',
+    closeButton: false,
+    useIcon: true,
+    useFontAwesome: false,
+    fontAwesomeIconStyle: 'shadow',
+    fontAwesomeIconSize: '20px',
+    success: {
+      background: 'black',
+      textColor: '#fff',
+      childClassName: 'notiflix-notify-success',
+      notiflixIconColor: '#378AE5',
+      fontAwesomeClassName: 'fas fa-check-circle',
+      fontAwesomeIconColor: '#378AE5',
+      backOverlayColor: 'rgba(55, 118, 248, 0.8)',
+    }
+  });
 
 
   const style = {
@@ -47,9 +84,15 @@ const Login_Email = () => {
       email: email,
       password: password,
     })
-    notify();
   }
 
+  if(session){
+    Notify.success('Logged In!')
+    setTimeout(function(){
+        router.push('/')
+   }, 2000);
+    
+}
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -164,18 +207,6 @@ const Login_Email = () => {
           </Box>
         </Box>
       </Box>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </Container>
   );
 };

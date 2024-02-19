@@ -1,4 +1,3 @@
-import { getSingleUser } from "@/api/getSingleUser";
 import DashboardHome from "@/components/Dashboard/DashboardHome/DashboardHome";
 
 

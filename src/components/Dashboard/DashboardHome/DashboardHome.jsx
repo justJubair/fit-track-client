@@ -8,17 +8,30 @@ import { Typography } from "@mui/material";
 // icons
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MessageIcon from '@mui/icons-material/Message';
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { getSingleUser } from "@/api/getSingleUser";
 
 
 
-const DashboardHome = () => {
+const DashboardHome = () => { 
+  const [bookmarkedBlogs, setBookmarkedBlogs] = useState([])
 
-  
+  const {data:session} = useSession()
+
+  useEffect(()=>{
+    const singleUser = async()=>{
+      const res = await getSingleUser(session?.user?.email)
+      console.log(res)
+    }
+    singleUser()
+  },[session?.user?.email])
+
   return (
     <>
       <Box className="content">
         <Box className="left-content">
-          <Box className="activities">
+          <Box className="activities"> 
             <Typography variant="h5" fontWeight="bold" marginBottom="1rem">Popular Activities</Typography>
             <Box className="activity-container">
               <Box className="image-container img-one">

@@ -6,42 +6,41 @@ import Image from "next/image";
 import { Typography } from "@mui/material";
 
 // icons
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MessageIcon from '@mui/icons-material/Message';
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import MessageIcon from "@mui/icons-material/Message";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { getSingleUser } from "@/api/getSingleUser";
-import { getSingleBlog } from "@/api/getSingleBlog";
 import getAllBlogs from "@/api/getAllBlogs";
-import { forIn } from "lodash";
 
+const DashboardHome = () => {
+  const [bookmarkedBlogs, setBookmarkedBlogs] = useState([]);
 
+  const { data: session } = useSession();
+ 
 
-const DashboardHome = () => { 
-  const [bookmarkedBlogs, setBookmarkedBlogs] = useState([])
+  useEffect(() => {
+    const getBookmarkedBlog = async () => {
+      const user = await getSingleUser(session?.user?.email);
+      const bookmarkedBlogIds = user?.saved_blogs;
+      const allBlogs = await getAllBlogs();
 
-  const {data:session} = useSession()
-
-  useEffect(()=>{
-    const getBookmarkedBlog = async()=>{
-      const user = await getSingleUser(session?.user?.email)
-      const bookmarkedBlogIds = user?.saved_blogs
-      const allBlogs = await getAllBlogs()
-
-            
-      const bookmarkeds = allBlogs.filter(blog =>  bookmarkedBlogIds.includes(blog?._id))
-      setBookmarkedBlogs(bookmarkeds)
-
-    }
-    getBookmarkedBlog()
-  },[session?.user?.email])
+      const bookmarkeds = allBlogs.filter((blog) =>
+        bookmarkedBlogIds?.includes(blog?._id)
+      );
+      setBookmarkedBlogs(bookmarkeds);
+    };
+    getBookmarkedBlog();
+  }, [session?.user?.email]);
 
   return (
     <>
       <Box className="content">
         <Box className="left-content">
-          <Box className="activities"> 
-            <Typography variant="h5" fontWeight="bold" marginBottom="1rem">Popular Activities</Typography>
+          <Box className="activities">
+            <Typography variant="h5" fontWeight="bold" marginBottom="1rem">
+              Popular Activities
+            </Typography>
             <Box className="activity-container">
               <Box className="image-container img-one">
                 <Image
@@ -56,7 +55,9 @@ const DashboardHome = () => {
               </Box>
 
               <div className="image-container img-two">
-                <Image width={500} height={500}
+                <Image
+                  width={500}
+                  height={500}
                   src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/3bab6a71-c842-4a50-9fed-b4ce650cb478"
                   alt="hiking"
                 />
@@ -66,7 +67,9 @@ const DashboardHome = () => {
               </div>
 
               <div className="image-container img-three">
-                <Image width={500} height={500}
+                <Image
+                  width={500}
+                  height={500}
                   src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/c8e88356-8df5-4ac5-9e1f-5b9e99685021"
                   alt="running"
                 />
@@ -76,7 +79,9 @@ const DashboardHome = () => {
               </div>
 
               <div className="image-container img-four">
-                <Image width={500} height={500}
+                <Image
+                  width={500}
+                  height={500}
                   src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/69437d08-f203-4905-8cf5-05411cc28c19"
                   alt="cycling"
                 />
@@ -86,7 +91,9 @@ const DashboardHome = () => {
               </div>
 
               <div className="image-container img-five">
-                <Image width={500} height={500}
+                <Image
+                  width={500}
+                  height={500}
                   src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e1a66078-1927-4828-b793-15c403d06411"
                   alt="yoga"
                 />
@@ -96,7 +103,9 @@ const DashboardHome = () => {
               </div>
 
               <div className="image-container img-six">
-                <Image width={500} height={500}
+                <Image
+                  width={500}
+                  height={500}
                   src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/7568e0ff-edb5-43dd-bff5-aed405fc32d9"
                   alt="swimming"
                 />
@@ -119,22 +128,30 @@ const DashboardHome = () => {
                   <div className="activity">
                     <h2>Swimming</h2>
                     <div className="participants">
-                      <Image width={100} height={100}
+                      <Image
+                        width={100}
+                        height={100}
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/c61daa1c-5881-43f8-a50f-62be3d235daf"
                         style={{ "--i": 1 }}
                         alt="user01"
                       />
-                      <Image width={100} height={100}
+                      <Image
+                        width={100}
+                        height={100}
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/90affa88-8da0-40c8-abe7-f77ea355a9de"
                         style={{ "--i": 2 }}
                         alt="user02"
                       />
-                      <Image width={100} height={100}
+                      <Image
+                        width={100}
+                        height={100}
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/07d4fa6f-6559-4874-b912-3968fdfe4e5e"
                         style={{ "--i": 3 }}
                         alt="user03"
                       />
-                      <Image width={100} height={100}
+                      <Image
+                        width={100}
+                        height={100}
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e082b965-bb88-4192-bce6-0eb8b0bf8e68"
                         style={{ "--i": 4 }}
                         alt="user04"
@@ -152,12 +169,16 @@ const DashboardHome = () => {
                   <div className="activity">
                     <h2>Yoga</h2>
                     <div className="participants">
-                      <Image width={100} height={100}
+                      <Image
+                        width={100}
+                        height={100}
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/c61daa1c-5881-43f8-a50f-62be3d235daf"
                         style={{ "--i": 1 }}
                         alt="YogaUser01"
                       />
-                      <Image width={100} height={100}
+                      <Image
+                        width={100}
+                        height={100}
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/32037044-f076-433a-8a6e-9b80842f29c9"
                         style={{ "--i": 2 }}
                         alt="YogaUser02"
@@ -175,17 +196,23 @@ const DashboardHome = () => {
                   <div className="activity">
                     <h2>Tennis</h2>
                     <div className="participants">
-                      <Image width={100} height={100}
+                      <Image
+                        width={100}
+                        height={100}
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/32037044-f076-433a-8a6e-9b80842f29c9"
                         style={{ "--i": 1 }}
                         alt="TennisUser01"
                       />
-                      <Image width={100} height={100}
+                      <Image
+                        width={100}
+                        height={100}
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e082b965-bb88-4192-bce6-0eb8b0bf8e68"
                         style={{ "--i": 2 }}
                         alt="TennisUser02"
                       />
-                      <Image width={100} height={100}
+                      <Image
+                        width={100}
+                        height={100}
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/c61daa1c-5881-43f8-a50f-62be3d235daf"
                         style={{ "--i": 3 }}
                         alt="TennisUser03"
@@ -203,26 +230,36 @@ const DashboardHome = () => {
                   <div className="activity">
                     <h2>Hiking</h2>
                     <div className="participants">
-                      <Image width={100} height={100}
+                      <Image
+                        width={100}
+                        height={100}
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/07d4fa6f-6559-4874-b912-3968fdfe4e5e"
                         style={{ "--i": 1 }}
                         alt="HikingUser01"
                       />
-                      <Image width={100} height={100}
+                      <Image
+                        width={100}
+                        height={100}
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/32037044-f076-433a-8a6e-9b80842f29c9"
                         style={{ "--i": 2 }}
                         alt="HikingUser02"
                       />
-                      <Image width={100} height={100}
+                      <Image
+                        width={100}
+                        height={100}
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/07d4fa6f-6559-4874-b912-3968fdfe4e5e"
                         alt="HikingUser03"
                       />
-                      <Image width={100} height={100}
+                      <Image
+                        width={100}
+                        height={100}
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/c61daa1c-5881-43f8-a50f-62be3d235daf"
                         style={{ "--i": 4 }}
                         alt="HikingUser04"
                       />
-                      <Image width={100} height={100}
+                      <Image
+                        width={100}
+                        height={100}
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/90affa88-8da0-40c8-abe7-f77ea355a9de"
                         style={{ "--i": 5 }}
                         alt="HikingUser05"
@@ -239,21 +276,27 @@ const DashboardHome = () => {
               <div className="personal-bests-container">
                 <div className="best-item box-one">
                   <p>Fastest 5K Run: 22min</p>
-                  <Image width={120} height={100}
+                  <Image
+                    width={120}
+                    height={100}
                     src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/242bbd8c-aaf8-4aee-a3e4-e0df62d1ab27"
                     alt="RunLogoBanner"
                   />
                 </div>
                 <div className="best-item box-two">
                   <p>Longest Distance Cycling: 4 miles</p>
-                  <Image width={100} height={100}
+                  <Image
+                    width={100}
+                    height={100}
                     src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/a3b3cb3a-5127-498b-91cc-a1d39499164a"
                     alt="Cycling logo"
                   />
                 </div>
                 <div className="best-item box-three">
                   <p>Longest Roller-Skating: 2 hours</p>
-                  <Image width={120} height={100}
+                  <Image
+                    width={120}
+                    height={100}
                     src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e0ee8ffb-faa8-462a-b44d-0a18c1d9604c"
                     alt="Roller skating logo"
                   />
@@ -263,60 +306,75 @@ const DashboardHome = () => {
           </div>
         </Box>
 
-        <div className="right-content">
+        <div className="mt-4">
           <div className="user-info">
             <div className="icon-container">
-             <NotificationsIcon/>
-             <MessageIcon/>
+              <NotificationsIcon />
+              <MessageIcon />
             </div>
             <div className="flex items-center gap-4">
-            <h4>Kelsey Miller</h4>
-            <Image width={100} height={100}
-               src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/40b7cce2-c289-4954-9be0-938479832a9c"
-              alt="user"
-            />
+              <h4>{session?.user?.name}</h4>
+              <Image
+                width={100}
+                height={100}
+                src={session?.user?.image}
+                alt="user"
+              />
             </div>
           </div>
 
-        
-
           {/* users bookmarked blogs */}
-          <div className="p-4">
-            <h2 className="text-center text-lg font-bold my-4">Bookmarked blogs</h2>
+          <div className="p-4 ">
+            <h2 className="text-center text-lg font-bold my-4">
+              Bookmarked blogs
+            </h2>
 
             {/* blog */}
-            {
-              bookmarkedBlogs?.map(bookmarkedBlog =>  <div key={bookmarkedBlog?._id} className="bg-sky-100 rounded-lg p-2">
-              <Image className="w-full rounded" width={200} height={100} src={bookmarkedBlog?.image} alt="blog one"/>
-              {/* title */}
-              <p className="font-medium mt-2">{bookmarkedBlog?.title}</p>
-            </div>)
-            }
-           
+            {bookmarkedBlogs?.map((bookmarkedBlog) => (
+              <div
+                key={bookmarkedBlog?._id}
+                className="bg-sky-100 rounded-lg p-2"
+              >
+                <Image
+                  className="w-full rounded"
+                  width={200}
+                  height={100}
+                  src={bookmarkedBlog?.image}
+                  alt="blog one"
+                />
+                {/* title */}
+                <p className="font-medium mt-2">{bookmarkedBlog?.title}</p>
+              </div>
+            ))}
           </div>
 
-
-            {/* Mobile phone */}
-          <div className="mobile-personal-bests">
+          {/* Mobile phone */}
+          <div className="mobile-personal-bests px-2">
             <h1>Personal Bests</h1>
             <div className="personal-bests-container">
               <div className="best-item box-one">
                 <p>Fastest 5K Run: 22min</p>
-                <Image width={120} height={100}
+                <Image
+                  width={120}
+                  height={100}
                   src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/05dfc444-9ed3-44cc-96af-a9cf195f5820"
                   alt="Fastest run mobile"
                 />
               </div>
               <div className="best-item box-two">
                 <p>Longest Distance Cycling: 4 miles</p>
-                <Image width={100} height={100}
+                <Image
+                  width={100}
+                  height={100}
                   src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/9ca170e9-1252-4fa6-8677-36493540c1f2"
                   alt="Longest cycling mobile"
                 />
               </div>
               <div className="best-item box-three">
                 <p>Longest Roller-Skating: 2 hours</p>
-                <Image width={100} height={100}
+                <Image
+                  width={100}
+                  height={100}
                   src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/262d1611-ed4c-4297-981c-480cf7f95714"
                   alt="Roller skating mobile"
                 />

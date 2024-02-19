@@ -337,14 +337,7 @@
 
 /* RIGHT CONTENT */
 
-.right-content {
-  display: grid;
-  grid-template-rows: 5% 20% 75%;
-  background: #f6f7fb;
-  margin: 15px 15px 15px 0;
-  padding: 10px 0;
-  border-radius: 15px;
-}
+
 
 /* USER INFO */
 
@@ -609,10 +602,7 @@
     align-self: center;
   }
 	
-	.right-content {
-		grid-template-rows: 4% 20% 76%;
-		margin: 15px 15px 15px 0;
-	}
+
 }
 
 @media (max-width: 1150px) {
@@ -773,13 +763,7 @@
     padding: 10px 20px 10px;
   }
 
-  .right-content {
-    grid-area: rightContent;
-		grid-template-rows: 5% 40% 50%;
-    margin: 15px 15px 0 15px;
-    padding: 10px 0 0;
-    gap: 15px;
-  }
+  
 
   .activities,
   .weekly-schedule {

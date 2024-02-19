@@ -256,33 +256,18 @@ const DashboardHome = () => {
             </div>
           </div>
 
-          {/* <div className="active-calories">
-            <h1 style={{ alignSelf: "flex-start" }}>Active Calories</h1>
-            <div className="active-calories-container">
-              <div className="box" style={{ "--i": "85%" }}>
-                <div className="circle">
-                  <h2>
-                    85<small>%</small>
-                  </h2>
-                </div>
-              </div>
-              <div className="calories-content">
-                <p>
-                  <span>Today:</span> 400
-                </p>
-                <p>
-                  <span>This Week:</span> 3500
-                </p>
-                <p>
-                  <span>This Month:</span> 14000
-                </p>
-              </div>
-            </div>
-          </div> */}
+        
 
           {/* users bookmarked blogs */}
-          <div>
-          
+          <div className="p-4">
+            <h2 className="text-center text-lg font-bold my-4">Bookmarked blogs</h2>
+
+            {/* blog */}
+            <div className="bg-sky-100 rounded-lg p-2">
+              <Image className="w-full rounded" width={200} height={100} src="https://www.wpbeginner.com/wp-content/uploads/2020/04/astrafitness.jpg" alt="blog one"/>
+              {/* title */}
+              <p className="font-medium mt-2">Get started with running</p>
+            </div>
           </div>
 
 

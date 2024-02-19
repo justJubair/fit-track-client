@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { getSingleUser } from "@/api/getSingleUser";
 import getAllBlogs from "@/api/getAllBlogs";
 
-const DashboardHome = () => {
+const DashboardHome = ({services}) => {
   const [bookmarkedBlogs, setBookmarkedBlogs] = useState([]);
 
   const { data: session } = useSession();
@@ -42,77 +42,20 @@ const DashboardHome = () => {
               Popular Activities
             </Typography>
             <Box className="activity-container">
-              <Box className="image-container img-one">
+              {
+                services?.slice(0,6)?.map((service, index)=> <Box key={service?._id} className={`image-container ${index === 0 ? 'img-one' : index === 1 ? 'img-two' : index === 2 ? 'img-three' : index === 3 ? 'img-four' : index === 4 ? 'img-five' : 'img-six'}`}>
                 <Image
                   width={500}
                   height={500}
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/467cf682-03fb-4fae-b129-5d4f5db304dd"
-                  alt="tennis"
+                  src={service?.thumbnail}
+                  alt={service?.heading}
                 />
                 <Box className="overlay">
-                  <h3>Tennis</h3>
+                  <h3>{service?.heading.slice(0,15)}...</h3>
                 </Box>
-              </Box>
-
-              <div className="image-container img-two">
-                <Image
-                  width={500}
-                  height={500}
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/3bab6a71-c842-4a50-9fed-b4ce650cb478"
-                  alt="hiking"
-                />
-                <div className="overlay">
-                  <h3>Hiking</h3>
-                </div>
-              </div>
-
-              <div className="image-container img-three">
-                <Image
-                  width={500}
-                  height={500}
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/c8e88356-8df5-4ac5-9e1f-5b9e99685021"
-                  alt="running"
-                />
-                <div className="overlay">
-                  <h3>Running</h3>
-                </div>
-              </div>
-
-              <div className="image-container img-four">
-                <Image
-                  width={500}
-                  height={500}
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/69437d08-f203-4905-8cf5-05411cc28c19"
-                  alt="cycling"
-                />
-                <div className="overlay">
-                  <h3>Cycling</h3>
-                </div>
-              </div>
-
-              <div className="image-container img-five">
-                <Image
-                  width={500}
-                  height={500}
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e1a66078-1927-4828-b793-15c403d06411"
-                  alt="yoga"
-                />
-                <div className="overlay">
-                  <h3>Yoga</h3>
-                </div>
-              </div>
-
-              <div className="image-container img-six">
-                <Image
-                  width={500}
-                  height={500}
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/7568e0ff-edb5-43dd-bff5-aed405fc32d9"
-                  alt="swimming"
-                />
-                <div className="overlay">
-                  <h3>Swimming</h3>
-                </div>
-              </div>
+              </Box>)
+              }
+             
             </Box>
           </Box>
 
@@ -314,12 +257,14 @@ const DashboardHome = () => {
             </div>
             <div className="flex items-center gap-4">
               <h4>{session?.user?.name}</h4>
-              <Image
+              {
+                session?.user?.image && <Image
                 width={100}
                 height={100}
                 src={session?.user?.image}
                 alt="user"
               />
+              }
             </div>
           </div>
 

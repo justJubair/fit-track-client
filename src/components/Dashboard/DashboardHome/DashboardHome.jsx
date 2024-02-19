@@ -11,6 +11,9 @@ import MessageIcon from '@mui/icons-material/Message';
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { getSingleUser } from "@/api/getSingleUser";
+import { getSingleBlog } from "@/api/getSingleBlog";
+import getAllBlogs from "@/api/getAllBlogs";
+import { forIn } from "lodash";
 
 
 
@@ -20,11 +23,17 @@ const DashboardHome = () => {
   const {data:session} = useSession()
 
   useEffect(()=>{
-    const singleUser = async()=>{
-      const res = await getSingleUser(session?.user?.email)
-      console.log(res)
+    const getBookmarkedBlog = async()=>{
+      const user = await getSingleUser(session?.user?.email)
+      const bookmarkedBlogIds = user?.saved_blogs
+      const allBlogs = await getAllBlogs()
+
+            
+      const bookmarkeds = allBlogs.filter(blog =>  bookmarkedBlogIds.includes(blog?._id))
+      setBookmarkedBlogs(bookmarkeds)
+
     }
-    singleUser()
+    getBookmarkedBlog()
   },[session?.user?.email])
 
   return (
@@ -276,11 +285,14 @@ const DashboardHome = () => {
             <h2 className="text-center text-lg font-bold my-4">Bookmarked blogs</h2>
 
             {/* blog */}
-            <div className="bg-sky-100 rounded-lg p-2">
-              <Image className="w-full rounded" width={200} height={100} src="https://www.wpbeginner.com/wp-content/uploads/2020/04/astrafitness.jpg" alt="blog one"/>
+            {
+              bookmarkedBlogs?.map(bookmarkedBlog =>  <div key={bookmarkedBlog?._id} className="bg-sky-100 rounded-lg p-2">
+              <Image className="w-full rounded" width={200} height={100} src={bookmarkedBlog?.image} alt="blog one"/>
               {/* title */}
-              <p className="font-medium mt-2">Get started with running</p>
-            </div>
+              <p className="font-medium mt-2">{bookmarkedBlog?.title}</p>
+            </div>)
+            }
+           
           </div>
 
 

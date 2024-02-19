@@ -17,11 +17,13 @@ const Trainers = ({ allTrainers }) => {
 
     const [userData, setUserData] = useState([]);
     useEffect(() => {
-        axios.get(`https://fit-track-server.vercel.app/api/v1/singleuser?email=${session?.user?.email}`)
+        if(session.user && session.user.email){
+            axios.get(`https://fit-track-server.vercel.app/api/v1/singleuser?email=${session.user.email}`)
             .then(res => { setUserData(res.data) })
-      
+        }       
     }, [])
-    // console.log(userData)
+    const userId = userData._id;
+    // console.log(userId)
 
     const [selectedTrainer, setSelectedTrainer] = useState(null);
     const handleConnect = () => {
@@ -33,17 +35,27 @@ const Trainers = ({ allTrainers }) => {
         document.body.classList.toggle("open-modal");
     };
 
-    const handleShareReq = (id) => {
-
+    const handleShareReq = (temail) => {
+    console.log(temail)
         const userDetails = {
-            targetId: id,
+            targetId: userId,
             userEmail: session.user.email,
             userName: userData.username,
             requestStatus: 'pending',
             seenStatus: false
         }
         
-        console.log(userDetails)
+        // console.log(userDetails)
+
+        axios.post('http://localhost:5000/api/v1/postdatainuserfriendlist', {temail, userDetails})
+        .then(res => {
+            console.log('User details updated successfully');
+        })
+        .catch(error => {
+            console.error('Error updating user details:', error);
+        });
+
+
     }
 
 
@@ -105,7 +117,7 @@ const Trainers = ({ allTrainers }) => {
                                                 <div className="modal-window">
                                                     <h2>Bio</h2>
                                                     <p>{allTrainers.find(trainer => trainer._id === selectedTrainer)?.bio}</p>
-                                                    <button onClick={() => { handleShareReq(selectedTrainer) }} className="req-btn">Send hire request...</button>
+                                                    <button onClick={() => { handleShareReq(allTrainers.find(trainer => trainer._id === selectedTrainer)?.email) }} className="req-btn">Send hire request...</button>
                                                 </div>
                                             )}
 

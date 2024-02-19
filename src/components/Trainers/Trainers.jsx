@@ -1,16 +1,27 @@
 'use client';
-import { Avatar, Box, CardContent, Chip, Grid, Typography, CardOverflow, CardActions, ButtonGroup, Button, Card } from "@mui/material";
+import { Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import "./trainer.css"
 import { ToastContainer, toast } from "react-toastify";
 import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
-import { useState } from "react";
-
-
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import axios from "axios";
 
 const Trainers = ({ allTrainers }) => {
     // console.log(allTrainers)
+
+    const { data: session } = useSession();
+    // console.log(session)
+
+    const [userData, setUserData] = useState([]);
+    useEffect(() => {
+        axios.get(`https://fit-track-server.vercel.app/api/v1/singleuser?email=${session?.user?.email}`)
+            .then(res => { setUserData(res.data) })
+      
+    }, [])
+    // console.log(userData)
 
     const [selectedTrainer, setSelectedTrainer] = useState(null);
     const handleConnect = () => {
@@ -21,6 +32,19 @@ const Trainers = ({ allTrainers }) => {
         setSelectedTrainer(trainerId);
         document.body.classList.toggle("open-modal");
     };
+
+    const handleShareReq = (id) => {
+
+        const userDetails = {
+            targetId: id,
+            userEmail: session.user.email,
+            userName: userData.username,
+            requestStatus: 'pending',
+            seenStatus: false
+        }
+        
+        console.log(userDetails)
+    }
 
 
     return (
@@ -58,18 +82,18 @@ const Trainers = ({ allTrainers }) => {
                                         </div>
                                         <div className="about">{train.specialization}</div>
                                         <div className="social-icons">
-                                            <a href="#" >
+                                            <Link href="#" >
                                                 <i ><Facebook></Facebook> </i>
-                                            </a>
-                                            <a href="#" >
+                                            </Link>
+                                            <Link href="#" >
                                                 <i ><Twitter></Twitter></i>
-                                            </a>
-                                            <a href="#" >
+                                            </Link>
+                                            <Link href="#" >
                                                 <i ><Instagram></Instagram></i>
-                                            </a>
-                                            <a href="#" >
+                                            </Link>
+                                            <Link href="#" >
                                                 <i className="fab fa-youtube"><YouTube></YouTube></i>
-                                            </a>
+                                            </Link>
                                         </div>
                                         <div className="buttons">
                                             <button onClick={handleConnect} >Connect</button>
@@ -81,10 +105,10 @@ const Trainers = ({ allTrainers }) => {
                                                 <div className="modal-window">
                                                     <h2>Bio</h2>
                                                     <p>{allTrainers.find(trainer => trainer._id === selectedTrainer)?.bio}</p>
-                                                    <button className="req-btn">Send hire request...</button>
+                                                    <button onClick={() => { handleShareReq(selectedTrainer) }} className="req-btn">Send hire request...</button>
                                                 </div>
                                             )}
-            
+
                                         </div>
 
                                     </div>

@@ -11,7 +11,7 @@ import { useSession, signIn } from "next-auth/react"
 import { ToastContainer, toast } from 'react-toastify';
 import { Typography } from "@mui/material";
 const Login2 = () => {
-    const [isRegisterActive, setRegisterActive] = useState(false);
+    const [isRegisterActive, setRegisterActive] = useState(true);
     const [userData, setUserData] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
     const notify = () => toast("Logged In!");
@@ -109,10 +109,84 @@ const Login2 = () => {
 
     return (
         <div className="main">
-            <div className={`wrapper ${isRegisterActive ? "active" : ""} w-[300px] md:w-[700px]   lg:w-[800px] md:h-[550px] h-[450px] `}>
+            <div className={`wrapper ${isRegisterActive ? "active" : ""} w-[300px]  md:w-[700px]   lg:w-[800px] h-[570px] `}>
                 <span className="bg-animate"></span>
                 <span className="bg-animate2"></span>
+                <div className="form-box login w-full md:w-[50%] h-full grid justify-center items-center">
+
+                    <form onSubmit={(e) => handleSubmit(e)} className="" >
+                        <h2 className="animation " style={{ "--i": 0, "--j": 21 }}>
+                            Login
+                        </h2>
+                        <div className="input-box animation" style={{ "--i": 1, "--j": 22 }}>
+                            <input type="text" name="email" required />
+                            <label>Email</label>
+                            <span className="icon">
+                                {" "}
+                                <MdEmail />
+                            </span>
+                        </div>
+                        <div className="input-box animation" style={{ "--i": 2, "--j": 23 }}>
+                            <input type="text" name="password" required />
+                            <label>Password</label>
+                            <span className="icon">
+                                <FaLock />
+                            </span>
+                        </div>
+                        <button
+                            type="submit"
+                            className="btn animation"
+                            style={{ "--i": 3, "--j": 24 }}
+                        >
+                            Login
+                        </button>
+                        <div
+                            className="logreg-link animation"
+                            style={{ "--i": 4, "--j": 25 }}
+                        >
+                            <p>
+                                {isRegisterActive
+                                    ? "Already have an account? "
+                                    : "Don't have an account? "}
+                                <a
+                                    href="#"
+                                    className="register-link"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleRegisterClick();
+                                    }}
+                                >
+                                    {isRegisterActive ? "Login" : "Sign Up"}
+                                </a>
+                            </p>
+                        </div>
+                        <div className="social-accounts animation" style={{ "--i": 5, "--j": 26 }}>
+                            <h3 className="social-text">Or</h3>
+                            <div className="social-icons">
+
+                                <button className="social-icon" onClick={() => handleSignUpGoogle()}>
+                                    <FaGoogle />
+                                </button>
+
+                                <button className="social-icon" onClick={() => handleSignUpFacebook()}>
+                                    <FaFacebook />
+                                </button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div className="info-text login hidden md:flex ">
+                    <h2 className="animation" style={{ "--i": 0, "--j": 20 }}>
+                        Login and Explore.
+                    </h2>
+                    <p className="animation" style={{ "--i": 1, "--j": 21 }}>
+                        Welcome back! Log in now to continue your fitness adventure.
+                    </p>
+                </div>
+
                 {/* this is register code  */}
+
                 <div className="form-box register w-full md:w-[50%] ">
                     <h2 className="animation" style={{ "--i": 17, "--j": 0 }}>
                         Sign Up
@@ -235,80 +309,6 @@ const Login2 = () => {
                     <p className="animation" style={{ "--i": 18, "--j": 2 }}>
                         Join for personalized fitness. Start your journey to a healthier
                         lifestyle.
-                    </p>
-                </div>
-
-                {/* this is login code  */}
-                <div className="form-box login w-full md:w-[50%] h-full md:grid justify-center items-center">
-
-                    <form onSubmit={(e) => handleSubmit(e)} className="" >
-                        <h2 className="animation " style={{ "--i": 0, "--j": 21 }}>
-                            Login
-                        </h2>
-                        <div className="input-box animation" style={{ "--i": 1, "--j": 22 }}>
-                            <input type="text" name="email" required />
-                            <label>Email</label>
-                            <span className="icon">
-                                {" "}
-                                <MdEmail />
-                            </span>
-                        </div>
-                        <div className="input-box animation" style={{ "--i": 2, "--j": 23 }}>
-                            <input type="text" name="password" required />
-                            <label>Password</label>
-                            <span className="icon">
-                                <FaLock />
-                            </span>
-                        </div>
-                        <button
-                            type="submit"
-                            className="btn animation"
-                            style={{ "--i": 3, "--j": 24 }}
-                        >
-                            Login
-                        </button>
-                        <div
-                            className="logreg-link animation"
-                            style={{ "--i": 4, "--j": 25 }}
-                        >
-                            <p>
-                                {isRegisterActive
-                                    ? "Already have an account? "
-                                    : "Don't have an account? "}
-                                <a
-                                    href="#"
-                                    className="register-link"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        handleRegisterClick();
-                                    }}
-                                >
-                                    {isRegisterActive ? "Sign Up" : "Login"}
-                                </a>
-                            </p>
-                        </div>
-                        <div className="social-accounts animation" style={{ "--i": 5, "--j": 26 }}>
-                            <h3 className="social-text">Or</h3>
-                            <div className="social-icons">
-
-                                <button className="social-icon" onClick={() => handleSignUpGoogle()}>
-                                    <FaGoogle />
-                                </button>
-
-                                <button className="social-icon" onClick={() => handleSignUpFacebook()}>
-                                    <FaFacebook />
-                                </button>
-
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div className="info-text login hidden md:flex ">
-                    <h2 className="animation" style={{ "--i": 0, "--j": 20 }}>
-                        Login and Explore.
-                    </h2>
-                    <p className="animation" style={{ "--i": 1, "--j": 21 }}>
-                        Welcome back! Log in now to continue your fitness adventure.
                     </p>
                 </div>
             </div>

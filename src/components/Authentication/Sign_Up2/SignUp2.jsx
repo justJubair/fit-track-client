@@ -14,7 +14,6 @@ const SingUp2 = () => {
     const [isRegisterActive, setRegisterActive] = useState(false);
     const [userData, setUserData] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
-    console.log(userData)
     const notify = () => toast("Logged In!");
     const notify2 = () => toast("Registration successful!");
 
@@ -110,10 +109,10 @@ const SingUp2 = () => {
 
     return (
         <div className="main">
-            <div className={`wrapper ${isRegisterActive ? "active" : ""} w-[300px] md:w-[700px]   lg:w-[800px] md:h-[550px] h-[450px] `}>
+            <div className={`wrapper ${isRegisterActive ? "active" : ""} w-[300px]  md:w-[700px]   lg:w-[800px] h-[570px] `}>
                 <span className="bg-animate"></span>
                 <span className="bg-animate2"></span>
-                <div className="form-box login w-full md:w-[50%] h-full md:grid justify-center items-center">
+                <div className="form-box login w-full md:w-[50%] h-full grid justify-center items-center">
 
                     <form onSubmit={(e) => handleSubmit(e)} className="" >
                         <h2 className="animation " style={{ "--i": 0, "--j": 21 }}>

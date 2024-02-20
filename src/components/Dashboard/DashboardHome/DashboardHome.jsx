@@ -35,7 +35,7 @@ const DashboardHome = ({services}) => {
 
   return (
     <>
-      <Box className="content">
+      <Box className="content md:mt-10 lg:mt-0">
         <Box className="left-content">
           <Box className="activities">
             <Typography variant="h5" fontWeight="bold" marginBottom="1rem">

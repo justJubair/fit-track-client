@@ -56,7 +56,7 @@ const Login_Email = () => {
   const handleClose = () => setOpen(false);
 
   const handleSignUpGoogle = () => {
-    console.log("click")
+
     signIn('google')
     if (session) {
       router.push('/')

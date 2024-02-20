@@ -29,13 +29,13 @@ const SingUp2 = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+        console.log({ email, password })
 
-
-        const res = await signIn('credentials', {
-            email: email,
-            password: password,
-        })
-        notify();
+        // const res = await signIn('credentials', {
+        //     email: email,
+        //     password: password,
+        // })
+        // notify();
     }
     const handleSignUpGoogle = () => {
         console.log("click");
@@ -70,7 +70,7 @@ const SingUp2 = () => {
                         Login
                     </h2>
                     <div className="input-box animation" style={{ "--i": 1, "--j": 22 }}>
-                        <input type="text" required />
+                        <input type="text" name="email" required />
                         <label>Email</label>
                         <span className="icon">
                             {" "}
@@ -78,7 +78,7 @@ const SingUp2 = () => {
                         </span>
                     </div>
                     <div className="input-box animation" style={{ "--i": 2, "--j": 23 }}>
-                        <input type="text" required />
+                        <input type="text" name="password" required />
                         <label>Password</label>
                         <span className="icon">
                             <FaLock />
@@ -114,17 +114,15 @@ const SingUp2 = () => {
                     <div className="social-accounts animation" style={{ "--i": 5, "--j": 26 }}>
                         <h3 className="social-text">Or</h3>
                         <div className="social-icons">
-                            <span className="social-icon" >
-                                <button onClick={() => handleSignUpGoogle()}>
-                                    <FaGoogle />
-                                </button>
 
-                            </span>
-                            <span className="social-icon" >
-                                <button onClick={() => handleSignUpFacebook()}>
-                                    <FaFacebook />
-                                </button>
-                            </span>
+                            <button className="social-icon" onClick={() => handleSignUpGoogle()}>
+                                <FaGoogle />
+                            </button>
+
+                            <button className="social-icon" onClick={() => handleSignUpFacebook()}>
+                                <FaFacebook />
+                            </button>
+
                         </div>
                     </div>
                 </form>
@@ -202,14 +200,15 @@ const SingUp2 = () => {
                     <div className="social-accounts animation" style={{ "--i": 23, "--j": 6 }}>
                         <h3 className="social-text">Or</h3>
                         <div className="social-icons">
-                            <span className="social-icon" >
-                                {" "}
+
+                            <button className="social-icon" onClick={() => handleSignUpGoogle()}>
                                 <FaGoogle />
-                            </span>
-                            <span className="social-icon" >
-                                {" "}
+                            </button>
+
+                            <button className="social-icon" onClick={() => handleSignUpFacebook()}>
                                 <FaFacebook />
-                            </span>
+                            </button>
+
                         </div>
                     </div>
                 </form>

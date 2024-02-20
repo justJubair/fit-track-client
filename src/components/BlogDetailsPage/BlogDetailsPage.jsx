@@ -43,7 +43,6 @@ const BlogDetailsPage = () => {
                                 src={blog?.image}
                                 alt="Card Image"
                                 className="rounded-2xl "
-
                             />
                         }
 

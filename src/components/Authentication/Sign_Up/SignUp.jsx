@@ -81,9 +81,9 @@ const SignUp = () => {
 
             notify();
             router.refresh();
-            setTimeout(function(){
+            setTimeout(function () {
                 router.push('/')
-           }, 2000);
+            }, 2000);
         }
     }
     //custom style for terms and conditions
@@ -161,7 +161,7 @@ const SignUp = () => {
                         autoComplete="current-password"
                         onChange={handleChange}
                     />
-                    {errorMessage && <Typography component="h6" variant="h6" sx={{ fontSize: '1rem', color: 'red', fontWeight: '400', textAlign: 'start', marginTop:'10px' }}>
+                    {errorMessage && <Typography component="h6" variant="h6" sx={{ fontSize: '1rem', color: 'red', fontWeight: '400', textAlign: 'start', marginTop: '10px' }}>
                         {errorMessage}
                     </Typography>}
                     <Modal
@@ -215,23 +215,23 @@ const SignUp = () => {
                 </Typography>
                 <Box sx={{ width: { xs: '100%', md: '50%' } }}>
                     <Box className='grid gird-cols-1 gap-4'>
-                        <Box onClick={() => handleSignUpGoogle()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#fff', borderRadius: '5px', padding: '8px', color: '#252525', cursor: 'pointer', boxShadow: 3 }}><Image width={100} height={100} className='max-w-[50px]' src='https://i.ibb.co/kmsjzFF/Animation-1700836595835.gif'  alt="login image"/><span className='text-lg'> Continue with Google</span></Box>
-                        <Box onClick={() => handleSignUpFacebook()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#252525', borderRadius: '5px', padding: '8px', color: '#fff', cursor: 'pointer', boxShadow: 3 }}><Image width={100} height={100} className='max-w-[50px]' src='https://i.ibb.co/5R4LB8n/Animation-1706101317533.gif' alt="login image"/><span className='text-lg'> Continue with Facebook</span></Box>
+                        <Box onClick={() => handleSignUpGoogle()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#fff', borderRadius: '5px', padding: '8px', color: '#252525', cursor: 'pointer', boxShadow: 3 }}><Image width={100} height={100} className='max-w-[50px]' src='https://i.ibb.co/kmsjzFF/Animation-1700836595835.gif' alt="login image" /><span className='text-lg'> Continue with Google</span></Box>
+                        <Box onClick={() => handleSignUpFacebook()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#252525', borderRadius: '5px', padding: '8px', color: '#fff', cursor: 'pointer', boxShadow: 3 }}><Image width={100} height={100} className='max-w-[50px]' src='https://i.ibb.co/5R4LB8n/Animation-1706101317533.gif' alt="login image" /><span className='text-lg'> Continue with Facebook</span></Box>
                     </Box>
                 </Box>
             </Box>
             <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </Container>
     );
 };

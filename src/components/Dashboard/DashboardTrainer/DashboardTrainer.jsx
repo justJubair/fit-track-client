@@ -11,7 +11,7 @@ import { getSingleUser } from "@/api/getSingleUser";
 import getAllBlogs from "@/api/getAllBlogs";
 
 
-const DashboardTrainer = ({services}) => {
+const DashboardTrainer = ({challenges}) => {
     const { data: session } = useSession();
 
     return(
@@ -19,19 +19,19 @@ const DashboardTrainer = ({services}) => {
         <Box className="left-content">
           <Box className="activities">
             <Typography variant="h5" fontWeight="bold" marginBottom="1rem">
-              Popular Activities
+              Active Challenges
             </Typography>
             <Box className="activity-container">
               {
-                services?.slice(0,6)?.map((service, index)=> <Box key={service?._id} className={`image-container ${index === 0 ? 'img-one' : index === 1 ? 'img-two' : index === 2 ? 'img-three' : index === 3 ? 'img-four' : index === 4 ? 'img-five' : 'img-six'}`}>
+                challenges?.slice(0,6)?.map((challenge, index)=> <Box key={challenge?._id} className={`image-container ${index === 0 ? 'img-one' : index === 1 ? 'img-two' : index === 2 ? 'img-three' : index === 3 ? 'img-four' : index === 4 ? 'img-five' : 'img-six'}`}>
                 <Image
                   width={500}
                   height={500}
-                  src={service?.thumbnail}
-                  alt={service?.heading}
+                  src={challenge?.imageLink}
+                  alt={challenge?.challengeName}
                 />
                 <Box className="overlay">
-                  <h3>{service?.heading.slice(0,15)}...</h3>
+                  <h3>{challenge?.challengeName.slice(0,15)}...</h3>
                 </Box>
               </Box>)
               }

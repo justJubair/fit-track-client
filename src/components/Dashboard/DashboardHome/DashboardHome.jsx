@@ -14,7 +14,7 @@ import { getSingleUser } from "@/api/getSingleUser";
 import getAllBlogs from "@/api/getAllBlogs";
 import DashboardTrainer from "../DashboardTrainer/DashboardTrainer";
 
-const DashboardHome = ({services}) => {
+const DashboardHome = ({services, challenges}) => {
   const [bookmarkedBlogs, setBookmarkedBlogs] = useState([]);
 
   const { data: session } = useSession();
@@ -37,7 +37,7 @@ const DashboardHome = ({services}) => {
   return (
     <>
       {
-        session?.user?.email === "jubair.ahmed2838@gmail.com" ? <DashboardTrainer services={services}/> : <Box className="content md:mt-10 lg:mt-0">
+        session?.user?.email === "jubair.ahmed2838@gmail.com" ? <DashboardTrainer challenges={challenges}/> : <Box className="content md:mt-10 lg:mt-0">
         <Box className="left-content">
           <Box className="activities">
             <Typography variant="h5" fontWeight="bold" marginBottom="1rem">

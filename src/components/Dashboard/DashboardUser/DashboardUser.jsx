@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Image from "next/image";
+import Link from "next/link";
 
 const DashboardUser = ({ services, challenges }) => {
   return (
@@ -16,21 +17,22 @@ const DashboardUser = ({ services, challenges }) => {
           {/* populer activies */}
           <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2  gap-4">
             {services?.slice(0, 5)?.map((service, index) => (
+              <Link href={`/service/${service._id}`}  key={service?._id}  className={`${
+                index === 0
+                  ? ""
+                  : index === 1
+                  ? "md:col-span-2 md:row-span-2"
+                  : index === 2
+                  ? ""
+                  : index === 3
+                  ? "class4"
+                  : index === 4
+                  ? ""
+                  : ""
+              } relative hover:cursor-pointer`}>
               <div
-                className={`${
-                  index === 0
-                    ? ""
-                    : index === 1
-                    ? "md:col-span-2 md:row-span-2"
-                    : index === 2
-                    ? ""
-                    : index === 3
-                    ? "class4"
-                    : index === 4
-                    ? ""
-                    : ""
-                } relative hover:cursor-pointer`}
-                key={service?._id}
+               
+               
               >
                 <Image
                   className="rounded-lg w-full object-cover"
@@ -47,6 +49,8 @@ const DashboardUser = ({ services, challenges }) => {
                   </h1>
                 </div>
               </div>
+              </Link>
+              
             ))}
           </div>
 
@@ -60,7 +64,7 @@ const DashboardUser = ({ services, challenges }) => {
             {challenges?.slice(0, 4)?.map((challenge, index) => (
               <div
                 key={challenge?._id}
-                className={`flex items-center w-full justify-between  p-3 rounded-md ${ index === 0
+                className={`flex items-center w-full justify-between p-3 rounded-xl ${ index === 0
                     ? "bg-gradient-to-l from-indigo-500  to-blue-200 bg-opacity-50"
                     : index === 1
                     ? "bg-gradient-to-l from-yellow-200  to-green-300 bg-opacity-75"

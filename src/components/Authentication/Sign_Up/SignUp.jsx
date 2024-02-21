@@ -66,15 +66,15 @@ const SignUp = () => {
         fontAwesomeIconStyle: 'shadow',
         fontAwesomeIconSize: '20px',
         success: {
-          background: 'black',
-          textColor: '#fff',
-          childClassName: 'notiflix-notify-success',
-          notiflixIconColor: '#378AE5',
-          fontAwesomeClassName: 'fas fa-check-circle',
-          fontAwesomeIconColor: '#378AE5',
-          backOverlayColor: 'rgba(55, 118, 248, 0.8)',
+            background: 'black',
+            textColor: '#fff',
+            childClassName: 'notiflix-notify-success',
+            notiflixIconColor: '#378AE5',
+            fontAwesomeClassName: 'fas fa-check-circle',
+            fontAwesomeIconColor: '#378AE5',
+            backOverlayColor: 'rgba(55, 118, 248, 0.8)',
         }
-      });
+    });
 
     // function for google sign in
     const handleSignUpGoogle = () => {
@@ -110,20 +110,20 @@ const SignUp = () => {
         } else {
             Notify.success('Registration Successful!')
             router.refresh();
-            setTimeout(function(){
-                router.push('/api/auth/usercheck')
-           }, 1000);
+            setTimeout(function () {
+                router.push('/')
+            }, 2000);
         }
     }
 
-    if(session){
+    if (session) {
         Notify.success('Logged In!')
-        setTimeout(function(){
+        setTimeout(function () {
             router.push('/')
-       }, 2000);
-        
+        }, 2000);
+
     }
-  
+
     //custom style for terms and conditions
     const style = {
         position: 'absolute',
@@ -199,7 +199,7 @@ const SignUp = () => {
                         autoComplete="current-password"
                         onChange={handleChange}
                     />
-                    {errorMessage && <Typography component="h6" variant="h6" sx={{ fontSize: '1rem', color: 'red', fontWeight: '400', textAlign: 'start', marginTop:'10px' }}>
+                    {errorMessage && <Typography component="h6" variant="h6" sx={{ fontSize: '1rem', color: 'red', fontWeight: '400', textAlign: 'start', marginTop: '10px' }}>
                         {errorMessage}
                     </Typography>}
                     <Modal
@@ -253,8 +253,8 @@ const SignUp = () => {
                 </Typography>
                 <Box sx={{ width: { xs: '100%', md: '50%' } }}>
                     <Box className='grid gird-cols-1 gap-4'>
-                        <Box onClick={() => handleSignUpGoogle()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#fff', borderRadius: '5px', padding: '8px', color: '#252525', cursor: 'pointer', boxShadow: 3 }}><Image width={100} height={100} className='max-w-[50px]' src='https://i.ibb.co/kmsjzFF/Animation-1700836595835.gif'  alt="login image"/><span className='text-lg'> Continue with Google</span></Box>
-                        <Box onClick={() => handleSignUpFacebook()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#252525', borderRadius: '5px', padding: '8px', color: '#fff', cursor: 'pointer', boxShadow: 3 }}><Image width={100} height={100} className='max-w-[50px]' src='https://i.ibb.co/5R4LB8n/Animation-1706101317533.gif' alt="login image"/><span className='text-lg'> Continue with Facebook</span></Box>
+                        <Box onClick={() => handleSignUpGoogle()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#fff', borderRadius: '5px', padding: '8px', color: '#252525', cursor: 'pointer', boxShadow: 3 }}><Image width={100} height={100} className='max-w-[50px]' src='https://i.ibb.co/kmsjzFF/Animation-1700836595835.gif' alt="login image" /><span className='text-lg'> Continue with Google</span></Box>
+                        <Box onClick={() => handleSignUpFacebook()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#252525', borderRadius: '5px', padding: '8px', color: '#fff', cursor: 'pointer', boxShadow: 3 }}><Image width={100} height={100} className='max-w-[50px]' src='https://i.ibb.co/5R4LB8n/Animation-1706101317533.gif' alt="login image" /><span className='text-lg'> Continue with Facebook</span></Box>
                     </Box>
                 </Box>
             </Box>

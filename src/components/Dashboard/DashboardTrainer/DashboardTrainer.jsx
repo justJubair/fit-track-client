@@ -6,9 +6,8 @@ import Image from "next/image";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MessageIcon from "@mui/icons-material/Message";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
-import { getSingleUser } from "@/api/getSingleUser";
-import getAllBlogs from "@/api/getAllBlogs";
+
+
 
 
 const DashboardTrainer = ({challenges}) => {
@@ -41,7 +40,7 @@ const DashboardTrainer = ({challenges}) => {
 
           <div className="left-bottom">
             <div className="weekly-schedule">
-              <h1>Weekly Schedule</h1>
+              <h1>Weekly Schedule Meetings</h1>
               <div className="calendar">
                 <div className="day-and-activity activity-one">
                   <div className="day">
@@ -195,7 +194,7 @@ const DashboardTrainer = ({challenges}) => {
             </div>
 
             <div className="personal-bests">
-              <h1>Personal Bests</h1>
+              <h1>Current Revenue</h1>
               <div className="personal-bests-container">
                 <div className="best-item box-one">
                   <p>Fastest 5K Run: 22min</p>

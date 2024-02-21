@@ -62,6 +62,7 @@ const DashboardUser = ({ services, challenges }) => {
           {/* weekly Challenges */}
           <div className="space-y-4">
             {challenges?.slice(0, 4)?.map((challenge, index) => (
+             
               <div
                 key={challenge?._id}
                 className={`flex items-center w-full justify-between p-3 rounded-xl ${ index === 0
@@ -132,9 +133,9 @@ const DashboardUser = ({ services, challenges }) => {
                   </div>
                 </div>
 
-                <button className="border-2 border-gray-500 bg-white px-4 py-2 rounded-2xl font-bold shadow-xl duration-200 hover:scale-105">
+                <Link href="challenges" className="border-2 border-gray-500 bg-white px-4 py-2 rounded-2xl font-bold shadow-xl duration-200 hover:scale-105">
                   Join
-                </button>
+                </Link>
               </div>
             ))}
            

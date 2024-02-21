@@ -10,62 +10,64 @@ const DashboardUser = ({ services, challenges }) => {
         {/* content */}
         <div className="md:col-span-9">
           {/* title */}
-          <h1 className="text-xl md:text-2xl font-bold mb-4">
+          <h1 className="text-xl md:text-2xl font-bold mb-2">
             Populer Activites
           </h1>
 
           {/* populer activies */}
           <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2  gap-4">
             {services?.slice(0, 5)?.map((service, index) => (
-              <Link href={`/service/${service._id}`}  key={service?._id}  className={`${
-                index === 0
-                  ? ""
-                  : index === 1
-                  ? "md:col-span-2 md:row-span-2"
-                  : index === 2
-                  ? ""
-                  : index === 3
-                  ? "class4"
-                  : index === 4
-                  ? ""
-                  : ""
-              } relative hover:cursor-pointer`}>
-              <div
-               
-               
+              <Link
+                href={`/service/${service._id}`}
+                key={service?._id}
+                className={`${
+                  index === 0
+                    ? ""
+                    : index === 1
+                    ? "md:col-span-2 md:row-span-2"
+                    : index === 2
+                    ? ""
+                    : index === 3
+                    ? "class4"
+                    : index === 4
+                    ? ""
+                    : ""
+                } relative hover:cursor-pointer`}
               >
-                <Image
-                  className="rounded-lg w-full object-cover"
-                  src={service?.thumbnail}
-                  width={500}
-                  height={500}
-                  alt={service?.heading}
-                />
-                {/* overlay */}
-                <div className="absolute flex flex-col items-end justify-end top-0 left-0 w-full h-full bg-gradient-to-b from-transparent  to-blue-700/50 border-10 transition-all duration-600 ease-linear rounded-lg hover:bg-blue-700/60"></div>
                 <div>
-                  <h1 className="absolute bottom-2 right-2 lg:right-2 md:left-1 text-lg md:text-sm lg:text-lg font-bold text-white">
-                    {service?.heading?.slice(0, 15)}...
-                  </h1>
+                  <Image
+                    className="rounded-lg w-full object-cover"
+                    src={service?.thumbnail}
+                    width={500}
+                    height={500}
+                    alt={service?.heading}
+                  />
+                  {/* overlay */}
+                  <div className="absolute flex flex-col items-end justify-end top-0 left-0 w-full h-full bg-gradient-to-b from-transparent  to-blue-700/50 border-10 transition-all duration-600 ease-linear rounded-lg hover:bg-blue-700/60"></div>
+                  <div>
+                    <h1 className="absolute bottom-2 right-2 lg:right-2 md:left-1 text-lg md:text-sm lg:text-lg font-bold text-white">
+                      {service?.heading?.slice(0, 15)}...
+                    </h1>
+                  </div>
                 </div>
-              </div>
               </Link>
-              
             ))}
           </div>
 
-          {/* title */}
-          <h2 className="text-lg md:text-xl font-bold mb-4 mt-8">
+        
+
+         <div className="flex flex-col md:flex-row items-start justify-between gap-8 ">
+           {/* weekly Challenges */}
+           <div className="space-y-4 w-full lg:w-[1000px]">
+              {/* title */}
+          <h2 className="text-lg md:text-xl font-bold mb-2 mt-8">
             Weekly Challenges
           </h2>
-
-          {/* weekly Challenges */}
-          <div className="space-y-4">
             {challenges?.slice(0, 4)?.map((challenge, index) => (
-             
               <div
                 key={challenge?._id}
-                className={`flex items-center w-full justify-between p-3 rounded-xl ${ index === 0
+                className={`flex items-center w-full justify-between p-3 rounded-xl ${
+                  index === 0
                     ? "bg-gradient-to-l from-indigo-500  to-blue-200 bg-opacity-50"
                     : index === 1
                     ? "bg-gradient-to-l from-yellow-200  to-green-300 bg-opacity-75"
@@ -73,7 +75,8 @@ const DashboardUser = ({ services, challenges }) => {
                     ? "bg-gradient-to-l from-teal-300 to-teal-100 bg-opacity-70"
                     : index === 3
                     ? "bg-gradient-to-l from-pink-300 to-yellow-200 bg-opacity-80"
-                    : ""}`}
+                    : ""
+                }`}
               >
                 {/* date and meeting info*/}
                 <div className="flex items-center gap-4">
@@ -96,7 +99,7 @@ const DashboardUser = ({ services, challenges }) => {
 
                   {/* meeting info */}
                   <div>
-                    <p className="text-xl font-bold text-gray-700">
+                    <p className="text-lg md:text-xl font-bold text-gray-700">
                       {challenge?.challengeName}
                     </p>
                     {/* client images */}
@@ -133,13 +136,58 @@ const DashboardUser = ({ services, challenges }) => {
                   </div>
                 </div>
 
-                <Link href="challenges" className="border-2 border-gray-500 bg-white px-4 py-2 rounded-2xl font-bold shadow-xl duration-200 hover:scale-105">
+                <Link
+                  href="challenges"
+                  className="border-2 border-gray-500 bg-white px-4 py-2 rounded-2xl font-bold shadow-xl duration-200 hover:scale-105"
+                >
                   Join
                 </Link>
               </div>
             ))}
-           
           </div>
+
+       
+          {/* personal bests */}
+          <div className="w-full">
+                    {/* title */}
+          <h2 className="text-lg md:text-xl font-bold mb-2 mt-8">
+            Personal Bests
+          </h2>
+            {/* run */}
+            <div className="flex items-center w-full gap-4 justify-between p-5 bg-purple-400 bg-opacity-60 rounded-xl">
+              <p className=" font-bold">Fastest 5K Run: 22min</p>
+              <Image
+                width={150}
+                height={150}
+                src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/242bbd8c-aaf8-4aee-a3e4-e0df62d1ab27"
+                alt="RunLogoBanner"
+              />
+            </div>
+
+            {/* cycling and skating */}
+            <div className="flex flex-col md:flex-row items-center gap-3 mt-3">
+              {/* cycling */}
+              <div className="flex flex-col gap-4 p-5 w-full bg-orange-300 bg-opacity-60 rounded-xl">
+              <p className="font-bold">Longest Distance Cycling: 4 miles</p>
+                  <Image width={100} height={100}
+                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/a3b3cb3a-5127-498b-91cc-a1d39499164a"
+                    alt="Cycling logo"
+                  />
+            </div>
+
+            {/* skating */}
+            <div className="flex flex-col gap-4 p-5 w-full bg-green-300 bg-opacity-60 rounded-xl">
+            <p className="font-bold">Longest Roller-Skating: 2 hours</p>
+                  <Image width={100} height={100}
+                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e0ee8ffb-faa8-462a-b44d-0a18c1d9604c"
+                    alt="Roller skating logo"
+                  />
+            </div>
+            </div>
+          </div>
+
+         </div>
+
         </div>
 
         {/* sidebar */}

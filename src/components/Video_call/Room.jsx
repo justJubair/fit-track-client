@@ -2,6 +2,7 @@
 import { useSocket } from '@/app/context/SocketProvider';
 import React, { useCallback, useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
+import peer from "./service/peer"
 
 const Room = () => {
     const socket = useSocket()
@@ -13,20 +14,28 @@ const Room = () => {
         console.log(`email ${email} join room`)
         setRemoteSocketId(id)
     }, [])
+    const handleIncomingCall = useCallback(({ from, offer }) => {
+        console.log(`incoming call ${from}`)
+    }, [])
 
     useEffect(() => {
         socket.on("user:joined", handelUserJoin)
+        socket.on("incoming:call", handleIncomingCall)
         return () => {
             socket.off('user:joined', handelUserJoin)
+            socket.off("incoming:call", handleIncomingCall)
         }
-    }, [socket, handelUserJoin])
+    }, [socket, handelUserJoin, handleIncomingCall])
+
     const handelCallUser = useCallback(async () => {
         const stream = await navigator.mediaDevices.getUserMedia({
             audio: true,
             video: true
         })
+        const offer = await peer.getOffer();
+        socket.emit("user:call", { to: remoteSocketId, offer })
         setMyStream(stream)
-    }, [])
+    }, [remoteSocketId, socket])
 
     return (
         <div>

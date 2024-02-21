@@ -10,7 +10,7 @@ const DashboardUser = ({ services, challenges,bookmarkedBlogs }) => {
   const {data:session} = useSession()
   return (
     <>
-      <div className="flex flex-col-reverse md:grid md:grid-cols-12 gap-10 md:gap-4 mt-5 px-4 lg:px-2">
+      <div className="flex flex-col-reverse md:grid md:grid-cols-12 gap-10 md:gap-4 mt-5 px-4 lg:px-2 mb-8">
         {/* content */}
         <div className="md:col-span-9">
           {/* title */}
@@ -49,7 +49,7 @@ const DashboardUser = ({ services, challenges,bookmarkedBlogs }) => {
                   {/* overlay */}
                   <div className="absolute flex flex-col items-end justify-end top-0 left-0 w-full h-full bg-gradient-to-b from-transparent  to-blue-700/50 border-10 transition-all duration-600 ease-linear rounded-lg hover:bg-blue-700/60"></div>
                   <div>
-                    <h1 className="absolute bottom-2 right-2 lg:right-2 md:left-1 text-lg md:text-sm lg:text-lg font-bold text-white">
+                    <h1 className="absolute bottom-2 right-2 lg:right-2 md:left-1 text-lg md:text-sm lg:text-lg font-bold text-white md:hidden lg:block">
                       {service?.heading?.slice(0, 15)}...
                     </h1>
                   </div>
@@ -161,8 +161,9 @@ const DashboardUser = ({ services, challenges,bookmarkedBlogs }) => {
             <div className="flex items-center w-full gap-4 justify-between p-5 bg-purple-400 bg-opacity-60 rounded-xl">
               <p className=" font-bold">Fastest 5K Run: 22min</p>
               <Image
-                width={150}
+                width={250}
                 height={150}
+                className="w-44"
                 src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/242bbd8c-aaf8-4aee-a3e4-e0df62d1ab27"
                 alt="RunLogoBanner"
               />
@@ -173,7 +174,8 @@ const DashboardUser = ({ services, challenges,bookmarkedBlogs }) => {
               {/* cycling */}
               <div className="flex flex-col gap-4 p-5 w-full bg-orange-300 bg-opacity-60 rounded-xl">
               <p className="font-bold">Longest Distance Cycling: 4 miles</p>
-                  <Image width={100} height={100}
+                  <Image width={200} height={100}
+                  className="w-24"
                     src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/a3b3cb3a-5127-498b-91cc-a1d39499164a"
                     alt="Cycling logo"
                   />
@@ -182,7 +184,8 @@ const DashboardUser = ({ services, challenges,bookmarkedBlogs }) => {
             {/* skating */}
             <div className="flex flex-col gap-4 p-5 w-full bg-green-300 bg-opacity-60 rounded-xl">
             <p className="font-bold">Longest Roller-Skating: 2 hours</p>
-                  <Image width={100} height={100}
+                  <Image width={200} height={100}
+                  className="w-24"
                     src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e0ee8ffb-faa8-462a-b44d-0a18c1d9604c"
                     alt="Roller skating logo"
                   />
@@ -207,7 +210,7 @@ const DashboardUser = ({ services, challenges,bookmarkedBlogs }) => {
 
             {/* user name and image */}
             <div className="flex items-center gap-2">
-              <p className="md:hidden lg:block">{session?.user?.name}</p>
+              <p className="md:hidden lg:block font-medium">{session?.user?.name}</p>
               {session?.user?.image &&  <Image className="rounded-full w-10 h-10" src={session?.user?.image} width={100} height={100} alt="user profile image"/>}
              
             </div>
@@ -219,7 +222,7 @@ const DashboardUser = ({ services, challenges,bookmarkedBlogs }) => {
               <div>
                 {
                   bookmarkedBlogs?.map(bookmarkBlog=> <div key={bookmarkBlog?._id}>
-                   {bookmarkBlog?.image &&  <Image className="w-full object-cover rounded-xl" src={bookmarkBlog?.image} width={250} height={200} alt={bookmarkBlog?.title}/>}
+                   <Image className="w-full object-cover rounded-xl" src={bookmarkBlog?.image} width={250} height={200} alt={bookmarkBlog?.title}/>
                    <p className="font-medium mt-2">{bookmarkBlog?.title}</p>
                   </div>)
                 }

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 
-mongoose.connect(process.env.db_URI)
+mongoose.connect(process.env.db_URI);
 mongoose.Promise = global.Promise;
 
 const userShcema = new Schema(
@@ -28,6 +28,6 @@ const userShcema = new Schema(
   }
 );
 
-const User = mongoose.models.User || mongoose.model('User', userShcema)
+const User = mongoose.models.User || mongoose.model("User", userShcema);
 
 export default User;

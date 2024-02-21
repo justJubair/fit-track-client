@@ -8,7 +8,7 @@ import { FaGoogle } from "react-icons/fa";
 import "./SignUp.css"
 import { useRouter } from 'next/navigation';
 import { useSession, signIn } from "next-auth/react"
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Typography } from "@mui/material";
 const SingUp2 = () => {
     const [isRegisterActive, setRegisterActive] = useState(false);
@@ -17,9 +17,13 @@ const SingUp2 = () => {
     const notify = () => toast("Logged In!");
     const notify2 = () => toast("Registration successful!");
 
+
+
     const handleRegisterClick = () => {
         setRegisterActive(true);
     };
+
+
 
     const handleLoginClick = () => {
         setRegisterActive(false);

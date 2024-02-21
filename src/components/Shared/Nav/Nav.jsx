@@ -45,7 +45,7 @@ const pages = [
   },
   {
     nav: "Video Call",
-    route: "/video-call",
+    route: "/video_call",
   }
 ];
 

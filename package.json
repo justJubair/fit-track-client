@@ -40,11 +40,13 @@
     "react-hook-form": "^7.49.3",
     "react-icons": "^5.0.1",
     "react-loader-spinner": "^6.1.6",
+    "react-player": "^2.14.1",
     "react-timer-hook": "^3.0.7",
     "react-toastify": "^10.0.4",
     "react-vertical-timeline-component": "^3.6.0",
     "save": "^2.9.0",
     "sharp": "^0.33.2",
+    "socket.io-client": "^4.7.4",
     "swiper": "^11.0.5"
   },
   "devDependencies": {

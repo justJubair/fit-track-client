@@ -22,7 +22,22 @@ const userShcema = new Schema(
     password: {
       type: String,
     },
-    
+    saved_blogs: [String],
+    friendList: [
+      {
+        targetId: String,
+        userEmail: String,
+        userName: String,
+        requestStatus: {
+            type: String,
+            default: 'pending'
+        },
+        seenStatus: {
+            type: Boolean,
+            default: false
+        }
+    }
+    ]
   },
   {
     timestamps: true,

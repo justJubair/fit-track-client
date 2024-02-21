@@ -1,12 +1,16 @@
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
 import Image from "next/image";
 import Link from "next/link";
 
-const DashboardUser = ({ services, challenges }) => {
+// icons
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import MessageIcon from '@mui/icons-material/Message';
+import { useSession } from "next-auth/react";
+
+const DashboardUser = ({ services, challenges,bookmarkedBlogs }) => {
+  const {data:session} = useSession()
   return (
     <>
-      <div className="flex flex-col-reverse md:grid md:grid-cols-12 gap-4 mt-5 px-4 lg:px-0">
+      <div className="flex flex-col-reverse md:grid md:grid-cols-12 gap-10 md:gap-4 mt-5 px-4 lg:px-2">
         {/* content */}
         <div className="md:col-span-9">
           {/* title */}
@@ -190,9 +194,37 @@ const DashboardUser = ({ services, challenges }) => {
 
         </div>
 
-        {/* sidebar */}
+        {/* sidebar: user information */}
         <div className="md:col-span-3">
-          <h1>sidebar</h1>
+
+          {/* user name and message icon */}
+          <div className="flex items-center justify-between">
+            {/* icons */}
+            <div className="flex items-center gap-3">
+              <NotificationsIcon/>
+              <MessageIcon/>
+            </div>
+
+            {/* user name and image */}
+            <div className="flex items-center gap-2">
+              <p className="md:hidden lg:block">{session?.user?.name}</p>
+              {session?.user?.image &&  <Image className="rounded-full w-10 h-10" src={session?.user?.image} width={100} height={100} alt="user profile image"/>}
+             
+            </div>
+          </div>
+
+          {/* bookmarked blogs */}
+          <div>
+              <h5 className="font-bold text-lg text-center mt-4 mb-2">Bookmarked blogs</h5>
+              <div>
+                {
+                  bookmarkedBlogs?.map(bookmarkBlog=> <div key={bookmarkBlog?._id}>
+                   {bookmarkBlog?.image &&  <Image className="w-full object-cover rounded-xl" src={bookmarkBlog?.image} width={250} height={200} alt={bookmarkBlog?.title}/>}
+                   <p className="font-medium mt-2">{bookmarkBlog?.title}</p>
+                  </div>)
+                }
+              </div>
+          </div>
         </div>
       </div>
     </>

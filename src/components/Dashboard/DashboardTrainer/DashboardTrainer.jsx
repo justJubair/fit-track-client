@@ -1,9 +1,6 @@
-"use client";
-
-import { Box } from "@mui/system";
-import "./DashboardHome.css";
-import Image from "next/image";
 import { Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import Image from "next/image";
 
 // icons
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -12,32 +9,13 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { getSingleUser } from "@/api/getSingleUser";
 import getAllBlogs from "@/api/getAllBlogs";
-import DashboardTrainer from "../DashboardTrainer/DashboardTrainer";
 
-const DashboardHome = ({services}) => {
-  const [bookmarkedBlogs, setBookmarkedBlogs] = useState([]);
 
-  const { data: session } = useSession();
- 
+const DashboardTrainer = ({services}) => {
+    const { data: session } = useSession();
 
-  useEffect(() => {
-    const getBookmarkedBlog = async () => {
-      const user = await getSingleUser(session?.user?.email);
-      const bookmarkedBlogIds = user?.saved_blogs;
-      const allBlogs = await getAllBlogs();
-
-      const bookmarkeds = allBlogs.filter((blog) =>
-        bookmarkedBlogIds?.includes(blog?._id)
-      );
-      setBookmarkedBlogs(bookmarkeds);
-    };
-    getBookmarkedBlog();
-  }, [session?.user?.email]);
-
-  return (
-    <>
-      {
-        session?.user?.email === "jubair.ahmed2838@gmail.com" ? <DashboardTrainer services={services}/> : <Box className="content md:mt-10 lg:mt-0">
+    return(
+        <Box className="content md:mt-10 lg:mt-0">
         <Box className="left-content">
           <Box className="activities">
             <Typography variant="h5" fontWeight="bold" marginBottom="1rem">
@@ -271,29 +249,7 @@ const DashboardHome = ({services}) => {
           </div>
 
           {/* users bookmarked blogs */}
-          <div className="p-4 ">
-            <h2 className="text-center text-lg font-bold my-4">
-              Bookmarked blogs
-            </h2>
-
-            {/* blog */}
-            {bookmarkedBlogs?.map((bookmarkedBlog) => (
-              <div
-                key={bookmarkedBlog?._id}
-                className="bg-sky-100 rounded-lg p-2"
-              >
-                <Image
-                  className="w-full rounded"
-                  width={200}
-                  height={100}
-                  src={bookmarkedBlog?.image}
-                  alt="blog one"
-                />
-                {/* title */}
-                <p className="font-medium mt-2">{bookmarkedBlog?.title}</p>
-              </div>
-            ))}
-          </div>
+         
 
           {/* Mobile phone */}
           <div className="mobile-personal-bests px-2">
@@ -367,10 +323,5 @@ const DashboardHome = ({services}) => {
           </div> */}
         </div>
       </Box>
-      }
-
-      
-    </>
-  );
-};
-export default DashboardHome;
+    )}
+export default DashboardTrainer;

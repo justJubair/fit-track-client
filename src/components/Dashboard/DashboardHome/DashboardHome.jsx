@@ -37,7 +37,7 @@ const DashboardHome = ({services, challenges}) => {
   return (
     <>
       {
-        session?.user?.email === "jubair.ahmed2838@mail.com" ? <DashboardTrainer challenges={challenges}/> : <DashboardUser services={services}/>
+        session?.user?.email === "jubair.ahmed2838@mail.com" ? <DashboardTrainer challenges={challenges}/> : <DashboardUser services={services} challenges={challenges}/>
       }
 
       

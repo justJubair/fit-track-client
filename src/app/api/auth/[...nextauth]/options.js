@@ -48,7 +48,7 @@ export const options = {
    
            if(account.provider === 'google'){
             
-            const userData = { username: user.name, email: user.email, userimage: user.image }
+            const userData = { username: user.name, email: user.email, userimage: user.image, role:'default' }
 
             try{
               const res = fetch('http://localhost:3000/api/user-provider',{

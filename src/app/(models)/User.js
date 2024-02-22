@@ -21,6 +21,10 @@ const userShcema = new Schema(
     },
     password: {
       type: String,
+    },
+    role:{
+      type: String,
+      default:'default'
     }
   },
   {

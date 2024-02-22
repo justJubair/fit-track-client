@@ -14,18 +14,38 @@ const Room = () => {
         console.log(`email ${email} join room`)
         setRemoteSocketId(id)
     }, [])
-    const handleIncomingCall = useCallback(({ from, offer }) => {
-        console.log(`incoming call ${from}`)
-    }, [])
+
+    const handleIncomingCall = useCallback(async ({ from, offer }) => {
+        setRemoteSocketId(from)
+        const stream = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+            video: true
+        })
+        setMyStream(stream)
+        // console.log(`incoming call ${from},${offer}`)
+        const ans = await peer.getAnswer(offer)
+        socket.emit("call:accepted", { to: from, ans })
+
+    }, [socket])
+
+    const handelCallAccepted = useCallback(({ from, ans }) => {
+        peer.setLocalDescription(ans)
+        console.log(`call accepted yahoooooo!`)
+        for (const track of myStream.getStracks()) {
+            peer.peer.addTrack(track, myStream)
+        }
+    }, [myStream])
 
     useEffect(() => {
         socket.on("user:joined", handelUserJoin)
         socket.on("incoming:call", handleIncomingCall)
+        socket.on("call:accepted", handelCallAccepted)
         return () => {
             socket.off('user:joined', handelUserJoin)
             socket.off("incoming:call", handleIncomingCall)
+            socket.off("call:accepted", handelCallAccepted)
         }
-    }, [socket, handelUserJoin, handleIncomingCall])
+    }, [socket, handelUserJoin, handleIncomingCall, handelCallAccepted])
 
     const handelCallUser = useCallback(async () => {
         const stream = await navigator.mediaDevices.getUserMedia({

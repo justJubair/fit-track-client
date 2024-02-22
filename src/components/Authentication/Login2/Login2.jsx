@@ -100,7 +100,7 @@ const Login2 = () => {
         }
     }
     useEffect(() => {
-        if (session) {
+        if(session) {
             setTimeout(function () {
                 router.push('/')
             }, 2000);

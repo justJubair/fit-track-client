@@ -9,6 +9,7 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';;
+import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 
 const Module = ({ module }) => {
     const router = useRouter();
@@ -113,9 +114,9 @@ const Module = ({ module }) => {
     };
 
     return (
-        <div className=" flex flex-col lg:flex-row gap-4 my-4">
+        <div className=" flex flex-col lg:flex-row gap-4 my-4 mx-8">
             <div className="w-full">
-                <iframe className="rounded-md" width="100%" height="600" src={currentVideo} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                <iframe className="rounded-md" width="100%" height="400" src={currentVideo} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                 <div className="flex justify-between gap-4">
                     <button onClick={handlePrev} className="bg-[#252525] px-8 py-3 my-6 text-white w-full md:w-1/5 rounded-[30px] hover:bg-[#378ae5] transition-all">👈 Previous</button>
                     <button onClick={handleNext} className="bg-[#252525] px-8 py-3 my-6 text-white w-full md:w-1/5 rounded-[30px] hover:bg-[#378ae5] transition-all">Next 👉</button>
@@ -157,8 +158,14 @@ const Module = ({ module }) => {
                     {
                         module.videos.map((vid, vidIndex) => <li
                             key={vid._id}
-                            className={`text-lg text-black border-gray border-[1px] mb-5 p-2 rounded-md cursor-pointer hover:bg-[#378ae5] hover:text-[#fff] transition-all ${unlockedVideos.includes(vidIndex) ? '' : 'opacity-50 pointer-events-none'}`}
-                            onClick={() => { handleModule(vid, vidIndex) }}>{vidIndex + 1}. {vid.title}</li>)
+                            className={`flex text-lg text-black border-gray border-[1px] mb-5 p-2 rounded-md cursor-pointer hover:bg-[#378ae5] hover:text-[#fff] transition-all ${unlockedVideos.includes(vidIndex) ? '' : 'opacity-50 pointer-events-none'}`}
+                            onClick={() => { handleModule(vid, vidIndex) }}>
+                            <span>
+          
+                              <CheckRoundedIcon  className={` text-[#378ae5] transition-all ${unlockedVideos.includes(vidIndex) ? '' : 'opacity-50 pointer-events-none'}`}/>
+                            </span>
+                            {vidIndex + 1}. {vid.title}
+                        </li>)
                     }
                 </ul>
             </div>

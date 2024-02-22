@@ -11,8 +11,9 @@ import GroupIcon from "@mui/icons-material/Group";
 import VideoChatIcon from "@mui/icons-material/VideoChat";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 
-const DashboardTrainer = ({ challenges }) => {
+const DashboardTrainer = ({ challenges, currentUser }) => {
   const { data: session } = useSession();
+  console.log(currentUser)
   return (
     <>
       <div className="flex flex-col-reverse md:grid md:grid-cols-12 gap-10 md:gap-4 mt-5 px-4 lg:px-2 mb-8">
@@ -214,7 +215,7 @@ const DashboardTrainer = ({ challenges }) => {
             {/* user name and image */}
             <div className="flex items-center gap-2">
               <p className="md:hidden lg:block font-medium">
-                {session?.user?.name}
+                {session?.user?.email}
               </p>
               {session?.user?.image && (
                 <Image

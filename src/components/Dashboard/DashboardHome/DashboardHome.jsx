@@ -9,13 +9,18 @@ import DashboardUser from "../DashboardUser/DashboardUser";
 
 const DashboardHome = ({services, challenges}) => {
   const [bookmarkedBlogs, setBookmarkedBlogs] = useState([]);
+  const [currentUser, setCurrentUser] = useState({})
 
   const { data: session } = useSession();
  
 
   useEffect(() => {
+
+    // get bookmarked blogs
     const getBookmarkedBlog = async () => {
       const user = await getSingleUser(session?.user?.email);
+      setCurrentUser(user)
+      console.log(user)
       const bookmarkedBlogIds = user?.saved_blogs;
       const allBlogs = await getAllBlogs();
 
@@ -24,13 +29,14 @@ const DashboardHome = ({services, challenges}) => {
       );
       setBookmarkedBlogs(bookmarkeds);
     };
+
     getBookmarkedBlog();
   }, [session?.user?.email]);
 
   return (
     <>
       {
-        session?.user?.email === "jubair.ahmed2838@gmail.com" ? <DashboardTrainer challenges={challenges}/> : <DashboardUser services={services} challenges={challenges} bookmarkedBlogs={bookmarkedBlogs}/>
+        currentUser?.role === "trainer" ? <DashboardTrainer currentUser={currentUser} challenges={challenges}/> : <DashboardUser services={services} challenges={challenges} bookmarkedBlogs={bookmarkedBlogs}/>
       }
 
       

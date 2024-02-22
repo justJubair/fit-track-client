@@ -8,9 +8,9 @@ import { FaGoogle } from "react-icons/fa";
 import "./Login.css"
 import { useRouter } from 'next/navigation';
 import { useSession, signIn } from "next-auth/react"
-import { ToastContainer, toast } from 'react-toastify';
 import { Typography } from "@mui/material";
-const Login2 = () => {
+
+const RegisterPage = () => {
     const [isRegisterActive, setRegisterActive] = useState(true);
     const [userData, setUserData] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
@@ -61,7 +61,7 @@ const Login2 = () => {
     const handelSignUp = async (e) => {
         e.preventDefault(0);
         setErrorMessage('')
-        const res = await fetch('/api/user', {
+        const res = await fetch('/api/user-credential', {
             method: 'POST',
             body: JSON.stringify({ userData }),
             'content-type': 'application/json',
@@ -85,9 +85,6 @@ const Login2 = () => {
     const handleSignUpGoogle = () => {
         console.log("click");
         signIn('google')
-        if (session) {
-            router.push('/')
-        }
     }
 
     // This is FacbookLogin
@@ -100,7 +97,7 @@ const Login2 = () => {
         }
     }
     useEffect(() => {
-        if(session) {
+        if (session) {
             setTimeout(function () {
                 router.push('/')
             }, 2000);
@@ -316,4 +313,4 @@ const Login2 = () => {
     );
 };
 
-export default Login2;
+export default RegisterPage;

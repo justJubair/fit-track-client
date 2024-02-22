@@ -1,6 +1,6 @@
 import { options } from "@/app/api/auth/[...nextauth]/options";
 import Login_Pass from "@/components/Authentication/Login_Password/Login_Pass";
-import SingUp2 from "@/components/Authentication/Sign_Up2/SignUp2";
+import SingUp2 from "@/components/Authentication/Login/Login";
 import { getServerSession } from "next-auth";
 
 const Login = () => {

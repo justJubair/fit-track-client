@@ -31,10 +31,21 @@ const BlogDetailsPage = () => {
             <div className='grid grid-cols-1 lg:grid-cols-12'>
                 <div className='px-4 md:w-4/5 mx-auto col-span-8 '>
                     <div className=''>
-                        <h1 className='text-5xl text-center my-4 italic font-bold'>{blog?.title}</h1>
+                        <h1 className='text-xl md:text-3xl lg:text-5xl text-center my-4 italic font-bold'>{blog?.title}</h1>
                     </div>
                     <div className='flex justify-center my-4'>
-                        <Image width={"1000"} height={"800"} src={blog?.image} alt="Card Image" className="w-auto h-auto rounded-2xl " />
+                        {
+                            blog?.image &&
+                            <Image
+                                priority={true}
+                                width={1000}
+                                height={800}
+                                src={blog?.image}
+                                alt="Card Image"
+                                className="rounded-2xl "
+                            />
+                        }
+
                     </div>
                     <div className='my-10'>
                         <p className='md:text-xl' style={{
@@ -50,7 +61,7 @@ const BlogDetailsPage = () => {
                     {/* comments section */}
                 </div>
                 <div className=' col-span-4 hidden lg:block  w-full '>
-                   
+
                     <div>
                         <MoreBlog />
                     </div>

@@ -14,14 +14,20 @@ const MoreBlog = () => {
     }, [])
     // console.log(challenges)
     return (
-        <div className='px-10  space-y-3 fixed top-16 z-20 '>
+        <div className='px-10  space-y-3 fixed top-16 bottom-16 z-20 '>
             <h1 className='text-2xl text-center my-4 italic font-bold '>More...</h1>
             {
                 challenges.slice(0, 5).map((challenge, i) => (
                     <Link
                         href={`/blog/${challenge?._id}`}
                         key={i} className='flex bg-blue-100 rounded-xl gap-2 '>
-                        <Image src={challenge?.image} height={200} width={200} alt='more blog img' className='rounded-xl' />
+                        <Image
+                            priority={true}
+                            src={challenge?.image}
+                            height={100}
+                            width={100}
+                            alt='more blog img'
+                            className='rounded-xl h-auto w-auto' />
                         <Typography sx={{ fontWeight: 500, }}>
                             {challenge.title}
                         </Typography>

@@ -1,326 +1,236 @@
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
 import Image from "next/image";
+import Link from "next/link";
 
 // icons
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import MessageIcon from "@mui/icons-material/Message";
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import MessageIcon from '@mui/icons-material/Message';
 import { useSession } from "next-auth/react";
 
+const DashboardTrainer = ({ services, challenges,bookmarkedBlogs }) => {
+  const {data:session} = useSession()
+  return (
+    <>
+      <div className="flex flex-col-reverse md:grid md:grid-cols-12 gap-10 md:gap-4 mt-5 px-4 lg:px-2 mb-8">
+        {/* content */}
+        <div className="md:col-span-9">
+          {/* title */}
+          <h1 className="text-xl md:text-2xl font-bold mb-2">
+            Active Challenges
+          </h1>
 
-
-
-const DashboardTrainer = ({challenges}) => {
-    const { data: session } = useSession();
-
-    return(
-        <Box className="content md:mt-10 lg:mt-0">
-        <Box className="left-content">
-          <Box className="activities">
-            <Typography variant="h5" fontWeight="bold" marginBottom="1rem">
-              Active Challenges
-            </Typography>
-            <Box className="activity-container">
-              {
-                challenges?.slice(0,6)?.map((challenge, index)=> <Box key={challenge?._id} className={`image-container ${index === 0 ? 'img-one' : index === 1 ? 'img-two' : index === 2 ? 'img-three' : index === 3 ? 'img-four' : index === 4 ? 'img-five' : 'img-six'}`}>
-                <Image
-                  width={500}
-                  height={500}
-                  src={challenge?.imageLink}
-                  alt={challenge?.challengeName}
-                />
-                <Box className="overlay">
-                  <h3>{challenge?.challengeName.slice(0,15)}...</h3>
-                </Box>
-              </Box>)
-              }
-             
-            </Box>
-          </Box>
-
-          <div className="left-bottom">
-            <div className="weekly-schedule">
-              <h1>Weekly Schedule Meetings</h1>
-              <div className="calendar">
-                <div className="day-and-activity activity-one">
-                  <div className="day">
-                    <h1>13</h1>
-                    <p>mon</p>
+          {/* populer activies */}
+          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2  gap-4">
+            {challenges?.slice(0, 5)?.map((challenge, index) => (
+              <Link
+                href="/challenges"
+                key={challenge?._id}
+                className={`${
+                  index === 0
+                    ? ""
+                    : index === 1
+                    ? "md:col-span-2 md:row-span-2"
+                    : index === 2
+                    ? ""
+                    : index === 3
+                    ? "class4"
+                    : index === 4
+                    ? ""
+                    : ""
+                } relative hover:cursor-pointer`}
+              >
+                <div>
+                  <Image
+                    className="rounded-lg w-full object-cover"
+                    src={challenge?.imageLink}
+                    width={500}
+                    height={500}
+                    alt={challenge?.challengeName}
+                  />
+                  {/* overlay */}
+                  <div className="absolute flex flex-col items-end justify-end top-0 left-0 w-full h-full bg-gradient-to-b from-transparent  to-blue-700/50 border-10 transition-all duration-600 ease-linear rounded-lg hover:bg-blue-700/60"></div>
+                  <div>
+                    <h1 className="absolute bottom-2 right-2 lg:right-2 md:left-2 text-lg md:text-sm lg:text-lg font-bold text-white md:hidden lg:block">
+                      {challenge?.challengeName?.slice(0, 15)}...
+                    </h1>
                   </div>
-                  <div className="activity">
-                    <h2>Swimming</h2>
-                    <div className="participants">
+                </div>
+              </Link>
+            ))}
+          </div>
+
+        
+
+         <div className="flex flex-col md:flex-row items-start justify-between gap-8 ">
+           {/* weekly Challenges */}
+           <div className="space-y-4 w-full lg:w-[1000px]">
+              {/* title */}
+          <h2 className="text-lg md:text-xl font-bold mb-2 mt-8">
+                Schedule Meetings
+          </h2>
+            {challenges?.slice(0, 4)?.map((challenge, index) => (
+              <div
+                key={challenge?._id}
+                className={`flex items-center w-full justify-between p-3 rounded-xl ${
+                  index === 0
+                    ? "bg-gradient-to-l from-gray-400  to-blue-200 bg-opacity-50"
+                    : index === 1
+                    ? "bg-gradient-to-l from-blue-200  to-green-300 bg-opacity-75"
+                    : index === 2
+                    ? "bg-gradient-to-l from-gray-400  to-blue-200 bg-opacity-50"
+                    : index === 3
+                    ? "bg-gradient-to-l from-blue-200  to-green-300 bg-opacity-75"
+                    : ""
+                }`}
+              >
+                {/* date and meeting info*/}
+                <div className="flex items-center gap-4">
+                  <div className="text-center border-r-4 border-gray-700 pr-4">
+                    <p className="font-bold text-2xl text-gray-700 ">
+                      {index + 2}
+                    </p>
+                    <p className="font-semibold text-gray-700">
+                      {index === 0
+                        ? "MON"
+                        : index === 1
+                        ? "WED"
+                        : index === 2
+                        ? "FRI"
+                        : index === 3
+                        ? "SAT"
+                        : ""}
+                    </p>
+                  </div>
+
+                  {/* meeting info */}
+                  <div>
+                    <p className="text-lg md:text-xl font-bold text-gray-700">
+                      {challenge?.challengeName}
+                    </p>
+                    {/* client images */}
+                    <div className="flex items-center -space-x-3">
                       <Image
                         width={100}
                         height={100}
+                        className="rounded-full w-9 h-9"
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/c61daa1c-5881-43f8-a50f-62be3d235daf"
-                        style={{ "--i": 1 }}
                         alt="user01"
                       />
                       <Image
                         width={100}
                         height={100}
+                        className="rounded-full w-9 h-9"
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/90affa88-8da0-40c8-abe7-f77ea355a9de"
-                        style={{ "--i": 2 }}
                         alt="user02"
                       />
                       <Image
                         width={100}
                         height={100}
+                        className="rounded-full w-9 h-9"
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/07d4fa6f-6559-4874-b912-3968fdfe4e5e"
-                        style={{ "--i": 3 }}
                         alt="user03"
                       />
                       <Image
                         width={100}
                         height={100}
+                        className="rounded-full w-9 h-9"
                         src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e082b965-bb88-4192-bce6-0eb8b0bf8e68"
-                        style={{ "--i": 4 }}
                         alt="user04"
                       />
                     </div>
                   </div>
-                  <button className="btn">Join</button>
                 </div>
 
-                <div className="day-and-activity activity-two">
-                  <div className="day">
-                    <h1>15</h1>
-                    <p>wed</p>
-                  </div>
-                  <div className="activity">
-                    <h2>Yoga</h2>
-                    <div className="participants">
-                      <Image
-                        width={100}
-                        height={100}
-                        src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/c61daa1c-5881-43f8-a50f-62be3d235daf"
-                        style={{ "--i": 1 }}
-                        alt="YogaUser01"
-                      />
-                      <Image
-                        width={100}
-                        height={100}
-                        src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/32037044-f076-433a-8a6e-9b80842f29c9"
-                        style={{ "--i": 2 }}
-                        alt="YogaUser02"
-                      />
-                    </div>
-                  </div>
-                  <button className="btn">Join</button>
-                </div>
-
-                <div className="day-and-activity activity-three">
-                  <div className="day">
-                    <h1>17</h1>
-                    <p>fri</p>
-                  </div>
-                  <div className="activity">
-                    <h2>Tennis</h2>
-                    <div className="participants">
-                      <Image
-                        width={100}
-                        height={100}
-                        src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/32037044-f076-433a-8a6e-9b80842f29c9"
-                        style={{ "--i": 1 }}
-                        alt="TennisUser01"
-                      />
-                      <Image
-                        width={100}
-                        height={100}
-                        src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e082b965-bb88-4192-bce6-0eb8b0bf8e68"
-                        style={{ "--i": 2 }}
-                        alt="TennisUser02"
-                      />
-                      <Image
-                        width={100}
-                        height={100}
-                        src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/c61daa1c-5881-43f8-a50f-62be3d235daf"
-                        style={{ "--i": 3 }}
-                        alt="TennisUser03"
-                      />
-                    </div>
-                  </div>
-                  <button className="btn">Join</button>
-                </div>
-
-                <div className="day-and-activity activity-four">
-                  <div className="day">
-                    <h1>18</h1>
-                    <p>sat</p>
-                  </div>
-                  <div className="activity">
-                    <h2>Hiking</h2>
-                    <div className="participants">
-                      <Image
-                        width={100}
-                        height={100}
-                        src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/07d4fa6f-6559-4874-b912-3968fdfe4e5e"
-                        style={{ "--i": 1 }}
-                        alt="HikingUser01"
-                      />
-                      <Image
-                        width={100}
-                        height={100}
-                        src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/32037044-f076-433a-8a6e-9b80842f29c9"
-                        style={{ "--i": 2 }}
-                        alt="HikingUser02"
-                      />
-                      <Image
-                        width={100}
-                        height={100}
-                        src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/07d4fa6f-6559-4874-b912-3968fdfe4e5e"
-                        alt="HikingUser03"
-                      />
-                      <Image
-                        width={100}
-                        height={100}
-                        src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/c61daa1c-5881-43f8-a50f-62be3d235daf"
-                        style={{ "--i": 4 }}
-                        alt="HikingUser04"
-                      />
-                      <Image
-                        width={100}
-                        height={100}
-                        src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/90affa88-8da0-40c8-abe7-f77ea355a9de"
-                        style={{ "--i": 5 }}
-                        alt="HikingUser05"
-                      />
-                    </div>
-                  </div>
-                  <button className="btn">Join</button>
-                </div>
+                <Link
+                  href="challenges"
+                  className="border-2 border-gray-500 bg-white px-4 py-2 rounded-2xl font-bold shadow-xl duration-200 hover:scale-105"
+                >
+                  Join
+                </Link>
               </div>
+            ))}
+          </div>
+
+       
+          {/* personal bests */}
+          <div className="w-full">
+                    {/* title */}
+          <h2 className="text-lg md:text-xl font-bold mb-2 mt-8">
+            Personal Bests
+          </h2>
+            {/* run */}
+            <div className="flex items-center w-full gap-4 justify-between p-5 bg-purple-400 bg-opacity-60 rounded-xl">
+              <p className=" font-bold">Fastest 5K Run: 22min</p>
+              <Image
+                width={250}
+                height={150}
+                className="w-44"
+                src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/242bbd8c-aaf8-4aee-a3e4-e0df62d1ab27"
+                alt="RunLogoBanner"
+              />
             </div>
 
-            <div className="personal-bests">
-              <h1>Current Revenue</h1>
-              <div className="personal-bests-container">
-                <div className="best-item box-one">
-                  <p>Fastest 5K Run: 22min</p>
-                  <Image
-                    width={120}
-                    height={100}
-                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/242bbd8c-aaf8-4aee-a3e4-e0df62d1ab27"
-                    alt="RunLogoBanner"
-                  />
-                </div>
-                <div className="best-item box-two">
-                  <p>Longest Distance Cycling: 4 miles</p>
-                  <Image
-                    width={100}
-                    height={100}
+            {/* cycling and skating */}
+            <div className="flex flex-col md:flex-row items-center gap-3 mt-3">
+              {/* cycling */}
+              <div className="flex flex-col gap-4 p-5 w-full bg-orange-300 bg-opacity-60 rounded-xl">
+              <p className="font-bold">Longest Distance Cycling: 4 miles</p>
+                  <Image width={200} height={100}
+                  className="w-24"
                     src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/a3b3cb3a-5127-498b-91cc-a1d39499164a"
                     alt="Cycling logo"
                   />
-                </div>
-                <div className="best-item box-three">
-                  <p>Longest Roller-Skating: 2 hours</p>
-                  <Image
-                    width={120}
-                    height={100}
+            </div>
+
+            {/* skating */}
+            <div className="flex flex-col gap-4 p-5 w-full bg-green-300 bg-opacity-60 rounded-xl">
+            <p className="font-bold">Longest Roller-Skating: 2 hours</p>
+                  <Image width={200} height={100}
+                  className="w-24"
                     src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e0ee8ffb-faa8-462a-b44d-0a18c1d9604c"
                     alt="Roller skating logo"
                   />
-                </div>
-              </div>
             </div>
-          </div>
-        </Box>
-
-        <div className="mt-4">
-          <div className="user-info">
-            <div className="icon-container">
-              <NotificationsIcon />
-              <MessageIcon />
-            </div>
-            <div className="flex items-center gap-4">
-              <h4>{session?.user?.name}</h4>
-              {
-                session?.user?.image && <Image
-                width={100}
-                height={100}
-                src={session?.user?.image}
-                alt="user"
-              />
-              }
             </div>
           </div>
 
-          {/* users bookmarked blogs */}
-         
+         </div>
 
-          {/* Mobile phone */}
-          <div className="mobile-personal-bests px-2">
-            <h1>Personal Bests</h1>
-            <div className="personal-bests-container">
-              <div className="best-item box-one">
-                <p>Fastest 5K Run: 22min</p>
-                <Image
-                  width={120}
-                  height={100}
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/05dfc444-9ed3-44cc-96af-a9cf195f5820"
-                  alt="Fastest run mobile"
-                />
-              </div>
-              <div className="best-item box-two">
-                <p>Longest Distance Cycling: 4 miles</p>
-                <Image
-                  width={100}
-                  height={100}
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/9ca170e9-1252-4fa6-8677-36493540c1f2"
-                  alt="Longest cycling mobile"
-                />
-              </div>
-              <div className="best-item box-three">
-                <p>Longest Roller-Skating: 2 hours</p>
-                <Image
-                  width={100}
-                  height={100}
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/262d1611-ed4c-4297-981c-480cf7f95714"
-                  alt="Roller skating mobile"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* <div className="friends-activity">
-            <h1>Friends Activity</h1>
-            <div className="card-container">
-              <div className="card">
-                <div className="card-user-info">
-                  <Image width={100} height={100}
-                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/9290037d-a5b2-4f50-aea3-9f3f2b53b441"
-                    alt="Friends activity"
-                  />
-                  <h2>Jane</h2>
-                </div>
-                <Image width={500} height={500}
-                  className="card-img"
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/bef54506-ea45-4e42-a1b6-23a48f61c5e8"
-                  alt="friends card img"
-                />
-                <p>We completed the 30-Day Running Streak Challenge!🏃‍♀️🎉</p>
-              </div>
-
-              <div className="card card-two">
-                <div className="card-user-info">
-                  <Image width={100} height={100}
-                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/42616ef2-ba96-49c7-80ea-c3cf1e2ecc89"
-                    alt="avatar mike"
-                  />
-                  <h2>Mike</h2>
-                </div>
-                <Image width={500} height={500}
-                  className="card-img"
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/2dcc1b94-06c5-4c62-b886-53b9e433fd44"
-                  alt="mikes card img"
-                />
-                <p>I just set a new record in cycling: 30 miles!💪</p>
-              </div>
-            </div>
-          </div> */}
         </div>
-      </Box>
-    )}
+
+        {/* sidebar: user information */}
+        <div className="md:col-span-3">
+
+          {/* user name and message icon */}
+          <div className="flex items-center justify-between">
+            {/* icons */}
+            <div className="flex items-center gap-3">
+              <NotificationsIcon/>
+              <MessageIcon/>
+            </div>
+
+            {/* user name and image */}
+            <div className="flex items-center gap-2">
+              <p className="md:hidden lg:block font-medium">{session?.user?.name}</p>
+              {session?.user?.image &&  <Image className="rounded-full w-10 h-10" src={session?.user?.image} width={100} height={100} alt="user profile image"/>}
+             
+            </div>
+          </div>
+
+          {/* bookmarked blogs */}
+          <div>
+              <h5 className="font-bold text-lg text-center mt-4 mb-2">Bookmarked blogs</h5>
+              <div>
+                {
+                  bookmarkedBlogs?.map(bookmarkBlog=> <div key={bookmarkBlog?._id}>
+                   <Image className="w-full object-cover rounded-xl" src={bookmarkBlog?.image} width={250} height={200} alt={bookmarkBlog?.title}/>
+                   <p className="font-medium mt-2">{bookmarkBlog?.title}</p>
+                  </div>)
+                }
+              </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 export default DashboardTrainer;

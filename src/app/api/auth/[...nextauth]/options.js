@@ -22,6 +22,7 @@ export const options = {
         email: { label: "Email", type: "text", placeholder: "Email" },
         userimage: { label: "User Image", type: "text", placeholder: "Image" },
         password: { label: "Password", type: "password" },
+        role:{ label: 'Role', type:"text" }
       },
       async authorize(credentials, req) {
 

@@ -14,7 +14,6 @@ import Notiflix from 'notiflix';
 
 const RegisterPage = () => {
     const [isRegisterActive, setRegisterActive] = useState(true);
-    const [userData, setUserData] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleRegisterClick = () => {
@@ -44,6 +43,14 @@ const RegisterPage = () => {
             password: password,
         })
     }
+
+    const [userData, setUserData] = useState({
+        username: '',
+        userimage: '',
+        email: '',
+        password: '',
+        role: 'default' // Set default value for the role field
+      });
 
     // this is signUp in section
     const handleChange = (e) => {

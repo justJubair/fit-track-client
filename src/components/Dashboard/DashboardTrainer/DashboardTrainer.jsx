@@ -6,6 +6,10 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MessageIcon from '@mui/icons-material/Message';
 import { useSession } from "next-auth/react";
 
+// icons
+import GroupIcon from '@mui/icons-material/Group';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+
 const DashboardTrainer = ({ services, challenges,bookmarkedBlogs }) => {
   const {data:session} = useSession()
   return (
@@ -155,30 +159,32 @@ const DashboardTrainer = ({ services, challenges,bookmarkedBlogs }) => {
           <div className="w-full">
                     {/* title */}
           <h2 className="text-lg md:text-xl font-bold mb-2 mt-8">
-            Personal Bests
+            Current Stats
           </h2>
             {/* run */}
             <div className="flex items-center w-full gap-4 justify-between p-5 bg-purple-400 bg-opacity-60 rounded-xl">
-              <p className=" font-bold">Fastest 5K Run: 22min</p>
-              <Image
+              <p className=" font-bold">Total clients: 41</p>
+              {/* <Image
                 width={250}
                 height={150}
                 className="w-44"
                 src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/242bbd8c-aaf8-4aee-a3e4-e0df62d1ab27"
                 alt="RunLogoBanner"
-              />
+              /> */}
+              <GroupIcon fontSize="large"/>
             </div>
 
             {/* cycling and skating */}
             <div className="flex flex-col md:flex-row items-center gap-3 mt-3">
               {/* cycling */}
               <div className="flex flex-col gap-4 p-5 w-full bg-orange-300 bg-opacity-60 rounded-xl">
-              <p className="font-bold">Longest Distance Cycling: 4 miles</p>
-                  <Image width={200} height={100}
+              <p className="font-bold">Total Revenue: $225</p>
+                  {/* <Image width={200} height={100}
                   className="w-24"
                     src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/a3b3cb3a-5127-498b-91cc-a1d39499164a"
                     alt="Cycling logo"
-                  />
+                  /> */}
+                  <MonetizationOnIcon fontSize="large" />
             </div>
 
             {/* skating */}

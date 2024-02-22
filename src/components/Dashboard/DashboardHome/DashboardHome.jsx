@@ -1,12 +1,5 @@
 "use client";
 
-import { Box } from "@mui/system";
-import Image from "next/image";
-import { Typography } from "@mui/material";
-
-// icons
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import MessageIcon from "@mui/icons-material/Message";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { getSingleUser } from "@/api/getSingleUser";
@@ -37,7 +30,7 @@ const DashboardHome = ({services, challenges}) => {
   return (
     <>
       {
-        session?.user?.email === "jubair.ahmed2838@gmail.com" ? <DashboardTrainer challenges={challenges}/> : <DashboardTrainer services={services} challenges={challenges} bookmarkedBlogs={bookmarkedBlogs}/>
+        session?.user?.email === "jubair.ahmed2838@gmail.com" ? <DashboardTrainer challenges={challenges}/> : <DashboardUser services={services} challenges={challenges} bookmarkedBlogs={bookmarkedBlogs}/>
       }
 
       

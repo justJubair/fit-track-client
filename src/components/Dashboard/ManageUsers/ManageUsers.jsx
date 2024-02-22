@@ -37,7 +37,7 @@ const ManageUsers = ({ users }) => {
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell align="right">Username</TableCell>
+              <TableCell align="right">Role</TableCell>
               <TableCell align="right">Email</TableCell>
               <TableCell align="right">Action</TableCell>
               {/* <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
@@ -46,14 +46,14 @@ const ManageUsers = ({ users }) => {
           <TableBody>
             {users.map((user) => (
               <TableRow
-                key={user.id}
+                key={user?.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {user.name}
+                  {user?.username}
                 </TableCell>
-                <TableCell align="right">{user.username}</TableCell>
-                <TableCell align="right">{user.email}</TableCell>
+                <TableCell align="right">{user?.role}</TableCell>
+                <TableCell align="right">{user?.email}</TableCell>
                 <TableCell align="right">
                   {/* delete */}
                 <DeleteForeverIcon sx={{color: "red", marginRight: "1.2rem"}}/>

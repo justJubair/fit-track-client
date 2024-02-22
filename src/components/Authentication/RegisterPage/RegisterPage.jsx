@@ -9,13 +9,13 @@ import "./Login.css"
 import { useRouter } from 'next/navigation';
 import { useSession, signIn } from "next-auth/react"
 import { Typography } from "@mui/material";
+import { Notify } from 'notiflix';
+import Notiflix from 'notiflix';
 
 const RegisterPage = () => {
     const [isRegisterActive, setRegisterActive] = useState(true);
     const [userData, setUserData] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
-    const notify = () => toast("Logged In!");
-    const notify2 = () => toast("Registration successful!");
 
     const handleRegisterClick = () => {
         setRegisterActive(true);
@@ -30,8 +30,8 @@ const RegisterPage = () => {
     const router = useRouter();
     const { data: session } = useSession();
 
-    //  this is login in section
 
+    //  this is login in section
     const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -43,10 +43,9 @@ const RegisterPage = () => {
             email: email,
             password: password,
         })
-        notify();
     }
-    // this is signUp in section
 
+    // this is signUp in section
     const handleChange = (e) => {
         e.preventDefault()
         const value = e.target.value;
@@ -71,8 +70,7 @@ const RegisterPage = () => {
             const response = await res.json();
             setErrorMessage(response.message);
         } else {
-
-            notify2();
+            Notify.success('Registration Successful!')
             router.refresh();
             setTimeout(function () {
                 router.push('/')
@@ -81,28 +79,22 @@ const RegisterPage = () => {
     }
 
     // this is Google SingUp
-
     const handleSignUpGoogle = () => {
-        console.log("click");
-        signIn('google')
+        signIn('google');
     }
 
     // This is FacbookLogin
-
     const handleSignUpFacebook = () => {
-        console.log("click");
-        signIn('facebook')
-        if (session) {
-            router.push('/')
-        }
+        signIn('facebook');
     }
-    useEffect(() => {
-        if (session) {
-            setTimeout(function () {
-                router.push('/')
-            }, 2000);
-        }
-    }, [session, router])
+
+    if (session) {
+        Notify.success('Logged In!')
+        setTimeout(function () {
+            router.push('/')
+        }, 2000);
+    }
+
 
     return (
         <div className="main">
@@ -285,7 +277,6 @@ const RegisterPage = () => {
                     <div className="social-accounts animation" style={{ "--i": 23, "--j": 6 }}>
                         <h3 className="social-text">Or</h3>
                         <div className="social-icons">
-
                             <button className="social-icon" onClick={() => handleSignUpGoogle()}>
                                 <FaGoogle />
                             </button>

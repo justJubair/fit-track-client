@@ -183,21 +183,7 @@ const Login = () => {
                             className="logreg-link animation"
                             style={{ "--i": 4, "--j": 25 }}
                         >
-                            <p>
-                                {isRegisterActive
-                                    ? "Already have an account? "
-                                    : "Don't have an account? "}
-                                <a
-                                    href="#"
-                                    className="register-link"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        handleRegisterClick();
-                                    }}
-                                >
-                                    {isRegisterActive ? "Login" : "Sign Up"}
-                                </a>
-                            </p>
+                     
                         </div>
                         <div className="social-accounts animation" style={{ "--i": 5, "--j": 26 }}>
                             <h3 className="social-text">Or</h3>
@@ -308,21 +294,7 @@ const Login = () => {
                         className="logreg-link animation"
                         style={{ "--i": 22, "--j": 5 }}
                     >
-                        <p>
-                            {isRegisterActive
-                                ? "Already have an account? "
-                                : "Don't have an account? "}
-                            <a
-                                href="#"
-                                className="register-link"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    handleLoginClick();
-                                }}
-                            >
-                                {isRegisterActive ? "Login" : "Sign Up"}
-                            </a>
-                        </p>
+                     
                     </div>
                     <div className="social-accounts animation" style={{ "--i": 23, "--j": 6 }}>
                         <h3 className="social-text">Or</h3>

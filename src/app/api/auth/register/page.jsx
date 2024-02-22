@@ -1,10 +1,10 @@
-import RegisterPage from "@/components/Authentication/Login2/RegisterPage";
+import RegisterPage from "@/components/Authentication/RegisterPage/RegisterPage";
 
 const Register = () => {
 
     return (
         <div >
-          <RegisterPage/>
+           <RegisterPage/>
         </div>
     );
 };

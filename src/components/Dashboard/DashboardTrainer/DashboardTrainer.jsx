@@ -10,10 +10,11 @@ import { useSession } from "next-auth/react";
 import GroupIcon from "@mui/icons-material/Group";
 import VideoChatIcon from "@mui/icons-material/VideoChat";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import NotificationDropdown from "./NotificationDropdown";
 
 const DashboardTrainer = ({ challenges, currentUser }) => {
   const { data: session } = useSession();
-  console.log(currentUser)
+ 
   return (
     <>
       <div className="flex flex-col-reverse md:grid md:grid-cols-12 gap-10 md:gap-4 mt-5 px-4 lg:px-2 mb-8">
@@ -208,7 +209,8 @@ const DashboardTrainer = ({ challenges, currentUser }) => {
           <div className="flex items-center justify-between">
             {/* icons */}
             <div className="flex items-center gap-3">
-              <NotificationsIcon />
+              {/* <NotificationsIcon /> */}
+              <NotificationDropdown/>
               <MessageIcon />
             </div>
 

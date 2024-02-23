@@ -20,7 +20,6 @@ const DashboardHome = ({services, challenges}) => {
     const getBookmarkedBlog = async () => {
       const user = await getSingleUser(session?.user?.email);
       setCurrentUser(user)
-      console.log(user)
       const bookmarkedBlogIds = user?.saved_blogs;
       const allBlogs = await getAllBlogs();
 

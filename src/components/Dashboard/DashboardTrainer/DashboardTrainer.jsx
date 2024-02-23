@@ -210,7 +210,7 @@ const DashboardTrainer = ({ challenges, currentUser }) => {
             {/* icons */}
             <div className="flex items-center gap-3">
               {/* <NotificationsIcon /> */}
-              <NotificationDropdown/>
+              <NotificationDropdown currentUser={currentUser}/>
               <MessageIcon />
             </div>
 

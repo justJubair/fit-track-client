@@ -12,8 +12,9 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import Image from 'next/image';
 
-const NotificationDropdown =()=> {
+const NotificationDropdown =({currentUser})=> {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -74,10 +75,14 @@ const NotificationDropdown =()=> {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
+        {/* one friend request */}
+        <div className='  px-10 py-2 m-2 bg-gray-300 rounded-lg' onClick={handleClose}>
+         <div className='flex items-center gap-2'>
+         <Image className='rounded-full w-8 h-8 object-cover' src="https://publish.purewow.net/wp-content/uploads/sites/2/2022/05/ross-gellar-friends-cat.jpg?resize=720%2C524" width={100} height={100} alt="friend request user profile"/>
+        <p className='text-sm font-medium'>Ross Geller</p>
+         </div>
+        </div>
         {/* <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
           <Avatar /> My account
         </MenuItem>
         <Divider />
@@ -99,9 +104,8 @@ const NotificationDropdown =()=> {
           </ListItemIcon>
           Logout
         </MenuItem> */}
-        <p>hello</p>
-        <p>hello</p>
-        <p>hello</p>
+
+  
       </Menu>
     
     </React.Fragment>

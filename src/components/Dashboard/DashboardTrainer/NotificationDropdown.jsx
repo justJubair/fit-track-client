@@ -12,6 +12,8 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
 import Image from 'next/image';
 
 const NotificationDropdown =({currentUser})=> {
@@ -76,10 +78,16 @@ const NotificationDropdown =({currentUser})=> {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         {/* one friend request */}
-        <div className='  px-10 py-2 m-2 bg-gray-300 rounded-lg' onClick={handleClose}>
+        <div className='flex items-center gap-5  px-8 py-2 m-2 bg-gray-300 rounded-lg' onClick={handleClose}>
          <div className='flex items-center gap-2'>
          <Image className='rounded-full w-8 h-8 object-cover' src="https://publish.purewow.net/wp-content/uploads/sites/2/2022/05/ross-gellar-friends-cat.jpg?resize=720%2C524" width={100} height={100} alt="friend request user profile"/>
         <p className='text-sm font-medium'>Ross Geller</p>
+         </div>
+       
+         {/* accept and reject button */}
+         <div className='flex gap-2 justify-center '>
+            <button className='bg-slate-50 rounded-full'><CheckIcon color='success'/></button>
+            <button className='bg-slate-50 rounded-full'><CloseIcon color='warning'/></button>
          </div>
         </div>
         {/* <MenuItem onClick={handleClose}>

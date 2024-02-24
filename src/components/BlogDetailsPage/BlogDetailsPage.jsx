@@ -38,11 +38,11 @@ const BlogDetailsPage = () => {
                                 blog?.image &&
                                 <Image
                                     priority={true}
-                                    width={900}
-                                    height={400}
+                                    width={800}
+                                    height={300}
                                     src={blog?.image}
                                     alt="Card Image"
-                                    className='rounded-md'
+                                    className='rounded-md max-h-[30rem]'
                                 />
                             }
 

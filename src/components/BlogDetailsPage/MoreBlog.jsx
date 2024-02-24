@@ -14,7 +14,7 @@ const MoreBlog = () => {
     }, [])
     // console.log(challenges)
     return (
-        <div className='px-10  space-y-3 fixed top-16 bottom-16 z-20 '>
+        <div className='px-10  space-y-3  top-16 bottom-16 z-20 '>
             <h1 className='text-2xl text-center my-4 italic font-bold '>More...</h1>
             {
                 challenges.slice(0, 5).map((challenge, i) => (
@@ -27,8 +27,8 @@ const MoreBlog = () => {
                             height={100}
                             width={100}
                             alt='more blog img'
-                            className='rounded-xl h-auto w-auto' />
-                        <Typography sx={{ fontWeight: 500, }}>
+                            className=' rounded-tl-xl rounded-bl-xl h-auto w-auto' />
+                        <Typography sx={{ fontWeight: 500, py:1 }}>
                             {challenge.title}
                         </Typography>
                     </Link>

@@ -101,7 +101,6 @@ const Trainers = ({ allTrainers }) => {
             seenStatus: false
         }
 
-        // console.log(userDetails)
 
         axios.post('http://localhost:5000/api/v1/postdatainuserfriendlist', { temail, userDetails })
             .then(res => {

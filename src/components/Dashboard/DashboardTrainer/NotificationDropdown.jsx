@@ -19,6 +19,10 @@ const NotificationDropdown = ({ currentUser }) => {
     setAnchorEl(null);
   };
 
+  // filter friend list on the basis of seen and unseen property
+  const unseenNotifications = currentUser?.friendList?.filter(friend=> friend?.seenStatus === false)
+  console.log(unseenNotifications)
+
 //   handle friend request accept
 const handleFriendAccept = async(_id)=>{
     const userId = currentUser?._id
@@ -87,16 +91,20 @@ const handleFriendReject = async(_id)=>{
         {/* one friend request */}
         <div className="space-y-3">
         {
-            currentUser?.friendList?.map(friendReq=> <div key={friendReq?._id}
+          unseenNotifications?.length===0 ? <div>
+            <p className="font-medium text-gray-500 px-5 py-2">There's nothing new</p>
+          </div> : 
+            unseenNotifications?.map(friendReq=> <div key={friendReq?._id}
                 className="flex items-center gap-5 px-8 py-2 m-2 bg-gray-300 rounded-lg">
                 <div className="flex items-center gap-2">
-                  <Image
+                  {friendReq?.userImage &&  <Image
                     className="rounded-full w-8 h-8 object-cover"
-                    src="https://publish.purewow.net/wp-content/uploads/sites/2/2022/05/ross-gellar-friends-cat.jpg?resize=720%2C524"
+                    src={friendReq?.userImage}
                     width={100}
                     height={100}
                     alt="friend request user profile"
-                  />
+                  />}
+                 
                   <p className="text-sm font-medium">{friendReq?.userName}</p>
                 </div>
       

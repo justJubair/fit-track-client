@@ -15,6 +15,12 @@ import NotificationDropdown from "./NotificationDropdown";
 const DashboardTrainer = ({ challenges, currentUser }) => {
   const { data: session } = useSession();
  
+  // filter friend list on the basis of seen and unseen property
+  const unseenNotifications = currentUser?.friendList?.filter(friend=> friend?.seenStatus === false)
+
+  // friend list
+  const acceptedFriends = currentUser?.friendList?.filter(friend=> friend?.requestStatus)
+  console.log(acceptedFriends)
   return (
     <>
       <div className="flex flex-col-reverse md:grid md:grid-cols-12 gap-10 md:gap-4 mt-5 px-4 lg:px-2 mb-8">
@@ -119,13 +125,7 @@ const DashboardTrainer = ({ challenges, currentUser }) => {
               {/* run */}
               <div className="flex items-center w-full gap-4 justify-between p-5 bg-purple-400 bg-opacity-60 rounded-xl">
                 <p className=" font-bold">Total clients: 41</p>
-                {/* <Image
-                width={250}
-                height={150}
-                className="w-44"
-                src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/242bbd8c-aaf8-4aee-a3e4-e0df62d1ab27"
-                alt="RunLogoBanner"
-              /> */}
+               
                 <GroupIcon fontSize="large" />
               </div>
 
@@ -134,22 +134,14 @@ const DashboardTrainer = ({ challenges, currentUser }) => {
                 {/* cycling */}
                 <div className="flex flex-col gap-4 p-5 w-full bg-orange-300 bg-opacity-60 rounded-xl">
                   <p className="font-bold">Total Revenue: $225</p>
-                  {/* <Image width={200} height={100}
-                  className="w-24"
-                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/a3b3cb3a-5127-498b-91cc-a1d39499164a"
-                    alt="Cycling logo"
-                  /> */}
+                 
                   <MonetizationOnIcon fontSize="large" />
                 </div>
 
                 {/* skating */}
                 <div className="flex flex-col gap-4 p-5 w-full bg-green-300 bg-opacity-60 rounded-xl">
                   <p className="font-bold">Total session: 2 hours</p>
-                  {/* <Image width={200} height={100}
-                  className="w-24"
-                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e0ee8ffb-faa8-462a-b44d-0a18c1d9604c"
-                    alt="Roller skating logo"
-                  /> */}
+                 
                   <VideoChatIcon fontSize="large" />
                 </div>
               </div>
@@ -210,8 +202,11 @@ const DashboardTrainer = ({ challenges, currentUser }) => {
             {/* icons */}
             <div className="flex items-center gap-3">
               {/* <NotificationsIcon /> */}
-              <NotificationDropdown currentUser={currentUser}/>
-              <MessageIcon />
+             <div className="relative">
+            <NotificationDropdown currentUser={currentUser} />
+             <span className="absolute -top-1 right-1 bg-red-600 text-white font-bold rounded-full p-1 text-xs">{unseenNotifications?.length}</span>
+             </div>
+              <MessageIcon sx={{fontSize: "28px"}}/>
             </div>
 
             {/* user name and image */}
@@ -237,16 +232,19 @@ const DashboardTrainer = ({ challenges, currentUser }) => {
                 Your Clients
             </h5>
             {/* client list */}
-            <div className="flex flex-col items-center">
-                {/* client one */}
-                <div className="flex items-center gap-2">
-                  <Image className="rounded-full object-cover w-12 h-12" src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Ted_Mosby.jpg/220px-Ted_Mosby.jpg" width={40} height={40} alt="Client one"/>
-                  {/* client details */}
-                  <div>
-                    <p className="font-medium">Ted Mosby</p>
-                    <p className="text-gray-500 text-xs">Pro member</p>
-                  </div>
+            <div className="flex flex-col items-start px-4 justify-end gap-4">
+               {
+                acceptedFriends?.map(friend=>  <div key={friend?._id} className="flex items-center gap-2">
+              {
+                friend?.userImage &&   <Image className="rounded-full object-cover w-12 h-12" src={friend?.userImage} width={40} height={40} alt={friend?.userName}/>
+              }
+                {/* client details */}
+                <div>
+                  <p className="font-medium">{friend?.userName}</p>
                 </div>
+              </div>)
+               }
+               
             </div>
           </div>
         </div>

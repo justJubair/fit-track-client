@@ -8,6 +8,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 import axios from "axios";
+import { fontSize } from "@mui/system";
 
 const NotificationDropdown = ({ currentUser }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -21,7 +22,7 @@ const NotificationDropdown = ({ currentUser }) => {
 
   // filter friend list on the basis of seen and unseen property
   const unseenNotifications = currentUser?.friendList?.filter(friend=> friend?.seenStatus === false)
-  console.log(unseenNotifications)
+
 
 //   handle friend request accept
 const handleFriendAccept = async(_id)=>{
@@ -49,7 +50,7 @@ const handleFriendReject = async(_id)=>{
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <NotificationsIcon color="info" />
+            <NotificationsIcon color="info" sx={{fontSize: "28px"}}/>
           </IconButton>
         </Tooltip>
       </Box>

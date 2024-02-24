@@ -18,7 +18,7 @@ const RegisterPage = () => {
     const notify = () => toast("Logged In!");
     const notify2 = () => toast("Registration successful!");
 
- 
+
 
     const handleRegisterClick = () => {
         setRegisterActive(true);

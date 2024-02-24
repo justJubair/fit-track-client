@@ -8,7 +8,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 import axios from "axios";
-import { fontSize } from "@mui/system";
+import { Notify } from "notiflix";
 
 const NotificationDropdown = ({ currentUser }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -29,14 +29,18 @@ const handleFriendAccept = async(_id)=>{
     const userId = currentUser?._id
     const data = {userId, friendRequestId: _id, requestStatus: "accepted"}
     const dbResponse = await axios.patch("http://localhost:5000/api/v1/userFriendUpdate", data)
-    console.log(dbResponse)
+    if(dbResponse?.data?._id){
+      Notify.success('Request Accepted!')
+    }
 }
 // handle friend request reject
 const handleFriendReject = async(_id)=>{
   const userId = currentUser?._id
   const data = {userId, friendRequestId: _id, requestStatus: "rejected"}
   const dbResponse = await axios.patch("http://localhost:5000/api/v1/userFriendUpdate", data)
-  console.log(dbResponse)
+  if(dbResponse?.data?._id){
+    Notify.success('Request Rejected!')
+  }
 }
   return (
     <React.Fragment>

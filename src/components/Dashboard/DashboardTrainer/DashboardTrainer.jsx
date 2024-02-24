@@ -204,7 +204,8 @@ const DashboardTrainer = ({ challenges, currentUser }) => {
               {/* <NotificationsIcon /> */}
              <div className="relative">
             <NotificationDropdown currentUser={currentUser} />
-             <span className="absolute -top-1 right-1 bg-red-600 text-white font-bold rounded-full p-1 text-xs">{unseenNotifications?.length}</span>
+            {unseenNotifications?.length>0 &&  <span className="absolute -top-1 right-1 bg-red-600 text-white font-bold rounded-full p-1 text-xs">{unseenNotifications?.length}</span>}
+            
              </div>
               <MessageIcon sx={{fontSize: "28px"}}/>
             </div>

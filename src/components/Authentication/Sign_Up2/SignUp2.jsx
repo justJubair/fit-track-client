@@ -17,7 +17,7 @@ const SingUp2 = () => {
     const notify = () => toast("Logged In!");
     const notify2 = () => toast("Registration successful!");
 
-
+    console.log(userData)
 
     const handleRegisterClick = () => {
         setRegisterActive(true);

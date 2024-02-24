@@ -28,12 +28,12 @@ const BlogDetailsPage = () => {
     return (
         <div className=''>
             <div className="bg-black h-16"></div>
-            <div className='grid grid-cols-1 lg:grid-cols-12'>
-                <div className='px-4 md:w-4/5 mx-auto col-span-8 '>
+            <div className='grid grid-cols-1 lg:grid-cols-12 h-screen'>
+                <div className='px-4 md:w-4/5 mx-auto col-span-8 overflow-y-scroll content-end'>
                     <div className=''>
                         <h1 className='text-xl md:text-3xl lg:text-5xl text-center my-4 italic font-bold'>{blog?.title}</h1>
                     </div>
-                    <div className='flex justify-center my-4'>
+                    <div className='flex justify-center my-4 '>
                         {
                             blog?.image &&
                             <Image
@@ -60,11 +60,8 @@ const BlogDetailsPage = () => {
                     </div>
                     {/* comments section */}
                 </div>
-                <div className=' col-span-4 hidden lg:block  w-full '>
-
-                    <div>
-                        <MoreBlog />
-                    </div>
+                <div className=' col-span-4 hidden lg:block  w-full overflow-y-scroll '>
+                    <MoreBlog />
                 </div>
             </div>
 

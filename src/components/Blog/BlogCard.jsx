@@ -14,6 +14,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 
 
@@ -86,11 +87,12 @@ const BlogCard = ({ challenge, incrementCount }) => {
             });
         }
     }
+
     return (
         <div className="">
 
-            <Card sx={{ backgroundColor: 'white' }}>
-                <Image width={500} height={500} src={challenge?.image} alt="Card Image" className="w-full h-96 object-cover" />
+            <Card sx={{ backgroundColor: 'white' }} >
+                <Image width={500} height={200} src={challenge?.image} alt="Card Image" className="w-full h-[210px] object-cover" />
 
                 <div className='flex justify-between mt-2 items-center '>
                     <CardHeader
@@ -119,13 +121,14 @@ const BlogCard = ({ challenge, incrementCount }) => {
                         }
                     </Typography>
                     <Typography variant="body2" sx={{ color: 'black', height: "60px" }}>
-                        {challenge.description.length > 250
-                            ? challenge?.description.slice(0, 250).concat("...")
+                        {challenge.description.length > 100
+                            ? challenge?.description.slice(0, 100).concat("...")
                             : challenge?.description
                         }
                     </Typography>
                 </CardContent>
-                <Box style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem' }} className="mt-4" >
+
+                <Box style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem' }} className="mt-4 hover:block hidden " >
                     <Tooltip
                         onClick={() => handelBookmark(challenge?._id)}
                         title="Save" arrow>
@@ -155,10 +158,11 @@ const BlogCard = ({ challenge, incrementCount }) => {
 
                 </Box>
 
+
             </Card>
 
 
-        </div>
+        </div >
     );
 };
 

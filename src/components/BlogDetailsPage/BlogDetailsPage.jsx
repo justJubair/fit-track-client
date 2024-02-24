@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import MoreBlog from './MoreBlog';
+import './sticly.css'
 
 const BlogDetailsPage = () => {
    
@@ -28,27 +29,30 @@ const BlogDetailsPage = () => {
     return (
         <div className=''>
             <div className="bg-black h-16"></div>
-            <div className='grid grid-cols-1 lg:grid-cols-12 h-screen'>
-                <div className='px-4 md:w-4/5 mx-auto col-span-8 overflow-y-scroll content-end'>
-                    <div className=''>
-                        <h1 className='text-xl md:text-3xl lg:text-5xl text-center my-4 italic font-bold'>{blog?.title}</h1>
-                    </div>
-                    <div className='flex justify-center my-4 '>
-                        {
-                            blog?.image &&
-                            <Image
-                                priority={true}
-                                width={1000}
-                                height={800}
-                                src={blog?.image}
-                                alt="Card Image"
-                                className="rounded-2xl "
-                            />
-                        }
+            <div className='flex'>
+                <div className='px-4 md:w-4/5 my-10 content-end'>
+                    <div>
+                        <h1 className='text-xl md:text-2xl lg:text-4xl my-4 italic font-bold text-center'>{blog?.title}</h1>
+                        <div className='flex justify-center my-4 '>
+                            {
+                                blog?.image &&
+                                <Image
+                                    priority={true}
+                                    width={800}
+                                    height={300}
+                                    src={blog?.image}
+                                    alt="Card Image"
+                                    className='rounded-md max-h-[30rem]'
+                                />
+                            }
 
+                        </div>
                     </div>
+
                     <div className='my-10'>
                         <p className='md:text-xl' style={{
+                            width: '80%',
+                            margin: 'auto',
                             wordSpacing: "5px",
                             textAlign: "justify",
                             whiteSpace: "pre-line"
@@ -60,7 +64,7 @@ const BlogDetailsPage = () => {
                     </div>
                     {/* comments section */}
                 </div>
-                <div className=' col-span-4 hidden lg:block  w-full overflow-y-scroll '>
+                <div className='max-w-[500px] hidden my-10  lg:block  w-full'>
                     <MoreBlog />
                 </div>
             </div>

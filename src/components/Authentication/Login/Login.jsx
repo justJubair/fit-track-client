@@ -8,22 +8,21 @@ import { FaGoogle } from "react-icons/fa";
 import "./SignUp.css"
 import { useRouter } from 'next/navigation';
 import { useSession, signIn } from "next-auth/react"
+import { Notify } from 'notiflix';
+import Notiflix from 'notiflix';
 import { toast } from 'react-toastify';
 import { Typography } from "@mui/material";
-const SingUp2 = () => {
+const Login = () => {
     const [isRegisterActive, setRegisterActive] = useState(false);
     const [userData, setUserData] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
     const notify = () => toast("Logged In!");
     const notify2 = () => toast("Registration successful!");
 
-    console.log(userData)
 
     const handleRegisterClick = () => {
         setRegisterActive(true);
     };
-
-
 
     const handleLoginClick = () => {
         setRegisterActive(false);
@@ -41,7 +40,7 @@ const SingUp2 = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log({ email, password })
+
 
         const res = await signIn('credentials', {
             email: email,
@@ -65,7 +64,7 @@ const SingUp2 = () => {
     const handelSignUp = async (e) => {
         e.preventDefault(0);
         setErrorMessage('')
-        const res = await fetch('/api/user', {
+        const res = await fetch('/api/user-credential', {
             method: 'POST',
             body: JSON.stringify({ userData }),
             'content-type': 'application/json',
@@ -75,8 +74,7 @@ const SingUp2 = () => {
             const response = await res.json();
             setErrorMessage(response.message);
         } else {
-
-            notify2();
+            Notify.success('Registration Successful!')
             router.refresh();
             setTimeout(function () {
                 router.push('/')
@@ -85,23 +83,13 @@ const SingUp2 = () => {
     }
 
     // this is Google SingUp
-
     const handleSignUpGoogle = () => {
-        console.log("click");
         signIn('google')
-        if (session) {
-            router.push('/')
-        }
     }
 
     // This is FacbookLogin
-
     const handleSignUpFacebook = () => {
-        console.log("click");
         signIn('facebook')
-        if (session) {
-            router.push('/')
-        }
     }
     useEffect(() => {
         if (session) {
@@ -111,6 +99,53 @@ const SingUp2 = () => {
         }
     }, [session, router])
 
+
+
+    Notiflix.Notify.init({
+        width: '300px',
+        position: 'right-top',
+        distance: '10px',
+        opacity: 1,
+        borderRadius: '5px',
+        rtl: false,
+        timeout: 2000,
+        messageMaxLength: 110,
+        backOverlay: true,
+        backOverlayColor: 'rgba(0,0,0,0.5)',
+        plainText: true,
+        showOnlyTheLastOne: true,
+        ID: 'NotiflixNotify',
+        className: 'notiflix-notify',
+        zindex: 4001,
+        fontFamily: 'Quicksand',
+        fontSize: '18px',
+        cssAnimation: true,
+        cssAnimationDuration: 600,
+        cssAnimationStyle: 'zoom',
+        closeButton: false,
+        useIcon: true,
+        useFontAwesome: false,
+        fontAwesomeIconStyle: 'shadow',
+        fontAwesomeIconSize: '20px',
+        success: {
+            background: 'black',
+            textColor: '#fff',
+            childClassName: 'notiflix-notify-success',
+            notiflixIconColor: '#378AE5',
+            fontAwesomeClassName: 'fas fa-check-circle',
+            fontAwesomeIconColor: '#378AE5',
+            backOverlayColor: 'rgba(55, 118, 248, 0.8)',
+        }
+    });
+
+
+    if (session) {
+        Notify.success('Logged In!')
+        setTimeout(function () {
+            router.push('/')
+        }, 2000);
+    }
+    
     return (
         <div className="main">
             <div className={`wrapper ${isRegisterActive ? "active" : ""} w-[300px]  md:w-[700px]   lg:w-[800px] h-[570px] `}>
@@ -148,21 +183,7 @@ const SingUp2 = () => {
                             className="logreg-link animation"
                             style={{ "--i": 4, "--j": 25 }}
                         >
-                            <p>
-                                {isRegisterActive
-                                    ? "Already have an account? "
-                                    : "Don't have an account? "}
-                                <a
-                                    href="#"
-                                    className="register-link"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        handleRegisterClick();
-                                    }}
-                                >
-                                    {isRegisterActive ? "Login" : "Sign Up"}
-                                </a>
-                            </p>
+                     
                         </div>
                         <div className="social-accounts animation" style={{ "--i": 5, "--j": 26 }}>
                             <h3 className="social-text">Or</h3>
@@ -273,21 +294,7 @@ const SingUp2 = () => {
                         className="logreg-link animation"
                         style={{ "--i": 22, "--j": 5 }}
                     >
-                        <p>
-                            {isRegisterActive
-                                ? "Already have an account? "
-                                : "Don't have an account? "}
-                            <a
-                                href="#"
-                                className="register-link"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    handleLoginClick();
-                                }}
-                            >
-                                {isRegisterActive ? "Login" : "Sign Up"}
-                            </a>
-                        </p>
+                     
                     </div>
                     <div className="social-accounts animation" style={{ "--i": 23, "--j": 6 }}>
                         <h3 className="social-text">Or</h3>
@@ -320,4 +327,4 @@ const SingUp2 = () => {
     );
 };
 
-export default SingUp2;
+export default Login;

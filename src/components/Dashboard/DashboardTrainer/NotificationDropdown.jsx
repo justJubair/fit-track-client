@@ -20,15 +20,18 @@ const NotificationDropdown = ({ currentUser }) => {
   };
 
 //   handle friend request accept
-const handleFriendAccept = (_id)=>{
+const handleFriendAccept = async(_id)=>{
     const userId = currentUser?._id
-    const data = {userId, friendRequestId: _id}
-    const dbResponse = axios.patch("http://localhost:5000/api/v1/userFriendUpdate", data)
+    const data = {userId, friendRequestId: _id, requestStatus: "accepted"}
+    const dbResponse = await axios.patch("http://localhost:5000/api/v1/userFriendUpdate", data)
     console.log(dbResponse)
 }
 // handle friend request reject
-const handleFriendReject = (_id)=>{
-    console.log("reject", _id)
+const handleFriendReject = async(_id)=>{
+  const userId = currentUser?._id
+  const data = {userId, friendRequestId: _id, requestStatus: "rejected"}
+  const dbResponse = await axios.patch("http://localhost:5000/api/v1/userFriendUpdate", data)
+  console.log(dbResponse)
 }
   return (
     <React.Fragment>
@@ -99,11 +102,11 @@ const handleFriendReject = (_id)=>{
       
                 {/* accept and reject button */}
                 <div className="flex gap-2 justify-center ">
-                  <button onClick={()=> handleFriendAccept(friendReq?._id)} className="bg-slate-50 rounded-full duration-200 hover:scale-105">
+                  <button onClick={()=> handleFriendAccept(friendReq?.targetId)} className="bg-slate-50 rounded-full duration-200 hover:scale-105">
                     <CheckIcon color="success" />
                   </button>
                   <button className="bg-slate-50 rounded-full duration-200 hover:scale-105">
-                    <CloseIcon onClick={()=> handleFriendReject(friendReq?._id)} color="warning" />
+                    <CloseIcon onClick={()=> handleFriendReject(friendReq?.targetId)} color="warning" />
                   </button>
                 </div>
               </div>)

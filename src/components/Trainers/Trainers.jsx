@@ -17,7 +17,7 @@ const Trainers = ({ allTrainers }) => {
     // console.log(allTrainers)
 
     const { data: session } = useSession();
-    // console.log(session)
+    console.log(session)
 
     const router = useRouter();
 
@@ -97,6 +97,7 @@ const Trainers = ({ allTrainers }) => {
             targetId: userId,
             userEmail: session.user.email,
             userName: userData.username,
+            userImage: session.user.image ,
             requestStatus: 'pending',
             seenStatus: false
         }
@@ -179,6 +180,8 @@ const Trainers = ({ allTrainers }) => {
 
                                                 {selectedTrainer && (
                                                     <div className="modal-window">
+                                                        <h2>Email</h2>
+                                                        <p>{allTrainers.find(trainer => trainer._id === selectedTrainer)?.email}</p>
                                                         <h2>Bio</h2>
                                                         <p>{allTrainers.find(trainer => trainer._id === selectedTrainer)?.bio}</p>
                                                         <button onClick={() => { handleShareReq(allTrainers.find(trainer => trainer._id === selectedTrainer)?.email) }} className="req-btn">Send hire request...</button>

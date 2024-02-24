@@ -27,8 +27,8 @@ const MoreBlog = () => {
                             height={100}
                             width={100}
                             alt='more blog img'
-                            className='rounded-xl h-auto w-auto' />
-                        <Typography sx={{ fontWeight: 500, }}>
+                            className=' rounded-tl-xl rounded-bl-xl h-auto w-auto' />
+                        <Typography sx={{ fontWeight: 500, py:1 }}>
                             {challenge.title}
                         </Typography>
                     </Link>

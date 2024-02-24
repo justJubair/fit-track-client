@@ -8,14 +8,20 @@ import { FaGoogle } from "react-icons/fa";
 import "./Login.css"
 import { useRouter } from 'next/navigation';
 import { useSession, signIn } from "next-auth/react"
-import { ToastContainer, toast } from 'react-toastify';
 import { Typography } from "@mui/material";
-const Login2 = () => {
+import { Notify } from 'notiflix';
+import Notiflix from 'notiflix';
+
+const RegisterPage = () => {
     const [isRegisterActive, setRegisterActive] = useState(true);
-    const [userData, setUserData] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
+<<<<<<< HEAD:src/components/Authentication/RegisterPage/RegisterPage.jsx
+=======
     const notify = () => toast("Logged In!");
     const notify2 = () => toast("Registration successful!");
+
+    console.log(userData)
+>>>>>>> c6592031696654c92ad587c08cd1c79f0f59b47b:src/components/Authentication/Sign_Up2/SignUp2.jsx
 
     const handleRegisterClick = () => {
         setRegisterActive(true);
@@ -30,8 +36,8 @@ const Login2 = () => {
     const router = useRouter();
     const { data: session } = useSession();
 
-    //  this is login in section
 
+    //  this is login in section
     const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -43,10 +49,17 @@ const Login2 = () => {
             email: email,
             password: password,
         })
-        notify();
     }
-    // this is signUp in section
 
+    const [userData, setUserData] = useState({
+        username: '',
+        userimage: '',
+        email: '',
+        password: '',
+        role: 'default' // Set default value for the role field
+      });
+
+    // this is signUp in section
     const handleChange = (e) => {
         e.preventDefault()
         const value = e.target.value;
@@ -61,7 +74,7 @@ const Login2 = () => {
     const handelSignUp = async (e) => {
         e.preventDefault(0);
         setErrorMessage('')
-        const res = await fetch('/api/user', {
+        const res = await fetch('/api/user-credential', {
             method: 'POST',
             body: JSON.stringify({ userData }),
             'content-type': 'application/json',
@@ -71,8 +84,7 @@ const Login2 = () => {
             const response = await res.json();
             setErrorMessage(response.message);
         } else {
-
-            notify2();
+            Notify.success('Registration Successful!')
             router.refresh();
             setTimeout(function () {
                 router.push('/')
@@ -81,31 +93,22 @@ const Login2 = () => {
     }
 
     // this is Google SingUp
-
     const handleSignUpGoogle = () => {
-        console.log("click");
-        signIn('google')
-        if (session) {
-            router.push('/')
-        }
+        signIn('google');
     }
 
     // This is FacbookLogin
-
     const handleSignUpFacebook = () => {
-        console.log("click");
-        signIn('facebook')
-        if (session) {
-            router.push('/')
-        }
+        signIn('facebook');
     }
-    useEffect(() => {
-        if (session) {
-            setTimeout(function () {
-                router.push('/')
-            }, 2000);
-        }
-    }, [session, router])
+
+    if (session) {
+        Notify.success('Logged In!')
+        setTimeout(function () {
+            router.push('/')
+        }, 2000);
+    }
+
 
     return (
         <div className="main">
@@ -288,7 +291,6 @@ const Login2 = () => {
                     <div className="social-accounts animation" style={{ "--i": 23, "--j": 6 }}>
                         <h3 className="social-text">Or</h3>
                         <div className="social-icons">
-
                             <button className="social-icon" onClick={() => handleSignUpGoogle()}>
                                 <FaGoogle />
                             </button>
@@ -316,4 +318,4 @@ const Login2 = () => {
     );
 };
 
-export default Login2;
+export default RegisterPage;

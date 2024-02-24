@@ -88,10 +88,10 @@ const Nav = () => {
   const handleLogout = () => {
     signOut();
   }
-  const handleSignIn = () => {
-    signIn()
-    router.push('/usercheck')
-  }
+  // const handleSignIn = () => {
+  //   signIn()
+  //   router.push('/usercheck')
+  // }
   return (
     // Top-level container for the navigation component
     <div className=" absolute w-[100%] z-50 top-0">

@@ -22,6 +22,7 @@ export const options = {
         email: { label: "Email", type: "text", placeholder: "Email" },
         userimage: { label: "User Image", type: "text", placeholder: "Image" },
         password: { label: "Password", type: "password" },
+        role:{ label: 'Role', type:"text" }
       },
       async authorize(credentials, req) {
 
@@ -48,7 +49,7 @@ export const options = {
    
            if(account.provider === 'google'){
             
-            const userData = { username: user.name, email: user.email, userimage: user.image }
+            const userData = { username: user.name, email: user.email, userimage: user.image, role:'default' }
 
             try{
               const res = fetch('http://localhost:3000/api/user-provider',{

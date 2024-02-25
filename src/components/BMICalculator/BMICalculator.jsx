@@ -5,10 +5,11 @@ import HealthMessage from "../HealthMessage/HealthMessage";
 import BMIResultMessage from "../BMIResultMessage/BMIResultMessage";
 import GaugeChart from "react-gauge-chart";
 import { QuestionMarkRounded } from "@mui/icons-material";
+import {PropTypes} from "prop-types"
+import { Box } from "@mui/system";
 
 const BMICalculator = () => {
-  const [weight, setWeight] = useState("");
-  const [height, setHeight] = useState("");
+
   const [result, setResult] = useState(null);
   const [open, setOpen] = useState(false);
 
@@ -23,6 +24,10 @@ const BMICalculator = () => {
 
   const calculateBMI = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const height = form.height.value;
+    const weight = form.weight.value;
+   
     const weightInKg = parseFloat(weight);
     const heightInM = parseFloat(height) / 100;
 
@@ -104,14 +109,16 @@ const BMICalculator = () => {
               variant="filled"
               label="Weight (kg)"
               type="number"
-              onChange={(e) => setWeight(e.target.value)}
+              name="weight"
+             
             ></TextField>
 
             <TextField
               variant="filled"
               label="Height (cm)"
               type="number"
-              onChange={(e) => setHeight(e.target.value)}
+              name="height"
+            
             ></TextField>
           </Stack>
           <Button
@@ -150,21 +157,21 @@ const BMICalculator = () => {
                   arcPadding={0.02}
                 />
 
-                <Typography variant="body1">
+                <Box>
                   <span className="font-bold">
                     <BMIResultMessage bmiResult={result} />
                   </span>
-                </Typography>
-                <Typography variant="body1">
+                </Box>
+                <Box variant="body1">
                   <span className="font-medium">
                     <HealthMessage bmiResult={result} />
                   </span>
-                </Typography>
+                </Box>
               </div>
             )}
             {result === null && (
               <>
-                <GaugeChart
+                {/* <GaugeChart
                   className="text-black bg-gradient-to-r from-[#378AE5] via-[#378AE5] to-white w-full"
                   id="gauge-chart5"
                   nrOfLevels={420}
@@ -172,7 +179,7 @@ const BMICalculator = () => {
                   colors={["#F5CD19", "#5BE12C", "#EA4228"]}
                   percent={calculateGaugePercentage()}
                   arcPadding={0.02}
-                />
+                /> */}
 
               </>
             )}
@@ -182,5 +189,9 @@ const BMICalculator = () => {
     </div>
   );
 };
+
+
+
+
 
 export default BMICalculator;

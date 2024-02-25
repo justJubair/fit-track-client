@@ -20,7 +20,7 @@ const DashboardTrainer = ({ challenges, currentUser }) => {
 
   // friend list
   const acceptedFriends = currentUser?.friendList?.filter(friend=> friend?.requestStatus)
-  console.log(acceptedFriends)
+
   return (
     <>
       <div className="flex flex-col-reverse md:grid md:grid-cols-12 gap-10 md:gap-4 mt-5 px-4 lg:px-2 mb-8">
@@ -233,7 +233,7 @@ const DashboardTrainer = ({ challenges, currentUser }) => {
                 Your Clients
             </h5>
             {/* client list */}
-            <div className="flex flex-col items-start px-4 justify-end gap-4">
+            <div className="flex flex-col items-start px-4 justify-end gap-4 bg-slate-100 p-2 rounded-md">
                {
                 acceptedFriends?.map(friend=>  <div key={friend?._id} className="flex items-center gap-2">
               {

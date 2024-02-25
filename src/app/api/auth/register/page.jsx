@@ -1,10 +1,10 @@
-import SignUp from "@/components/Authentication/Sign_Up/SignUp";
+import RegisterPage from "@/components/Authentication/RegisterPage/RegisterPage";
 
 const Register = () => {
- 
+
     return (
-        <div className='mt-36 mb-36'>
-                <SignUp/>
+        <div >
+           <RegisterPage/>
         </div>
     );
 };

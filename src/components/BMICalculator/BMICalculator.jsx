@@ -171,7 +171,7 @@ const BMICalculator = () => {
             )}
             {result === null && (
               <>
-                {/* <GaugeChart
+                <GaugeChart
                   className="text-black bg-gradient-to-r from-[#378AE5] via-[#378AE5] to-white w-full"
                   id="gauge-chart5"
                   nrOfLevels={420}
@@ -179,7 +179,7 @@ const BMICalculator = () => {
                   colors={["#F5CD19", "#5BE12C", "#EA4228"]}
                   percent={calculateGaugePercentage()}
                   arcPadding={0.02}
-                /> */}
+                />
 
               </>
             )}

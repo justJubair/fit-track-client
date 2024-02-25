@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import './Blog.css';
 import BlogCard from "./BlogCard";
+import Blog2 from "./BlogCard/BlogCard2";
 
 
 const Blog = () => {
@@ -124,9 +125,13 @@ const Blog = () => {
                 <h3 className=' font-semibold text-3xl p-6 '>Recent Post</h3>
                 <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-3 lg:w-4/5 mx-auto'>
                     {/* mapping all services one by one */}
+
                     {challenges?.map((challenge, i) => (
                         <BlogCard key={i} challenge={challenge} incrementCount={incrementCount} />
                     ))}
+
+
+
                 </div>
             </div>
             <ToastContainer />

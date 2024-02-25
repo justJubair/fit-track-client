@@ -13,13 +13,16 @@ import Fade from '@mui/material/Fade';
 import Grid from '@mui/material/Grid';
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { Notify } from 'notiflix';
+import Notiflix from 'notiflix';
 import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image';
 
 const SignUp = () => {
 
     const { data: session } = useSession();
+
+    console.log(session)
 
     const [isUser, setUser] = React.useState(false);
 
@@ -31,29 +34,56 @@ const SignUp = () => {
 
     const router = useRouter();
 
-    const notify = () => toast("Registration successful!");
-
-
-
     // Terms and conditions modal open and close function
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    Notiflix.Notify.init({
+        width: '300px',
+        position: 'right-top',
+        distance: '10px',
+        opacity: 1,
+        borderRadius: '5px',
+        rtl: false,
+        timeout: 2000,
+        messageMaxLength: 110,
+        backOverlay: true,
+        backOverlayColor: 'rgba(0,0,0,0.5)',
+        plainText: true,
+        showOnlyTheLastOne: true,
+        ID: 'NotiflixNotify',
+        className: 'notiflix-notify',
+        zindex: 4001,
+        fontFamily: 'Quicksand',
+        fontSize: '18px',
+        cssAnimation: true,
+        cssAnimationDuration: 600,
+        cssAnimationStyle: 'zoom',
+        closeButton: false,
+        useIcon: true,
+        useFontAwesome: false,
+        fontAwesomeIconStyle: 'shadow',
+        fontAwesomeIconSize: '20px',
+        success: {
+            background: 'black',
+            textColor: '#fff',
+            childClassName: 'notiflix-notify-success',
+            notiflixIconColor: '#378AE5',
+            fontAwesomeClassName: 'fas fa-check-circle',
+            fontAwesomeIconColor: '#378AE5',
+            backOverlayColor: 'rgba(55, 118, 248, 0.8)',
+        }
+    });
+
     // function for google sign in
     const handleSignUpGoogle = () => {
         signIn('google')
-        if (session) {
-            router.push('/')
-        }
     }
 
     // function for facebook sign in
     const handleSignUpFacebook = () => {
         signIn('facebook')
-        if (session) {
-            router.push('/')
-        }
     }
 
     const handleChange = (e) => {
@@ -68,7 +98,7 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault(0);
         setErrorMessage('')
-        const res = await fetch('/api/user', {
+        const res = await fetch('/api/user-credential', {
             method: 'POST',
             body: JSON.stringify({ userData }),
             'content-type': 'application/json',
@@ -78,14 +108,22 @@ const SignUp = () => {
             const response = await res.json();
             setErrorMessage(response.message);
         } else {
-
-            notify();
+            Notify.success('Registration Successful!')
             router.refresh();
-            setTimeout(function(){
+            setTimeout(function () {
                 router.push('/')
-           }, 2000);
+            }, 2000);
         }
     }
+
+    if (session) {
+        Notify.success('Logged In!')
+        setTimeout(function () {
+            router.push('/')
+        }, 2000);
+
+    }
+
     //custom style for terms and conditions
     const style = {
         position: 'absolute',
@@ -161,7 +199,7 @@ const SignUp = () => {
                         autoComplete="current-password"
                         onChange={handleChange}
                     />
-                    {errorMessage && <Typography component="h6" variant="h6" sx={{ fontSize: '1rem', color: 'red', fontWeight: '400', textAlign: 'start', marginTop:'10px' }}>
+                    {errorMessage && <Typography component="h6" variant="h6" sx={{ fontSize: '1rem', color: 'red', fontWeight: '400', textAlign: 'start', marginTop: '10px' }}>
                         {errorMessage}
                     </Typography>}
                     <Modal
@@ -215,23 +253,11 @@ const SignUp = () => {
                 </Typography>
                 <Box sx={{ width: { xs: '100%', md: '50%' } }}>
                     <Box className='grid gird-cols-1 gap-4'>
-                        <Box onClick={() => handleSignUpGoogle()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#fff', borderRadius: '5px', padding: '8px', color: '#252525', cursor: 'pointer', boxShadow: 3 }}><Image width={100} height={100} className='max-w-[50px]' src='https://i.ibb.co/kmsjzFF/Animation-1700836595835.gif'  alt="login image"/><span className='text-lg'> Continue with Google</span></Box>
-                        <Box onClick={() => handleSignUpFacebook()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#252525', borderRadius: '5px', padding: '8px', color: '#fff', cursor: 'pointer', boxShadow: 3 }}><Image width={100} height={100} className='max-w-[50px]' src='https://i.ibb.co/5R4LB8n/Animation-1706101317533.gif' alt="login image"/><span className='text-lg'> Continue with Facebook</span></Box>
+                        <Box onClick={() => handleSignUpGoogle()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#fff', borderRadius: '5px', padding: '8px', color: '#252525', cursor: 'pointer', boxShadow: 3 }}><Image width={100} height={100} className='max-w-[50px]' src='https://i.ibb.co/kmsjzFF/Animation-1700836595835.gif' alt="login image" /><span className='text-lg'> Continue with Google</span></Box>
+                        <Box onClick={() => handleSignUpFacebook()} sx={{ display: 'flex', justifyContent: 'center', gap: '5px', alignItems: 'center', backgroundColor: '#252525', borderRadius: '5px', padding: '8px', color: '#fff', cursor: 'pointer', boxShadow: 3 }}><Image width={100} height={100} className='max-w-[50px]' src='https://i.ibb.co/5R4LB8n/Animation-1706101317533.gif' alt="login image" /><span className='text-lg'> Continue with Facebook</span></Box>
                     </Box>
                 </Box>
             </Box>
-            <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
         </Container>
     );
 };

@@ -30,7 +30,7 @@ const pages = [
     nav: "Challenges",
     route: "/challenges",
   },
-  
+
   {
     nav: "Pricing",
     route: "/pricing",
@@ -42,6 +42,10 @@ const pages = [
   {
     nav: "Trainers",
     route: "/trainers"
+  },
+  {
+    nav: "Video Call",
+    route: "/video_call",
   }
 ];
 
@@ -84,10 +88,10 @@ const Nav = () => {
   const handleLogout = () => {
     signOut();
   }
-  const handleSignIn = () => {
-    signIn()
-    router.push('/usercheck')
-  }
+  // const handleSignIn = () => {
+  //   signIn()
+  //   router.push('/usercheck')
+  // }
   return (
     // Top-level container for the navigation component
     <div className=" absolute w-[100%] z-50 top-0">
@@ -222,16 +226,16 @@ const Nav = () => {
                       </Typography>
                     </MenuItem>
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                    <Link href="/">
-                      <Typography textAlign="center">Home</Typography>
-                    </Link>
+                      <Link href="/">
+                        <Typography textAlign="center">Home</Typography>
+                      </Link>
                     </MenuItem>
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Profile</Typography>
                     </MenuItem>
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Link href="/dashboard">
-                      <Typography textAlign="center">Dashboard</Typography>
+                        <Typography textAlign="center">Dashboard</Typography>
                       </Link>
                     </MenuItem>
                     <Link href="/diettable"> <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>

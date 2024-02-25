@@ -1,19 +1,17 @@
 "use client";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import SettingsIcon from "@mui/icons-material/Settings";
-import { Button } from "@mui/material";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+import SettingsIcon from "@mui/icons-material/Settings";
 import AOS from "aos";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import image2 from "../../../public/Fit-Track/Home-01@2x.png";
 import image1 from "../../../public/Fit-Track/corinne_profile-1@2x.png";
+import CustomButton from "../Shared/CustomButton/CustomButton";
 import "./Advertisement.css";
 import Audio from "./Audio";
 import TrainerForm from "./TrainerForm";
-import { useState } from "react";
-import CustomButton from "../Shared/CustomButton/CustomButton";
 
 const Advertisement = () => {
   // Modal open and close state

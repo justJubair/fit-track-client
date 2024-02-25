@@ -1,33 +1,37 @@
-import mongoose, {Schema} from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
-mongoose.connect(process.env.DB_URI)
-mongoose.Promise = global.Promise;
+mongoose.connect(process.env.db_URI);
 
-const userShcema = new Schema(
+const userSchema = new mongoose.Schema(
     {
-        username: {
-            type: String,
-            required: true,
-            unique: true
-          },
-          userimage: {
-            type: String,
-            default: 'default_image.jpg' // You can set a default image path here
-          },
-          email: {
-            type: String,
-            required: true,
-            unique: true
-          },
-          password: {
-            type: String,
-          }
+      username: {
+        type: String,
+        required: true,
+        unique: true
+      },
+      userimage: {
+        type: String,
+        default: 'default_image.jpg' // You can set a default image path here
+      },
+      email: {
+        type: String,
+        required: true,
+        unique: true
+      },
+      password: {
+        type: String,
+        required: true
+      },
+      role: {
+        type: String,
+        default: 'default'
+      }
     },
     {
-        timestamps: true
+      timestamps: true, // Add timestamps
     }
-);
+  );
+  
+  const User = mongoose.models.User || mongoose.model("User", userSchema);
 
-const User = mongoose.models.User || mongoose.model('User', userShcema)
-
-export default User;
+  export default User;

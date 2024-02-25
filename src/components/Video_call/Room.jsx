@@ -3,7 +3,6 @@ import { useSocket } from '@/app/context/SocketProvider';
 import React, { useCallback, useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import peer from "./service/peer"
-import { useElements } from '@stripe/react-stripe-js';
 
 const Room = () => {
     const socket = useSocket()

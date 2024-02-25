@@ -15,13 +15,10 @@ import Notiflix from 'notiflix';
 const RegisterPage = () => {
     const [isRegisterActive, setRegisterActive] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
-<<<<<<< HEAD:src/components/Authentication/RegisterPage/RegisterPage.jsx
-=======
     const notify = () => toast("Logged In!");
     const notify2 = () => toast("Registration successful!");
 
-    console.log(userData)
->>>>>>> c6592031696654c92ad587c08cd1c79f0f59b47b:src/components/Authentication/Sign_Up2/SignUp2.jsx
+
 
     const handleRegisterClick = () => {
         setRegisterActive(true);

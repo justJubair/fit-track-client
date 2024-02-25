@@ -10,8 +10,11 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { Slider, Typography } from "@mui/material";
+import { useSession } from "next-auth/react";
 
 const ManageProgress = () => {
+  const {data:session} = useSession()
+
   return (
     <div className="p-4 mt-4 md:mt-14 lg:mt-4">
       {/* title */}
@@ -133,8 +136,10 @@ const ManageProgress = () => {
         <div className="flex flex-col items-center md:col-span-4">
 
             {/* profile picture */}
-            <Image className="rounded-full" width={100} height={100} src="https://pyxis.nymag.com/v1/imgs/079/792/3ed0d94be0a9bd3d023f00532889bab152-30-chandler-bing.rsquare.w330.jpg" alt="profile picture"/>
-            <p className="text-gray-400 font-bold text-sm mt-2">Pro Member</p>
+            {session?.user?.image && <Image className="rounded-full" width={100} height={100} src={session?.user?.image} alt="profile picture"/>}
+          
+            <p className="font-bold mt-2">{session?.user?.name}</p>
+            <p className="text-gray-400 font-bold text-sm">Pro Member</p>
 
             {/* discount card */}
             <div className="flex items-center justify-between gap-4 shadow-xl rounded-xl p-4">

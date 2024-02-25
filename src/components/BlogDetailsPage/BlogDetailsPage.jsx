@@ -7,16 +7,16 @@ import MoreBlog from './MoreBlog';
 import './sticly.css'
 
 const BlogDetailsPage = () => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+   
     const { id } = useParams()
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+  
     const [count, setCount] = useState(0)
     const incrementCount = () => {
         setCount(count + 1);
     };
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+  
     const [blog, setBlog] = useState()
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+ 
     useEffect(() => {
         const getBlog = async () => {
             const allBlogs = await fetch(`https://fit-track-server.vercel.app/api/v1/blog/${id}`);

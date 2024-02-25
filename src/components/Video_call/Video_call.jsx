@@ -2,7 +2,6 @@
 
 import { useSocket } from "@/app/context/SocketProvider";
 import { useRouter } from "next/navigation";
-// import { redirect } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 
@@ -24,7 +23,7 @@ const Video_call = () => {
     const handelJoinRoom = useCallback((data) => {
         const { email, room } = data
         // console.log(email, room)
-        // redirect(`/video_call/${room}`)
+        // redirect(`/video_call/${room}`)git pull
         router.push(`/video_call/${room}`);
     }, [router])
 

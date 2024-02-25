@@ -28,7 +28,7 @@ const NotificationDropdown = ({ currentUser }) => {
 const handleFriendAccept = async(_id)=>{
     const userId = currentUser?._id
     const data = {userId, friendRequestId: _id, requestStatus: "accepted"}
-    const dbResponse = await axios.patch("http://localhost:5000/api/v1/userFriendUpdate", data)
+    const dbResponse = await axios.patch("https://fit-track-server.vercel.app/api/v1/userFriendUpdate", data)
     if(dbResponse?.data?._id){
       Notify.success('Request Accepted!')
     }
@@ -37,7 +37,7 @@ const handleFriendAccept = async(_id)=>{
 const handleFriendReject = async(_id)=>{
   const userId = currentUser?._id
   const data = {userId, friendRequestId: _id, requestStatus: "rejected"}
-  const dbResponse = await axios.patch("http://localhost:5000/api/v1/userFriendUpdate", data)
+  const dbResponse = await axios.patch("https://fit-track-server.vercel.app/api/v1/userFriendUpdate", data)
   if(dbResponse?.data?._id){
     Notify.success('Request Rejected!')
   }

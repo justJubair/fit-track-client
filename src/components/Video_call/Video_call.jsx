@@ -22,8 +22,8 @@ const Video_call = () => {
 
     const handelJoinRoom = useCallback((data) => {
         const { email, room } = data
-        console.log(email, room)
-        // redirect(`/video_call/${room}`)
+        // console.log(email, room)
+        // redirect(`/video_call/${room}`)git pull
         router.push(`/video_call/${room}`);
     }, [router])
 

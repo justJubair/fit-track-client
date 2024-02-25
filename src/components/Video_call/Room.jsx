@@ -1,15 +1,56 @@
-'use client'
+"use client"
 import { useSocket } from '@/app/context/SocketProvider';
 import React, { useCallback, useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import peer from "./service/peer"
+import { useElements } from '@stripe/react-stripe-js';
+import NoPhotographyIcon from '@mui/icons-material/NoPhotography';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import { IconButton } from '@mui/material';
 
 const Room = () => {
     const socket = useSocket()
     const [remoteSocketId, setRemoteSocketId] = useState(null)
     const [myStream, setMyStream] = useState(null)
-    const [remoteStream, setRemoteStream] = useState()
+    const [remoteStream, setRemoteStream] = useState(null)
+    const [myMicMuted, setMyMicMuted] = useState(false);
+    const [myCameraOff, setMyCameraOff] = useState(false);
+    const [remoteMicMuted, setRemoteMicMuted] = useState(false);
+    const [remoteCameraOff, setRemoteCameraOff] = useState(false);
 
+    const toggleMyMic = () => {
+        if (myStream) {
+            const audioTrack = myStream.getAudioTracks()[0];
+            audioTrack.enabled = !myMicMuted;
+            setMyMicMuted(!myMicMuted);
+        }
+    };
+
+    const toggleMyCamera = () => {
+        if (myStream) {
+            const videoTrack = myStream.getVideoTracks()[0];
+            videoTrack.enabled = !myCameraOff;
+            setMyCameraOff(!myCameraOff);
+        }
+    };
+
+    const toggleRemoteMic = () => {
+        if (remoteStream) {
+            const audioTrack = remoteStream.getAudioTracks()[0];
+            audioTrack.enabled = !remoteMicMuted;
+            setRemoteMicMuted(!remoteMicMuted);
+        }
+    };
+
+    const toggleRemoteCamera = () => {
+        if (remoteStream) {
+            const videoTrack = remoteStream.getVideoTracks()[0];
+            videoTrack.enabled = !remoteCameraOff;
+            setRemoteCameraOff(!remoteCameraOff);
+        }
+    };
 
     const handelUserJoin = useCallback(({ email, id }) => {
         console.log(`email ${email} join room`)
@@ -23,7 +64,6 @@ const Room = () => {
             video: true
         })
         setMyStream(stream)
-        // console.log(`incoming call ${from},${offer}`)
         const ans = await peer.getAnswer(offer)
         socket.emit("call:accepted", { to: from, ans })
 
@@ -46,8 +86,6 @@ const Room = () => {
         const offer = await peer.getOffer()
         socket.emit('peer:nego:needed', { offer, to: remoteSocketId })
     }, [remoteSocketId, socket])
-
-
 
     useEffect(() => {
         peer.peer.addEventListener('negotiationneeded', handelNegoNeeded)
@@ -99,47 +137,75 @@ const Room = () => {
     }, [remoteSocketId, socket])
 
     return (
-        <div>
-            <h1>this is room </h1>
+        <div >
             <p className='text-3xl font-bold'>{remoteSocketId ? "Connected" : "no one in Room"}</p>
             {
                 remoteSocketId && <button
                     onClick={handelCallUser}
                     className='p-4 bg-red-400 rounded-3xl'>Call</button>
             }
-            {
-                myStream &&
-                <button
-                    className='bg-green-200'
-                    onClick={sendSteams}
-                >
-                    send Stream
-                </button>
-            }
-            {
-                myStream &&
-                <>
-                    <h1>My Stream</h1>
-                    <ReactPlayer
-                        height={300}
-                        width={400}
-                        playing
-                        url={myStream}
-                    />
-                </>
-            }
-            {
-                remoteStream &&
-                <>
-                    <h1>remote Stream</h1>
-                    <ReactPlayer
-                        height={300}
-                        width={400}
-                        playing
-                        url={remoteStream}
-                    />
-                </>
-            }
+
+            <div className='flex flex-col-reverse justify-between relative'>
+                <div className='border absolute right-5 bottom-28'>
+                    {
+                        myStream &&
+                        <>
+                            <h1>My Stream</h1>
+                            <ReactPlayer
+                                className="w-full "
+                                height={300}
+                                width={300}
+                                playing
+                                url={myStream}
+                            />
+                            <IconButton onClick={toggleMyMic}>
+                                <button className='text-white' >
+                                    {myMicMuted ? < VolumeUpIcon /> : <VolumeOffIcon />}
+                                </button>
+                            </IconButton>
+                            <IconButton onClick={toggleMyCamera}>
+                                <button  className='text-white'>
+                                    {myCameraOff ? <CameraAltIcon /> : < NoPhotographyIcon />}
+                                </button>
+                            </IconButton>
+                        </>
+                    }
+                </div>
+                <div className='border'>
+                    {
+                        remoteStream &&
+                        <>
+
+                            <h1>Remote Stream</h1>
+                            <div className='bg-black'>
+                                <ReactPlayer
+                                    className=""
+                                    height={1000}
+                                    width={1000}
+                                    playing
+                                    url={remoteStream}
+                                />
+                            </div>
+                            <button
+                                className='bg-green-200'
+                                onClick={sendSteams}
+                            >
+                                Send Stream
+                            </button>
+                            <IconButton onClick={toggleRemoteMic}>
+                                <button className='' >
+                                    {remoteMicMuted ? < VolumeUpIcon /> : <VolumeOffIcon />}
+                                </button>
+                            </IconButton>
+                            <IconButton onClick={toggleRemoteCamera}>
+                                <button >
+                                    {remoteCameraOff ? <CameraAltIcon /> : < NoPhotographyIcon />}
+                                </button>
+                            </IconButton>
+                        </>
+                    }
+                </div>
+            </div>
         </div>
     );
 };

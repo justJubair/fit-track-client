@@ -136,7 +136,8 @@ const ManageProgress = () => {
         <div className="flex flex-col items-center md:col-span-4">
 
             {/* profile picture */}
-            <Image className="rounded-full" width={100} height={100} src={session?.user?.image} alt="profile picture"/>
+            {session?.user?.image && <Image className="rounded-full" width={100} height={100} src={session?.user?.image} alt="profile picture"/>}
+          
             <p className="font-bold mt-2">{session?.user?.name}</p>
             <p className="text-gray-400 font-bold text-sm">Pro Member</p>
 

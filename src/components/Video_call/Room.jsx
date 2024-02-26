@@ -8,7 +8,9 @@ import NoPhotographyIcon from '@mui/icons-material/NoPhotography';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
-import { IconButton } from '@mui/material';
+import { IconButton, Tooltip } from '@mui/material';
+import CallEndIcon from '@mui/icons-material/CallEnd';
+import "./service/Room.css"
 
 const Room = () => {
     const socket = useSocket()
@@ -106,7 +108,7 @@ const Room = () => {
     useEffect(() => {
         peer.peer.addEventListener('track', async ev => {
             const remoteStream = ev.streams
-            console.log(`got tracks`)
+            // console.log(`got tracks`)s
             setRemoteStream(remoteStream[0])
         })
     }, [])
@@ -146,11 +148,11 @@ const Room = () => {
             }
 
             <div className='flex flex-col-reverse justify-between relative'>
-                <div className='border absolute right-5 bottom-28'>
+                <div className='border rounded-xl p-4 absolute right-5 bottom-28 paperScrollPaper'>
                     {
                         myStream &&
                         <>
-                            <h1>My Stream</h1>
+                            <h1 className='text-white'>My Stream</h1>
                             <ReactPlayer
                                 className="w-full "
                                 height={300}
@@ -158,16 +160,30 @@ const Room = () => {
                                 playing
                                 url={myStream}
                             />
-                            <IconButton onClick={toggleMyMic}>
-                                <button className='text-white' >
-                                    {myMicMuted ? < VolumeUpIcon /> : <VolumeOffIcon />}
-                                </button>
-                            </IconButton>
-                            <IconButton onClick={toggleMyCamera}>
-                                <button  className='text-white'>
-                                    {myCameraOff ? <CameraAltIcon /> : < NoPhotographyIcon />}
-                                </button>
-                            </IconButton>
+                            <div className='flex justify-between'>
+                                <div>
+                                    <IconButton onClick={toggleMyMic}>
+                                        <button className='text-white' >
+                                            {myMicMuted ? < VolumeUpIcon /> : <VolumeOffIcon />}
+                                        </button>
+                                    </IconButton>
+                                    <IconButton onClick={toggleMyCamera} sx={{ zIndex: 10 }}>
+                                        <button className='text-white'>
+                                            {myCameraOff ? < NoPhotographyIcon /> : <CameraAltIcon />}
+                                        </button>
+                                    </IconButton>
+                                </div>
+                                <div>
+                                    <Tooltip title="Call End" >
+                                        <IconButton sx={{ zIndex: 10 }}>
+                                            <button className='text-white bg-red-400 px-3 py-1 rounded-full'>
+                                                {/* {myCameraOff ? < NoPhotographyIcon /> : <CameraAltIcon />} */}
+                                                <CallEndIcon />
+                                            </button>
+                                        </IconButton>
+                                    </Tooltip>
+                                </div>
+                            </div>
                         </>
                     }
                 </div>
@@ -192,16 +208,6 @@ const Room = () => {
                             >
                                 Send Stream
                             </button>
-                            <IconButton onClick={toggleRemoteMic}>
-                                <button className='' >
-                                    {remoteMicMuted ? < VolumeUpIcon /> : <VolumeOffIcon />}
-                                </button>
-                            </IconButton>
-                            <IconButton onClick={toggleRemoteCamera}>
-                                <button >
-                                    {remoteCameraOff ? <CameraAltIcon /> : < NoPhotographyIcon />}
-                                </button>
-                            </IconButton>
                         </>
                     }
                 </div>

@@ -1,0 +1,7 @@
+.paperScrollPaper {
+    background: rgba(90, 80, 85, 0.2) !important;
+    backdrop-filter: blur(15px) !important;
+    box-shadow: inset 1px 1px 10px rgba(209, 204, 204, 0.63) !important;
+    padding: 10px 20px 20px 20px !important;
+    
+  }

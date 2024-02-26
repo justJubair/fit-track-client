@@ -1,12 +1,12 @@
-import Room from '@/components/Video_call/Room';
+// import Room from '@/components/Video_call/Room';
 
-const page = () => {
+// const page = () => {
 
-    return (
-        <div>
-            <Room />
-        </div>
-    );
-};
+//     return (
+//         <div>
+//             <Room />
+//         </div>
+//     );
+// };
 
-export default page;
+// export default page;

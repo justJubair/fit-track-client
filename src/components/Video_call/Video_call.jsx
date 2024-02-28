@@ -22,7 +22,7 @@ const Video_call = () => {
 
     const handelJoinRoom = useCallback((data) => {
         const { email, room } = data
-        console.log(email, room)
+        // console.log(email, room)
         // redirect(`/video_call/${room}`)
         router.push(`/video_call/${room}`);
     }, [router])

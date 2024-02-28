@@ -139,7 +139,7 @@ const BMICalculator = () => {
 
         </div>
         <div className="md:w-1/2">
-          <Paper className="md:p-4 p-0">
+          <Paper className="md:p-4 p-2">
             {result !== null && (
               <div>
                 <Typography variant="h6" gutterBottom>

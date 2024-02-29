@@ -5,9 +5,22 @@ import Link from "next/link";
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MessageIcon from '@mui/icons-material/Message';
 import { useSession } from "next-auth/react";
+import UserInfoDialog from "@/components/CustomizeDiet/FormDialog/UserInfoDialog";
+import { useState } from "react";
 
 const DashboardUser = ({ services, challenges,bookmarkedBlogs }) => {
+
+  // customize diet modal state
+  const [open, setOpen] = useState(false);
+  const [scroll, setScroll] = useState("paper");
+
   const {data:session} = useSession()
+
+  const handleClickOpen = (scrollType) => () => {
+    setOpen(true);
+   
+    setScroll(scrollType);
+  };
   return (
     <>
       <div className="flex flex-col-reverse md:grid md:grid-cols-12 gap-10 md:gap-4 mt-5 px-4 lg:px-2 mb-8">
@@ -155,11 +168,12 @@ const DashboardUser = ({ services, challenges,bookmarkedBlogs }) => {
           <div className="w-full">
                     {/* title */}
           <h2 className="text-lg md:text-xl font-bold mb-2 mt-8">
-            Personal Bests
+            Get Your Customize Diet Plan
           </h2>
             {/* run */}
-            <div className="flex items-center w-full gap-4 justify-between p-5 bg-purple-400 bg-opacity-60 rounded-xl">
-              <p className=" font-bold">Fastest 5K Run: 22min</p>
+            <div  className="flex items-center w-full gap-4 justify-between p-5 bg-purple-400 bg-opacity-60 rounded-xl">
+            <button className="font-bold btn" onClick={handleClickOpen("paper")}>Diet Form</button>
+            <UserInfoDialog open={open} setOpen={setOpen} scroll={scroll} setScroll={setOpen}/>
               <Image
                 width={250}
                 height={150}
@@ -167,13 +181,14 @@ const DashboardUser = ({ services, challenges,bookmarkedBlogs }) => {
                 src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/242bbd8c-aaf8-4aee-a3e4-e0df62d1ab27"
                 alt="RunLogoBanner"
               />
+              
             </div>
 
             {/* cycling and skating */}
             <div className="flex flex-col md:flex-row items-center gap-3 mt-3">
               {/* cycling */}
               <div className="flex flex-col gap-4 p-5 w-full bg-orange-300 bg-opacity-60 rounded-xl">
-              <p className="font-bold">Longest Distance Cycling: 4 miles</p>
+              <Link href="/diettable" className="font-bold bg-orange-400 text-center rounded-lg p-1 text-white duration-200 hover:scale-105">Diet Chart</Link>
                   <Image width={200} height={100}
                   className="w-24"
                     src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/a3b3cb3a-5127-498b-91cc-a1d39499164a"

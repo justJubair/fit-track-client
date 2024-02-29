@@ -19,12 +19,11 @@ import { Controller, useForm } from "react-hook-form";
 import Image from "next/image";
 import LOGO from "../../../assets/images/logo02.png";
 import { useSession } from "next-auth/react";
-import { toast } from "react-toastify";
 import submitHealthInfo from "@/app/api/post/postUserHealthInfo";
 
-const UserInfoDialog = ({ serv }) => {
-  const [open, setOpen] = useState(false);
-  const [scroll, setScroll] = useState("paper");
+const UserInfoDialog = ({ open, setOpen, scroll }) => {
+  // const [open, setOpen] = useState(false);
+  // const [scroll, setScroll] = useState("paper");
 
   const {
     control,
@@ -47,10 +46,10 @@ const UserInfoDialog = ({ serv }) => {
     handleClose();
   };
 
-  const handleClickOpen = (scrollType) => () => {
-    setOpen(true);
-    setScroll(scrollType);
-  };
+  // const handleClickOpen = (scrollType) => () => {
+  //   setOpen(true);
+  //   setScroll(scrollType);
+  // };
 
   const handleClose = () => {
     setOpen(false);
@@ -68,7 +67,7 @@ const UserInfoDialog = ({ serv }) => {
 
   return (
     <>
-      <Button
+      {/* <Button
         sx={{
           my: 2,
           color: { xs: "#000000", md: "#fff" },
@@ -78,7 +77,7 @@ const UserInfoDialog = ({ serv }) => {
         onClick={handleClickOpen("paper")}
       >
         Customized Diet
-      </Button>
+      </Button> */}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -263,7 +262,7 @@ const UserInfoDialog = ({ serv }) => {
             </form>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
+            <Button sx={{color: "white"}} onClick={handleClose}>Cancel</Button>
             <Button
               type="submit"
               variant="contained"

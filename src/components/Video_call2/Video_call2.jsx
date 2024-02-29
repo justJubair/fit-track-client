@@ -1,26 +1,23 @@
 "use client"
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useCallback, useState } from 'react';
 import { VideocamTwoTone } from "@mui/icons-material";
-import vidow from "./Animation - 1709216520437.json"
+import videoAnimation from "./Animation - 1709216520437.json"
 import Lottie from "lottie-react";
 const VideoCall2 = () => {
+    const pathname = usePathname()
+    console.log(pathname)
     const [room, setRoomId] = useState("")
-    console.log(room)
     const router = useRouter()
     const handelVideoCall = useCallback(
         (e) => {
             e.preventDefault()
             router.push(`/video_call/${room}`);
         },
-        [room]
+        [room, router]
     )
-    // const handelVideoCall = (e) => {
-    //     e.preventDefault()
-    //     router.push(`/video_call/${room}`);
 
-    // }
     return (
         <div>
             <div className="max-w-7xl mx-auto h-screen flex justify-center items-center">
@@ -47,7 +44,7 @@ const VideoCall2 = () => {
                     </div>
                 </div>
                 <div className="md:w-1/2 ">
-                    <Lottie animationData={vidow} />;
+                    <Lottie animationData={videoAnimation} />;
                 </div>
             </div>
         </div>

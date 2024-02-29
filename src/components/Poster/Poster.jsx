@@ -8,7 +8,7 @@ const Poster = () => {
       <Marquee autoFill={true} speed={30}>
         <div className="flex flex-col gap-6">
           <Image
-            src="https://shorturl.at/lKQZ1"
+            src="https://images.pexels.com/photos/163403/box-sport-men-training-163403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="poster img 1"
             width="0"
             height="0"
@@ -16,7 +16,7 @@ const Poster = () => {
             style={{ width: 'auto', height: '350px' }}
           />
           <Image
-            src="https://shorturl.at/aikPQ"
+            src="https://images.pexels.com/photos/2294363/pexels-photo-2294363.jpeg?auto=compress&cs=tinysrgb&w=600"
             priority
             alt="poster img 2"
             width="0"
@@ -25,7 +25,7 @@ const Poster = () => {
             style={{ width: '500px', height: '350px' }}
           />
           <Image
-            src="https://shorturl.at/hCDEL"
+            src="https://images.pexels.com/photos/341003/pexels-photo-341003.jpeg?auto=compress&cs=tinysrgb&w=600"
             alt="poster img 3"
             width="0"
             height="0"
@@ -35,14 +35,14 @@ const Poster = () => {
         </div>
         <div className=" mx-6 flex flex-col gap-6">
           <Image
-            src="https://shorturl.at/cewVX"
+            src="https://images.pexels.com/photos/136404/pexels-photo-136404.jpeg?auto=compress&cs=tinysrgb&w=600"
             alt="poster img 4"
             width="0"
             height="0"
             sizes="100vw"
             style={{ width: '500px', height: '350px' }}
           />
-          <Image src="https://t.ly/B2eTb" alt="poster img 5" width="0"
+          <Image src="https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg?auto=compress&cs=tinysrgb&w=600" alt="poster img 5" width="0"
             height="0"
             sizes="100vw"
             style={{ width: '500px', height: '350px' }} />

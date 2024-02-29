@@ -14,37 +14,37 @@ const Footer = () => {
         <div className="space-y-3">
           <Typography
             component="h1"
-            className="text-[14px] font-semibold hover:cursor-pointer"
+            className="text-[14px] font-semibold hover:cursor-pointer hover:underline "
           >
             GIFT CARDS
           </Typography>
           <Typography
             component="p"
-            className="text-[14px] font-semibold hover:cursor-pointer"
+            className="text-[14px] font-semibold hover:cursor-pointer hover:underline"
           >
             FIND A STORE
           </Typography>
           <Typography
             component="p"
-            className="text-[14px] font-semibold hover:cursor-pointer"
+            className="text-[14px] font-semibold hover:cursor-pointer hover:underline"
           >
             BECOME A MEMBER
           </Typography>
           <Typography
             component="p"
-            className="text-[14px] font-semibold hover:cursor-pointer"
+            className="text-[14px] font-semibold hover:cursor-pointer hover:underline"
           >
             FitTrack X NBA
           </Typography>
           <Typography
             component="p"
-            className="text-[14px] font-semibold hover:cursor-pointer"
+            className="text-[14px] font-semibold hover:cursor-pointer hover:underline"
           >
             FitTrack JOURNAL
           </Typography>
           <Typography
             component="p"
-            className="text-[14px] font-semibold hover:cursor-pointer"
+            className="text-[14px] font-semibold hover:cursor-pointer hover:underline"
           >
             SEND US FEEDBACK
           </Typography>
@@ -56,43 +56,43 @@ const Footer = () => {
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Order Status
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Shipping and Delivery
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Returns
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Order Cancellation
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Payment Options
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Gift Card Balance
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Contact Us
           </Typography>
@@ -164,32 +164,32 @@ const Footer = () => {
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             News
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             {" "}
             Careers
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Investors
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Purpose
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Sustainability
           </Typography>
@@ -250,32 +250,32 @@ const Footer = () => {
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Student
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             {" "}
             Military
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Teacher
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             First Responders & Medical Professionals
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Birthday
           </Typography>
@@ -337,26 +337,26 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row gap-7 justify-end py-4">
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Guides
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             {" "}
             Terms of Sale
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             Terms of Use
           </Typography>
           <Typography
             component="p"
-            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer"
+            className="text-[12px] text-[#7e7e7e] font-semibold hover:cursor-pointer hover:underline"
           >
             FitTrack Privacy Policy
           </Typography>

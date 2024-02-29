@@ -6,7 +6,7 @@ import "./trainer.css";
 import { ToastContainer, toast } from "react-toastify";
 import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
 import { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import axios from "axios";
 import PrivateRoute from "../Private/PrivateRoute";
 import { useRouter } from "next/navigation";
@@ -26,7 +26,7 @@ const Trainers = ({ allTrainers }) => {
   const [userData, setUserData] = useState([]);
   useEffect(() => {
     if (!session) {
-      router.push("/");
+      signIn()
     }
     if (session && session.user && session.user.email) {
       axios

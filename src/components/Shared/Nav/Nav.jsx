@@ -121,7 +121,7 @@ const Nav = () => {
             </Link>
 
           ))}
-          <UserInfoDialog></UserInfoDialog>
+          {/* <UserInfoDialog></UserInfoDialog> */}
         </Box>
 
         {/* Join/Sign In/Help section */}

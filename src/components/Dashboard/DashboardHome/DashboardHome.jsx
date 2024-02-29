@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { getSingleUser } from "@/api/getSingleUser";
 import getAllBlogs from "@/api/getAllBlogs";
@@ -12,7 +12,7 @@ const DashboardHome = ({services, challenges}) => {
   const [currentUser, setCurrentUser] = useState({})
 
   const { data: session } = useSession();
- 
+
 
   useEffect(() => {
 
@@ -30,8 +30,11 @@ const DashboardHome = ({services, challenges}) => {
     };
 
     getBookmarkedBlog();
-  }, [session?.user?.email]);
+  }, [session?.user?.email, session]);
 
+  if (!session) {
+   return signIn()
+  }
   return (
     <>
       {

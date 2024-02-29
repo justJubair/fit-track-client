@@ -1,10 +1,11 @@
+import { Box } from "@mui/system";
 import Image from "next/image";
 import React from "react";
 import Marquee from "react-fast-marquee";
 
 const Poster = () => {
   return (
-    <div>
+    <div className="py-8 md:py-[100px]">
       <Marquee autoFill={true} speed={30}>
         <div className="flex flex-col gap-6">
           <Image

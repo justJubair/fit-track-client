@@ -101,42 +101,7 @@ const Login = () => {
 
 
 
-    Notiflix.Notify.init({
-        width: '300px',
-        position: 'right-top',
-        distance: '10px',
-        opacity: 1,
-        borderRadius: '5px',
-        rtl: false,
-        timeout: 2000,
-        messageMaxLength: 110,
-        backOverlay: true,
-        backOverlayColor: 'rgba(0,0,0,0.5)',
-        plainText: true,
-        showOnlyTheLastOne: true,
-        ID: 'NotiflixNotify',
-        className: 'notiflix-notify',
-        zindex: 4001,
-        fontFamily: 'Quicksand',
-        fontSize: '18px',
-        cssAnimation: true,
-        cssAnimationDuration: 600,
-        cssAnimationStyle: 'zoom',
-        closeButton: false,
-        useIcon: true,
-        useFontAwesome: false,
-        fontAwesomeIconStyle: 'shadow',
-        fontAwesomeIconSize: '20px',
-        success: {
-            background: 'black',
-            textColor: '#fff',
-            childClassName: 'notiflix-notify-success',
-            notiflixIconColor: '#378AE5',
-            fontAwesomeClassName: 'fas fa-check-circle',
-            fontAwesomeIconColor: '#378AE5',
-            backOverlayColor: 'rgba(55, 118, 248, 0.8)',
-        }
-    });
+  
 
 
     if (session) {
@@ -189,11 +154,11 @@ const Login = () => {
                             <h3 className="social-text">Or</h3>
                             <div className="social-icons">
 
-                                <button className="social-icon" onClick={() => handleSignUpGoogle()}>
+                                <button type="button" className="social-icon" onClick={() => handleSignUpGoogle()}>
                                     <FaGoogle />
                                 </button>
 
-                                <button className="social-icon" onClick={() => handleSignUpFacebook()}>
+                                <button type="button" className="social-icon" onClick={() => handleSignUpFacebook()}>
                                     <FaFacebook />
                                 </button>
 

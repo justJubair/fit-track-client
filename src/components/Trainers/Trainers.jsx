@@ -64,7 +64,7 @@ const Trainers = ({ allTrainers }) => {
     };
 
     axios
-      .post("http://localhost:5000/api/v1/postdatainuserfriendlist", {
+      .post("https://fit-track-server.vercel.app/api/v1/postdatainuserfriendlist", {
         temail,
         userDetails,
       })

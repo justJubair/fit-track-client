@@ -8,7 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Container } from "@mui/system";
-import { Typography } from "@mui/material";
+import { Tooltip, Typography } from "@mui/material";
 
 // icons
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -56,8 +56,12 @@ const ManageUsers = ({ users }) => {
                 <TableCell align="right">{user?.email}</TableCell>
                 <TableCell align="right">
                   {/* delete */}
-                <DeleteForeverIcon sx={{color: "red", marginRight: "1.2rem"}}/>
-                <EditNoteIcon sx={{color: "green"}}/>
+                  <Tooltip title="Delete" arrow>
+                <DeleteForeverIcon sx={{color: "red", marginRight: "1.2rem", cursor: "pointer"}}/>
+                </Tooltip>
+                <Tooltip title="Edit" arrow>
+                <EditNoteIcon sx={{color: "green", cursor: "pointer"}}/>
+                </Tooltip>
                   </TableCell>
          
               </TableRow>

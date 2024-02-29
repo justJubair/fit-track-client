@@ -20,6 +20,7 @@
     "@rumess/react-flip-countdown": "^1.2.6",
     "@stripe/react-stripe-js": "^2.5.0",
     "@stripe/stripe-js": "^3.0.0",
+    "@zegocloud/zego-uikit-prebuilt": "^1.11.0",
     "aos": "^2.3.4",
     "axios": "^1.6.7",
     "bcrypt": "^5.1.1",

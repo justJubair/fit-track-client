@@ -266,14 +266,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-* {
+
+
+.main {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-}
-
-.main {
   min-height: 100vh;
   background: #ecf0f3;
 }
@@ -535,7 +534,7 @@ body.open-modal .modal-container {
   visibility: hidden;
 }
 
-body.open-modal > .main-container {
+body.open-modal>.main-container {
   scale: 0.75;
 }
 
@@ -560,15 +559,16 @@ button.req-btn {
   margin-left: 0;
   margin-top: 10px;
 }
+
 @keyframes modal-window-in {
   0% {
     translate: -50% 10%;
     scale: 0.5;
   }
+
   100% {
     opacity: 1;
     scale: 1;
     visibility: visible;
   }
 }
-

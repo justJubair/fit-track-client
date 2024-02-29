@@ -43,10 +43,6 @@ const pages = [
     nav: "Trainers",
     route: "/trainers"
   },
-  {
-    nav: "Video Call",
-    route: "/video_call",
-  }
 ];
 
 const Nav = () => {

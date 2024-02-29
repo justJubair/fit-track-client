@@ -1,4 +1,4 @@
-import SocketProvider from "./context/SocketProvider";
+// import SocketProvider from "./context/SocketProvider";
 import "./globals.css";
 import AuthProvider from "@/components/Authentication/AuthProvider/AuthProvider";
 
@@ -11,9 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="overflow-x-hidden">
-        <SocketProvider>
+        {/* <SocketProvider> */}
           <AuthProvider>{children}</AuthProvider>
-        </SocketProvider>
+        {/* </SocketProvider> */}
       </body>
     </html>
   );

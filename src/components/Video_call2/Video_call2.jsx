@@ -1,18 +1,26 @@
 "use client"
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useState } from 'react';
-import imagePng from "./—Pngtree—cartoon hand drawn online education_5341181.png"
-import { VideocamOffTwoTone, VideocamTwoTone } from "@mui/icons-material";
+import React, { useCallback, useState } from 'react';
+import { VideocamTwoTone } from "@mui/icons-material";
+import vidow from "./Animation - 1709216520437.json"
+import Lottie from "lottie-react";
 const VideoCall2 = () => {
     const [room, setRoomId] = useState("")
     console.log(room)
     const router = useRouter()
-    const handelVideoCall = (e) => {
-        e.preventDefault()
-        router.push(`/video_call/${room}`);
+    const handelVideoCall = useCallback(
+        (e) => {
+            e.preventDefault()
+            router.push(`/video_call/${room}`);
+        },
+        [room]
+    )
+    // const handelVideoCall = (e) => {
+    //     e.preventDefault()
+    //     router.push(`/video_call/${room}`);
 
-    }
+    // }
     return (
         <div>
             <div className="max-w-7xl mx-auto h-screen flex justify-center items-center">
@@ -38,16 +46,8 @@ const VideoCall2 = () => {
                         }
                     </div>
                 </div>
-                <div className="md:w-1/2">
-                    <Image
-                        // className="w-full h-full"
-                        width={500}
-                        height={500}
-                        src="https://www.freepik.com/free-vector/windows-doors-services-abstract-concept-vector-illustration-replacement-installation-window-door-maintenance-repair-contractor-broken-glass-fly-screen-patio-abstract-metaphor_24070918.htm#fromView=search&page=1&position=29&uuid=20286425-cc28-45bb-b7d5-aa88499e5df0"
-                        // src={imagePng}
-                        alt="trainer image"
-                    />
-                    {/* <a href="https://www.flaticon.com/free-icons/video-call" title="video call icons">Video call icons created by Hilmy Abiyyu A. - Flaticon</a> */}
+                <div className="md:w-1/2 ">
+                    <Lottie animationData={vidow} />;
                 </div>
             </div>
         </div>

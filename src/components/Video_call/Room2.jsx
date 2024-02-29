@@ -46,27 +46,14 @@ const Room2 = () => {
         });
     }
     const router = useRouter()
-    const handelEnd = useCallback(
-        () => {
-            router.push(`/video_call`);
-        },
-        [router]
-    )
+
     return (
         <div className='w-full h-screen flex justify-start items-center'>
-            <div className='mx-auto'>
-                <div
-                    className={`w-full h-full `}
-                    ref={ourMeeting}
-                ></div>
-                {
-                    loader == false ?
-                        <div className='flex justify-center'>
-                            <button onClick={handelEnd} className='bg-red-500 h-20 w-20 mt-8 text-white rounded-full'><CallEnd /></button>
-                        </div> : ""
-                }
 
-            </div>
+            <div
+                className={`w-full h-full `}
+                ref={ourMeeting}
+            ></div>
         </div>
     );
 };

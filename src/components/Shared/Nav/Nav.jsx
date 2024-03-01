@@ -43,10 +43,6 @@ const pages = [
     nav: "Trainers",
     route: "/trainers"
   },
-  {
-    nav: "Video Call",
-    route: "/video_call",
-  }
 ];
 
 const Nav = () => {
@@ -121,7 +117,7 @@ const Nav = () => {
             </Link>
 
           ))}
-          <UserInfoDialog></UserInfoDialog>
+          {/* <UserInfoDialog></UserInfoDialog> */}
         </Box>
 
         {/* Join/Sign In/Help section */}
@@ -202,7 +198,7 @@ const Nav = () => {
                   </Link>
 
                 ))}
-                <UserInfoDialog></UserInfoDialog>
+                {/* <UserInfoDialog></UserInfoDialog> */}
                 <Box sx={{ flexGrow: 0, padding: "6px" }}>
                   <Menu
                     sx={{ mt: "45px" }}
@@ -221,15 +217,11 @@ const Nav = () => {
                     onClose={handleCloseUserMenu}
                   >
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                      <Typography variant="h5" sx={{ color: '#252525' }}>
+                      <Typography variant="p" sx={{ color: '#252525' }}>
                         {session?.user.email}
                       </Typography>
                     </MenuItem>
-                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                      <Link href="/">
-                        <Typography textAlign="center">Home</Typography>
-                      </Link>
-                    </MenuItem>
+                   
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Profile</Typography>
                     </MenuItem>
@@ -238,9 +230,9 @@ const Nav = () => {
                         <Typography textAlign="center">Dashboard</Typography>
                       </Link>
                     </MenuItem>
-                    <Link href="/diettable"> <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                    {/* <Link href="/diettable"> <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Diet Chart</Typography>
-                    </MenuItem> </Link>
+                    </MenuItem> </Link> */}
 
                     {/* Conditionally rendering Logout/Sign In based on session */}
                     {

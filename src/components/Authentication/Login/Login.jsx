@@ -101,7 +101,11 @@ const Login = () => {
 
 
 
+<<<<<<< HEAD
+  
+=======
  
+>>>>>>> 4d5a30555288a699f6bc04049c04c73b494fb740
 
 
     if (session) {
@@ -154,11 +158,11 @@ const Login = () => {
                             <h3 className="social-text">Or</h3>
                             <div className="social-icons">
 
-                                <button className="social-icon" onClick={() => handleSignUpGoogle()}>
+                                <button type="button" className="social-icon" onClick={() => handleSignUpGoogle()}>
                                     <FaGoogle />
                                 </button>
 
-                                <button className="social-icon" onClick={() => handleSignUpFacebook()}>
+                                <button type="button" className="social-icon" onClick={() => handleSignUpFacebook()}>
                                     <FaFacebook />
                                 </button>
 

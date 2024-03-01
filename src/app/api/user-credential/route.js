@@ -20,7 +20,7 @@ export async function POST(req) {
         const hashPassword = await bcrypt.hash(userDetails.password, 10);
         userDetails.password = hashPassword;
 
-        // console.log(userDetails);
+       
         await User.create(userDetails)
         return NextResponse.json({ message: 'Registratin successful!' }, { status: 201 })
     } catch (error) {

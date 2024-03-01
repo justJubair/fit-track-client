@@ -125,7 +125,7 @@ const Module = ({ module }) => {
         e.preventDefault();
         const form = e.target;
         const feedback = form.feedback.value;
-        console.log(session)
+        
 
         const feedBackData = {
             serviceId: module._id ,

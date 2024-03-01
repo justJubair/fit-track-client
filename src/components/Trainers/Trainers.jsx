@@ -2,7 +2,7 @@
 import { Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import "./trainer.css";
+import "./Trainer.css";
 import { ToastContainer, toast } from "react-toastify";
 import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
 import { useEffect, useState } from "react";
@@ -99,7 +99,7 @@ const Trainers = ({ allTrainers }) => {
                 paddingTop: "20px",
               }}
             >
-              Get your<span className="text-[#378ae5] ">Trainers Here</span>
+              Get your<span className="text-[#378ae5]"> Trainers Here</span>
             </Typography>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mx-3 gap-4 pb-12">
               {allTrainers.map((train) => (
@@ -170,7 +170,7 @@ const Trainers = ({ allTrainers }) => {
                     <div className="buttons">
                       <button onClick={handleConnect}>Connect</button>
                       <button onClick={() => toggleModal(train._id)}>
-                        Open Modal
+                       Details
                       </button>
 
                       <div
@@ -196,7 +196,8 @@ const Trainers = ({ allTrainers }) => {
                               )?.bio
                             }
                           </p>
-                          <button
+                         <div className="flex items-center mt-5">
+                         <button
                             onClick={() => {
                               handleShareReq(
                                 allTrainers.find(
@@ -204,10 +205,14 @@ const Trainers = ({ allTrainers }) => {
                                 )?.email
                               );
                             }}
-                            className="req-btn"
+                            
                           >
                             Send hire request...
                           </button>
+                          <button className="w-40">
+                            Video Call
+                          </button>
+                         </div>
                         </div>
                       )}
                     </div>

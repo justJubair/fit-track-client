@@ -22,7 +22,7 @@ const BlogCard = ({ challenge, incrementCount }) => {
 
 
     const { data: session } = useSession();
-    // console.log(session.user.email)
+    
     const router = useRouter();
 
     const handelLikeBtn = async (_id) => {
@@ -61,7 +61,7 @@ const BlogCard = ({ challenge, incrementCount }) => {
 
         const email = session?.user?.email
         const res = await axios.patch(`https://fit-track-server.vercel.app/api/v1/bookMark/${_id}?email=${email}`)
-        // console.log(res?.data)
+        
         if (res.data.modifiedCount) {
             toast.success(`Bookmarked`, {
                 position: "top-center",

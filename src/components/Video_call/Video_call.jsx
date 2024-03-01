@@ -4,8 +4,14 @@ import React, { useCallback, useState } from "react";
 import { VideocamTwoTone } from "@mui/icons-material";
 import videoAnimation from "./Animation - 1709216520437.json";
 import Lottie from "lottie-react";
+
+// import logo
+import logo from "../../assets/images/logo04.png"
+import Image from "next/image";
+import Link from "next/link";
+
 const VideoCall = () => {
-  const pathname = usePathname();
+
 
   const [room, setRoomId] = useState("");
   const router = useRouter();
@@ -19,6 +25,7 @@ const VideoCall = () => {
 
   return (
     <div>
+     <Link className="absolute top-4 left-4" href="/"> <Image src={logo} width={150} sx={{height: "auto"}} alt="logo"/></Link>
       <div className="max-w-7xl mx-auto h-screen flex justify-center items-center px-5">
         <div className="w-full md:w-1/2">
           <h1 className="text-2xl md:text-5xl font-bold my-8 md:leading-snug">

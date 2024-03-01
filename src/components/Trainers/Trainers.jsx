@@ -15,9 +15,8 @@ import { Notify } from "notiflix";
 
 const Trainers = ({ allTrainers }) => {
 
-
   const { data: session } = useSession();
-  
+
 
   const router = useRouter();
 
@@ -53,7 +52,7 @@ const Trainers = ({ allTrainers }) => {
   };
 
   const handleShareReq = (temail) => {
-    
+
     const userDetails = {
       targetId: userId,
       userEmail: session.user.email,
@@ -69,7 +68,7 @@ const Trainers = ({ allTrainers }) => {
         userDetails,
       })
       .then((res) => {
-     
+
         if (res.data === "Request Sent") {
           Notify.success("Request sent to this trainer!");
           router.push("http://localhost:3000/trainers");

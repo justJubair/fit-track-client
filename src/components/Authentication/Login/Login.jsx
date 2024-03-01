@@ -17,7 +17,7 @@ const Login = () => {
     const [userData, setUserData] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
     const notify = () => toast("Logged In!");
-    const notify2 = () => toast("Registration successful!");
+   
 
 
     const handleRegisterClick = () => {
@@ -101,7 +101,11 @@ const Login = () => {
 
 
 
+<<<<<<< HEAD
   
+=======
+ 
+>>>>>>> 4d5a30555288a699f6bc04049c04c73b494fb740
 
 
     if (session) {

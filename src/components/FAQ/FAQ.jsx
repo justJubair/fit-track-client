@@ -18,7 +18,7 @@ const faqData = [
     answer:  'If you become a Pro User, you will gain exclusive opportunities not available to regular users, such as direct communication with the trainer, the ability to choose services, and access to unique challenges',
   },
   {
-    question: 'what is the Monthly subscription fee',
+    question: 'What is the Monthly subscription fee',
     answer: 'The Small Office/Home Office plan is $16/month, the Business plan is $50/month, and the Team plan is $33/month',
   },
   // Add more FAQ items as needed

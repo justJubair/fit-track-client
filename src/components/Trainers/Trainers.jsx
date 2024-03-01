@@ -198,6 +198,7 @@ const Trainers = ({ allTrainers }) => {
                           </p>
                          <div className="flex items-center mt-5">
                          <button
+                          className="flex-1"
                             onClick={() => {
                               handleShareReq(
                                 allTrainers.find(
@@ -209,9 +210,11 @@ const Trainers = ({ allTrainers }) => {
                           >
                             Send hire request...
                           </button>
-                          <button className="w-40">
+                         <Link className="flex-1" href="/videoCall">
+                         <button >
                             Video Call
                           </button>
+                         </Link>
                          </div>
                         </div>
                       )}

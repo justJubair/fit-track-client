@@ -1,4 +1,3 @@
-
 import { getAllTrainers } from '@/api/getAllTrainers';
 import Trainers from '@/components/Trainers/Trainers';
 

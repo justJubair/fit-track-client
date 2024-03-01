@@ -1,4 +1,4 @@
-import SocketProvider from "./context/SocketProvider";
+// import SocketProvider from "./context/SocketProvider";
 import "./globals.css";
 import AuthProvider from "@/components/Authentication/AuthProvider/AuthProvider";
 

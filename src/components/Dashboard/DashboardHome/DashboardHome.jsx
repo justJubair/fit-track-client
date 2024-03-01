@@ -32,9 +32,7 @@ const DashboardHome = ({services, challenges}) => {
     getBookmarkedBlog();
   }, [session?.user?.email, session]);
 
-  if (!session) {
-   return signIn()
-  }
+
   return (
     <>
       {

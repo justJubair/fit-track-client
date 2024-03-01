@@ -100,14 +100,6 @@ const Login = () => {
     }, [session, router])
 
 
-
-<<<<<<< HEAD
-  
-=======
- 
->>>>>>> 4d5a30555288a699f6bc04049c04c73b494fb740
-
-
     if (session) {
         Notify.success('Logged In!')
         setTimeout(function () {

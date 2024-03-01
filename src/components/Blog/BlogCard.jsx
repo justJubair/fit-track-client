@@ -22,7 +22,7 @@ const BlogCard = ({ challenge, incrementCount }) => {
 
 
     const { data: session } = useSession();
-    
+
     const router = useRouter();
 
     const handelLikeBtn = async (_id) => {
@@ -34,6 +34,28 @@ const BlogCard = ({ challenge, incrementCount }) => {
             const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/like", like);
             if (res.data.modifiedCount) {
                 incrementCount()
+                toast.success(`liked`, {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+            }
+            else {
+                toast.warning(`Already liked`, {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
             }
 
 
@@ -51,6 +73,28 @@ const BlogCard = ({ challenge, incrementCount }) => {
             const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/Dislike", DisLikes);
             if (res.data.modifiedCount) {
                 incrementCount()
+                toast.success(`Disliked`, {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+            }
+            else{
+                toast.warning(`Already Disliked`, {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
             }
         }
         catch (error) {
@@ -61,7 +105,7 @@ const BlogCard = ({ challenge, incrementCount }) => {
 
         const email = session?.user?.email
         const res = await axios.patch(`https://fit-track-server.vercel.app/api/v1/bookMark/${_id}?email=${email}`)
-        
+
         if (res.data.modifiedCount) {
             toast.success(`Bookmarked`, {
                 position: "top-center",

@@ -1,18 +1,19 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import { FaFacebook, FaLock } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import "./Login.css"
 import { useRouter } from 'next/navigation';
 import { useSession, signIn } from "next-auth/react"
 import { Typography } from "@mui/material";
-import { Notify } from 'notiflix';
-
+import toast, { Toaster } from 'react-hot-toast';
 
 const RegisterPage = () => {
     const [isRegisterActive, setRegisterActive] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
-
-
 
 
     const handleRegisterClick = () => {
@@ -35,7 +36,7 @@ const RegisterPage = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        
+
 
         const res = await signIn('credentials', {
             email: email,
@@ -49,7 +50,7 @@ const RegisterPage = () => {
         email: '',
         password: '',
         role: 'default' // Set default value for the role field
-      });
+    });
 
     // this is signUp in section
     const handleChange = (e) => {
@@ -76,7 +77,7 @@ const RegisterPage = () => {
             const response = await res.json();
             setErrorMessage(response.message);
         } else {
-            Notify.success('Registration Successful!')
+            toast.success('Registration successful!');
             router.refresh();
             setTimeout(function () {
                 router.push('/')
@@ -95,7 +96,7 @@ const RegisterPage = () => {
     }
 
     if (session) {
-        Notify.success('Logged In!')
+        toast.success('Logged In', { id: 'register' });
         setTimeout(function () {
             router.push('/')
         }, 2000);
@@ -118,14 +119,14 @@ const RegisterPage = () => {
                             <label>Email</label>
                             <span className="icon">
                                 {" "}
-Email
+                                <MdEmail />
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 2, "--j": 23 }}>
                             <input type="text" name="password" required />
                             <label>Password</label>
                             <span className="icon">
-Icon
+                                <FaLock />
                             </span>
                         </div>
                         <button
@@ -160,11 +161,11 @@ Icon
                             <div className="social-icons">
 
                                 <button className="social-icon" onClick={() => handleSignUpGoogle()}>
-                                    Google
+                                    <FaGoogle/>
                                 </button>
 
                                 <button className="social-icon" onClick={() => handleSignUpFacebook()}>
-                                    facebook
+                                    <FaFacebook/>
                                 </button>
 
                             </div>
@@ -196,7 +197,7 @@ Icon
                             <label>Name</label>
                             <span className="icon">
                                 {" "}
-                                User
+                                <FaUser/>
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 19, "--j": 2 }}>
@@ -208,7 +209,7 @@ Icon
                             <label>Email</label>
                             <span className="icon">
                                 {" "}
-Email
+                                <MdEmail/>
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 19, "--j": 2 }}>
@@ -232,7 +233,7 @@ Email
                                 required />
                             <label>Password</label>
                             <span className="icon">
-Icon
+                                <FaLock/>
                             </span>
 
                         </div>
@@ -284,11 +285,11 @@ Icon
                         <h3 className="social-text">Or</h3>
                         <div className="social-icons">
                             <button className="social-icon" onClick={() => handleSignUpGoogle()}>
-                                Google
+                                <FaGoogle/>
                             </button>
 
                             <button className="social-icon" onClick={() => handleSignUpFacebook()}>
-                                facebook
+                                <FaFacebook/>
                             </button>
 
                         </div>
@@ -306,6 +307,7 @@ Icon
                     </p>
                 </div>
             </div>
+            <Toaster />
         </div>
     );
 };

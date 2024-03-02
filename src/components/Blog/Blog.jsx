@@ -3,12 +3,9 @@ import { Avatar, Button } from "@mui/material";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 import './Blog.css';
 import BlogCard from "./BlogCard";
-import Blog2 from "./BlogCard/BlogCard2";
-
+import toast, { Toaster } from 'react-hot-toast';
 
 const Blog = () => {
 
@@ -63,15 +60,8 @@ const Blog = () => {
         // Final Blog
         const res = await axios.post("https://fit-track-server.vercel.app/api/v1/blogs", blog)
         if (res.data?._id) {
-            toast.success('Blog Uploaded!', {
-                position: "top-center",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
+            toast.success('Blog Uploaded!',{
+                id: 'blog'
             });
             form.reset()
             incrementCount()
@@ -134,8 +124,7 @@ const Blog = () => {
 
                 </div>
             </div>
-            <ToastContainer />
-
+            <Toaster/>
         </div>
 
     );

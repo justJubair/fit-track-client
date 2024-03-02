@@ -122,32 +122,33 @@ const Nav = () => {
 
         {/* Join/Sign In/Help section */}
         <div className="flex gap-4 text-white font-bold items-center">
-          <Link href="/api/auth/register">Join Us</Link>
+            {!session &&  <Link href="/api/auth/register">Join Us</Link>}
+         
           <span>|</span>
-          <Button onClick={() => { signIn() }} sx={{ color: '#fff' }}>Sign In</Button>
+          {
+            session ? <Button onClick={() => { signOut() }} sx={{ color: '#fff' }}>Log Out</Button> : <Button onClick={() => { signIn() }} sx={{ color: '#fff' }}>Sign In</Button>
+          }
+          {/* <Button onClick={() => { signIn() }} sx={{ color: '#fff' }}>Sign In</Button> */}
           <span>|</span>
           <Link href="#">Help </Link>
 
           {/* User Avatar or Sign In button */}
-          <span className="hidden lg:block pl-2">
+          {
+            session &&  <span className="hidden lg:block pl-2">
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {
-                  session ?
+              
                     <Avatar
-                      alt="Remy Sharp"
+                      alt="User avatar"
                       src={session.user.image}
                     />
-                    :
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="https://cdn2.vectorstock.com/i/1000x1000/17/61/male-avatar-profile-picture-vector-10211761.jpg"
-                    />
-                }
+                   
 
               </IconButton>
             </Tooltip>
           </span>
+          }
+         
         </div>
       </div>
 

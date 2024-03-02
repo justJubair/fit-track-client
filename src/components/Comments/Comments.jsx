@@ -13,7 +13,7 @@ import {
 import { Box } from '@mui/system';
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import { ToastContainer, toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 
@@ -42,16 +42,7 @@ const Comments = ({ id, comments, incrementCount }) => {
             
 
             if (res.data.modifiedCount) {
-                toast.success('Comment Uploaded!', {
-                    position: "top-center",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
+                toast.success('Comment Uploaded!');
                 form.reset()
                 incrementCount()
             };
@@ -70,19 +61,11 @@ const Comments = ({ id, comments, incrementCount }) => {
            
 
             if (res.data.modifiedCount) {
-                toast.success('Deleted!', {
-                    position: "top-center",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
+                toast.success('Deleted!');
                 incrementCount()
             };
         } catch (error) {
+            toast.error(error)
             console.error("Error occurred while making the request:", error);
         }
     }
@@ -159,7 +142,7 @@ const Comments = ({ id, comments, incrementCount }) => {
                     </AccordionDetails>
                 </Accordion>
             </div>
-            <ToastContainer />
+            <Toaster/>
         </div>
     );
 };

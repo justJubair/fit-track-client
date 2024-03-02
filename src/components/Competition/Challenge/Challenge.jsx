@@ -1,9 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ChallengeCard from "./ChallengeCard";
-import { Button } from "@mui/material";
 import getChallenges from "@/app/api/get/getChallenges";
-import { ToastContainer } from "react-toastify";
 
 const Challenge = () => {
   const [challenges, setChallenges] = useState([]);
@@ -29,8 +27,6 @@ const Challenge = () => {
         ))}
       </div>
       </div>
-      
-      <ToastContainer />
     </div>
   );
 };

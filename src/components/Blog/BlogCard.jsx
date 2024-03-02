@@ -14,9 +14,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { toast } from 'react-toastify';
-
+import toast, { Toaster } from 'react-hot-toast';
 
 const BlogCard = ({ challenge, incrementCount }) => {
 
@@ -34,33 +32,13 @@ const BlogCard = ({ challenge, incrementCount }) => {
             const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/like", like);
             if (res.data.modifiedCount) {
                 incrementCount()
-                toast.success(`liked`, {
-                    position: "top-center",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
+                toast.success(`liked`);
             }
             else {
-                toast.warning(`Already liked`, {
-                    position: "top-center",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
+                toast(`Already liked`);
             }
-
-
-
         } catch (error) {
+            toast.error(error)
             console.error("Error liking blog:", error);
         }
     }
@@ -73,31 +51,14 @@ const BlogCard = ({ challenge, incrementCount }) => {
             const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/Dislike", DisLikes);
             if (res.data.modifiedCount) {
                 incrementCount()
-                toast.success(`Disliked`, {
-                    position: "top-center",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
+                toast.success(`Disliked`);
             }
-            else{
-                toast.warning(`Already Disliked`, {
-                    position: "top-center",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
+            else {
+                toast(`Already Disliked`);
             }
         }
         catch (error) {
+            toast.error(error)
             console.error("Error", error)
         }
     }
@@ -107,28 +68,10 @@ const BlogCard = ({ challenge, incrementCount }) => {
         const res = await axios.patch(`https://fit-track-server.vercel.app/api/v1/bookMark/${_id}?email=${email}`)
 
         if (res.data.modifiedCount) {
-            toast.success(`Bookmarked`, {
-                position: "top-center",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            toast.success(`Bookmarked`);
         }
         if (!res.data.modifiedCount) {
-            toast.warning(`Already Marked`, {
-                position: "top-center",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            toast(`Already Marked`);
         }
     }
 
@@ -201,11 +144,8 @@ const BlogCard = ({ challenge, incrementCount }) => {
                     </div>
 
                 </Box>
-
-
             </Card>
-
-
+            <Toaster />
         </div >
     );
 };

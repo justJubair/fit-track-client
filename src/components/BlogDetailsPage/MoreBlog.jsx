@@ -20,7 +20,7 @@ const MoreBlog = () => {
                 challenges.slice(0, 5).map((challenge, i) => (
                     <Link
                         href={`/blog/${challenge?._id}`}
-                        key={i} className='flex bg-blue-100 rounded-xl gap-2 '>
+                        key={i} className='flex bg-blue-100 rounded-xl gap-2 shadow-2xl space-y-4'>
                         <Image
                             priority={true}
                             src={challenge?.image}

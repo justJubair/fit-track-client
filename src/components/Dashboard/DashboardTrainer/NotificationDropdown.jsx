@@ -8,7 +8,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 import axios from "axios";
-import { Notify } from "notiflix";
+import toast, { Toaster } from 'react-hot-toast';
 
 const NotificationDropdown = ({ currentUser }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -30,7 +30,7 @@ const handleFriendAccept = async(_id)=>{
     const data = {userId, friendRequestId: _id, requestStatus: "accepted"}
     const dbResponse = await axios.patch("https://fit-track-server.vercel.app/api/v1/userFriendUpdate", data)
     if(dbResponse?.data?._id){
-      Notify.success('Request Accepted!')
+      toast.success('Request Accepted!')
     }
 }
 // handle friend request reject
@@ -39,7 +39,7 @@ const handleFriendReject = async(_id)=>{
   const data = {userId, friendRequestId: _id, requestStatus: "rejected"}
   const dbResponse = await axios.patch("https://fit-track-server.vercel.app/api/v1/userFriendUpdate", data)
   if(dbResponse?.data?._id){
-    Notify.success('Request Rejected!')
+    toast.success('Request Rejected!')
   }
 }
   return (
@@ -126,6 +126,7 @@ const handleFriendReject = async(_id)=>{
         }
         </div>
       </Menu>
+      <Toaster/>
     </React.Fragment>
   );
 };

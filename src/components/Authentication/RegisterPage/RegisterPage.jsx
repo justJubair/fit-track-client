@@ -1,10 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
-import { FaFacebook, FaLock } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import { FaUser } from "react-icons/fa";
-import { useEffect, useState } from "react";
-import { FaGoogle } from "react-icons/fa";
+import { useEffect, useState } from "react"
 import "./Login.css"
 import { useRouter } from 'next/navigation';
 import { useSession, signIn } from "next-auth/react"
@@ -123,14 +119,14 @@ const RegisterPage = () => {
                             <label>Email</label>
                             <span className="icon">
                                 {" "}
-                                <MdEmail />
+Email
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 2, "--j": 23 }}>
                             <input type="text" name="password" required />
                             <label>Password</label>
                             <span className="icon">
-                                <FaLock />
+Icon
                             </span>
                         </div>
                         <button
@@ -165,11 +161,11 @@ const RegisterPage = () => {
                             <div className="social-icons">
 
                                 <button className="social-icon" onClick={() => handleSignUpGoogle()}>
-                                    <FaGoogle />
+                                    Google
                                 </button>
 
                                 <button className="social-icon" onClick={() => handleSignUpFacebook()}>
-                                    <FaFacebook />
+                                    facebook
                                 </button>
 
                             </div>
@@ -201,7 +197,7 @@ const RegisterPage = () => {
                             <label>Name</label>
                             <span className="icon">
                                 {" "}
-                                <FaUser />
+                                User
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 19, "--j": 2 }}>
@@ -213,7 +209,7 @@ const RegisterPage = () => {
                             <label>Email</label>
                             <span className="icon">
                                 {" "}
-                                <MdEmail />
+Email
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 19, "--j": 2 }}>
@@ -225,7 +221,7 @@ const RegisterPage = () => {
                             <label>imagUrl</label>
                             {/* <span className="icon">
                                 {" "}
-                                <MdEmail />
+Email
                             </span> */}
                         </div>
 
@@ -237,7 +233,7 @@ const RegisterPage = () => {
                                 required />
                             <label>Password</label>
                             <span className="icon">
-                                <FaLock />
+Icon
                             </span>
 
                         </div>
@@ -289,11 +285,11 @@ const RegisterPage = () => {
                         <h3 className="social-text">Or</h3>
                         <div className="social-icons">
                             <button className="social-icon" onClick={() => handleSignUpGoogle()}>
-                                <FaGoogle />
+                                Google
                             </button>
 
                             <button className="social-icon" onClick={() => handleSignUpFacebook()}>
-                                <FaFacebook />
+                                facebook
                             </button>
 
                         </div>

@@ -15,7 +15,7 @@ import Image from 'next/image';
 import LOGO from "../../assets/images/logo02.png"
 import { Box } from '@mui/system';
 import { postTrainer } from '@/api/postTrainer';
-import { toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -50,16 +50,7 @@ const {
       }
       const dbResponse = await postTrainer(Trainer)
       if(dbResponse?._id){
-        toast.success("Registration successfull.", {
-          position: "top-center",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
+        toast.success('Form submited!')
         reset()
       }
    
@@ -376,6 +367,7 @@ const {
             </Button>
           </DialogActions>
       </Dialog>
+      <Toaster/>
     </React.Fragment>
   );
 }

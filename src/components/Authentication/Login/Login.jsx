@@ -8,15 +8,13 @@ import { useEffect, useState } from "react";
 import "./SignUp.css"
 import { useRouter } from 'next/navigation';
 import { useSession, signIn } from "next-auth/react"
-import { Notify } from 'notiflix';
-import { toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import { Typography } from "@mui/material";
+
 const Login = () => {
     const [isRegisterActive, setRegisterActive] = useState(false);
     const [userData, setUserData] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
-    const notify = () => toast("Logged In!");
-   
 
 
     const handleRegisterClick = () => {
@@ -45,7 +43,6 @@ const Login = () => {
             email: email,
             password: password,
         })
-        notify();
     }
     // this is signUp in section
 
@@ -73,7 +70,7 @@ const Login = () => {
             const response = await res.json();
             setErrorMessage(response.message);
         } else {
-            Notify.success('Registration Successful!')
+            toast.success('Registration successful!')
             router.refresh();
             setTimeout(function () {
                 router.push('/')
@@ -100,7 +97,7 @@ const Login = () => {
 
 
     if (session) {
-        Notify.success('Logged In!')
+        toast.success('Logged In',{ id: 'login'})
         setTimeout(function () {
             router.push('/')
         }, 2000);
@@ -122,14 +119,14 @@ const Login = () => {
                             <label>Email</label>
                             <span className="icon">
                                 {" "}
-                                EMAIL
+                                <MdEmail/>
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 2, "--j": 23 }}>
                             <input type="text" name="password" required />
                             <label>Password</label>
                             <span className="icon">
-                                ICON
+                                <FaLock/>
                             </span>
                         </div>
                         <button
@@ -186,7 +183,7 @@ const Login = () => {
                             <label>Name</label>
                             <span className="icon">
                                 {" "}
-                                icon
+                               <FaUser/>
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 19, "--j": 2 }}>
@@ -198,7 +195,7 @@ const Login = () => {
                             <label>Email</label>
                             <span className="icon">
                                 {" "}
-                                EMAIL
+                                <MdEmail/>
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 19, "--j": 2 }}>
@@ -222,7 +219,7 @@ const Login = () => {
                                 required />
                             <label>Password</label>
                             <span className="icon">
-                                ICON
+                               <FaLock/>
                             </span>
 
                         </div>
@@ -261,11 +258,11 @@ const Login = () => {
                         <div className="social-icons">
 
                             <button className="social-icon" onClick={() => handleSignUpGoogle()}>
-                                GOOGLE
+                                <FaGoogle/>
                             </button>
 
                             <button className="social-icon" onClick={() => handleSignUpFacebook()}>
-                          FACEBOOK
+                          <FaGoogle/>
                             </button>
 
                         </div>
@@ -283,6 +280,7 @@ const Login = () => {
                     </p>
                 </div>
             </div>
+            <Toaster reverseOrder={false}/> 
         </div>
     );
 };

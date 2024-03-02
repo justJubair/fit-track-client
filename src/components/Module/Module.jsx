@@ -125,7 +125,7 @@ const Module = ({ module }) => {
         e.preventDefault();
         const form = e.target;
         const feedback = form.feedback.value;
-        console.log(session)
+        
 
         const feedBackData = {
             serviceId: module._id ,
@@ -134,7 +134,7 @@ const Module = ({ module }) => {
             comment: feedback,
             rating: newRatingValue
         }
-       axios.post('http://localhost:5000/api/v1/postuserreview',feedBackData)
+       axios.post('https://fit-track-server.vercel.app/api/v1/postuserreview',feedBackData)
        .then((res)=>{
         if(res.data == 'Review Posted!'){
             Notify.info('Thank your for your review!')

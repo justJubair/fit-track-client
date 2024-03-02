@@ -1,5 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
+import { FaFacebook, FaLock } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import "./SignUp.css"
 import { useRouter } from 'next/navigation';
@@ -12,7 +16,7 @@ const Login = () => {
     const [userData, setUserData] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
     const notify = () => toast("Logged In!");
-    const notify2 = () => toast("Registration successful!");
+   
 
 
     const handleRegisterClick = () => {
@@ -145,12 +149,12 @@ const Login = () => {
                             <h3 className="social-text">Or</h3>
                             <div className="social-icons">
 
-                                <button className="social-icon" onClick={() => handleSignUpGoogle()}>
-                                 gOOGLE
+                                <button type="button" className="social-icon" onClick={() => handleSignUpGoogle()}>
+                                    <FaGoogle />
                                 </button>
 
-                                <button className="social-icon" onClick={() => handleSignUpFacebook()}>
-                                    FACEBOOK
+                                <button type="button" className="social-icon" onClick={() => handleSignUpFacebook()}>
+                                    <FaFacebook />
                                 </button>
 
                             </div>

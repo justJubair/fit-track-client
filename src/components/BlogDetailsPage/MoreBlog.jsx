@@ -12,9 +12,9 @@ const MoreBlog = () => {
         };
         getAllBlogs().then(result => setChallenges(result));
     }, [])
-    // console.log(challenges)
+    
     return (
-        <div className='px-10  space-y-3  top-16 bottom-16 z-20 '>
+        <div className='px-10  space-y-3 fixed top-16 bottom-16 z-20 '>
             <h1 className='text-2xl text-center my-4 italic font-bold '>More...</h1>
             {
                 challenges.slice(0, 5).map((challenge, i) => (

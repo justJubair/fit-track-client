@@ -43,10 +43,6 @@ const pages = [
     nav: "Trainers",
     route: "/trainers"
   },
-  {
-    nav: "Video Call",
-    route: "/video_call",
-  }
 ];
 
 const Nav = () => {
@@ -121,37 +117,38 @@ const Nav = () => {
             </Link>
 
           ))}
-          <UserInfoDialog></UserInfoDialog>
+          {/* <UserInfoDialog></UserInfoDialog> */}
         </Box>
 
         {/* Join/Sign In/Help section */}
         <div className="flex gap-4 text-white font-bold items-center">
-          <Link href="/api/auth/register">Join Us</Link>
+            {!session &&  <Link href="/api/auth/register">Join Us</Link>}
+         
           <span>|</span>
-          <Button onClick={() => { signIn() }} sx={{ color: '#fff' }}>Sign In</Button>
+          {
+            session ? <Button onClick={() => { signOut() }} sx={{ color: '#fff' }}>Log Out</Button> : <Button onClick={() => { signIn() }} sx={{ color: '#fff' }}>Sign In</Button>
+          }
+          {/* <Button onClick={() => { signIn() }} sx={{ color: '#fff' }}>Sign In</Button> */}
           <span>|</span>
           <Link href="#">Help </Link>
 
           {/* User Avatar or Sign In button */}
-          <span className="hidden lg:block pl-2">
+          {
+            session &&  <span className="hidden lg:block pl-2">
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {
-                  session ?
+              
                     <Avatar
-                      alt="Remy Sharp"
+                      alt="User avatar"
                       src={session.user.image}
                     />
-                    :
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="https://cdn2.vectorstock.com/i/1000x1000/17/61/male-avatar-profile-picture-vector-10211761.jpg"
-                    />
-                }
+                   
 
               </IconButton>
             </Tooltip>
           </span>
+          }
+         
         </div>
       </div>
 
@@ -202,7 +199,7 @@ const Nav = () => {
                   </Link>
 
                 ))}
-                <UserInfoDialog></UserInfoDialog>
+                {/* <UserInfoDialog></UserInfoDialog> */}
                 <Box sx={{ flexGrow: 0, padding: "6px" }}>
                   <Menu
                     sx={{ mt: "45px" }}
@@ -221,15 +218,11 @@ const Nav = () => {
                     onClose={handleCloseUserMenu}
                   >
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                      <Typography variant="h5" sx={{ color: '#252525' }}>
+                      <Typography variant="p" sx={{ color: '#252525' }}>
                         {session?.user.email}
                       </Typography>
                     </MenuItem>
-                    <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                      <Link href="/">
-                        <Typography textAlign="center">Home</Typography>
-                      </Link>
-                    </MenuItem>
+                   
                     <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Profile</Typography>
                     </MenuItem>
@@ -238,9 +231,9 @@ const Nav = () => {
                         <Typography textAlign="center">Dashboard</Typography>
                       </Link>
                     </MenuItem>
-                    <Link href="/diettable"> <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                    {/* <Link href="/diettable"> <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                       <Typography textAlign="center">Diet Chart</Typography>
-                    </MenuItem> </Link>
+                    </MenuItem> </Link> */}
 
                     {/* Conditionally rendering Logout/Sign In based on session */}
                     {

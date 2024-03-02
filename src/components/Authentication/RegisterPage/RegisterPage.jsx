@@ -6,13 +6,12 @@ import { useRouter } from 'next/navigation';
 import { useSession, signIn } from "next-auth/react"
 import { Typography } from "@mui/material";
 import { Notify } from 'notiflix';
-import Notiflix from 'notiflix';
+
 
 const RegisterPage = () => {
     const [isRegisterActive, setRegisterActive] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
-    const notify = () => toast("Logged In!");
-    const notify2 = () => toast("Registration successful!");
+
 
 
 
@@ -36,7 +35,7 @@ const RegisterPage = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log({ email, password })
+        
 
         const res = await signIn('credentials', {
             email: email,

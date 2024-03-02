@@ -338,26 +338,25 @@ const DietTable = () => {
           borderRadius: "10px",
         }}
       >
-        <Box
-          sx={{
-            mx: "2rem",
-            my: "2rem",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ backgroundColor: "black" }} aria-label="recipe">
+      
+        <Box display="flex" alignItems="center" gap="16px" padding="16px">
+        <Avatar sx={{ backgroundColor: "black" }} aria-label="recipe">
             <Image width={500} height={500} src={image} alt="" />
           </Avatar>
-          <Typography variant="h6" sx={{ color: "black", fontSize: "1.5rem" }}>
+        <Box display="flex" flexDirection="column" alignItems="start" gap="2px">
+         
+          
+          <Typography variant="p" fontSize="14px">
             Name : {name}
           </Typography>
-          <Typography variant="h6" sx={{ color: "black", fontSize: "1.5rem" }}>
+          <Typography variant="p" fontSize="13px">
             {email}
           </Typography>
+         </Box>
+
+
         </Box>
+       
 
         <TableContainer>
           <Table>

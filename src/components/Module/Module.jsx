@@ -12,7 +12,7 @@ import TabPanel from '@mui/lab/TabPanel';;
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import PrivateRoute from "../Private/PrivateRoute";
 import Rating from '@mui/material/Rating';
-import { Notify } from 'notiflix';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Module = ({ module }) => {
     const router = useRouter();
@@ -137,7 +137,7 @@ const Module = ({ module }) => {
        axios.post('https://fit-track-server.vercel.app/api/v1/postuserreview',feedBackData)
        .then((res)=>{
         if(res.data == 'Review Posted!'){
-            Notify.info('Thank your for your review!')
+            toast('Thank your for your review!')
         }
        })
        
@@ -212,8 +212,8 @@ const Module = ({ module }) => {
                     </ul>
                 </div>
             </div>
+            <Toaster/>
         </PrivateRoute>
-
     );
 };
 

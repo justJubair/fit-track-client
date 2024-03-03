@@ -3,24 +3,19 @@ import { Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import "./Trainer.css";
-import { ToastContainer, toast } from "react-toastify";
 import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import axios from "axios";
 import PrivateRoute from "../Private/PrivateRoute";
 import { useRouter } from "next/navigation";
-import { Notify } from "notiflix";
-
+import toast, { Toaster } from 'react-hot-toast';
 
 const Trainers = ({ allTrainers }) => {
 
   const { data: session } = useSession();
 
-
   const router = useRouter();
-
-
 
   const [userData, setUserData] = useState([]);
   useEffect(() => {
@@ -43,7 +38,8 @@ const Trainers = ({ allTrainers }) => {
 
   const [selectedTrainer, setSelectedTrainer] = useState(null);
   const handleConnect = () => {
-    toast.success("Connect request sent to trainer.");
+    toast.success('Request sent!')
+    console.log('clicked')
   };
 
   const toggleModal = (trainerId) => {
@@ -68,17 +64,21 @@ const Trainers = ({ allTrainers }) => {
         userDetails,
       })
       .then((res) => {
-
         if (res.data === "Request Sent") {
-          Notify.success("Request sent to this trainer!");
-          router.push("http://localhost:3000/trainers");
+          toast.success('Request sent!')
+          router.push("https://fit-track-server.vercel.app/trainers");
         }
       })
       .catch((error) => {
         if (error.response.data === "User already in friend list") {
-          Notify.info("Reqest already sent!");
+          toast('Request was sent!', {
+            style: {
+              backgroundColor: '#378ae5',
+              color: 'white'
+            }
+          })
         }
-        console.error("Error updating user details:", error);
+
       });
   };
 
@@ -170,7 +170,7 @@ const Trainers = ({ allTrainers }) => {
                     <div className="buttons">
                       <button onClick={handleConnect}>Connect</button>
                       <button onClick={() => toggleModal(train._id)}>
-                       Details
+                        Details
                       </button>
 
                       <div
@@ -196,26 +196,26 @@ const Trainers = ({ allTrainers }) => {
                               )?.bio
                             }
                           </p>
-                         <div className="flex items-center mt-5">
-                         <button
-                          className="flex-1"
-                            onClick={() => {
-                              handleShareReq(
-                                allTrainers.find(
-                                  (trainer) => trainer._id === selectedTrainer
-                                )?.email
-                              );
-                            }}
-                            
-                          >
-                            Send hire request...
-                          </button>
-                         <Link className="flex-1" href="/videoCall">
-                         <button >
-                            Video Call
-                          </button>
-                         </Link>
-                         </div>
+                          <div className="flex items-center mt-5">
+                            <button
+                              className="flex-1"
+                              onClick={() => {
+                                handleShareReq(
+                                  allTrainers.find(
+                                    (trainer) => trainer._id === selectedTrainer
+                                  )?.email
+                                );
+                              }}
+
+                            >
+                              Send hire request...
+                            </button>
+                            <Link className="flex-1" href="/videoCall">
+                              <button >
+                                Video Call
+                              </button>
+                            </Link>
+                          </div>
                         </div>
                       )}
                     </div>
@@ -225,9 +225,8 @@ const Trainers = ({ allTrainers }) => {
             </div>
           </div>
         </div>
-
-        <ToastContainer />
       </div>
+      <Toaster />
     </PrivateRoute>
   );
 };

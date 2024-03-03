@@ -50,7 +50,7 @@ const Nav = () => {
   //loading state
   const [loader, setLoader] = useState(true);
 
-  const router = useRouter();
+
   // State variables to manage menu anchor elements
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);

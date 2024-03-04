@@ -195,12 +195,13 @@ const Nav = () => {
                 }}
                 open={Boolean(anchorElNav)}
                 onClose={handleCloseNavMenu}
+                
                 sx={{
-                  display: { xs: "block", md: "none" },
+                  display: { xs: "block", md: "none" }
                 }}
               >
                 {pages.map((page) => (
-                  <Link href={page.route} key={page.route}>
+                  <Link  href={page.route} key={page.route}>
                     <MenuItem key={page.route} onClick={handleCloseNavMenu}>
                       <Typography textAlign="center">{page.nav}</Typography>
                     </MenuItem>

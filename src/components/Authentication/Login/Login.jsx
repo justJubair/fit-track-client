@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 import { FaFacebook, FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -257,11 +256,11 @@ const Login = () => {
                         <h3 className="social-text">Or</h3>
                         <div className="social-icons">
 
-                            <button className="social-icon" onClick={() => handleSignUpGoogle()}>
+                            <button type="button" className="social-icon" onClick={() => handleSignUpGoogle()}>
                                 <FaGoogle/>
                             </button>
 
-                            <button className="social-icon" onClick={() => handleSignUpFacebook()}>
+                            <button type="button" className="social-icon" onClick={() => handleSignUpFacebook()}>
                           <FaGoogle/>
                             </button>
 

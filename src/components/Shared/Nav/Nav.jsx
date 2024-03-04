@@ -50,7 +50,7 @@ const Nav = () => {
   //loading state
   const [loader, setLoader] = useState(true);
 
-  const router = useRouter();
+
   // State variables to manage menu anchor elements
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -84,10 +84,7 @@ const Nav = () => {
   const handleLogout = () => {
     signOut();
   }
-  // const handleSignIn = () => {
-  //   signIn()
-  //   router.push('/usercheck')
-  // }
+
   return (
     // Top-level container for the navigation component
     <div className=" absolute w-[100%] z-50 top-0">
@@ -122,32 +119,33 @@ const Nav = () => {
 
         {/* Join/Sign In/Help section */}
         <div className="flex gap-4 text-white font-bold items-center">
-          <Link href="/api/auth/register">Join Us</Link>
+            {!session &&  <Link href="/api/auth/register">Join Us</Link>}
+         
           <span>|</span>
-          <Button onClick={() => { signIn() }} sx={{ color: '#fff' }}>Sign In</Button>
+          {
+            session ? <Button onClick={() => { signOut() }} sx={{ color: '#fff' }}>Log Out</Button> : <Button onClick={() => { signIn() }} sx={{ color: '#fff' }}>Sign In</Button>
+          }
+        
           <span>|</span>
           <Link href="#">Help </Link>
 
           {/* User Avatar or Sign In button */}
-          <span className="hidden lg:block pl-2">
+          {
+            session &&  <span className="hidden lg:block pl-2">
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {
-                  session ?
+              
                     <Avatar
-                      alt="Remy Sharp"
+                      alt="User avatar"
                       src={session.user.image}
                     />
-                    :
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="https://cdn2.vectorstock.com/i/1000x1000/17/61/male-avatar-profile-picture-vector-10211761.jpg"
-                    />
-                }
+                   
 
               </IconButton>
             </Tooltip>
           </span>
+          }
+         
         </div>
       </div>
 
@@ -198,8 +196,8 @@ const Nav = () => {
                   </Link>
 
                 ))}
-                {/* <UserInfoDialog></UserInfoDialog> */}
-                <Box sx={{ flexGrow: 0, padding: "6px" }}>
+               
+                <Box sx={{ flexGrow: 0, padding: "6px", }}>
                   <Menu
                     sx={{ mt: "45px" }}
                     id="menu-appbar"
@@ -230,10 +228,7 @@ const Nav = () => {
                         <Typography textAlign="center">Dashboard</Typography>
                       </Link>
                     </MenuItem>
-                    {/* <Link href="/diettable"> <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                      <Typography textAlign="center">Diet Chart</Typography>
-                    </MenuItem> </Link> */}
-
+                    
                     {/* Conditionally rendering Logout/Sign In based on session */}
                     {
                       session ?
@@ -246,13 +241,22 @@ const Nav = () => {
                         </MenuItem>
                     }
                   </Menu>
-                  <span className="flex flex-col gap-2">
+                  {
+                    session ?  <span>
+                    <Link href='/usercheck'>
+                      <button onClick={handleLogout} className=" py-2 mx-[10px]">
+                        Log Out
+                      </button>
+                    </Link>
+                  </span> :  <span className="flex flex-col gap-2">
                     <Link href='/usercheck'>
                       <button className=" py-2 mx-[10px]">
                         Sign In
                       </button>
                     </Link>
                   </span>
+                  }
+                 
                 </Box>
               </Menu>
             </Box>
@@ -278,57 +282,7 @@ const Nav = () => {
             </Typography>
 
             {/* User menu in desktop */}
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                position: "absolute",
-                right: "0",
-                top: "0",
-              }}
-            >
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-
-                {/* User menu items */}
-                <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                  <Typography textAlign="center">Home</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                  <Typography textAlign="center">Profile</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                  <Typography textAlign="center">Dashboard</Typography>
-                </MenuItem>
-
-                {/* Conditionally rendering Logout or Sign In based on session */}
-                {
-                  session ?
-                    <MenuItem onClick={handleLogout} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                      <Typography textAlign="center">Log Out</Typography>
-                    </MenuItem>
-                    :
-                    <MenuItem onClick={() => signIn()} sx={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-                      <Typography textAlign="center">Sign In</Typography>
-                    </MenuItem>
-                }
-
-              </Menu>
-            </Box>
+           
           </Toolbar>
         </Container>
       </AppBar>

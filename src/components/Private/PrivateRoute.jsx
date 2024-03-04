@@ -2,20 +2,25 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-const PrivateRoute = ({children}) => {
-    
-    const {data: session, status} = useSession();
+
+const PrivateRoute = ({ children }) => {
+
+    const { data: session, status } = useSession();
     const router = useRouter();
 
     useEffect(() => {
         // Check if session is loaded and not authenticated
         if (status === "loading") return; // Wait for session to load
+
         if (!session) {
             router.push('/api/auth/register');
         }
     }, [session, status, router]); // Add dependencies to useEffect
 
-    return session ? children : null;
+    return session ? children :
+        (<div className="h-16 bg-black">
+            <h1>Please wait....</h1>
+        </div>);
 };
 
 export default PrivateRoute;

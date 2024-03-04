@@ -5,7 +5,7 @@ import React from 'react';
 
 const Trainer = async () => {
     const allTrainers = await getAllTrainers();
-    console.log(allTrainers)
+    
     return (
         <div>
             <Trainers allTrainers={allTrainers} />

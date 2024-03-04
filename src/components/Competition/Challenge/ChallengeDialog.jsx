@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { useSession } from "next-auth/react";
 
-import { toast } from "react-toastify";
+import toast, { Toaster } from 'react-hot-toast';
 import postAcceptedChallengeInfo from "@/app/api/post/postAcceptedChallengeInfo";
 import sendMail from "@/api/mailSender";
 const positions = [
@@ -67,45 +67,18 @@ const ChallegeDialog = ({ challenge }) => {
          await sendMail(email, subject, message);
           handleClose();
         } catch (error) {
-          toast.error("Error while sending mail:", error, {
-            position: "top-center",
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-          });
+          toast.error("Error while sending mail:", error);
         }
       })
       .catch((error) => {
         console.error("", error);
-        toast.error("Failed to post accepted challenge:", error, {
-          position: "top-center",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
+        toast.error("Failed to post accepted challenge:", error);
       });
     try {
       await sendMail(email, subject, message);
       handleClose();
     } catch (error) {
-      toast.error("Error while sending mail:", error, {
-        position: "top-center",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      toast.error("Error while sending mail:", error);
     }
   };
   return (
@@ -223,6 +196,7 @@ const ChallegeDialog = ({ challenge }) => {
           </DialogActions>
         </DialogContent>
       </Dialog>
+      <Toaster/>
     </div>
   );
 };

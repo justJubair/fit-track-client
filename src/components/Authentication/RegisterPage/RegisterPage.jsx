@@ -63,6 +63,12 @@ const RegisterPage = () => {
         }));
     };
 
+    useEffect(() => {
+        if (errorMessage) {
+            toast.error(errorMessage); // Show error toast
+        }
+    }, [errorMessage]);
+
 
     const handelSignUp = async (e) => {
         e.preventDefault(0);
@@ -95,12 +101,15 @@ const RegisterPage = () => {
         signIn('facebook');
     }
 
-    if (session) {
-        toast.success('Logged In', { id: 'register' });
-        setTimeout(function () {
-            router.push('/')
-        }, 2000);
-    }
+    useEffect(()=>{
+        if (session) {
+            toast.success('Logged In',{ id:'register' });
+            setTimeout(function () {
+                router.push('/')
+            }, 2000);
+        }
+    },[session, router])
+
 
 
     return (

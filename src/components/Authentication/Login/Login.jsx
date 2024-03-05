@@ -16,15 +16,15 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState('');
 
 
-    const handleRegisterClick = () => {
-        setRegisterActive(true);
-    };
+    // const handleRegisterClick = () => {
+    //     setRegisterActive(true);
+    // };
 
-    const handleLoginClick = () => {
-        setRegisterActive(false);
-        const wrapper = document.querySelector(".wrapper");
-        wrapper.classList.remove("active");
-    };
+    // const handleLoginClick = () => {
+    //     setRegisterActive(false);
+    //     const wrapper = document.querySelector(".wrapper");
+    //     wrapper.classList.remove("active");
+    // };
 
     const router = useRouter();
     const { data: session } = useSession();

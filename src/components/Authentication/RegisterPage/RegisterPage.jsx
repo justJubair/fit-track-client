@@ -38,10 +38,10 @@ const RegisterPage = () => {
         const password = form.password.value;
 
 
-        const res = await signIn('credentials', {
-            email: email,
-            password: password,
-        })
+        // const res = await signIn('credentials', {
+        //     email: email,
+        //     password: password,
+        // })
     }
 
     const [userData, setUserData] = useState({

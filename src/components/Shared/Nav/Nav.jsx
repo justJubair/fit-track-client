@@ -120,7 +120,7 @@ const Nav = () => {
         </Box>
 
         {/* Join/Sign In/Help section */}
-        <div className="flex gap-4 text-white font-bold items-center">
+        <div className="flex gap-3 text-white font-bold items-center">
           {!session && <Link href="/api/auth/register">Join Us</Link>}
 
           <span>|</span>

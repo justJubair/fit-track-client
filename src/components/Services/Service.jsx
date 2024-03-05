@@ -30,12 +30,10 @@ const Service = ({ serv }) => {
               </Typography>
             </Box>
             <Typography variant="h6" color="text.primary" sx={{ mb: 1 }}>
-              {serv?.heading}
+              {serv?.heading.slice(0,30)}...
             </Typography>
             <Typography variant="body2" color="black" sx={{}}>
-              This impressive paella is a perfect party dish and a fun meal to cook
-              together with your guests. Add 1 cup of frozen peas along with the mussels,
-              if you like.
+             {serv?.overview.slice(0,200)}...
             </Typography>
             <Box sx={{ marginTop: '10px' }}>
               <Link href={`/service/${serv._id}`} className="text-[#378ae5] font-bold rounded-md">

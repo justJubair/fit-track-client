@@ -1,5 +1,4 @@
 "use client";
-
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -14,7 +13,9 @@ import { Tooltip, Typography } from "@mui/material";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 
+
 const ManageUsers = ({ users }) => {
+
   return (
     <Container>
       {/* user table */}
@@ -57,7 +58,8 @@ const ManageUsers = ({ users }) => {
                 <TableCell align="right">
                   {/* delete */}
                   <Tooltip title="Delete" arrow>
-                <DeleteForeverIcon sx={{color: "red", marginRight: "1.2rem", cursor: "pointer"}}/>
+                <DeleteForeverIcon  sx={{color: "red", marginRight: "1.2rem", cursor: "pointer"}}/>
+               
                 </Tooltip>
                 <Tooltip title="Edit" arrow>
                 <EditNoteIcon sx={{color: "green", cursor: "pointer"}}/>

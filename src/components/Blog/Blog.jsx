@@ -69,12 +69,12 @@ const Blog = () => {
     }
     return (
         <div className='mb-[120px]' >
-            <div className="relative h-[90vh] bg-cover bg-center bg-fixed  flex justify-center items-center" style={{ backgroundImage: 'url(https://i.ibb.co/PFDdw3M/athletic-man-woman-with-dumbbells-1.jpg)' }}>
+            <div className="relative h-screen bg-cover bg-center bg-fixed  flex justify-center items-center" style={{ backgroundImage: 'url(https://i.ibb.co/PFDdw3M/athletic-man-woman-with-dumbbells-1.jpg)' }}>
                 <div className="absolute inset-0 bg-black opacity-55"></div>
-                <div className='z-10 w-full px-2 '>
+                <div className='z-10 w-full px-4 mt-10'>
                     <form
                         onSubmit={handelBlog}
-                        className="lg:w-1/2 mx-auto px-2 py-8 paperScrollPaper  lg:p-10  rounded-lg text-white " >
+                        className="md:w-9/12 lg:w-1/2 mx-auto px-2 py-8 paperScrollPaper  lg:p-10  rounded-lg text-white " >
                         <h1 className="text-xl uppercase text-center mb-4 font-bold">Upload Your Blog</h1>
                         <div className=" flex items-center gap-4 ">
                             <Avatar alt={session?.user?.name} src={session?.user?.image} sx={{ mb: "20px" }} />

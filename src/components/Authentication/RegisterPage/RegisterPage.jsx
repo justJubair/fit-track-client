@@ -38,10 +38,10 @@ const RegisterPage = () => {
         const password = form.password.value;
 
 
-        const res = await signIn('credentials', {
-            email: email,
-            password: password,
-        })
+        // const res = await signIn('credentials', {
+        //     email: email,
+        //     password: password,
+        // })
     }
 
     const [userData, setUserData] = useState({
@@ -169,11 +169,11 @@ const RegisterPage = () => {
                             <h3 className="social-text">Or</h3>
                             <div className="social-icons">
 
-                                <button className="social-icon" onClick={() => handleSignUpGoogle()}>
+                                <button type="button" className="social-icon" onClick={() => handleSignUpGoogle()}>
                                     <FaGoogle/>
                                 </button>
 
-                                <button className="social-icon" onClick={() => handleSignUpFacebook()}>
+                                <button type="button" className="social-icon" onClick={() => handleSignUpFacebook()}>
                                     <FaFacebook/>
                                 </button>
 
@@ -227,11 +227,8 @@ const RegisterPage = () => {
                                 type="text"
                                 name="userimage"
                                 required />
-                            <label>imagUrl</label>
-                            {/* <span className="icon">
-                                {" "}
-Email
-                            </span> */}
+                            <label>Image url</label>
+                          
                         </div>
 
                         <div className="input-box animation" style={{ "--i": 20, "--j": 3 }}>
@@ -293,11 +290,11 @@ Email
                     <div className="social-accounts animation" style={{ "--i": 23, "--j": 6 }}>
                         <h3 className="social-text">Or</h3>
                         <div className="social-icons">
-                            <button className="social-icon" onClick={() => handleSignUpGoogle()}>
+                            <button type="button" className="social-icon" onClick={() => handleSignUpGoogle()}>
                                 <FaGoogle/>
                             </button>
 
-                            <button className="social-icon" onClick={() => handleSignUpFacebook()}>
+                            <button type="button" className="social-icon" onClick={() => handleSignUpFacebook()}>
                                 <FaFacebook/>
                             </button>
 

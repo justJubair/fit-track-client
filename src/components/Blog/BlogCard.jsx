@@ -100,12 +100,13 @@ const BlogCard = ({ challenge, incrementCount }) => {
                 </div>
                 <CardContent sx={{ border: "8px", borderColor: "black" }} >
                     <Typography variant="h6" sx={{ color: 'black', mb: "8px" }} >
-                        {
+                        {/* {
                             challenge?.title?.length > 40 ?
                                 challenge?.title.slice(0, 40) + "..."
                                 :
                                 challenge?.title
-                        }
+                        } */}
+                        {challenge?.title?.slice(0,25)}...
                     </Typography>
                     <Typography variant="body2" sx={{ color: 'black', height: "60px" }}>
                         {challenge.description.length > 100

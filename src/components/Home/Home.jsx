@@ -1,5 +1,4 @@
 "use client";
-import { ToastContainer } from "react-toastify";
 import Advertisement from "../Advertisement/Advertisement";
 import AiChatbot from "../AiChatbot/AiChatbot";
 import Banner from "../Banner/Banner";
@@ -22,7 +21,6 @@ const Home = () => {
       <FAQ />
       <AiChatbot />
       <Footer />
-      <ToastContainer />
     </div>
   );
 };

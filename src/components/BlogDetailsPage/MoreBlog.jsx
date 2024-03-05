@@ -14,13 +14,13 @@ const MoreBlog = () => {
     }, [])
     
     return (
-        <div className='px-10  space-y-3  top-16 bottom-16 z-20 '>
+        <div className='px-10  space-y-3 fixed top-16 bottom-16 z-20 '>
             <h1 className='text-2xl text-center my-4 italic font-bold '>More...</h1>
             {
                 challenges.slice(0, 5).map((challenge, i) => (
                     <Link
                         href={`/blog/${challenge?._id}`}
-                        key={i} className='flex bg-blue-100 rounded-xl gap-2 '>
+                        key={i} className='flex bg-blue-100 rounded-xl gap-2 shadow-2xl space-y-4'>
                         <Image
                             priority={true}
                             src={challenge?.image}

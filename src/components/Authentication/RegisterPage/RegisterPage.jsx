@@ -1,22 +1,19 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
+import { useEffect, useState } from "react";
 import { FaFacebook, FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
-import { useEffect, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import "./Login.css"
 import { useRouter } from 'next/navigation';
 import { useSession, signIn } from "next-auth/react"
 import { Typography } from "@mui/material";
-import { Notify } from 'notiflix';
-
+import toast, { Toaster } from 'react-hot-toast';
 
 const RegisterPage = () => {
     const [isRegisterActive, setRegisterActive] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
-
-
 
 
     const handleRegisterClick = () => {
@@ -39,12 +36,12 @@ const RegisterPage = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        
 
-        const res = await signIn('credentials', {
-            email: email,
-            password: password,
-        })
+
+        // const res = await signIn('credentials', {
+        //     email: email,
+        //     password: password,
+        // })
     }
 
     const [userData, setUserData] = useState({
@@ -53,7 +50,7 @@ const RegisterPage = () => {
         email: '',
         password: '',
         role: 'default' // Set default value for the role field
-      });
+    });
 
     // this is signUp in section
     const handleChange = (e) => {
@@ -80,7 +77,7 @@ const RegisterPage = () => {
             const response = await res.json();
             setErrorMessage(response.message);
         } else {
-            Notify.success('Registration Successful!')
+            toast.success('Registration successful!');
             router.refresh();
             setTimeout(function () {
                 router.push('/')
@@ -99,7 +96,7 @@ const RegisterPage = () => {
     }
 
     if (session) {
-        Notify.success('Logged In!')
+        toast.success('Logged In', { id: 'register' });
         setTimeout(function () {
             router.push('/')
         }, 2000);
@@ -163,12 +160,12 @@ const RegisterPage = () => {
                             <h3 className="social-text">Or</h3>
                             <div className="social-icons">
 
-                                <button className="social-icon" onClick={() => handleSignUpGoogle()}>
-                                    <FaGoogle />
+                                <button type="button" className="social-icon" onClick={() => handleSignUpGoogle()}>
+                                    <FaGoogle/>
                                 </button>
 
-                                <button className="social-icon" onClick={() => handleSignUpFacebook()}>
-                                    <FaFacebook />
+                                <button type="button" className="social-icon" onClick={() => handleSignUpFacebook()}>
+                                    <FaFacebook/>
                                 </button>
 
                             </div>
@@ -200,7 +197,7 @@ const RegisterPage = () => {
                             <label>Name</label>
                             <span className="icon">
                                 {" "}
-                                <FaUser />
+                                <FaUser/>
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 19, "--j": 2 }}>
@@ -212,7 +209,7 @@ const RegisterPage = () => {
                             <label>Email</label>
                             <span className="icon">
                                 {" "}
-                                <MdEmail />
+                                <MdEmail/>
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 19, "--j": 2 }}>
@@ -221,11 +218,8 @@ const RegisterPage = () => {
                                 type="text"
                                 name="userimage"
                                 required />
-                            <label>imagUrl</label>
-                            {/* <span className="icon">
-                                {" "}
-                                <MdEmail />
-                            </span> */}
+                            <label>Image url</label>
+                          
                         </div>
 
                         <div className="input-box animation" style={{ "--i": 20, "--j": 3 }}>
@@ -236,7 +230,7 @@ const RegisterPage = () => {
                                 required />
                             <label>Password</label>
                             <span className="icon">
-                                <FaLock />
+                                <FaLock/>
                             </span>
 
                         </div>
@@ -287,12 +281,12 @@ const RegisterPage = () => {
                     <div className="social-accounts animation" style={{ "--i": 23, "--j": 6 }}>
                         <h3 className="social-text">Or</h3>
                         <div className="social-icons">
-                            <button className="social-icon" onClick={() => handleSignUpGoogle()}>
-                                <FaGoogle />
+                            <button type="button" className="social-icon" onClick={() => handleSignUpGoogle()}>
+                                <FaGoogle/>
                             </button>
 
-                            <button className="social-icon" onClick={() => handleSignUpFacebook()}>
-                                <FaFacebook />
+                            <button type="button" className="social-icon" onClick={() => handleSignUpFacebook()}>
+                                <FaFacebook/>
                             </button>
 
                         </div>
@@ -310,6 +304,7 @@ const RegisterPage = () => {
                     </p>
                 </div>
             </div>
+            <Toaster />
         </div>
     );
 };

@@ -14,15 +14,13 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { toast } from 'react-toastify';
-
+import toast, { Toaster } from 'react-hot-toast';
 
 const BlogCard = ({ challenge, incrementCount }) => {
 
 
     const { data: session } = useSession();
-    
+
     const router = useRouter();
 
     const handelLikeBtn = async (_id) => {
@@ -34,11 +32,13 @@ const BlogCard = ({ challenge, incrementCount }) => {
             const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/like", like);
             if (res.data.modifiedCount) {
                 incrementCount()
+                toast.success(`liked`);
             }
-
-
-
+            else {
+                toast(`Already liked`);
+            }
         } catch (error) {
+            toast.error(error)
             console.error("Error liking blog:", error);
         }
     }
@@ -51,9 +51,14 @@ const BlogCard = ({ challenge, incrementCount }) => {
             const res = await axios.patch("https://fit-track-server.vercel.app/api/v1/Dislike", DisLikes);
             if (res.data.modifiedCount) {
                 incrementCount()
+                toast.success(`Disliked`);
+            }
+            else {
+                toast(`Already Disliked`);
             }
         }
         catch (error) {
+            toast.error(error)
             console.error("Error", error)
         }
     }
@@ -61,30 +66,12 @@ const BlogCard = ({ challenge, incrementCount }) => {
 
         const email = session?.user?.email
         const res = await axios.patch(`https://fit-track-server.vercel.app/api/v1/bookMark/${_id}?email=${email}`)
-        
+
         if (res.data.modifiedCount) {
-            toast.success(`Bookmarked`, {
-                position: "top-center",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            toast.success(`Bookmarked`);
         }
         if (!res.data.modifiedCount) {
-            toast.warning(`Already Marked`, {
-                position: "top-center",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            toast(`Already Marked`);
         }
     }
 
@@ -113,12 +100,13 @@ const BlogCard = ({ challenge, incrementCount }) => {
                 </div>
                 <CardContent sx={{ border: "8px", borderColor: "black" }} >
                     <Typography variant="h6" sx={{ color: 'black', mb: "8px" }} >
-                        {
+                        {/* {
                             challenge?.title?.length > 40 ?
                                 challenge?.title.slice(0, 40) + "..."
                                 :
                                 challenge?.title
-                        }
+                        } */}
+                        {challenge?.title?.slice(0,25)}...
                     </Typography>
                     <Typography variant="body2" sx={{ color: 'black', height: "60px" }}>
                         {challenge.description.length > 100
@@ -157,11 +145,8 @@ const BlogCard = ({ challenge, incrementCount }) => {
                     </div>
 
                 </Box>
-
-
             </Card>
-
-
+            <Toaster />
         </div >
     );
 };

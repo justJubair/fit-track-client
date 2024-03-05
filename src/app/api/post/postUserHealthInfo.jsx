@@ -1,6 +1,6 @@
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import axios from "axios";
+import toast, { Toaster } from 'react-hot-toast';
 
 const submitHealthInfo = async (formData) => {
   try {
@@ -9,29 +9,11 @@ const submitHealthInfo = async (formData) => {
       formData
     );
 
-    toast.success("HealthInfo submitted successfully", {
-      position: "top-center",
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
+    toast.success("HealthInfo submitted successfully");
 
     return response.data;
   } catch (error) {
-    toast.error("Error submitting HealthInfo. Please try again.", {
-      position: "top-center",
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
+    toast.error("Error submitting HealthInfo. Please try again.");
 
     throw error;
   }

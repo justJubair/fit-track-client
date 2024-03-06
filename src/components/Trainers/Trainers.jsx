@@ -192,7 +192,7 @@ const Trainers = ({ allTrainers }) => {
                           <p>
                             {
                               allTrainers.find(
-                                (trainer) => trainer._id === selectedTrainer
+                                (trainer) => trainer?._id === selectedTrainer
                               )?.bio
                             }
                           </p>

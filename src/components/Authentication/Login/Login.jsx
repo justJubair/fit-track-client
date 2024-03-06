@@ -106,7 +106,7 @@ const Login = () => {
   
     
     return (
-        <div className="main">
+        <div className="main py-10">
             <div className={`wrapper ${isRegisterActive ? "active" : ""} w-[300px]  md:w-[700px]   lg:w-[800px] h-[570px] `}>
                 <span className="bg-animate"></span>
                 <span className="bg-animate2"></span>

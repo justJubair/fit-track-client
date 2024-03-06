@@ -102,7 +102,7 @@ const Trainers = ({ allTrainers }) => {
               Get your<span className="text-[#378ae5]"> Trainers Here</span>
             </Typography>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mx-3 gap-4 pb-12">
-              {allTrainers.map((train) => (
+              {allTrainers?.map((train) => (
                 <div key={train._id}>
                   <div className="wrapper">
                     <div className="img-area">
@@ -110,7 +110,7 @@ const Trainers = ({ allTrainers }) => {
                         <Image
                           width={100}
                           height={100}
-                          src={train.profile_image}
+                          src={train?.profile_image}
                           alt="trainer image"
                         />
                       </div>
@@ -122,9 +122,9 @@ const Trainers = ({ allTrainers }) => {
                       <i className="fas fa-ellipsis-v"></i>
                     </div>
                     <div className="name flex justify-center items-center gap-2">
-                      {train.name}
+                      {train?.name}
 
-                      {train.status === "active" ? (
+                      {train?.status === "active" ? (
                         <svg
                           className="w-6 h-6 text-green-500"
                           viewBox="0 0 24 24"
@@ -144,7 +144,7 @@ const Trainers = ({ allTrainers }) => {
                         </svg>
                       )}
                     </div>
-                    <div className="about">{train.specialization}</div>
+                    <div className="about">{train?.specialization}</div>
                     <div className="social-icons">
                       <Link href="#">
                         <i>
@@ -169,7 +169,7 @@ const Trainers = ({ allTrainers }) => {
                     </div>
                     <div className="buttons">
                       <button onClick={handleConnect}>Connect</button>
-                      <button onClick={() => toggleModal(train._id)}>
+                      <button onClick={() => toggleModal(train?._id)}>
                         Details
                       </button>
 
@@ -184,7 +184,7 @@ const Trainers = ({ allTrainers }) => {
                           <p>
                             {
                               allTrainers.find(
-                                (trainer) => trainer._id === selectedTrainer
+                                (trainer) => trainer?._id === selectedTrainer
                               )?.email
                             }
                           </p>
@@ -202,7 +202,7 @@ const Trainers = ({ allTrainers }) => {
                               onClick={() => {
                                 handleShareReq(
                                   allTrainers.find(
-                                    (trainer) => trainer._id === selectedTrainer
+                                    (trainer) => trainer?._id === selectedTrainer
                                   )?.email
                                 );
                               }}

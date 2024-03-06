@@ -1,7 +1,7 @@
 import { getAllServices } from "@/api/getAllServices";
 import Service from "./Service";
 import { useEffect, useState } from "react";
-import Loader from "../Shared/Loader/Loader";
+
 
 
 const Services = () => {

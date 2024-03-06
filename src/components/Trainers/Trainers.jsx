@@ -39,7 +39,7 @@ const Trainers = ({ allTrainers }) => {
   const [selectedTrainer, setSelectedTrainer] = useState(null);
   const handleConnect = () => {
     toast.success('Request sent!')
-    console.log('clicked')
+   
   };
 
   const toggleModal = (trainerId) => {

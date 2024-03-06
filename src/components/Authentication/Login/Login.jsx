@@ -95,12 +95,15 @@ const Login = () => {
     }, [session, router])
 
 
-    if (session) {
-        toast.success('Logged In',{ id: 'login'})
-        setTimeout(function () {
-            router.push('/')
-        }, 2000);
-    }
+    useEffect(()=>{
+        if (session) {
+            toast.success('Logged In',{ id: 'login'})
+            setTimeout(function () {
+                router.push('/')
+            }, 2000);
+        }
+    },[session, router])
+  
     
     return (
         <div className="main">

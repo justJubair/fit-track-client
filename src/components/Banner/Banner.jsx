@@ -2,6 +2,7 @@
 import React from "react";
 import bannerVideo from "../../assets/videos/bannerVideo.mp4";
 import { Box, Button, Typography } from "@mui/material";
+import Link from "next/link";
 
 const Banner = () => {
   return (
@@ -33,7 +34,10 @@ const Banner = () => {
         <Typography level="title-lg" color="white" marginY="20px" width={{lg:"70%",sm: "60%"}}>Revitalize Your Body and Mind: Embark on a Fitness Journey Fueled by Passion, Purpose, and Persistence!</Typography>
 
         {/* explore now button */}
-        <Button variant="outlined" size="large" sx={{color: "#76AEEB"}}>Explore </Button>
+        <Button variant="outlined" size="large" sx={{color: "#76AEEB"}}>
+          <Link href="/challenges">
+          Explore
+          </Link> </Button>
       </Box>
     </Box>
   );

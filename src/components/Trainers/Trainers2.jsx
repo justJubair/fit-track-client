@@ -9,7 +9,9 @@ import axios from "axios";
 import PrivateRoute from "../Private/PrivateRoute";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from 'react-hot-toast';
-
+import CastIcon from '@mui/icons-material/Cast';
+import SegmentIcon from '@mui/icons-material/Segment';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 const Trainers2 = ({ allTrainers }) => {
 
     const { data: session } = useSession();
@@ -94,15 +96,80 @@ const Trainers2 = ({ allTrainers }) => {
                         {allTrainers.map((train) => (
                             <div key={train._id}>
 
-                                <div class=" rounded  shadow-lg bg-white relative mb-16">
-                                    <div className="h-16 w-full flex justify-center items-center">
-                                        <Image
-                                            width={130}
-                                            height={130}
-                                            className="rounded-full absolute -top-16  flex justify-center items-center"
-                                            src={train.profile_image}
-                                            alt="trainer image"
-                                        />
+                                <div class=" rounded  shadow-lg bg-white  mb-16">
+                                    <div className="relative flex">
+
+                                        <div className="ml-4 mt-4 ">
+
+                                            <button onClick={handleConnect} className="text-2xl">
+                                                <GroupAddIcon />
+                                            </button>
+                                        </div>
+                                        <div className="h-16 w-full flex justify-center items-center">
+
+                                            <Image
+                                                width={130}
+                                                height={130}
+                                                className="rounded-full absolute -top-16  flex justify-center items-center"
+                                                src={train.profile_image}
+                                                alt="trainer image"
+                                            />
+
+                                        </div>
+                                        <div >
+                                            <div  >
+                                                <button className="text-end mr-4 mt-4 " onClick={() => toggleModal(train._id)}>
+                                                    <SegmentIcon />
+                                                </button>
+
+                                                <div
+                                                    className="modal-container"
+                                                    onClick={toggleModal}
+                                                ></div>
+
+                                                {selectedTrainer && (
+                                                    <div className="modal-window">
+                                                        <h2>Email</h2>
+                                                        <p>
+                                                            {
+                                                                allTrainers.find(
+                                                                    (trainer) => trainer._id === selectedTrainer
+                                                                )?.email
+                                                            }
+                                                        </p>
+                                                        <h2>Bio</h2>
+                                                        <p>
+                                                            {
+                                                                allTrainers.find(
+                                                                    (trainer) => trainer._id === selectedTrainer
+                                                                )?.bio
+                                                            }
+                                                        </p>
+                                                        <div className="flex items-center buttons mt-5">
+                                                            <button
+                                                                className="flex-1 "
+                                                                onClick={() => {
+                                                                    handleShareReq(
+                                                                        allTrainers.find(
+                                                                            (trainer) => trainer._id === selectedTrainer
+                                                                        )?.email
+                                                                    );
+                                                                }}
+
+                                                            >
+                                                                Send hire request...
+                                                            </button>
+                                                            <Link className="flex-1 " href="/videoCall">
+                                                                <button >
+                                                                    Video Call
+                                                                </button>
+                                                            </Link>
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                        </div>
                                     </div>
                                     <div class="px-6 py-4">
                                         <div className=" flex justify-center items-center gap-2 font-bold text-xl my-2">

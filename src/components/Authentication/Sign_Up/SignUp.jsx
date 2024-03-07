@@ -14,7 +14,7 @@ import Grid from '@mui/material/Grid';
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useState } from 'react';
 import { Notify } from 'notiflix';
-import Notiflix from 'notiflix';
+// import Notiflix from 'notiflix';
 import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image';
 

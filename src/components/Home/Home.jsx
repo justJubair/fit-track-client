@@ -17,7 +17,6 @@ const Home = () => {
            <Nav />
             <Banner />
             <Services />
-            <BMICalculator />
             <Advertisement />
             <Poster/>
             <FAQ/>

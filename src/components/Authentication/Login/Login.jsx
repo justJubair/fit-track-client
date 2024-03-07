@@ -9,7 +9,6 @@ import "./SignUp.css"
 import { useRouter } from 'next/navigation';
 import { useSession, signIn } from "next-auth/react"
 import { Notify } from 'notiflix';
-import Notiflix from 'notiflix';
 import { toast } from 'react-toastify';
 import { Typography } from "@mui/material";
 const Login = () => {

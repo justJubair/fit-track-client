@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 import { useSession, signIn } from "next-auth/react"
 import { Typography } from "@mui/material";
 import { Notify } from 'notiflix';
-import Notiflix from 'notiflix';
+
 
 const RegisterPage = () => {
     const [isRegisterActive, setRegisterActive] = useState(true);

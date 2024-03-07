@@ -6,7 +6,7 @@ import DashboardHome from "@/components/Dashboard/DashboardHome/DashboardHome";
 const DashboardPage = async() => {
     const services = await getAllServices()
     const challenges = await getAllChallenges()
-    
+  
     return(
         <div>
             <DashboardHome services={services} challenges={challenges} />

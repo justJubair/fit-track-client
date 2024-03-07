@@ -1,6 +1,4 @@
-"use client"
-
-import { ToastContainer } from "react-toastify";
+"use client";
 import Advertisement from "../Advertisement/Advertisement";
 import AiChatbot from "../AiChatbot/AiChatbot";
 import Banner from "../Banner/Banner";
@@ -12,17 +10,18 @@ import Nav from "../Shared/Nav/Nav";
 import BMICalculator from "../BMICalculator/BMICalculator";
 
 const Home = () => {
-    return(
-        <div>
-           <Nav />
-            <Banner />
-            <Services />
-            <Advertisement />
-            <Poster/>
-            <FAQ/>
-            <AiChatbot />
-            <Footer />
-            <ToastContainer />
-        </div>
-    )}
+  return (
+    <div>
+      <Nav />
+      <Banner />
+      <Services />
+      <BMICalculator />
+      <Advertisement />
+      <Poster />
+      <FAQ />
+      <AiChatbot />
+      <Footer />
+    </div>
+  );
+};
 export default Home;

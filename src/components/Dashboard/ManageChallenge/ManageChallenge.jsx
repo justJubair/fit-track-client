@@ -62,7 +62,6 @@ const ManageChallenge = () => {
               <div className="bg-gray-200 text-gray-700 text-lg px-6 py-4">
                 <div className="ml-4">
                   <p className="font-bold">Challenges</p>
-                  
                 </div>
               </div>
 

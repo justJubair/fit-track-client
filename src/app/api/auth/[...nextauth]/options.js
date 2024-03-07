@@ -25,12 +25,13 @@ export const options = {
         role:{ label: 'Role', type:"text" }
       },
       async authorize(credentials, req) {
-
+         console.log(credentials)
         try {
           const findUser = await User.findOne({ email: credentials.email })
-    
+             console.log(findUser)
           //validate user
           const validatePass = await bcrypt.compare( credentials.password, findUser.password )
+          
           //return validated user
           if(validatePass){
             delete findUser.password

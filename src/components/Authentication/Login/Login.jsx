@@ -1,33 +1,30 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 import { FaFacebook, FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
-import { useEffect, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
+import { useEffect, useState } from "react";
 import "./SignUp.css"
 import { useRouter } from 'next/navigation';
 import { useSession, signIn } from "next-auth/react"
-import { Notify } from 'notiflix';
-import { toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import { Typography } from "@mui/material";
+
 const Login = () => {
     const [isRegisterActive, setRegisterActive] = useState(false);
     const [userData, setUserData] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
-    const notify = () => toast("Logged In!");
-    const notify2 = () => toast("Registration successful!");
 
 
-    const handleRegisterClick = () => {
-        setRegisterActive(true);
-    };
+    // const handleRegisterClick = () => {
+    //     setRegisterActive(true);
+    // };
 
-    const handleLoginClick = () => {
-        setRegisterActive(false);
-        const wrapper = document.querySelector(".wrapper");
-        wrapper.classList.remove("active");
-    };
+    // const handleLoginClick = () => {
+    //     setRegisterActive(false);
+    //     const wrapper = document.querySelector(".wrapper");
+    //     wrapper.classList.remove("active");
+    // };
 
     const router = useRouter();
     const { data: session } = useSession();
@@ -45,7 +42,6 @@ const Login = () => {
             email: email,
             password: password,
         })
-        notify();
     }
     // this is signUp in section
 
@@ -73,7 +69,7 @@ const Login = () => {
             const response = await res.json();
             setErrorMessage(response.message);
         } else {
-            Notify.success('Registration Successful!')
+            toast.success('Registration successful!')
             router.refresh();
             setTimeout(function () {
                 router.push('/')
@@ -99,54 +95,18 @@ const Login = () => {
     }, [session, router])
 
 
-
-    Notiflix.Notify.init({
-        width: '300px',
-        position: 'right-top',
-        distance: '10px',
-        opacity: 1,
-        borderRadius: '5px',
-        rtl: false,
-        timeout: 2000,
-        messageMaxLength: 110,
-        backOverlay: true,
-        backOverlayColor: 'rgba(0,0,0,0.5)',
-        plainText: true,
-        showOnlyTheLastOne: true,
-        ID: 'NotiflixNotify',
-        className: 'notiflix-notify',
-        zindex: 4001,
-        fontFamily: 'Quicksand',
-        fontSize: '18px',
-        cssAnimation: true,
-        cssAnimationDuration: 600,
-        cssAnimationStyle: 'zoom',
-        closeButton: false,
-        useIcon: true,
-        useFontAwesome: false,
-        fontAwesomeIconStyle: 'shadow',
-        fontAwesomeIconSize: '20px',
-        success: {
-            background: 'black',
-            textColor: '#fff',
-            childClassName: 'notiflix-notify-success',
-            notiflixIconColor: '#378AE5',
-            fontAwesomeClassName: 'fas fa-check-circle',
-            fontAwesomeIconColor: '#378AE5',
-            backOverlayColor: 'rgba(55, 118, 248, 0.8)',
+    useEffect(()=>{
+        if (session) {
+            toast.success('Logged In',{ id: 'login'})
+            setTimeout(function () {
+                router.push('/')
+            }, 2000);
         }
-    });
-
-
-    if (session) {
-        Notify.success('Logged In!')
-        setTimeout(function () {
-            router.push('/')
-        }, 2000);
-    }
+    },[session, router])
+  
     
     return (
-        <div className="main">
+        <div className="main py-10">
             <div className={`wrapper ${isRegisterActive ? "active" : ""} w-[300px]  md:w-[700px]   lg:w-[800px] h-[570px] `}>
                 <span className="bg-animate"></span>
                 <span className="bg-animate2"></span>
@@ -161,14 +121,14 @@ const Login = () => {
                             <label>Email</label>
                             <span className="icon">
                                 {" "}
-                                <MdEmail />
+                                <MdEmail/>
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 2, "--j": 23 }}>
                             <input type="text" name="password" required />
                             <label>Password</label>
                             <span className="icon">
-                                <FaLock />
+                                <FaLock/>
                             </span>
                         </div>
                         <button
@@ -188,11 +148,11 @@ const Login = () => {
                             <h3 className="social-text">Or</h3>
                             <div className="social-icons">
 
-                                <button className="social-icon" onClick={() => handleSignUpGoogle()}>
+                                <button type="button" className="social-icon" onClick={() => handleSignUpGoogle()}>
                                     <FaGoogle />
                                 </button>
 
-                                <button className="social-icon" onClick={() => handleSignUpFacebook()}>
+                                <button type="button" className="social-icon" onClick={() => handleSignUpFacebook()}>
                                     <FaFacebook />
                                 </button>
 
@@ -225,7 +185,7 @@ const Login = () => {
                             <label>Name</label>
                             <span className="icon">
                                 {" "}
-                                <FaUser />
+                               <FaUser/>
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 19, "--j": 2 }}>
@@ -237,7 +197,7 @@ const Login = () => {
                             <label>Email</label>
                             <span className="icon">
                                 {" "}
-                                <MdEmail />
+                                <MdEmail/>
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 19, "--j": 2 }}>
@@ -261,7 +221,7 @@ const Login = () => {
                                 required />
                             <label>Password</label>
                             <span className="icon">
-                                <FaLock />
+                               <FaLock/>
                             </span>
 
                         </div>
@@ -299,12 +259,12 @@ const Login = () => {
                         <h3 className="social-text">Or</h3>
                         <div className="social-icons">
 
-                            <button className="social-icon" onClick={() => handleSignUpGoogle()}>
-                                <FaGoogle />
+                            <button type="button" className="social-icon" onClick={() => handleSignUpGoogle()}>
+                                <FaGoogle/>
                             </button>
 
-                            <button className="social-icon" onClick={() => handleSignUpFacebook()}>
-                                <FaFacebook />
+                            <button type="button" className="social-icon" onClick={() => handleSignUpFacebook()}>
+                          <FaGoogle/>
                             </button>
 
                         </div>
@@ -322,6 +282,7 @@ const Login = () => {
                     </p>
                 </div>
             </div>
+            <Toaster reverseOrder={false}/> 
         </div>
     );
 };

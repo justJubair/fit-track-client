@@ -2,75 +2,25 @@
 import { Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import "./trainer.css";
-import { ToastContainer, toast } from "react-toastify";
+import "./Trainer.css";
 import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
 import { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import axios from "axios";
 import PrivateRoute from "../Private/PrivateRoute";
 import { useRouter } from "next/navigation";
-import { Notify } from "notiflix";
-import Notiflix from "notiflix";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Trainers = ({ allTrainers }) => {
 
-
   const { data: session } = useSession();
-  
 
   const router = useRouter();
-
-  Notiflix.Notify.init({
-    width: "300px",
-    position: "right-top",
-    distance: "10px",
-    opacity: 1,
-    borderRadius: "5px",
-    rtl: false,
-    timeout: 2000,
-    messageMaxLength: 110,
-    backOverlay: false,
-    backOverlayColor: "rgba(0,0,0,0.5)",
-    plainText: true,
-    showOnlyTheLastOne: true,
-    ID: "NotiflixNotify",
-    className: "notiflix-notify",
-    zindex: 4001,
-    fontFamily: "Quicksand",
-    fontSize: "18px",
-    cssAnimation: true,
-    cssAnimationDuration: 600,
-    cssAnimationStyle: "zoom",
-    closeButton: false,
-    useIcon: true,
-    useFontAwesome: false,
-    fontAwesomeIconStyle: "shadow",
-    fontAwesomeIconSize: "20px",
-    success: {
-      background: "black",
-      textColor: "#fff",
-      childClassName: "notiflix-notify-success",
-      notiflixIconColor: "#378AE5",
-      fontAwesomeClassName: "fas fa-check-circle",
-      fontAwesomeIconColor: "#378AE5",
-      backOverlayColor: "rgba(55, 118, 248, 0.8)",
-    },
-    info: {
-      background: "#378AE5",
-      textColor: "#fff",
-      childClassName: "notiflix-notify-success",
-      notiflixIconColor: "white",
-      fontAwesomeClassName: "fas fa-check-circle",
-      fontAwesomeIconColor: "white",
-      backOverlayColor: "rgba(55, 118, 248, 0.8)",
-    },
-  });
 
   const [userData, setUserData] = useState([]);
   useEffect(() => {
     if (!session) {
-      router.push("/");
+      signIn()
     }
     if (session && session.user && session.user.email) {
       axios
@@ -88,7 +38,8 @@ const Trainers = ({ allTrainers }) => {
 
   const [selectedTrainer, setSelectedTrainer] = useState(null);
   const handleConnect = () => {
-    toast.success("Connect request sent to trainer.");
+    toast.success('Request sent!')
+   
   };
 
   const toggleModal = (trainerId) => {
@@ -97,7 +48,7 @@ const Trainers = ({ allTrainers }) => {
   };
 
   const handleShareReq = (temail) => {
-    
+
     const userDetails = {
       targetId: userId,
       userEmail: session.user.email,
@@ -113,17 +64,21 @@ const Trainers = ({ allTrainers }) => {
         userDetails,
       })
       .then((res) => {
-     
         if (res.data === "Request Sent") {
-          Notify.success("Request sent to this trainer!");
-          router.push("http://localhost:3000/trainers");
+          toast.success('Request sent!')
+          router.push("https://fit-track-server.vercel.app/trainers");
         }
       })
       .catch((error) => {
         if (error.response.data === "User already in friend list") {
-          Notify.info("Reqest already sent!");
+          toast('Request was sent!', {
+            style: {
+              backgroundColor: '#378ae5',
+              color: 'white'
+            }
+          })
         }
-        console.error("Error updating user details:", error);
+
       });
   };
 
@@ -144,10 +99,10 @@ const Trainers = ({ allTrainers }) => {
                 paddingTop: "20px",
               }}
             >
-              Get your<span className="text-[#378ae5] ">Trainers Here</span>
+              Get your<span className="text-[#378ae5]"> Trainers Here</span>
             </Typography>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mx-3 gap-4 pb-12">
-              {allTrainers.map((train) => (
+              {allTrainers?.map((train) => (
                 <div key={train._id}>
                   <div className="wrapper">
                     <div className="img-area">
@@ -155,7 +110,7 @@ const Trainers = ({ allTrainers }) => {
                         <Image
                           width={100}
                           height={100}
-                          src={train.profile_image}
+                          src={train?.profile_image}
                           alt="trainer image"
                         />
                       </div>
@@ -167,9 +122,9 @@ const Trainers = ({ allTrainers }) => {
                       <i className="fas fa-ellipsis-v"></i>
                     </div>
                     <div className="name flex justify-center items-center gap-2">
-                      {train.name}
+                      {train?.name}
 
-                      {train.status === "active" ? (
+                      {train?.status === "active" ? (
                         <svg
                           className="w-6 h-6 text-green-500"
                           viewBox="0 0 24 24"
@@ -189,7 +144,7 @@ const Trainers = ({ allTrainers }) => {
                         </svg>
                       )}
                     </div>
-                    <div className="about">{train.specialization}</div>
+                    <div className="about">{train?.specialization}</div>
                     <div className="social-icons">
                       <Link href="#">
                         <i>
@@ -214,8 +169,8 @@ const Trainers = ({ allTrainers }) => {
                     </div>
                     <div className="buttons">
                       <button onClick={handleConnect}>Connect</button>
-                      <button onClick={() => toggleModal(train._id)}>
-                        Open Modal
+                      <button onClick={() => toggleModal(train?._id)}>
+                        Details
                       </button>
 
                       <div
@@ -229,7 +184,7 @@ const Trainers = ({ allTrainers }) => {
                           <p>
                             {
                               allTrainers.find(
-                                (trainer) => trainer._id === selectedTrainer
+                                (trainer) => trainer?._id === selectedTrainer
                               )?.email
                             }
                           </p>
@@ -237,22 +192,30 @@ const Trainers = ({ allTrainers }) => {
                           <p>
                             {
                               allTrainers.find(
-                                (trainer) => trainer._id === selectedTrainer
+                                (trainer) => trainer?._id === selectedTrainer
                               )?.bio
                             }
                           </p>
-                          <button
-                            onClick={() => {
-                              handleShareReq(
-                                allTrainers.find(
-                                  (trainer) => trainer._id === selectedTrainer
-                                )?.email
-                              );
-                            }}
-                            className="req-btn"
-                          >
-                            Send hire request...
-                          </button>
+                          <div className="flex items-center mt-5">
+                            <button
+                              className="flex-1"
+                              onClick={() => {
+                                handleShareReq(
+                                  allTrainers.find(
+                                    (trainer) => trainer?._id === selectedTrainer
+                                  )?.email
+                                );
+                              }}
+
+                            >
+                              Send hire request...
+                            </button>
+                            <Link className="flex-1" href="/videoCall">
+                              <button >
+                                Video Call
+                              </button>
+                            </Link>
+                          </div>
                         </div>
                       )}
                     </div>
@@ -262,9 +225,8 @@ const Trainers = ({ allTrainers }) => {
             </div>
           </div>
         </div>
-
-        <ToastContainer />
       </div>
+      <Toaster />
     </PrivateRoute>
   );
 };

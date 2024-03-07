@@ -1,8 +1,8 @@
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
-import { Notify } from 'notiflix/build/notiflix-notify-aio'
 import './payment.css';
 import { useSession } from 'next-auth/react';
+import toast, { Toaster } from 'react-hot-toast';
 const CheckoutForm = ({ cSecret, planPrice }) => {
 
     const stripe = useStripe();
@@ -53,7 +53,7 @@ const CheckoutForm = ({ cSecret, planPrice }) => {
                     setMessage(res.paymentIntent.status);
                    
                     if (res.paymentIntent.status === 'succeeded') {
-                        Notify.success('Payment complete!')
+                        toast.success('Payment complete!')
                         setTrnsactionId(res.paymentIntent.id);
 
                         const paymentInfo = {
@@ -61,14 +61,11 @@ const CheckoutForm = ({ cSecret, planPrice }) => {
                             email: session.user.email,
                             transactionId: res.paymentIntent.id,
                             plan: plan
-                        }
-
-                        
+                        }   
                     }
                 }
             });
-    }
-
+        }
 
     const paymentElementOptions = {
         layout: "tabs"
@@ -85,6 +82,7 @@ const CheckoutForm = ({ cSecret, planPrice }) => {
             </button>
             {/* Show any error or success messages */}
             {message && <div id="payment-message">{message}</div>}
+            <Toaster/>
         </form>
     );
 };

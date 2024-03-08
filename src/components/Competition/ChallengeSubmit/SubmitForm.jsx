@@ -18,6 +18,7 @@ const SubmitForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const form = e.target;
 
     const formData = {
       title: document.getElementById("title").value,
@@ -25,10 +26,10 @@ const SubmitForm = () => {
       file: file,
     };
 
-  
+
     // TODO : post video to youtube
     // TODO : post formdata to db
-    
+
     e.target.reset();
     setFile(null);
     setKey(0);
@@ -57,7 +58,7 @@ const SubmitForm = () => {
                     placeholder="Enter the title"
                     required
                   />
-                 
+
                 </div>
                 <div className="mb-4">
                   <label
@@ -74,47 +75,12 @@ const SubmitForm = () => {
                     rows="4"
                     required
                   />
-                 
-                </div>
-              </div>
-
-              <div className="relative">
-                {file && (
-                  <div className="mt-4">
-                    <video
-                      key={key}
-                      width="100%"
-                      height="100%"
-                      controls
-                      className="rounded-md md:w-9/12 mx-auto"
-                    >
-                      <source
-                        src={URL.createObjectURL(file)}
-                        type={file.type}
-                      />
-                    </video>
-
-                    <p className="text-gray-600 mt-2">File Type: {file.type}</p>
-                    <p className="text-gray-600 mt-2">File Name: {file.name}</p>
-                  </div>
-                )}
-                <div className="rounded-lg  border-2 border-blue-700 bg-gray-100 flex justify-center items-center">
-                  <div className="absolute">
-                    <div className="flex  items-center">
-                      <VideoFileIcon className="fa fa-folder-open fa-4x text-blue-700" />
-                      <span className="block text-black uppercase font-bold ">
-                        {file
-                          ? "Click to select different file"
-                          : "Attach your files here"}
-                      </span>
-                    </div>
-                  </div>
-
                   <input
-                    type="file"
-                    accept="video/*"
-                    className="h-full w-full opacity-0"
-                    onChange={handleFileChange}
+                    className="w-full p-2 border border-gray-300 rounded-md"
+                    type="text"
+                    id="title"
+                    name="vlink"
+                    placeholder="Enter video link"
                     required
                   />
                 </div>

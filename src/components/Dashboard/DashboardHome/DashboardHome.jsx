@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { getSingleUser } from "@/api/getSingleUser";
 import getAllBlogs from "@/api/getAllBlogs";
@@ -35,10 +35,10 @@ const DashboardHome = ({services, challenges}) => {
 
   return (
     <>
-      {
-        currentUser?.role === "trainer" ? <DashboardTrainer currentUser={currentUser} challenges={challenges}/> : <DashboardUser services={services} challenges={challenges} bookmarkedBlogs={bookmarkedBlogs}/>
-      }
-
+      {currentUser?.role==="trainer" && <DashboardTrainer currentUser={currentUser} challenges={challenges}/>}
+      {currentUser?.role==="default" && <DashboardUser services={services} challenges={challenges} bookmarkedBlogs={bookmarkedBlogs}/>}
+     
+     
       
     </>
   );

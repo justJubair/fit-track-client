@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+----
+
+# FitTrack
+
+FitTrack aims to be a user-friendly fitness app for health enthusiasts and athletes. It provides personalized diet and workout plans, engaging exercise modules, video tutorials, AI guidance, and fun competitions to motivate users.
+
+- [Live site](https://fit-track-client.vercel.app)
+
+## Table of Contents
+
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Getting Started](#getting-started)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Acknowledgements](#acknowledgements)
+
+## Features
+
+- **Customized Diet and Workout Plan:** Plans are tailored based on individual preferences, health goals, dietary restrictions, and fitness levels.
+- **Module-Based Exercise Plan:** Users unlock new modules upon completing the previous ones.
+Modules include a balanced combination of cardio, strength, flexibility, and endurance exercises.
+- **Video Tutorial of Workout Plans:** Professional trainers demonstrate correct form, proper technique, and variations.
+- **AI Chatbot Guidance:** Learns from user feedback and adjusts recommendations based on individual progress.
+- **Direct video calling with Trainers:** Users can connect with trainers via in app video calls.
+- **Trainers:** Professional and experience trainers are available, users can easily send a connect request to any specific trainer and that trainer will get a live notification of that request.
+- **Event-Based Workout Competitions:** Regularly hosted workout challenges to motivate users and foster a sense of community.
+
+
+.
+
+## Screenshots
+
+#### Home page
+![Home Page](https://raw.githubusercontent.com/justJubair/head-count/main/src/assets/images/HomePage.png)
+
+---
+#### User list page
+![User List Page](https://raw.githubusercontent.com/justJubair/head-count/main/src/assets/images/UserListPage.png)
+
+---
+#### Add user modal
+![Add User Modal](https://raw.githubusercontent.com/justJubair/head-count/main/src/assets/images/AddUserModal.png)
+
+---
+#### User details page
+![User Details Page](https://raw.githubusercontent.com/justJubair/head-count/main/src/assets/images/UserDetailsPage.png)
+
 
 ## Getting Started
 
-First, run the development server:
+To get started with the project, follow the steps below:
+
+### Dependencies
+
+Make sure you have the following dependencies installed:
+
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   https://github.com/justJubair/head-count.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd head-count
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+4. Update the .env.local file with your own imgBB api key
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+VITE_ImgbbURL=https://api.imgbb.com/1/upload?expiration=600&key=Your_API_key
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Usage
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Start the development server:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
 
-## Learn More
+2. Open the application in your browser: [http://localhost:5173](http://localhost:5173)
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+If you'd like to contribute to the project, please follow the steps below:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Fork the repository.
+2. Create a new branch for your feature: `git checkout -b feature-name`.
+3. Make your changes and commit them: `git commit -m 'Add new feature'`.
+4. Push to the branch: `git push origin feature-name`.
+5. Submit a pull request.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Acknowledgements
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [React](https://reactjs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [React Router DOM](https://reactrouter.com/)
+- [DaisyUI](https://daisyui.com/)
+- [imgBB API](https://imgbb.com)

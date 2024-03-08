@@ -172,7 +172,7 @@ const DashboardUser = ({ services, challenges,bookmarkedBlogs }) => {
           </h2>
             {/* run */}
             <div  className="flex items-center w-full gap-4 justify-between p-5 bg-purple-400 bg-opacity-60 rounded-xl">
-            <button className="font-bold btn" onClick={handleClickOpen("paper")}>Diet Form</button>
+            <button className="font-bold bg-purple-500 text-center rounded-lg px-3 py-1 text-white duration-200 hover:scale-105" onClick={handleClickOpen("paper")}>Diet Form</button>
             <UserInfoDialog open={open} setOpen={setOpen} scroll={scroll} setScroll={setOpen}/>
               <Image
                 width={250}

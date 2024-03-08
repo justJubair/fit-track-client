@@ -13,12 +13,26 @@ import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PoolIcon from "@mui/icons-material/Pool";
 import WidgetsIcon from "@mui/icons-material/Widgets";
-import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { getSingleUser } from "@/api/getSingleUser";
 
 const Sidebar = () => {
+  const [user, setUser] = useState({})
   // active route
   const pathname = usePathname();
+  const {data:session} = useSession()
+
+
+  useEffect(()=>{
+    const getUser = async()=>{
+      const res = await getSingleUser(session?.user?.email)
+      setUser(res)
+    }
+    getUser()
+  },[session?.user?.email])
+
+  
 
   // responsive drawer sidebar
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -65,7 +79,8 @@ const Sidebar = () => {
 
           {/* Route one */}
           <ul>
-            <li
+
+         {user?.role==="default" && <li
               className={
                 pathname == "/dashboard" ? "active nav-item" : "nav-item"
               }
@@ -73,10 +88,21 @@ const Sidebar = () => {
               <Link href="/dashboard">
                 <HomeIcon sx={{ fontSize: "28px" }} />
               </Link>
-            </li>
+            </li>}
+
+            {user?.role==="trainer" && <li
+              className={
+                pathname == "/dashboard" ? "active nav-item" : "nav-item"
+              }
+            >
+              <Link href="/dashboard">
+                <HomeIcon sx={{ fontSize: "28px" }} />
+              </Link>
+            </li>}
+            
 
             {/* Route Two */}
-            <li
+            {user?.role==="admin" && <li
               className={
                 pathname == "/manage-users" ? "active nav-item" : "nav-item"
               }
@@ -85,9 +111,10 @@ const Sidebar = () => {
                 <ManageAccountsIcon sx={{ fontSize: "28px" }} />
               </Link>
             </li>
-
+}
+            
             {/* Route Three */}
-            <li
+            {user?.role==="admin" &&  <li
               className={
                 pathname == "/manage-payments" ? "active nav-item" : "nav-item"
               }
@@ -95,11 +122,12 @@ const Sidebar = () => {
               <Link href="/manage-payments">
                 <MonetizationOnIcon sx={{ fontSize: "28px" }} />
               </Link>
-            </li>
+            </li>}
+           
 
             {/* Route four */}
 
-            <li
+            {user?.role==="default" && <li
               className={
                 pathname == "/manage-progress" ? "active nav-item" : "nav-item"
               }
@@ -107,10 +135,11 @@ const Sidebar = () => {
               <Link href="/manage-progress">
                 <WidgetsIcon sx={{ fontSize: "28px" }} />
               </Link>
-            </li>
+            </li>}
+            
 
             {/* Route five challenges */}
-            <li
+            {user?.role==="default" &&  <li
               className={
                 pathname == "/manage-challenge" ? "active nav-item" : "nav-item"
               }
@@ -118,7 +147,18 @@ const Sidebar = () => {
               <Link href="/manage-challenge">
                 <PoolIcon sx={{ fontSize: "28px" }} />
               </Link>
-            </li>
+            </li>}
+
+            {user?.role==="trainer" &&  <li
+              className={
+                pathname == "/manage-challenge" ? "active nav-item" : "nav-item"
+              }
+            >
+              <Link href="/manage-challenge">
+                <PoolIcon sx={{ fontSize: "28px" }} />
+              </Link>
+            </li>}
+           
           </ul>
         </div>
 

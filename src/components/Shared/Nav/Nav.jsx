@@ -16,9 +16,8 @@ import "./Nav.css";
 import Image from "next/image";
 import LOGO from "../../../assets/images/logo02.png";
 import Link from "next/link";
-import UserInfoDialog from "@/components/CustomizeDiet/FormDialog/UserInfoDialog";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { getSingleUser } from "@/api/getSingleUser";
 
 // Array of pages and settings for navigation
 const pages = [
@@ -50,8 +49,8 @@ const pages = [
 ];
 
 const Nav = () => {
-  //loading state
-  const [loader, setLoader] = useState(true);
+  //user state
+  const [user, setUser] = useState({})
 
   // State variables to manage menu anchor elements
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -76,12 +75,15 @@ const Nav = () => {
   // User session
   const { data: session } = useSession();
 
-  // useEffect to update loader state when session is available
-  useEffect(() => {
-    if (session) {
-      setLoader(false);
+  useEffect(()=>{
+    const getUser = async()=>{
+      const res = await getSingleUser(session?.user?.email)
+      setUser(res)
     }
-  }, [session]);
+    getUser()
+  },[session?.user?.email])
+
+ 
 
   const handleLogout = () => {
     signOut();
@@ -145,7 +147,7 @@ const Nav = () => {
           )}
 
           <span>|</span>
-          <Link href="#">Help </Link>
+
 
           {/* User Avatar or Sign In button */}
           {session && (
@@ -259,7 +261,7 @@ const Nav = () => {
                       onClick={handleCloseUserMenu}
                       sx={{ paddingLeft: "2rem", paddingRight: "2rem" }}
                     >
-                      <Link href="/dashboard">
+                      <Link href={user?.role==="admin" ? "/manage-users" : "/dashboard"}>
                         <Typography textAlign="center">Dashboard</Typography>
                       </Link>
                     </MenuItem>

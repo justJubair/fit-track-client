@@ -22,7 +22,7 @@ const SignUp = () => {
 
     const { data: session } = useSession();
 
-    console.log(session)
+  
 
     const [isUser, setUser] = React.useState(false);
 

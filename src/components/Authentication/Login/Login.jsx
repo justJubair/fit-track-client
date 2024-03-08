@@ -125,7 +125,7 @@ const Login = () => {
                             </span>
                         </div>
                         <div className="input-box animation" style={{ "--i": 2, "--j": 23 }}>
-                            <input type="text" name="password" required />
+                            <input type="password" name="password" required />
                             <label>Password</label>
                             <span className="icon">
                                 <FaLock/>
@@ -207,10 +207,7 @@ const Login = () => {
                                 name="userimage"
                                 required />
                             <label>imagUrl</label>
-                            {/* <span className="icon">
-                                {" "}
-                                <MdEmail />
-                            </span> */}
+                           
                         </div>
 
                         <div className="input-box animation" style={{ "--i": 20, "--j": 3 }}>

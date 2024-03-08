@@ -19,18 +19,19 @@ FitTrack aims to be a user-friendly fitness app for health enthusiasts and athle
 
 ## Features
 
-**1. Customized Diet and Workout Plan:** Plans are tailored based on individual preferences, health goals, dietary restrictions, and fitness levels.
-**2. Module-Based Exercise Plan:** Users unlock new modules upon completing the previous ones.
+- **Customized Diet and Workout Plan:** Plans are tailored based on individual preferences, health goals, dietary restrictions, and fitness levels.
+- **Module-Based Exercise Plan:** Users unlock new modules upon completing the previous ones.
 Modules include a balanced combination of cardio, strength, flexibility, and endurance exercises.
-**3. Video Tutorial of Workout Plans:** Professional trainers demonstrate correct form, proper technique, and variations.
-**4. AI Chatbot Guidance:** Learns from user feedback and adjusts recommendations based on individual progress.
-**5. Direct video calling with Trainers:** Users can connect with trainers via in app video calls.
-**6. Trainers:** Professional and experience trainers are available, users can easily send a connect request to any specific trainer and that trainer will get a live notification of that request.
-**7. Event-Based Workout Competitions:** Regularly hosted workout challenges to motivate users and foster a sense of community.
-**8. Users Blog Section:** A dedicated space for users to share fitness journeys, experiences, tips, and success stories.
-**9. BMI Calculator:** Any user can easily get their accurate BMI via our BMI calculator.
-**10. Payment Gateway Integration:** Ensures a seamless and secure payment experience for premium users.
-**11. Workout Timer:** Built-in timer enhances precision during exercise sessions.
+- **Video Tutorial of Workout Plans:** Professional trainers demonstrate correct form, proper technique, and variations.
+- **AI Chatbot Guidance:** Learns from user feedback and adjusts recommendations based on individual progress.
+- **Direct video calling with Trainers:** Users can connect with trainers via in app video calls.
+- **Trainers:** Professional and experience trainers are available, users can easily send a connect request to any specific trainer and that trainer will get a live notification of that request.
+- **Dashboard:** Role based user dashboard for Admin, trainers and regular users.
+- **Event-Based Workout Competitions:** Regularly hosted workout challenges to motivate users and foster a sense of community.
+- **Users Blog Section:** A dedicated space for users to share fitness journeys, experiences, tips, and success stories.
+- **BMI Calculator:** Any user can easily get their accurate BMI via our BMI calculator.
+- **Payment Gateway Integration:** Ensures a seamless and secure payment experience for premium users.
+- **Workout Timer:** Built-in timer enhances precision during exercise sessions.
 
 
 
@@ -39,19 +40,19 @@ Modules include a balanced combination of cardio, strength, flexibility, and end
 ## Screenshots
 
 #### Home page
-![Home Page](https://raw.githubusercontent.com/justJubair/head-count/main/src/assets/images/HomePage.png)
+![Home Page]()
 
 ---
 #### User list page
-![User List Page](https://raw.githubusercontent.com/justJubair/head-count/main/src/assets/images/UserListPage.png)
+![User List Page]()
 
 ---
 #### Add user modal
-![Add User Modal](https://raw.githubusercontent.com/justJubair/head-count/main/src/assets/images/AddUserModal.png)
+![Add User Modal]()
 
 ---
 #### User details page
-![User Details Page](https://raw.githubusercontent.com/justJubair/head-count/main/src/assets/images/UserDetailsPage.png)
+![User Details Page]()
 
 
 ## Getting Started

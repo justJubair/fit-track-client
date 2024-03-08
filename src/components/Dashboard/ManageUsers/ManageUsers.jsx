@@ -65,7 +65,6 @@ const ManageUsers = ({ users }) => {
                 <EditNoteIcon sx={{color: "green", cursor: "pointer"}}/>
                 </Tooltip>
                   </TableCell>
-         
               </TableRow>
             ))}
           </TableBody>

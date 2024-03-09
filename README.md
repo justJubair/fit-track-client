@@ -40,7 +40,7 @@ FitTrack aims to be a user-friendly fitness app for health enthusiasts and athle
 6. **Dashboard:**
    - Role-based user dashboard for Admin, trainers, and regular users.
    
-7. **Event-Based Workout Competitions:**
+7. **Event-Based Workout Challenges:**
    - Regularly hosted workout challenges to motivate users and foster a sense of community.
    
 8. **Users Blog Section:**
@@ -56,27 +56,70 @@ FitTrack aims to be a user-friendly fitness app for health enthusiasts and athle
     - Built-in timer enhances precision during exercise sessions.
 
 
-
-
-
-.
-
 ## Screenshots
 
 #### Home page
-![Home Page]()
+![Home Page](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/HomePage.png)
 
 ---
-#### User list page
-![User List Page]()
+#### AI Personal Trainer
+![Ai personal trainer](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/Chatbot.png)
 
 ---
-#### Add user modal
-![Add User Modal]()
+#### Services
+![Services](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/Services.png)
 
 ---
-#### User details page
-![User Details Page]()
+#### BMI Calculator
+![BMI calculator](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/BMICalc.png)
+
+---
+#### User Dashboard
+![User dashboard](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/UserDashboard.png)
+
+---
+#### User Analytics
+![User analytics](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/UserDashboard02.png)
+
+---
+#### Video Call Room
+![post a blogs](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/VideoCallRoom.png)
+
+---
+#### Video Call Demo
+![post a blogs](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/VideoCall.png)
+
+---
+#### Challenges Page 
+![Challenges home page](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/ChallengesBanner.png)
+
+---
+#### Workout Challenges
+![workout challenges](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/Challenges.png)
+
+---
+#### Workout Modules
+![workout modules](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/Module.png)
+
+---
+#### Post A Blog
+![post a blogs](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/BlogBanner.png)
+
+---
+#### Blogs
+![blogs](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/Blogs.png)
+
+---
+#### Become A Trainer
+![be a trainer](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/BeATrainer.png)
+
+---
+#### Trainers
+![trainers](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/TrainersPage.png)
+
+---
+#### Pricing
+![be a trainer](https://raw.githubusercontent.com/justJubair/fit-track-client/main/src/assets/readMeAssets/Pricing.png)
 
 
 ## Getting Started

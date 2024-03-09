@@ -203,7 +203,6 @@ If you'd like to contribute to the project, please follow the steps below:
 - [Materail UI](https://mui.com/material-ui/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Next Auth](https://next-auth.js.org/)
-- [](https://daisyui.com/)
 - [imgBB API](https://imgbb.com)
 - [Botpress](https://botpress.com/)
 - [ZegoCloud](https://www.zegocloud.com/)

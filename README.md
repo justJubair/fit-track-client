@@ -138,8 +138,7 @@ Make sure you have the following dependencies installed:
 1. Clone the repository:
 
    ```bash
-   https://github.com/justJubair/head-count.git
-   ```
+  https://fit-track-client.vercel.app
 
 2. Navigate to the project directory:
 
@@ -154,10 +153,25 @@ Make sure you have the following dependencies installed:
    # or
    yarn install
    ```
-4. Update the .env.local file with your own imgBB api key
+4. Update the .env.local file with your own credentials.
 
 ```bash
-VITE_ImgbbURL=https://api.imgbb.com/1/upload?expiration=600&key=Your_API_key
+GOOGLE_CLIENT_ID = Your google client ID
+GOOGLE_CLIENT_SECRET = Google Secret
+SECRET = Generate a secret token
+
+FACEBOOK_CLIENT_ID = Your Facebook Client Id
+FACEBOOK_CLIENT_SECRET = Facebook Secret
+
+db_URI = MongoDB connection for NextAuth authentication
+DB_URI = Your Database URL
+
+NEXTAUTH_URL = http://localhost:3000
+
+STRIPE_PUBLISHER_KEY = Stripe Publisher Key
+STRIPE_SECRET_KEY = Stripe Secret Key
+
+IMGBB_API_KEY = Your Api Key
 ```
 
 ### Usage
@@ -165,12 +179,12 @@ VITE_ImgbbURL=https://api.imgbb.com/1/upload?expiration=600&key=Your_API_key
 1. Start the development server:
 
    ```bash
-   npm start
+   npm run dev
    # or
-   yarn start
+   yarn run dev
    ```
 
-2. Open the application in your browser: [http://localhost:5173](http://localhost:5173)
+2. Open the application in your browser: [http://localhost:3000](http://localhost:3000)
 
 ## Contributing
 
@@ -185,8 +199,11 @@ If you'd like to contribute to the project, please follow the steps below:
 
 ## Acknowledgements
 
-- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org)
+- [Materail UI](https://mui.com/material-ui/)
 - [TailwindCSS](https://tailwindcss.com/)
-- [React Router DOM](https://reactrouter.com/)
-- [DaisyUI](https://daisyui.com/)
+- [Next Auth](https://next-auth.js.org/)
+- [](https://daisyui.com/)
 - [imgBB API](https://imgbb.com)
+- [Botpress](https://botpress.com/)
+- [ZegoCloud](https://www.zegocloud.com/)

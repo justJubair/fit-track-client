@@ -4,7 +4,8 @@
 
 FitTrack aims to be a user-friendly fitness app for health enthusiasts and athletes. It provides personalized diet and workout plans, engaging exercise modules, video tutorials, AI guidance, and fun competitions to motivate users.
 
-- [Live site](https://fit-track-client.vercel.app)
+- [client site](https://fit-track-client.vercel.app)
+- [server site](https://fit-track-server.vercel.app/health)
 
 ## Table of Contents
 

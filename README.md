@@ -19,9 +19,10 @@ FitTrack aims to be a user-friendly fitness app for health enthusiasts and athle
 
 ## Features
 
-- **Customized Diet and Workout Plan:** Plans are tailored based on individual preferences, health goals, dietary restrictions, and fitness levels.
-- **Module-Based Exercise Plan:** Users unlock new modules upon completing the previous ones.
-Modules include a balanced combination of cardio, strength, flexibility, and endurance exercises.
+<ol>
+<li><strong>Customized Diet and Workout Plan:</stong> Plans are tailored based on individual preferences, health goals, dietary restrictions, and fitness levels.</li>
+<li><strong>Module-Based Exercise Plan:</strong> Users unlock new modules upon completing the previous ones.
+Modules include a balanced combination of cardio, strength, flexibility, and endurance exercises.</li>
 - **Video Tutorial of Workout Plans:** Professional trainers demonstrate correct form, proper technique, and variations.
 - **AI Chatbot Guidance:** Learns from user feedback and adjusts recommendations based on individual progress.
 - **Direct video calling with Trainers:** Users can connect with trainers via in app video calls.
@@ -32,6 +33,8 @@ Modules include a balanced combination of cardio, strength, flexibility, and end
 - **BMI Calculator:** Any user can easily get their accurate BMI via our BMI calculator.
 - **Payment Gateway Integration:** Ensures a seamless and secure payment experience for premium users.
 - **Workout Timer:** Built-in timer enhances precision during exercise sessions.
+</ol>
+
 
 
 

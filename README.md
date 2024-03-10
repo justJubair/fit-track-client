@@ -156,7 +156,7 @@ Make sure you have the following dependencies installed:
    ```
 4. Update the .env.local file with your own credentials.
 
-```bash
+```env
 GOOGLE_CLIENT_ID = Your google client ID
 GOOGLE_CLIENT_SECRET = Google Secret
 SECRET = Generate a secret token

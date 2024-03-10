@@ -139,6 +139,7 @@ Make sure you have the following dependencies installed:
 
    ```bash
   https://fit-track-client.vercel.app
+  ```
 
 2. Navigate to the project directory:
 

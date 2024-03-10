@@ -138,8 +138,8 @@ Make sure you have the following dependencies installed:
 1. Clone the repository:
 
    ```bash
-  https://fit-track-client.vercel.app
-  ```
+   git clone https://github.com/justJubair/fit-track-client.git
+   ```
 
 2. Navigate to the project directory:
 

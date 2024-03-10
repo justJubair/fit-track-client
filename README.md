@@ -143,7 +143,7 @@ Make sure you have the following dependencies installed:
 2. Navigate to the project directory:
 
    ```bash
-   cd head-count
+   cd fit-track-client
    ```
 
 3. Install the dependencies:

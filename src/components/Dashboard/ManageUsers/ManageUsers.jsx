@@ -16,6 +16,10 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 
 const ManageUsers = ({ users }) => {
 
+  const handleUserDelete =(_id)=>{
+    console.log(_id)
+  }
+
   return (
     <Container>
       {/* user table */}
@@ -58,7 +62,7 @@ const ManageUsers = ({ users }) => {
                 <TableCell align="right">
                   {/* delete */}
                   <Tooltip title="Delete" arrow>
-                <DeleteForeverIcon  sx={{color: "red", marginRight: "1.2rem", cursor: "pointer"}}/>
+                <DeleteForeverIcon onClick={()=> handleUserDelete(user?._id)}  sx={{color: "red", marginRight: "1.2rem", cursor: "pointer"}}/>
                
                 </Tooltip>
                 <Tooltip title="Edit" arrow>

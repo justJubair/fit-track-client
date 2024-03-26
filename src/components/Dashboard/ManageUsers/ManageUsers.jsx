@@ -12,6 +12,7 @@ import { Tooltip, Typography } from "@mui/material";
 // icons
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNoteIcon from '@mui/icons-material/EditNote';
+import DeleteUserModal from "./DeleteUserModal";
 
 
 const ManageUsers = ({ users }) => {
@@ -63,6 +64,7 @@ const ManageUsers = ({ users }) => {
                   {/* delete */}
                   <Tooltip title="Delete" arrow>
                 <DeleteForeverIcon onClick={()=> handleUserDelete(user?._id)}  sx={{color: "red", marginRight: "1.2rem", cursor: "pointer"}}/>
+                <DeleteUserModal/>
                
                 </Tooltip>
                 <Tooltip title="Edit" arrow>

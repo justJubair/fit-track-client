@@ -13,12 +13,14 @@ import { Tooltip, Typography } from "@mui/material";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import DeleteUserModal from "./DeleteUserModal";
+import { useState } from "react";
 
 
 const ManageUsers = ({ users }) => {
+  const [open, setOpen] = useState(false);
 
   const handleUserDelete =(_id)=>{
-    console.log(_id)
+    setOpen(true)
   }
 
   return (
@@ -64,7 +66,7 @@ const ManageUsers = ({ users }) => {
                   {/* delete */}
                   <Tooltip title="Delete" arrow>
                 <DeleteForeverIcon onClick={()=> handleUserDelete(user?._id)}  sx={{color: "red", marginRight: "1.2rem", cursor: "pointer"}}/>
-                <DeleteUserModal/>
+                <DeleteUserModal open={open} setOpen={setOpen}/>
                
                 </Tooltip>
                 <Tooltip title="Edit" arrow>

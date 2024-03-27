@@ -6,12 +6,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-const DeleteUserModal=()=> {
-  const [open, setOpen] = React.useState(false);
+const DeleteUserModal=({open, setOpen})=> {
+  // const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
   const handleClose = () => {
     setOpen(false);
@@ -19,9 +19,9 @@ const DeleteUserModal=()=> {
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      {/* <Button variant="outlined" onClick={handleClickOpen}>
         Open alert dialog
-      </Button>
+      </Button> */}
       <Dialog
         open={open}
         onClose={handleClose}
